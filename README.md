@@ -12,6 +12,14 @@ The goal of this project is to implement city hall informational system. System 
   - committee member: has access to propose/withdraw laws and amendments 
   - parliament president: manages national session
 
+#### How to import project to your IDE:
+  - If you are using Eclipse IDE then navigate to project root directory and type ``` play eclipsify ```
+  - If you are using IntelliJ then type ``` play idealize ```
+
+#### How to contribute:
+  - Put all files in  ``` .gitignore ```that are not associated with project. (IDE folders, files and logs)
+  - ``` git push origin master ```
+
 #### Licence:
   - MIT
   
