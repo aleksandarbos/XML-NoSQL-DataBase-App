@@ -20,6 +20,9 @@ The goal of this project is to implement city hall informational system. System 
   - Put all files in  ``` .gitignore ```that are not associated with project. (IDE folders, files and logs)
   - ``` git push origin master ```
 
+#### DataBase access:
+  - http url:``` http://147.91.177.194:8000/qconsole/ ``` , credentials: ``` tim16 ``` , ``` tim16 ```
+
 #### Licence:
   - MIT
   
