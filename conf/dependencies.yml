@@ -2,3 +2,24 @@
 
 require:
     - play
+    - ch.qos.logback -> logback-core 1.1.2
+    - commons-codec -> commons-codec 1.7
+    - commons-logging -> commons-logging 1.1.1
+    - org.apache.httpcomponents -> httpclient 4.1.1
+    - org.apache.httpcomponents -> httpcore 4.1
+    - com.fasterxml.jackson.core -> jackson-annotations 2.4.1
+    - com.fasterxml.jackson.core -> jackson-core 2.4.1
+    - com.fasterxml.jackson.core -> jackson-databind 2.4.1
+    - com.marklogic -> java-client-api 3.0.4
+    - com.sun.jersey.contribs -> jersey-apache-client4 1.17.1
+    - com.sun.jersey -> jersey-client 1.17.1
+    - com.sun.jersey -> jersey-core 1.17.1
+    - com.sun.jersey.contribs -> jersey-multipart 1.17
+    - ch.qos.logback -> logback-classic 1.1.2
+    - ch.qos.logback -> logback-core 1.1.2
+    - org.jvnet -> mimepull 1.6
+    - org.jvnet.mimepull -> mimepull 1.9.4
+    - org.slf4j -> slf4j-api 1.7.4
+
+
+
