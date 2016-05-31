@@ -1,4 +1,27 @@
 #{extends 'main.html' /}
-#{set title:'Home' /}
+#{set title:'Skupština grada Novog Sada.' /}
 
-#{welcome /}
+<div class="jumbotron">
+    <div>
+        <span>
+            <img src="public/images/grad_novi_sad_logo.jpg">
+            <h2>Skupština grada <b>Novog Sada.</b></h2>
+            <h4><i>Zvanična web prezentacija grada Novog Sada.</i></h4>
+        </span>
+    </div>
+</div>
+<div class="form-container">
+    <form class="form-signin" action=".">
+        <h2 class="form-signin-heading">Molimo prijavite se:</h2>
+        <label for="inputEmail" class="sr-only">Email adresa:</label>
+        <input type="email" id="inputEmail" class="form-control" placeholder="Email adresa" required autofocus>
+        <label for="inputPassword" class="sr-only">Lozinka:</label>
+        <input type="password" id="inputPassword" class="form-control" placeholder="Lozinka" required>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" value="remember-me"> Zapamti me
+            </label>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Prijavi se!</button>
+    </form>
+</div>

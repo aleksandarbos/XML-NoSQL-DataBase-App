@@ -1,0 +1,17 @@
+.jumbotron {
+    text-align: center;
+    background-color: rgba(2, 124, 148, 0.15) !important;
+}
+
+.h2, h2 {
+    font-size: 40px !important;
+}
+
+.form-container {
+    width: 30%;
+    margin: 0 auto;
+}
+
+.form-signin {
+    max-width: 360px;
+}
