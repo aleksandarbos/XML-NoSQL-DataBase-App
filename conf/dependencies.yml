@@ -20,4 +20,6 @@ require:
     - org.jvnet -> mimepull 1.6
     - org.jvnet.mimepull -> mimepull 1.9.4
     - org.slf4j -> slf4j-api 1.7.4
-
+    - javax.xml.bind -> jaxb-api 2.2.5
+    - com.sun.xml.bind -> jaxb-impl 2.2.5.1
+    - com.sun.xml.bind -> jaxb-xjc 2.2.5.1
