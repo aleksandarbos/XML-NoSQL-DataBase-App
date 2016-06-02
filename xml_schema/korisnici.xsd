@@ -26,6 +26,13 @@
         <xs:sequence>
             <xs:element name="Ime" type="xs:string"/>
             <xs:element name="Prezime" type="xs:string"/>
+            <xs:element name="Email">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:pattern value="[aA-zZ]+[0-9]*@[aA-zZ]+(\.[aA-zZ]+)+"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
         </xs:sequence>
     </xs:complexType>
     <xs:complexType name="Predsednik_skupstine_tip">

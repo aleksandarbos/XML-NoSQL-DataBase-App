@@ -14,9 +14,7 @@
         </options>
     </meta>
     <projectTree name="XML_Project.xpr">
-        <folder masterFiles="true" name="Master Files">
-            <file name="primeri/korisnici.xml"/>
-        </folder>
+        <folder path="primeri/"/>
         <file name="amandmani.xsd"/>
         <file name="korisnici.xsd"/>
         <file name="propisi.xsd"/>
