@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" elementFormDefault="qualified"
+    vc:minVersion="1.1" targetNamespace="http://www.parlament.gov.rs/propisi"
+    xmlns:pp="http://www.parlament.gov.rs/propisi">
+    <xs:element name="Propis">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" ref="pp:Preambula"/>
+                <xs:element name="Naziv">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:maxLength value="100"/>
+                            <xs:whiteSpace value="preserve"/>
+                            <xs:minLength value="10"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+                <xs:element maxOccurs="unbounded" ref="pp:Deo" minOccurs="1"/>
+                <xs:element ref="pp:Status"/>
+                <xs:element ref="pp:Prilozi"/>
+            </xs:sequence>
+            <xs:attribute name="Propis_je_usvojen" type="xs:boolean"/>
+            <xs:attribute name="Datum_izdavanja" type="xs:date"/>
+            <xs:attribute name="Datum_stupanja_na_snagu" type="xs:date"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Preambula">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Pravni_osnov">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="Materijalni" type="xs:string"/>
+                            <xs:element name="Formalni" type="xs:string"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="Naziv_organa" type="xs:string"/>
+                <xs:element minOccurs="0" name="Naziv_saglasnog_organa" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Glava">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" minOccurs="1" ref="pp:Odeljak"/>
+            </xs:sequence>
+            <xs:attribute name="Redni_broj_glave" type="xs:int"/>
+            <xs:attribute name="Naziv_glave" type="xs:string"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Odeljak">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" minOccurs="0" ref="pp:Odeljak"> </xs:element>
+                <xs:element maxOccurs="unbounded" ref="pp:Clan"/>
+            </xs:sequence>
+            <xs:attribute name="Redni_broj_odeljka" type="xs:int"/>
+            <xs:attribute name="Naziv_odeljka" type="xs:string"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Deo">
+        <xs:complexType>
+            <xs:sequence maxOccurs="1" minOccurs="1">
+                <xs:element ref="pp:Glava" maxOccurs="unbounded"/>
+            </xs:sequence>
+            <xs:attribute name="Redni_broj_dela" type="xs:int"/>
+            <xs:attribute name="Naziv_dela" type="xs:string"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Clan">
+        <xs:complexType mixed="false">
+            <xs:sequence maxOccurs="1">
+                <xs:element maxOccurs="unbounded" name="Stav">
+                    <xs:complexType>
+                        <xs:sequence minOccurs="0">
+                            <xs:element maxOccurs="unbounded" minOccurs="2" name="Tacka">
+                                <xs:complexType>
+                                    <xs:sequence minOccurs="0">
+                                        <xs:element maxOccurs="unbounded" minOccurs="2"
+                                            name="Podtacka">
+                                            <xs:complexType>
+                                                <xs:sequence minOccurs="0">
+                                                  <xs:element maxOccurs="unbounded" minOccurs="2"
+                                                  name="Alineja"/>
+                                                </xs:sequence>
+                                                <xs:attribute name="Redni_broj_podtacke">
+                                                  <xs:simpleType>
+                                                  <xs:restriction base="xs:int">
+                                                  <xs:pattern value="\([0-9]+\)"/>
+                                                  </xs:restriction>
+                                                  </xs:simpleType>
+                                                </xs:attribute>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="Redni_broj_tacke" type="xs:int"/>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+            <xs:attribute name="Redni_broj_clana">
+                <xs:simpleType>
+                    <xs:restriction base="xs:int">
+                        <xs:pattern value="[\-+]?[0-9]+"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="Naziv_clana">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:pattern value="Clan [1-9][0-9]*:"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Status">
+        <xs:complexType>
+            <xs:choice>
+                <xs:element name="U_pripremi" type="xs:boolean"/>
+                <xs:element name="Na_razmatranju" type="xs:boolean"/>
+                <xs:element name="Usvojen" type="xs:boolean"/>
+                <xs:element name="Stupio_na_snagu" type="xs:boolean"/>
+            </xs:choice>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Prilozi">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" minOccurs="1" name="Prilog">
+                    <xs:complexType>
+                        <xs:attribute name="Broj_priloga" type="xs:int"/>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:kp="http://www.parlament.gov.rs/korisnici"
+    xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"
+    targetNamespace="http://www.parlament.gov.rs/korisnici" elementFormDefault="qualified"
+    vc:minVersion="1.1">
+
+    <xs:element name="Korisnici">
+        <xs:complexType>
+            <xs:all>
+                <xs:element maxOccurs="unbounded" ref="kp:Gradjanin"/>
+                <xs:element maxOccurs="unbounded" ref="kp:Odbornik"/>
+                <xs:element ref="kp:Predsednik_skupstine"/>
+            </xs:all>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Odbornik" type="kp:Odbornik_tip"/>
+    <xs:element name="Gradjanin" type="kp:Gradjanin_tip"/>
+    <xs:element name="Predsednik_skupstine" type="kp:Predsednik_skupstine_tip"/>
+    <xs:complexType name="Odbornik_tip">
+        <xs:complexContent>
+            <xs:extension base="kp:Gradjanin_tip"/>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="Gradjanin_tip">
+        <xs:sequence>
+            <xs:element name="Ime" type="xs:string"/>
+            <xs:element name="Prezime" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Predsednik_skupstine_tip">
+        <xs:complexContent>
+            <xs:extension base="kp:Odbornik_tip"/>
+        </xs:complexContent>
+    </xs:complexType>
+</xs:schema>

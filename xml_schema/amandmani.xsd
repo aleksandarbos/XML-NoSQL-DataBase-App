@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+    targetNamespace="http://www.parlament.gov.rs/amandmani" vc:minVersion="1.1"
+    xmlns:ap="http://www.parlament.gov.rs/amandmani" xmlns:pp="http://www.parlament.gov.rs/propisi"
+    xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"
+    xmlns:kp="http://www.parlament.gov.rs/korisnici">
+
+    <xs:import namespace="http://www.parlament.gov.rs/propisi" schemaLocation="propisi.xsd"/>
+    <xs:import namespace="http://www.parlament.gov.rs/korisnici" schemaLocation="korisnici.xsd"/>
+    <xs:element name="Amandmani">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" name="Amandman">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="Naziv_predloga" type="xs:string"/>
+                            <xs:element name="Tekst_za_izmenu">
+                                <xs:complexType>
+                                    <xs:choice>
+                                        <xs:element name="Izmena">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element maxOccurs="unbounded" ref="pp:Clan"/>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="Dopuna">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element maxOccurs="unbounded" ref="pp:Clan"/>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="Brisanje">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element maxOccurs="unbounded" ref="pp:Clan"/>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:choice>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="Obrazlozenje" type="xs:string"/>
+                            <xs:element name="Saglasni">
+                                <xs:complexType>
+                                    <xs:all>
+                                        <xs:element ref="kp:Odbornik"/>
+                                        <xs:element ref="kp:Predsednik_skupstine"/>
+                                    </xs:all>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="Po_clanu_poslovnika_narodne_skupstine" type="xs:int"/>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
