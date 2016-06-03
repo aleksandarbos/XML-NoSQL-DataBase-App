@@ -1,28 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <kp:Korisnici xmlns:kp="http://www.parlament.gov.rs/korisnici"
- xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"
- xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- xsi:schemaLocation="http://www.parlament.gov.rs/korisnici file:/home/aleksandar/Documents/XML-NoSQL-DataBase-App/xml_schema/korisnici.xsd">
-    <kp:Gradjanin>
-        <kp:Ime>Gradjanin0</kp:Ime>
-        <kp:Prezime>Gradjanovic0</kp:Prezime>
-        <kp:Email>g0@parlament.gov.ns.rs</kp:Email>
-    </kp:Gradjanin>
-    <kp:Gradjanin>
-        <kp:Ime>Gradjanin1</kp:Ime>
-        <kp:Prezime>Gradjanovic1</kp:Prezime>
-        <kp:Email>g1@parlament.gov.ns.rs</kp:Email>
-    </kp:Gradjanin>
-    <kp:Odbornik>
-        <kp:Ime>Odbornik0</kp:Ime>
-        <kp:Prezime>Odbornikovic0</kp:Prezime>
-        <kp:Email>o0@parlament.gov.ns.rs</kp:Email>
-    </kp:Odbornik>
-    <kp:Odbornik>
-        <kp:Ime>Odbornik1</kp:Ime>
-        <kp:Prezime>Odbornikovic1</kp:Prezime>
-        <kp:Email>o1@parlament.gov.ns.rs</kp:Email>
-    </kp:Odbornik>
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://www.parlament.gov.rs/korisnici file:/home/aleksandar/Documents/XML-NoSQL-DataBase-App/xml_schema/korisnici.xsd
+http://www.w3.org/2007/XMLSchema-versioning ">
+    <kp:Gradjani>
+        <kp:Gradjanin>
+            <kp:Ime>Gradjanin0</kp:Ime>
+            <kp:Prezime>Gradjanovic0</kp:Prezime>
+            <kp:Email>g0@parlament.gov.ns.rs</kp:Email>
+        </kp:Gradjanin>
+        <kp:Gradjanin>
+            <kp:Ime>Gradjanin1</kp:Ime>
+            <kp:Prezime>Gradjanovic1</kp:Prezime>
+            <kp:Email>g1@parlament.gov.ns.rs</kp:Email>
+        </kp:Gradjanin>
+    </kp:Gradjani>
+    <kp:Odbornici>
+        <kp:Odbornik>
+            <kp:Ime>Odbornik0</kp:Ime>
+            <kp:Prezime>Odbornikovic0</kp:Prezime>
+            <kp:Email>o0@parlament.gov.ns.rs</kp:Email>
+        </kp:Odbornik>
+        <kp:Odbornik>
+            <kp:Ime>Odbornik1</kp:Ime>
+            <kp:Prezime>Odbornikovic1</kp:Prezime>
+            <kp:Email>o1@parlament.gov.ns.rs</kp:Email>
+        </kp:Odbornik>
+    </kp:Odbornici>
     <kp:Predsednik_skupstine>
         <kp:Ime>Predsednik</kp:Ime>
         <kp:Prezime>Skuptinovic</kp:Prezime>

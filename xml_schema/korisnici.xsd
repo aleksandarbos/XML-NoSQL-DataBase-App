@@ -7,14 +7,28 @@
 
     <xs:element name="Korisnici">
         <xs:complexType>
-            <xs:all>
-                <xs:element maxOccurs="unbounded" ref="kp:Gradjanin"/>
-                <xs:element maxOccurs="unbounded" ref="kp:Odbornik"/>
+            <xs:sequence>
+                <xs:element maxOccurs="1" ref="kp:Gradjani"/>
+                <xs:element maxOccurs="1" ref="kp:Odbornici"/>
                 <xs:element ref="kp:Predsednik_skupstine"/>
-            </xs:all>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Odbornici">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" ref="kp:Odbornik"/>
+            </xs:sequence>
         </xs:complexType>
     </xs:element>
     <xs:element name="Odbornik" type="kp:Odbornik_tip"/>
+    <xs:element name="Gradjani">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" ref="kp:Gradjanin"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
     <xs:element name="Gradjanin" type="kp:Gradjanin_tip"/>
     <xs:element name="Predsednik_skupstine" type="kp:Predsednik_skupstine_tip"/>
     <xs:complexType name="Odbornik_tip">

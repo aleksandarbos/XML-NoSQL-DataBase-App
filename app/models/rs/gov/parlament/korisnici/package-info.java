@@ -5,5 +5,5 @@
 // Generated on: 2016.06.03 at 04:28:13 PM CEST 
 //
 
-@javax.xml.bind.annotation.XmlSchema(namespace = "http://www.parlament.gov.rs/amandmani", elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
-package models.rs.gov.parlament.amandmani;
+@javax.xml.bind.annotation.XmlSchema(namespace = "http://www.parlament.gov.rs/korisnici", elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
+package models.rs.gov.parlament.korisnici;

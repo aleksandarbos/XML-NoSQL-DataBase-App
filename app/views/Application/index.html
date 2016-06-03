@@ -1,5 +1,6 @@
 #{extends 'main.html' /}
-#{set title:'Skupština grada Novog Sada.' /}
+#{set title:'Skupština grada Novog Sada. - Prijava na sistem.' /}
+
 
 <div class="jumbotron">
     <div>
@@ -10,18 +11,71 @@
         </span>
     </div>
 </div>
-<div class="form-container">
-    <form class="form-signin" action=".">
-        <h2 class="form-signin-heading">Molimo prijavite se:</h2>
-        <label for="inputEmail" class="sr-only">Email adresa:</label>
-        <input type="email" id="inputEmail" class="form-control" placeholder="Email adresa" required autofocus>
-        <label for="inputPassword" class="sr-only">Lozinka:</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Lozinka" required>
-        <div class="checkbox">
-            <label>
-                <input type="checkbox" value="remember-me"> Zapamti me
-            </label>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="panel panel-login">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <a href="#" class="active" id="login-form-link">Prijava</a>
+                        </div>
+                        <div class="col-xs-6">
+                            <a href="#" id="register-form-link">Registracija</a>
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div id="login-form">
+                                #{form @Login.login(), method:'POST'}
+                                    <div class="form-group">
+                                        <input type="email" name="citizen.ime" id="email" tabindex="1" class="form-control" placeholder="Email adresa" value="">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Lozinka">
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-sm-6 col-sm-offset-3">
+                                                <input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="Prijavi se!">
+                                            </div>
+                                        </div>
+                                    </div>
+                                #{/form}
+                            </div>
+                            <div id="register-form" style="display: none">
+                                #{form @Register.addNewUser(), method:'POST'}
+                                    <div class="form-group">
+                                        <input type="text" name="citizen.ime" id="name" tabindex="1" class="form-control" placeholder="Ime" value="">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" name="citizen.prezime" id="surname" tabindex="1" class="form-control" placeholder="Prezime" value="">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="email" name="citizen.email" id="email" tabindex="1" class="form-control" placeholder="Email adresa" value="">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Lozinka">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" name="confirm-password" id="confirm-password" tabindex="2" class="form-control" placeholder="Ponovite lozinku">
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-sm-6 col-sm-offset-3">
+                                                <input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Registruj me.">
+                                            </div>
+                                        </div>
+                                    </div>
+                                #{/form}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Prijavi se!</button>
-    </form>
+    </div>
 </div>
