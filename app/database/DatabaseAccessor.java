@@ -11,10 +11,10 @@ import java.io.IOException;
  * Created by aleksandar on 4.6.16..
  */
 public class DatabaseAccessor {
-    private static DatabaseClient client;
-    private static Util.ConnectionProperties props;
     private static DatabaseAccessor instance = null;
 
+    public static Util.ConnectionProperties props;
+    public static DatabaseClient client;
     public static XMLDocumentManager xmlManager;
 
 
