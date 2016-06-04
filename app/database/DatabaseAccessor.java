@@ -13,8 +13,10 @@ import java.io.IOException;
 public class DatabaseAccessor {
     private static DatabaseClient client;
     private static Util.ConnectionProperties props;
-    private static XMLDocumentManager xmlManager;
     private static DatabaseAccessor instance = null;
+
+    public static XMLDocumentManager xmlManager;
+
 
     private  DatabaseAccessor() {
         prepareDataBase();
