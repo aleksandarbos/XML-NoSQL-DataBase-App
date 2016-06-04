@@ -1,15 +1,17 @@
 package controllers;
 
-import play.*;
 import play.mvc.*;
 
-import java.util.*;
+import java.io.IOException;
 
-import models.*;
+import util.Util;
 
 public class Application extends Controller {
 
+    public static Util.ConnectionProperties props;
+
     public static void index() {
+
         render();
     }
 
