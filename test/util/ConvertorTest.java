@@ -4,10 +4,8 @@ import models.rs.gov.parlament.korisnici.*;
 import org.junit.Test;
 
 import javax.xml.bind.JAXBException;
+import java.io.StringReader;
 import java.util.List;
-import java.util.Scanner;
-
-import static org.junit.Assert.*;
 
 /**
  * Created by aleksandar on 5.6.16..
@@ -61,11 +59,59 @@ public class ConvertorTest {
     }
 
     @Test
-    public void unmarshall() throws Exception {
+    public void unmarshallFromDisk() throws Exception {
         // TODO: Edit database schema... :)
-        System.out.println("\n\n[INFO] Running UNMARSHALLING test.");
+        System.out.println("\n\n[INFO] Running UNMARSHALLING test FROM DISK.");
 
-        Korisnici users = (Korisnici) Convertor.unmarshall("korisnici.xml", Korisnici.class);
+        Korisnici users = (Korisnici) Convertor.unmarshall(UnmarshallType.FROM_DISK, "korisnici.xml", Korisnici.class);
+
+        List<Gradjani> citizensList = users.getGradjani();
+        Gradjani citizensFirst = citizensList.get(0);
+        List<GradjaninTip> citizens = citizensFirst.getGradjanin();
+
+        System.out.println("[INFO] List of citizens: ");
+        for (GradjaninTip citizen: citizens) {
+            System.out.println("\t- " + citizen.getIme() + ", " + citizen.getPrezime() + ", " + citizen.getEmail());
+        }
+
+        System.out.println("[INFO] UNMARSHALLING test SUCCESSFUL!");
+    }
+
+    @Test
+    public void unmarshallFromString() throws Exception {
+        System.out.println("\n\n[INFO] Running UNMARSHALLING test FROM STRING.");
+
+        String data = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n" +
+                "<Korisnici xmlns=\"http://www.parlament.gov.rs/korisnici\">\n" +
+                "    <Gradjani>\n" +
+                "        <Gradjanin>\n" +
+                "            <Ime>Aleksandar</Ime>\n" +
+                "            <Prezime>Bosnjak</Prezime>\n" +
+                "            <Email>aca@doctor.com</Email>\n" +
+                "        </Gradjanin>\n" +
+                "    </Gradjani>\n" +
+                "    <Odbornici>\n" +
+                "        <Odbornik>\n" +
+                "            <Ime>Odborko1</Ime>\n" +
+                "            <Prezime>Odborkovic1</Prezime>\n" +
+                "            <Email>odb1@odb.com</Email>\n" +
+                "        </Odbornik>\n" +
+                "        <Odbornik>\n" +
+                "            <Ime>Odborko2</Ime>\n" +
+                "            <Prezime>Odborkovic2</Prezime>\n" +
+                "            <Email>odb2@odb.com</Email>\n" +
+                "        </Odbornik>\n" +
+                "    </Odbornici>\n" +
+                "    <Predsednik_skupstine>\n" +
+                "        <Ime>Predsednikovic</Ime>\n" +
+                "        <Prezime>Skupstinovic</Prezime>\n" +
+                "        <Email>ps@ps.com</Email>\n" +
+                "    </Predsednik_skupstine>\n" +
+                "</Korisnici>\n";
+
+
+        Korisnici users = (Korisnici) Convertor.unmarshall(UnmarshallType.FROM_STRING, data, Korisnici.class);
+
         List<Gradjani> citizensList = users.getGradjani();
         Gradjani citizensFirst = citizensList.get(0);
         List<GradjaninTip> citizens = citizensFirst.getGradjanin();

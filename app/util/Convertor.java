@@ -5,6 +5,7 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 import java.io.File;
+import java.io.StringReader;
 
 /**
  * Created by aleksandar on 5.6.16..
@@ -36,21 +37,33 @@ public class Convertor {
 
     /**
      * Converts XML -> Java object.
-     * @param filePathToUnmarshall File path of xml file to open.
+     * @param unmarshallType If is set to FROM_DISK then 'data' is filePath, else if it's FROM_STRING then data is xml instance data.
+     * @param data File path of xml file to open.
      * @param classToCreate Targeted class to create Java object instance.
      * @return  Converted Java object.
      * @throws JAXBException
      */
-    public static Object unmarshall(String filePathToUnmarshall, Class classToCreate) throws JAXBException {
+    public static Object unmarshall(UnmarshallType unmarshallType, String data, Class classToCreate) throws JAXBException {
         System.out.println("[INFO] JAXB unmarshalling to: " + classToCreate.getName() + " Java object.\n");
 
         Package objectPackage = classToCreate.getPackage();
         JAXBContext context = JAXBContext.newInstance(objectPackage.getName());
 
         Unmarshaller unmarshaller = context.createUnmarshaller();
+        Object unmarshalledObject = null;
 
-        Object unmarshalledObject = unmarshaller.unmarshal(new File(filePathToUnmarshall));
+        switch (unmarshallType) {
+            case FROM_DISK:
+                unmarshalledObject = unmarshaller.unmarshal(new File(data));
+                break;
+            case FROM_STRING:
+                StringReader stringReader = new StringReader(data);
+                unmarshalledObject = unmarshaller.unmarshal(stringReader);
+                break;
+        }
 
         return unmarshalledObject;
     }
+
+
 }

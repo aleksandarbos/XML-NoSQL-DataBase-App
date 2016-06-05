@@ -8,10 +8,7 @@ import util.Util;
 
 public class Application extends Controller {
 
-    public static Util.ConnectionProperties props;
-
     public static void index() {
-
         render();
     }
 
