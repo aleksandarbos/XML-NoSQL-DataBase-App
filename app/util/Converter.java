@@ -6,11 +6,12 @@ import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 import java.io.File;
 import java.io.StringReader;
+import java.io.StringWriter;
 
 /**
  * Created by aleksandar on 5.6.16..
  */
-public class Convertor {
+public class Converter {
 
     /**
      * Converts Java object -> XML. Notice: Java object must be an XMLRoot element!
@@ -18,26 +19,36 @@ public class Convertor {
      * @param filePathToSave Place where new XML file will be saved.
      * @throws JAXBException
      */
-    public static void marshall(Object objectToMarshall, String filePathToSave) throws JAXBException {
+    public static String marshall(MarshallType marshallType, Object objectToMarshall, String filePathToSave) throws JAXBException {
         System.out.println("[INFO] JAXB marshalling instance of " + objectToMarshall.getClass() + " class.\n");
 
         Class objectClass = objectToMarshall.getClass();
         Package classPackage = objectClass.getPackage();
         String classPackageName = classPackage.getName();
 
+        StringWriter sw = new StringWriter();
         JAXBContext context = JAXBContext.newInstance(classPackageName);
 
         Marshaller marshaller = context.createMarshaller();
         marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-        marshaller.marshal(objectToMarshall, System.out);
-        marshaller.marshal(objectToMarshall, new File(filePathToSave));
+        marshaller.setProperty(Marshaller.JAXB_ENCODING, "UTF-8");
+        // marshaller.marshal(objectToMarshall, System.out); for debugging purposes
 
-        System.out.println("[INFO] Marshalled file at: " + filePathToSave);
+        switch (marshallType) {
+            case TO_DISK:
+                marshaller.marshal(objectToMarshall, new File(filePathToSave));
+                System.out.println("[INFO] Marshalled file at: " + filePathToSave);
+                break;
+            case TO_STRING:
+                marshaller.marshal(objectToMarshall, sw);
+                break;
+        }
+        return sw.toString();
     }
 
     /**
      * Converts XML -> Java object.
-     * @param unmarshallType If is set to FROM_DISK then 'data' is filePath, else if it's FROM_STRING then data is xml instance data.
+     * @param unmarshallType If is set to FROM_DISK then 'data' is filePath, else if it's FROM_STRING then 'data' is xml instance data.
      * @param data File path of xml file to open.
      * @param classToCreate Targeted class to create Java object instance.
      * @return  Converted Java object.

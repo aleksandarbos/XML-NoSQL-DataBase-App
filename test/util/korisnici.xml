@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Korisnici xmlns="http://www.parlament.gov.rs/korisnici">
+    <Gradjani>
+        <Gradjanin>
+            <Ime>Aleksandar</Ime>
+            <Prezime>Bosnjak</Prezime>
+            <Email>aca@doctor.com</Email>
+        </Gradjanin>
+    </Gradjani>
+    <Odbornici>
+        <Odbornik>
+            <Ime>Odborko1</Ime>
+            <Prezime>Odborkovic1</Prezime>
+            <Email>odb1@odb.com</Email>
+        </Odbornik>
+        <Odbornik>
+            <Ime>Odborko2</Ime>
+            <Prezime>Odborkovic2</Prezime>
+            <Email>odb2@odb.com</Email>
+        </Odbornik>
+    </Odbornici>
+    <Predsednik_skupstine>
+        <Ime>Predsednikovic</Ime>
+        <Prezime>Skupstinovic</Prezime>
+        <Email>ps@ps.com</Email>
+    </Predsednik_skupstine>
+</Korisnici>

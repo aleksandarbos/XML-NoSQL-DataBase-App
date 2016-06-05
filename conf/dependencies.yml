@@ -14,8 +14,7 @@ require:
     - com.sun.jersey.contribs -> jersey-apache-client4 1.17.1
     - com.sun.jersey -> jersey-client 1.17.1
     - com.sun.jersey -> jersey-core 1.17.1
-    - com.sun.jersey.contribs -> jersey-multipart 1.17
-    - ch.qos.logback -> logback-classic 1.1.2
+    - com.sun.jersey.contribs -> jersey-multipart 1.17.1
     - ch.qos.logback -> logback-core 1.1.2
     - org.jvnet -> mimepull 1.6
     - org.jvnet.mimepull -> mimepull 1.9.4

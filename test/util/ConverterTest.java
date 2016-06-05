@@ -4,13 +4,12 @@ import models.rs.gov.parlament.korisnici.*;
 import org.junit.Test;
 
 import javax.xml.bind.JAXBException;
-import java.io.StringReader;
 import java.util.List;
 
 /**
  * Created by aleksandar on 5.6.16..
  */
-public class ConvertorTest {
+public class ConverterTest {
     @Test
     public void marshall() throws Exception {
         System.out.println("[INFO] TESTING MARSHALLING.");
@@ -49,7 +48,7 @@ public class ConvertorTest {
         korisnici.getGradjani().add(gradjani);
 
         try {
-            Convertor.marshall(korisnici, "kor123.xml");
+            Converter.marshall(MarshallType.TO_DISK, korisnici, "./test/util/kor123.xml");
         } catch (JAXBException e) {
             e.printStackTrace();
             System.out.println("MARSHALLING TEST FAILED!");
@@ -63,7 +62,7 @@ public class ConvertorTest {
         // TODO: Edit database schema... :)
         System.out.println("\n\n[INFO] Running UNMARSHALLING test FROM DISK.");
 
-        Korisnici users = (Korisnici) Convertor.unmarshall(UnmarshallType.FROM_DISK, "korisnici.xml", Korisnici.class);
+        Korisnici users = (Korisnici) Converter.unmarshall(UnmarshallType.FROM_DISK, "test/util/korisnici.xml", Korisnici.class);
 
         List<Gradjani> citizensList = users.getGradjani();
         Gradjani citizensFirst = citizensList.get(0);
@@ -110,7 +109,7 @@ public class ConvertorTest {
                 "</Korisnici>\n";
 
 
-        Korisnici users = (Korisnici) Convertor.unmarshall(UnmarshallType.FROM_STRING, data, Korisnici.class);
+        Korisnici users = (Korisnici) Converter.unmarshall(UnmarshallType.FROM_STRING, data, Korisnici.class);
 
         List<Gradjani> citizensList = users.getGradjani();
         Gradjani citizensFirst = citizensList.get(0);
