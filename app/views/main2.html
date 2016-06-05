@@ -1,0 +1,67 @@
+<html>
+    <head>
+        <title>#{get 'title' /}</title>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <meta charset="${_response_encoding}">
+        <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/main.css'}">
+        <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/index.css'}">
+        #{get 'moreStyles' /} 
+        <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+        <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+		<script type="text/javascript" src="@{'public/javascripts/jquery-1.6.4.min.js'}"></script>
+    </head>
+    
+    <body>
+    	<div class="header">
+			<div class="header-image">
+				<img src="/public/images/grb.gif"/>
+			</div>
+			<div class="header-menu">
+				<h6>Vi ste <span>odbornik</span><br/><a href="#">(odjavite se)</a></h6>
+				<h1>Skupština grada Novog Sada</h1>
+				<ul>
+					<li><a href="@{Overview.show()}">Pregled akata</a></li>
+					<li><a href="@{Search.show()}">Pretraga akata</a></li>
+					<li><a href="@{AlterationOverview.show()}">Predložene izmene</a></li>
+					<li><a href="@{Session.show()}">Sednica skupštine</a></li>
+				</ul>
+			</div>
+		</div>
+		
+		<div class="middle">
+		
+			<div class="panel">
+				<ul class="pregledMenu" style="display:none;">
+					<li><a href="@{Overview.show()}">Pregled akata</a></li>
+				</ul>
+				<ul class="pretragaMenu" style="display:none;">
+					<li><a href="@{Search.show()}">Pretraga akata</a></li>
+				</ul>
+				<ul class="izmeneMenu" style="display:none;">
+					<li><a href="@{AlterationOverview.show()}">Pregled predloga</a></li>
+					<li><a href="@{AlterationStatuteAdd.show()}">Predlaganje akta</a></li>
+					<li><a href="@{AlterationAmendmentAdd.show()}">Predlaganje amandmana</a></li>
+					<li><a href="@{AlterationWithdrawal.show()}">Povlačenje predloga</a></li>
+				</ul>
+				<ul class="sednicaMenu" style="display:none;">
+					<li><a href="@{Session.show()}">Vođenje sednice</a></li>
+				</ul>
+			</div>
+		
+			<div class="content">
+    
+        		#{doLayout /}
+        		
+			</div>
+		</div>
+		
+		<div class="footer">
+			<p>
+				Informacioni sistem skupštine grada&nbsp&nbsp&nbsp&nbsp<br/>(XML&nbsp2015/2016)&nbsp&nbsp&nbsp&nbsp<br/>Aleksandar Bošnjak&nbsp&nbsp&nbsp&nbsp&nbspNamanja Gajičić&nbsp&nbsp&nbsp&nbsp&nbspNemanja Miladinović
+			</p>
+		</div>
+        
+    </body>
+</html>
