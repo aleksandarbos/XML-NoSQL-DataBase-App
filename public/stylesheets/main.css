@@ -1,59 +1,280 @@
 /*-------------------------------------------------
 GLOBALS CLASSES
 -------------------------------------------------*/
-body{width:70em; margin-left:auto; margin-right:auto; margin-top:0em; margin-bottom:0em; font-family: 'Georgia', serif; background:#FFF;color:#666;}
-
-p{font-size:14px; font-weight:normal; line-height:20px;}
-a{text-decoration:none; color:#069;}
-a:hover{text-decoration:none; color:#09C; cursor:pointer}
-ul li { list-style:none; outline:none;}
-img { border:none; }
-h1{font-size:3em; color:#EEE; text-transform:uppercase; font-weight:normal;}
-h2{font-size:1.5em; color:#555; text-transform:uppercase; font-weight:normal; margin-bottom:1.5em;}
-h3{font-size:1.2em; color:#555; font-weight:normal; margin-bottom:1.5em;}
-h6{text-align:right; font-size:1em; color:#CCC; font-weight:normal; margin: 0em; padding-top:0.5em;}
-table{border:1px solid #CCC; width:50em; table-layout: fixed; margin-top:2em;}
-table th{padding-bottom:1em;text-align:center; font-size:1.2em;}
-table td{text-align:center;padding-bottom:1.5em;}
-.invisibleTable{border:0px solid #CCC;width:30em; table-layout: fixed; margin-top:2em;}
-.invisibleTable th{padding-bottom:1em;text-align:center; font-size:1em;}
+body {
+	width:75em;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:0em;
+	margin-bottom:0em;
+	font-family: 'Georgia', serif;
+	background:#FFF;
+	color:#666;
+}
+p {
+	font-size:14px; 
+	font-weight:normal; 
+	line-height:20px;
+}
+a {
+	text-decoration:none; 
+	color:#069;
+}
+a:hover {
+	text-decoration:none; 
+	color:#09C; 
+	cursor:pointer
+}
+ul li { 
+	list-style:none; 
+	outline:none;
+}
+img { 
+	border:none; 
+}
+h1 {
+	font-size:3em; 
+	color:#EEE; 
+	text-transform:uppercase; 
+	font-weight:normal;
+}
+h2 {
+	font-size:1.5em; 
+	color:#555; 
+	text-transform:uppercase; 
+	font-weight:normal; 
+	margin-bottom:1.5em;
+}
+h3 {
+	font-size:1.2em; 
+	color:#555; 
+	font-weight:normal; 
+	margin-bottom:1.5em;
+}
+h4{
+	font-size:1.2em; 
+	color:#F00; 
+	font-weight:normal; 
+	margin-bottom:1.5em; 
+	text-align:center; 
+	padding:1em;
+}
+h5 {
+	font-size:1.2em; 
+	color:#555; 
+	font-weight:normal; 
+	margin-bottom:1.5em; 
+	text-align:center; 
+	padding:1em;
+}
+h6 {
+	text-align:right; 
+	font-size:1em; 
+	color:#CCC; 
+	font-weight:normal; 
+	margin: 0em; 
+	padding-top:0.5em;
+}
+table {
+	border:1px solid #CCC; 
+	width:55em; 
+	table-layout: fixed; 
+	margin-top:2em;
+}
+table th {
+	padding-bottom:1em;
+	text-align:center; 
+	font-size:1.2em;
+	}
+table td {
+	text-align:center;
+	padding-bottom:1.5em;
+}
+.invisibleTable {
+	border:0px solid #CCC;
+	width:30em; 
+	table-layout: fixed; 
+	margin-top:2em;
+}
+.invisibleTable th {
+	padding-bottom:1em;
+	text-align:left; 
+	font-size:1em; 
+	width:13em;
+}
+.invisibleTable td {
+	padding-bottom:1em;
+	text-align:left; 
+	font-size:1em;
+}
 /*-------------------------------------------------
 HEADER CLASSES
 -------------------------------------------------*/
-.header{ background:#069; overflow:hidden; height: 16em;}
-.header-image{float:left; overflow:hidden; width:14em; height:14em; margin-left:1em; margin-right:1em; padding-bottom:1em; padding-top:1em;text-align: center;}
-.header-image img{width: auto; vertical-align: middle; height: 100%;}
+.header { 
+	background:#069; 
+	overflow:hidden; 
+	height: 16em;
+}
+.header-image {
+	float:left; 
+	overflow:hidden; 
+	width:14em; 
+	height:14em; 
+	margin-left:1em; 
+	margin-right:1em; 
+	padding-bottom:1em; 
+	padding-top:1em;
+	text-align: center;
+}
+.header-image img {
+	width: auto; 
+	vertical-align: middle; 
+	height: 100%;
+	}
 
-.header-menu{float:left; width:53em; height:100%; padding-top:0.5em;}
-.header-menu ul{float:right; margin-top: 2.5em;}
-.header-menu ul li{float:left; width:12em; }
-.header-menu ul li a{display:block; line-height:3em; margin-left: 1em; background:#FFF; font-size:0.9em; color:#666; text-align:center; text-transform:uppercase;}
-.header-menu ul li a:hover{background:#09C; color:#EEE;}
-.header-menu h6 span{text-transform: uppercase;}
-.header-menu h6 a{color:#999;}
-.header-menu h6 a:hover{color:#09C;}
+.header-menu {
+	float:left; 
+	width:58em; 
+	height:100%; 
+	padding-top:0.5em;
+}
+.header-menu ul {
+	float:right; 
+	margin-top: 2.5em;
+}
+.header-menu ul li {
+	float:left; 
+	width:13em; 
+}
+.header-menu ul li a {
+	display:block; 
+	line-height:3em; 
+	margin-left: 1em; 
+	background:#FFF; 
+	font-size:0.9em; 
+	color:#666; 
+	text-align:center; 
+	text-transform:uppercase;
+}
+.header-menu ul li a:hover {
+	background:#09C; 
+	color:#EEE;
+}
+.header-menu h6 span {
+	text-transform: uppercase;
+}
+.header-menu h6 a {
+	color:#999;
+}
+.header-menu h6 a:hover {
+	color:#09C;
+}
 /*-------------------------------------------------
 FLOAT PANEL HOLDERS
 -------------------------------------------------*/
-.middle{margin:0 auto; overflow:hidden;}
-.panel{width:16em; float:left; overflow:hidden; background:#DDD;}
-.content{width:50em; float:left; overflow:hidden; padding:2em;
+.middle {
+	margin:0 auto; 
+	overflow:hidden;
+}
+.panel {
+	width:16em; 
+	float:left; 
+	overflow:hidden; 
+	background:#DDD;
+}
+.content {
+	width:55em; 
+	float:left; 
+	overflow:hidden; 
+	padding:2em;
     background-image: url('images/logo.gif');
     background-repeat: no-repeat;
-    background-position: center;  }
-	
-.panel ul {padding:0em;}
-.panel ul li{color:#069; font-size:1.3em; padding:1em;}
+    background-position: center;
+}	
+.panel ul {
+	padding:0em;
+}
+.panel ul li {
+	color:#069; 
+	font-size:1.3em; 
+	padding:1em;
+}
+.center {
+	margin: auto; 
+	width: 30em; 
+	padding: 1em;
+}
 /*-------------------------------------------------
 FOOTER CLASSES
 -------------------------------------------------*/
-.footer{margin:0 auto; padding-top:0.5em; padding-bottom:0em; overflow:hidden; background:#069; }
-.footer p{text-align:center; color:#CCC;}
+.footer {
+	margin:0 auto; 
+	padding-top:0.5em; 
+	padding-bottom:0em; 
+	overflow:hidden; 
+	background:#069;
+}
+.footer p {
+	text-align:center; 
+	color:#CCC;
+}
 /*-------------------------------------------------
 PAGES
 -------------------------------------------------*/
-.tabelaPregled .status{width:2.2em;}
-.tabelaPregled .tip{width:2.3em;}
-.tabelaPregled .naziv{width:12em;}
-.tabelaPregled .pregled{width:1.5em;}
-.tabelaPregled .pdf{width:1.5em;}
+.tabelaPregled .status {
+	width:2.5em;
+}
+.tabelaPregled .tip {
+	width:2.5em;
+}
+.tabelaPregled .naziv {
+	width:16em;
+}
+.tabelaPregled .pregled {
+	width:2em;
+}
+.tabelaPregled .pdf {
+	width:2em;
+}
+.tabelaPregled .withdrawal {
+	width:2.5em;
+}
+
+.browseBtn {
+	height: 2em !important;
+	width: 5em !important;
+	margin:0em !important;
+}
+.browseTxt {
+	height: 2em !important;
+	width: 14.65em !important;
+}
+/*-------------------------------------------------
+PAGES
+-------------------------------------------------*/
+input[type="text"] {
+	width: 20em;
+	height:2em;
+}
+input[type="date"] {
+	width: 20em;
+	height:2em;
+}
+input[type="time"] {
+	width: 20em;
+	height:2em;
+}
+select {
+	width: 20em;
+	height:2em;
+}
+input[type="button"] {
+	width: 10em;
+	margin-left:5em;
+	height:3em;
+}
+input[type="submit"] {
+	width: 10em;
+	margin-left:5em;
+	height:3em;
+}

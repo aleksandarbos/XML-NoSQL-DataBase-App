@@ -6,6 +6,45 @@
 
 <div>
 	<h2>
-		Predlaganje amandmana			
+		Predlaganje amandmana		
 	</h2>
+	<p>
+		Ovde možete izvršiti predlaganje amandmana.<br/>
+		Predloženi amandmani, biće razmotreni i eventualno usvojeni tokom naredne sednice skupštine.
+	</p>
+	<div class="center">
+		<form>
+			<table class="invisibleTable">
+				<tr><th>Naziv amandmana:</th><td><input type="text" name="amandmentName"/></td></tr>
+				
+				<tr><th>Odnosi se na akt:</th><td>
+					<select name="affectedStatute">
+						<option value="">(lista svih akta)</option>
+					</select></td></tr>
+				<tr><th>Vrši se:</th><td>
+					<select name="affectedType">
+						<option value="">Dodavanje</option>
+						<option value="statute">Izmena</option>
+						<option value="amendment">Brisanje</option>
+					</select></td></tr>
+					
+				<tr><th>Afektovana celina:</th><td>
+					<select name="affectedArea">
+						<option value="statute">Glava</option>
+						<option value="">Poglavnje</option>
+						<option value="statute">Član</option>
+					</select></td></tr>
+				
+				<tr><th>Oznaka afektovane celine:</th><td>
+					<select name="affectedMark">
+						<option value="statute">(brojevi svih članova)</option>
+						<option value="statute">(..ili glava...)</option>
+					</select></td></tr>
+				
+				<tr><th>Unos amandmana:</th><td><input type="text" name="amandmentPath" class="browseTxt"/><input type="button" value="Pronađi" class="browseBtn"></td></tr>
+				<tr><th></th><td></td></tr>
+				<tr><td colspan="2"><input type="button" value="Predloži"><input type="button" value="Odustani"></td></tr>
+			</table>
+		</form>
+	</div>
 </div>
