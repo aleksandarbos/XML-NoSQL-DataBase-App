@@ -1,5 +1,5 @@
 #{extends 'main2.html' /}
-#{set title:'Novi Sad - Pretraga' /}
+#{set title:'Novi Sad - Pretraga Dokumenata' /}
 <script>
 	$(".pretragaMenu").show();
 </script>
@@ -13,29 +13,54 @@
 		Popunite odgovarajuća polja i pokrenite pretragu:
 	</p>
 	<div class="center">
-		<form>
+		<div class="showHideFormLabel"><a href="#">prikaži/sakrij kriterijume pretrage</a></div>
+		<form class="searchParameters">
 			<table class="invisibleTable">
-				<tr><th>Tekst za pretragu:</th><td><input type="text" name="documentText"/></td></tr>
+				<tr><th>Tekst za pretragu:</th><td><input type="text" class="bigInput" name="documentText"/></td></tr>
 				<tr><td><hr/></td></tr>
-				<tr><th>Naziv dokumenta:</th><td><input type="text" name="documentName"/></td></tr>
+				<tr><th>Taksonomska oblast:</th><td>
+					<select name="documentDomain" class="bigInput">
+						<option value=""></option>
+						<option value="law">Pravo</option>
+						<option value="economy">Ekonomija</option>
+						<option value="education">Obrazovanje</option>
+						<option value="medicine">Medicina</option>
+						<option value="itd">...</option>
+					</select></td></tr>
+				<tr><th>Naziv dokumenta:</th><td><input type="text" class="bigInput" name="documentName"/></td></tr>
 				<tr><th>Status dokumenta:</th><td>
-					<select name="documentStatus">
+					<select name="documentStatus" class="bigInput">
 						<option value=""></option>
 						<option value="nominated">Predložen</option>
 						<option value="adopted">Usvojen</option>
+						<option value="published">Objavljen</option>
+						<option value="applied">Primenjen</option>
+						<option value="withdrawn">Povučen</option>
 					</select></td></tr>
 				<tr><th>Tip dokumenta:</th><td>
-					<select name="documentType">
+					<select name="documentType" class="bigInput">
 						<option value=""></option>
 						<option value="statute">Akat</option>
 						<option value="amendment">Amandman</option>
 					</select></td></tr>
-				<tr><th>Datum podnošenja od:</th><td><input type="date" name="documentDateFrom"/></td></tr>
-				<tr><th>Datum podnošenja do:</th><td><input type="date" name="documentDateTo"/></td></tr>
+				<tr><th>Dokument predložio:</th><td><input type="text" class="bigInput" name="documentName"/></td></tr>
+				<tr><th>Dokument usvojio:</th><td><input type="text" class="bigInput" name="documentName"/></td></tr>
+				<tr><th>Službeni glasnik u kom je dokument objavljen:</th><td><input type="text" class="mediumInput" name="documentName"/><i> (npr 23/2016) </i></td></tr>
+				<tr><th>Datum predlaganja:</th><td>od&nbsp <input type="date" class="mediumInput" name="documentDateFrom"/> do <input type="date" class="mediumInput" name="documentDateTo"/></td></tr>
+				<tr><th>Datum usvajanja:</th><td>od&nbsp <input type="date" class="mediumInput" name="documentDateFrom"/> do <input type="date" class="mediumInput" name="documentDateTo"/></td></tr>
+				<tr><th>Datum objave:</th><td>od&nbsp <input type="date" class="mediumInput" name="documentDateFrom"/> do <input type="date" class="mediumInput" name="documentDateTo"/></td></tr>
+				<tr><th>Datum početka primene:</th><td>od&nbsp <input type="date" class="mediumInput" name="documentDateFrom"/> do <input type="date" class="mediumInput" name="documentDateTo"/></td></tr>
+				<tr><th>Datum prestanka važenja:</th><td>od&nbsp <input type="date" class="mediumInput" name="documentDateFrom"/> do <input type="date" class="mediumInput" name="documentDateTo"/></td></tr>
+				<tr><th>Rezultati glasanja:</th><td>ZA: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp od 
+											<input type="text" class="smallInput" name="smallNumeric"/> do <input type="text" class="smallInput" name="smallNumeric"/></td></tr>
+				<tr><th> &nbsp </th><td>PROTIV: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp od 
+											<input type="text" class="smallInput" name="smallNumeric"/> do <input type="text" class="smallInput" name="smallNumeric"/></td></tr>
+				<tr><th> &nbsp </th><td>UZDRŽANI: &nbsp od <input type="text" class="smallInput" name="smallNumeric"/> do <input type="text" class="smallInput" name="smallNumeric"/></td></tr>
 				<tr><th></th><td></td></tr>
-				<tr><td colspan="2"><input type="button" value="Pretraži"><input type="button" value="Odustani"></td></tr>
+				<tr><td colspan="2"><input type="button" class="bigButton" value="Pretraži"><input type="button" class="bigButton" value="Odustani"></td></tr>
 			</table>
 		</form>
+		<div class="showHideFormLabel searchParameters"><a href="#">prikaži/sakrij kriterijume pretrage</a></div>
 	</div>
 	<h3>
 		Rezultati pretrage:

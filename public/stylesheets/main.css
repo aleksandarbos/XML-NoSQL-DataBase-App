@@ -92,7 +92,7 @@ table td {
 }
 .invisibleTable {
 	border:0px solid #CCC;
-	width:30em; 
+	width:35em; 
 	table-layout: fixed; 
 	margin-top:2em;
 }
@@ -140,7 +140,7 @@ HEADER CLASSES
 }
 .header-menu ul {
 	float:right; 
-	margin-top: 2.5em;
+	margin-top: 2.7em;
 }
 .header-menu ul li {
 	float:left; 
@@ -160,7 +160,7 @@ HEADER CLASSES
 	background:#09C; 
 	color:#EEE;
 }
-.header-menu h6 span {
+.roleHeading {
 	text-transform: uppercase;
 }
 .header-menu h6 a {
@@ -204,6 +204,10 @@ FLOAT PANEL HOLDERS
 	width: 30em; 
 	padding: 1em;
 }
+.showHideFormLabel {
+	font-size: 0.7em;
+	text-align: right; 
+}
 /*-------------------------------------------------
 FOOTER CLASSES
 -------------------------------------------------*/
@@ -239,42 +243,72 @@ PAGES
 .tabelaPregled .withdrawal {
 	width:2.5em;
 }
-
-.browseBtn {
+.votingCard {
+	float: left;
+	margin: 1em;
+	border:1px solid #CCC;
+	padding: 1em;
+	width:23em; 
+	table-layout: fixed; 
+}
+.votingCard .heading {
+	text-align:center; 
+	font-size:1em; 
+	font-weight: bold;
+}
+.votingCard .headingMain {
+	text-align:center; 
+	font-size:1.2em; 
+	font-weight: bold;
+}
+.votingCard .value {
+	text-align:center; 
+	font-size:1em; 
+	padding-bottom: 0.8em;
+}
+.votingCard .text {
+	text-align:center; 
+	font-size:1em; 
+	padding-bottom: 0.8em;
+}
+/*-------------------------------------------------
+FORMS
+-------------------------------------------------*/
+.bigInput {
+	width: 20em;
+	height:2em;
+}
+.mediumInput {
+	width: 10em;
+	height:2em;
+}
+.smallInput{
+	width: 5em;
+	height:2em;
+}
+.tinyInput{
+	width: 2em;
+	height:2em;
+}
+.bigButton {
+	width: 10em;
+	margin-left:5em;
+	height:3em;
+}
+.veryBigButton {
+	width: 20em;
+	height: 3em;
+}
+.checkbox {
+	width: 2em;
+	height:2em;
+}
+.lineButton {
 	height: 2em !important;
 	width: 5em !important;
 	margin:0em !important;
 }
-.browseTxt {
+.lineText {
 	height: 2em !important;
 	width: 14.65em !important;
-}
-/*-------------------------------------------------
-PAGES
--------------------------------------------------*/
-input[type="text"] {
-	width: 20em;
-	height:2em;
-}
-input[type="date"] {
-	width: 20em;
-	height:2em;
-}
-input[type="time"] {
-	width: 20em;
-	height:2em;
-}
-select {
-	width: 20em;
-	height:2em;
-}
-input[type="button"] {
-	width: 10em;
-	margin-left:5em;
-	height:3em;
-}
-input[type="submit"] {
-	width: 10em;
-	margin-left:5em;
-	height:3em;
 }

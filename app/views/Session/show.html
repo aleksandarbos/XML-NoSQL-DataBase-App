@@ -1,5 +1,5 @@
 #{extends 'main2.html' /}
-#{set title:'Novi Sad - Pretraga' /}
+#{set title:'Novi Sad - Sednica Skupštine' /}
 <script>
 	$(".sednicaMenu").show();
 </script>
@@ -15,26 +15,103 @@
 		Naredna sednica je zakazana za: <span class="sessionTime">12.06.2016. 13:15</span>
 	</h5>
 	<h4 class="sessionIsNotScheduled">
-		Trenutno nema zakazane sednice<br/><br/>
-		<a href="#">(Zakaži sednicu)</a>
+		Trenutno nema zakazane sednice
 	</h4>
-	<div class="sessionScheduling">
+	<div class="sessionIsNotScheduled">
 		<div class="center">
-		<h3>Zakazivanje sednice</h3>
+			<h5>
+				<b>Zakazivanje sednice</b>
+			</h5>
 			<form>
 				<table class="invisibleTable">
-					<tr><th>Datum početka sednice:</th><td><input type="date" name="documentDateFrom"/></td></tr>
-					<tr><th>Vreme početka sednice:</th><td><input type="time" name="documentDateTo"/></td></tr>
+					<tr><th>Datum početka sednice:</th><td><input type="date" class="bigInput" name="documentDateFrom"/></td></tr>
+					<tr><th>Vreme početka sednice:</th><td><input type="time" class="bigInput" name="documentDateTo"/></td></tr>
 					<tr><th></th><td></td></tr>
-					<tr><td colspan="2"><input type="button" value="Zakaži"><input type="button" value="Odustani"></td></tr>
+					<tr><td colspan="2"><input type="button" class="bigButton" value="Zakaži"><input type="button" class="bigButton" value="Odustani"></td></tr>
 				</table>
 			</form>
 		</div>
 	</div>
-	<h5 class="sessionIsRunnning">
-		Sednica je u toku
-	</h5>
 	<div class="sessionIsRunnning">
-	
+		<h5>
+			Sednica je u toku<br/><br/><b>Usvajanje akata</b>
+		</h5>
+		<div class="votingCards">
+			
+			<div class="votingCard">
+				<form>
+					<div class="votingStatute">
+						<p class="headingMain">AKT</p>
+						<p class="text">Prigovor po osnovi br 243,na clan 7543, zakona o medjuljudskim odnosima 23<br/><a href="#">(prikaži)</a></p>
+						<p class="heading">Usvojen u načelu: &nbsp&nbsp
+							<select name="votingFirstResult" class="smallInput">
+								<option value="no">NE</option>
+								<option value="yes">DA</option>
+							</select></p>
+						<p class="value">ZA: <input type="text" class="tinyInput" name="votesFirstNumberYes"/> &nbsp&nbsp
+										PROTIV: <input type="text" class="tinyInput" name="votesFirstNumberNo"/> &nbsp&nbsp
+										UZDRŽANI: <input type="text" class="tinyInput" name="votesFirstNumberOff"/><hr/></p>	
+					</div>
+					<div class="votingAmandments">	
+						<div class="votingAmandment">									
+							<p class="headingMain">Amandman</p>
+							<p class="text">Prigovor po osnovi br 243,na clan 7543, zakona o medjuljudskim odnosima 23<br/><a href="#">(prikaži)</a></p>
+							<p class="heading">Usvojen u načelu: &nbsp&nbsp
+								<select name="votingAmandmentResult" class="smallInput">
+									<option value="no">NE</option>
+									<option value="yes">DA</option>
+								</select></p>
+							<p class="value">ZA: <input type="text" class="tinyInput" name="votesAmandmentNumberYes"/> &nbsp&nbsp
+											PROTIV: <input type="text" class="tinyInput" name="votesAmandmentNumberNo"/> &nbsp&nbsp
+											UZDRŽANI: <input type="text" class="tinyInput" name="votesAmandmentNumberOff"/><hr/></p>			
+						</div>				
+					</div>
+					
+					<div class="votingFinal">						
+						<p class="heading">AKT USVOJEN U CELINI: &nbsp&nbsp
+							<select name="votingFinalResult" class="smallInput">
+								<option value="no">NE</option>
+								<option value="yes">DA</option>
+							</select></p>
+						<p class="value">ZA: <input type="text" class="tinyInput" name="votesFinalNumberYes"/> &nbsp&nbsp
+										PROTIV: <input type="text" class="tinyInput" name="votesFinalNumberNo"/> &nbsp&nbsp
+										UZDRŽANI: <input type="text" class="tinyInput" name="votesFinalNumberOff"/><hr/></p>
+					</div>
+					<p class="heading"><input type="button" class="veryBigButton" value="Potvrdi akt"></p>
+				</form>		
+			</div>
+			
+			
+			<div class="votingCard">
+				<form>
+					<div class="votingStatute">
+						<p class="headingMain">AKT</p>
+						<p class="text">Prigovor po osnovi br 243,na clan 7543, zakona o medjuljudskim odnosima 23<br/><a href="#">(prikaži)</a></p>
+						<p class="heading">Usvojen u načelu: &nbsp&nbsp
+							<select name="votingFirstResult" class="smallInput">
+								<option value="no">NE</option>
+								<option value="yes">DA</option>
+							</select></p>
+						<p class="value">ZA: <input type="text" class="tinyInput" name="votesFirstNumberYes"/> &nbsp&nbsp
+										PROTIV: <input type="text" class="tinyInput" name="votesFirstNumberNo"/> &nbsp&nbsp
+										UZDRŽANI: <input type="text" class="tinyInput" name="votesFirstNumberOff"/><hr/></p>	
+					</div>
+					<div class="votingAmandments">				
+					</div>
+					
+					<div class="votingFinal">						
+						<p class="heading">AKT USVOJEN U CELINI: &nbsp&nbsp
+							<select name="votingFinalResult" class="smallInput">
+								<option value="no">NE</option>
+								<option value="yes">DA</option>
+							</select></p>
+						<p class="value">ZA: <input type="text" class="tinyInput" name="votesFinalNumberYes"/> &nbsp&nbsp
+										PROTIV: <input type="text" class="tinyInput" name="votesFinalNumberNo"/> &nbsp&nbsp
+										UZDRŽANI: <input type="text" class="tinyInput" name="votesFinalNumberOff"/><hr/></p>
+					</div>
+					<p class="heading"><input type="button" class="veryBigButton" value="Potvrdi akt"></p>
+				</form>		
+			</div>
+		</div>					
 	</div>
 </div>
