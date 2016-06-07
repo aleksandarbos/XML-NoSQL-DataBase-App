@@ -5,5 +5,8 @@
 // Generated on: 2016.06.03 at 04:28:13 PM CEST 
 //
 
-@javax.xml.bind.annotation.XmlSchema(namespace = "http://www.parlament.gov.rs/korisnici", elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
+@javax.xml.bind.annotation.XmlSchema(namespace = "http://www.parlament.gov.rs/korisnici",
+                                     elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED,
+                                     xmlns = { @javax.xml.bind.annotation.XmlNs(prefix="kp", namespaceURI="http://www.parlament.gov.rs/korisnici")})
 package models.rs.gov.parlament.korisnici;
+

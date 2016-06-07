@@ -83,7 +83,7 @@ public class DatabaseAccessor {
         content.set(xmlFile);
 
         xmlManager.write(docId, content);
-        System.out.println("[INFO] Ovewrite: " + docId + ", in database.");
+        System.out.println("[INFO] Overwrite: " + docId + ", in database.");
     }
 
     // TODO: Implement patch method
