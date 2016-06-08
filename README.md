@@ -1,6 +1,8 @@
 # XML-NoSQL-DataBase
 Tools: Java (PlayFramework 1.4 + JAXB), MarkLogic NoSQL DataBase, Desc: Project at XML And Web Serices course.
 
+#### Deployed at: https://city-parliament.herokuapp.com
+
 #### Contributors:
   - Aleksandar Bošnjak
   - Nemanja Miladinović
