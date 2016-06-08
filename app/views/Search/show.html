@@ -2,6 +2,54 @@
 #{set title:'Novi Sad - Pretraga Dokumenata' /}
 <script>
 	$(".pretragaMenu").show();
+	
+	function showDateSearch() {
+		var value = $(".selectStatus").val();
+		$(".statusNominated").hide(); 
+		$(".statusAdopted").hide(); 
+		$(".statusPublished").hide(); 
+		$(".statusApplied").hide(); 
+		$(".statusWithdrawn").hide(); 
+		if (value == "nominated") {
+			$(".statusNominated").show(); 				
+		} else if (value == "adopted") {
+			$(".statusNominated").show(); 
+			$(".statusAdopted").show(); 
+		} else if (value == "published") {
+			$(".statusNominated").show(); 
+			$(".statusAdopted").show(); 
+			$(".statusPublished").show(); 
+		} else if (value == "applied") {
+			$(".statusNominated").show(); 
+			$(".statusAdopted").show(); 
+			$(".statusPublished").show(); 
+			$(".statusApplied").show(); 
+		} else if (value == "withdrawn") {
+			$(".statusNominated").show(); 
+			$(".statusAdopted").show(); 
+			$(".statusPublished").show(); 
+			$(".statusApplied").show(); 
+			$(".statusWithdrawn").show();
+		}
+	}
+
+	$(document).ready(function(){
+	
+		showDateSearch();
+		
+		$(".showHideSearch").click(function(){
+			$(".searchParameters").slideToggle();
+		});
+		
+		$(".cancel").click(function(){
+			clearInputs(this);
+			showDateSearch();
+		});
+		
+		$(".selectStatus").change(function(){
+			showDateSearch();		
+		});
+	});
 </script>
 
 <div>
@@ -13,10 +61,11 @@
 		Popunite odgovarajuća polja i pokrenite pretragu:
 	</p>
 	<div class="center">
-		<div class="showHideFormLabel"><a href="#">prikaži/sakrij kriterijume pretrage</a></div>
+		<div class="showHideFormLabel"><a class="showHideSearch">prikaži/sakrij kriterijume pretrage</a></div>
 		<form class="searchParameters">
 			<table class="invisibleTable">
-				<tr><th>Tekst za pretragu:</th><td><input type="text" class="bigInput" name="documentText"/></td></tr>
+				<tr><th>Tekst za pretragu:</th><td>
+					<input type="text" class="bigInput" name="documentText"/></td></tr>
 				<tr><td><hr/></td></tr>
 				<tr><th>Taksonomska oblast:</th><td>
 					<select name="documentDomain" class="bigInput">
@@ -27,9 +76,10 @@
 						<option value="medicine">Medicina</option>
 						<option value="itd">...</option>
 					</select></td></tr>
-				<tr><th>Naziv dokumenta:</th><td><input type="text" class="bigInput" name="documentName"/></td></tr>
+				<tr><th>Naziv dokumenta:</th><td>
+					<input type="text" class="bigInput" name="documentName"/></td></tr>
 				<tr><th>Status dokumenta:</th><td>
-					<select name="documentStatus" class="bigInput">
+					<select name="documentStatus" class="bigInput selectStatus">
 						<option value=""></option>
 						<option value="nominated">Predložen</option>
 						<option value="adopted">Usvojen</option>
@@ -43,24 +93,43 @@
 						<option value="statute">Akat</option>
 						<option value="amendment">Amandman</option>
 					</select></td></tr>
-				<tr><th>Dokument predložio:</th><td><input type="text" class="bigInput" name="documentName"/></td></tr>
-				<tr><th>Dokument usvojio:</th><td><input type="text" class="bigInput" name="documentName"/></td></tr>
-				<tr><th>Službeni glasnik u kom je dokument objavljen:</th><td><input type="text" class="mediumInput" name="documentName"/><i> (npr 23/2016) </i></td></tr>
-				<tr><th>Datum predlaganja:</th><td>od&nbsp <input type="date" class="mediumInput" name="documentDateFrom"/> do <input type="date" class="mediumInput" name="documentDateTo"/></td></tr>
-				<tr><th>Datum usvajanja:</th><td>od&nbsp <input type="date" class="mediumInput" name="documentDateFrom"/> do <input type="date" class="mediumInput" name="documentDateTo"/></td></tr>
-				<tr><th>Datum objave:</th><td>od&nbsp <input type="date" class="mediumInput" name="documentDateFrom"/> do <input type="date" class="mediumInput" name="documentDateTo"/></td></tr>
-				<tr><th>Datum početka primene:</th><td>od&nbsp <input type="date" class="mediumInput" name="documentDateFrom"/> do <input type="date" class="mediumInput" name="documentDateTo"/></td></tr>
-				<tr><th>Datum prestanka važenja:</th><td>od&nbsp <input type="date" class="mediumInput" name="documentDateFrom"/> do <input type="date" class="mediumInput" name="documentDateTo"/></td></tr>
-				<tr><th>Rezultati glasanja:</th><td>ZA: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp od 
-											<input type="text" class="smallInput" name="smallNumeric"/> do <input type="text" class="smallInput" name="smallNumeric"/></td></tr>
-				<tr><th> &nbsp </th><td>PROTIV: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp od 
-											<input type="text" class="smallInput" name="smallNumeric"/> do <input type="text" class="smallInput" name="smallNumeric"/></td></tr>
-				<tr><th> &nbsp </th><td>UZDRŽANI: &nbsp od <input type="text" class="smallInput" name="smallNumeric"/> do <input type="text" class="smallInput" name="smallNumeric"/></td></tr>
-				<tr><th></th><td></td></tr>
-				<tr><td colspan="2"><input type="button" class="bigButton" value="Pretraži"><input type="button" class="bigButton" value="Odustani"></td></tr>
+				<tr><th>Dokument predložio:</th><td>
+					<input type="text" class="bigInput" name="documentName"/></td></tr>
+				<tr class="statusAdopted"><th>Dokument usvojio:</th><td>
+					<input type="text" class="bigInput" name="documentName"/></td></tr>
+				<tr class="statusPublished"><th>Službeni glasnik u kom je dokument objavljen:</th><td>
+					<input type="text" class="mediumInput" name="documentName" pattern="\d{1,3}\/((199\d)|(200\d)|(201[06]))" title="Oznaka u formatu (broj)/(godina). Godina je između 1990 i 2016"/><i> (npr 23/2016) </i></td></tr>
+				<tr class="statusNominated"><th>Datum predlaganja:</th><td>od&nbsp 
+					<input type="date" class="mediumInput" name="documentDateFrom"/> do 
+					<input type="date" class="mediumInput" name="documentDateTo"/></td></tr>
+				<tr class="statusAdopted"><th>Datum usvajanja:</th><td>od&nbsp 
+					<input type="date" class="mediumInput" name="documentDateFrom"/> do 
+					<input type="date" class="mediumInput" name="documentDateTo"/></td></tr>
+				<tr class="statusPublished"><th>Datum objave:</th><td>od&nbsp 
+					<input type="date" class="mediumInput" name="documentDateFrom"/> do 
+					<input type="date" class="mediumInput" name="documentDateTo"/></td></tr>
+				<tr class="statusApplied"><th>Datum početka primene:</th><td>od&nbsp 
+					<input type="date" class="mediumInput" name="documentDateFrom"/> do 
+					<input type="date" class="mediumInput" name="documentDateTo"/></td></tr>
+				<tr class="statusWithdrawn"><th>Datum prestanka važenja:</th><td>od&nbsp 
+					<input type="date" class="mediumInput" name="documentDateFrom"/> do 
+					<input type="date" class="mediumInput" name="documentDateTo"/></td></tr>
+				<tr class="statusAdopted"><th>Rezultati glasanja:</th><td>ZA: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp od 
+					<input type="text" class="smallInput" name="smallNumeric" pattern="\d{1,3}" title="Pozitivan ceo broj!"/> do 
+					<input type="text" class="smallInput" name="smallNumeric" pattern="\d{1,3}" title="Pozitivan ceo broj!"/></td></tr>
+				<tr class="statusAdopted"><th> &nbsp </th><td>PROTIV: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp od 
+					<input type="text" class="smallInput" name="smallNumeric" pattern="\d{1,3}" title="Pozitivan ceo broj!"/> do 
+					<input type="text" class="smallInput" name="smallNumeric" pattern="\d{1,3}" title="Pozitivan ceo broj!"/></td></tr>
+				<tr class="statusAdopted"><th> &nbsp </th><td>UZDRŽANI: &nbsp od 
+					<input type="text" class="smallInput" name="smallNumeric" pattern="\d{1,3}" title="Pozitivan ceo broj!"/> do 
+					<input type="text" class="smallInput" name="smallNumeric" pattern="\d{1,3}" title="Pozitivan ceo broj!"/></td></tr>
+				<tr><th> &nbsp </th></tr>
+				<tr><td colspan="2">
+					<input type="submit" class="bigButton" value="Pretraži">
+					<input type="button" class="bigButton cancel" value="Odustani"></td></tr>
 			</table>
 		</form>
-		<div class="showHideFormLabel searchParameters"><a href="#">prikaži/sakrij kriterijume pretrage</a></div>
+		<div class="showHideFormLabel searchParameters"><a class="showHideSearch">prikaži/sakrij kriterijume pretrage</a></div>
 	</div>
 	<h3>
 		Rezultati pretrage:
