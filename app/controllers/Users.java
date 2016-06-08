@@ -9,6 +9,7 @@ import util.Converter;
 import util.MarshallType;
 import util.UnmarshallType;
 
+import javax.ws.rs.GET;
 import javax.xml.bind.JAXBException;
 import java.io.IOException;
 import java.util.List;
@@ -19,7 +20,7 @@ import java.util.List;
 public class Users extends Controller {
 
     private static DatabaseAccessor db = DatabaseAccessor.getInstance();
-    private static final String USERS_DOC_ID = "/parlament/01/korisnici.xml";
+    private static final String USERS_DOC_ID = "/parliament/users.xml";
 
     public static void login(GradjaninTip citizen) throws IOException, JAXBException {
         Korisnici users = fetchUsersFromDatabase();
@@ -46,7 +47,7 @@ public class Users extends Controller {
 
         renderHtml("Added to database: Name: "+ citizen.getIme() + ", "
                 + "Surname: " + citizen.getPrezime() + ", Email: " + citizen.getEmail()
-                + "<br/><a>Verify the content at: http://147.91.177.194:8000/v1/documents?database=Tim16&uri=/parlament/01/korisnici.xml</a>");
+                + "<br/><a>Verify the content at: http://147.91.177.194:8000/v1/documents?database=Tim16&uri=" + USERS_DOC_ID + "</a>");
 
     }
 
@@ -66,8 +67,26 @@ public class Users extends Controller {
         renderText("User with email: " + citizen.getIme() + " was not found in database records.");
     }
 
+    public static void updateUser(GradjaninTip citizen) throws JAXBException {
+        Korisnici users = fetchUsersFromDatabase();
+        List<Gradjani> citizensCollection = users.getGradjani();
+        Gradjani citizensList = citizensCollection.get(0);
+        List<GradjaninTip> citizens = citizensList.getGradjanin();
 
-    private static Korisnici fetchUsersFromDatabase() throws JAXBException {
+        for(int i = 0; i < citizens.size(); i++) {
+            if(citizens.get(i).getEmail().equals(citizen.getEmail())) {
+                citizensList.getGradjanin().get(i).setIme(citizen.getIme());
+                citizensList.getGradjanin().get(i).setPrezime(citizen.getPrezime());
+                writeChangesToDatabase(users);
+                renderText("Updated user with email: " + citizen.getEmail() + " at database records.");
+            }
+        }
+        renderText("User with email: " + citizen.getEmail() + " was not found in database records.");
+
+    }
+
+    @GET
+    public static Korisnici fetchUsersFromDatabase() throws JAXBException {
         System.out.println("[INFO] Fetching users form database...");
 
         String inputUsersXmlString = DatabaseAccessor.readXmlFromDatabase(USERS_DOC_ID);
