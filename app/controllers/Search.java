@@ -4,7 +4,25 @@ import play.mvc.Controller;
 
 public class Search extends Controller {
 
-    public static void show(){
+    public static void show() {
     	render();
+    }
+    
+    public static void search(String documentText, String documentDomain, String documentName, String documentStatus, String documentType, String user, String authority, String collection,
+    						String nominatedDateFrom, String nominatedDateTo, String adoptionDateFrom, String adoptionDateTo, String announcementDateFrom, String announcementDateTo, 
+    						String inuseDateFrom, String inuseDateTo, String withdrawalDateFrom, String withdrawalDateTo, 
+    						int votesYesFrom, int votesYesTo, int votesNoFrom, int votesNoTo, int votesOffFrom, int votesOffTo) {
+    	
+    	show();
+    }
+    
+    public static void topdf(int id) {
+    	System.out.println("daj pdf za dokument: " + id);
+    	show();
+    }
+    
+    public static void preview(int id) {
+    	System.out.println("daj html za dokument: " + id);
+    	show();
     }
 }

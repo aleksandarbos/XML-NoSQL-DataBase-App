@@ -1,5 +1,11 @@
 package controllers;
 
+import java.io.IOException;
+import java.util.List;
+
+import javax.ws.rs.GET;
+import javax.xml.bind.JAXBException;
+
 import database.DatabaseAccessor;
 import models.rs.gov.parlament.korisnici.Gradjani;
 import models.rs.gov.parlament.korisnici.GradjaninTip;
@@ -8,11 +14,6 @@ import play.mvc.Controller;
 import util.Converter;
 import util.MarshallType;
 import util.UnmarshallType;
-
-import javax.ws.rs.GET;
-import javax.xml.bind.JAXBException;
-import java.io.IOException;
-import java.util.List;
 
 /**
  * Created by aleksandar on 7.6.16..

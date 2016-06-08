@@ -1,7 +1,24 @@
 #{extends 'main2.html' /}
 #{set title:'Novi Sad - Predložene Izmene' /}
 <script>
-	$(".izmeneMenu").show();
+	$(".izmeneMenu").show();	
+	
+	$(document).ready(function() {
+		$(".deleteAlteration").click(function(){
+			if (confirm('Opozovi ovaj predlog?')) {
+				var id = $(this).parents("tr").find(".documentId").text();
+				$(location).attr('href', '/AlterationOverview/delete?id=' + id);
+			}
+		});
+		$(".alterationToPdf").click(function(){
+			var id = $(this).parents("tr").find(".documentId").text();
+			$(location).attr('href', '/AlterationOverview/topdf?id=' + id);
+		});
+		$(".alterationPreview").click(function(){
+			var id = $(this).parents("tr").find(".documentId").text();
+			$(location).attr('href', '/AlterationOverview/preview?id=' + id);
+		});
+	});
 </script>
 
 <div>
@@ -14,9 +31,9 @@
 	</p>
 	<table class="tabelaPregled">
 		<tr><th class="tip">Tip</th><th class="naziv">Naziv</th><th class="pregled">&nbsp </th><th class="pdf">&nbsp </th><th class="withdrawal">&nbsp</th></tr>
-		<tr><td>izmena akata</td><td>Prigovor po osnovi br 243,na clan 7543, zakona o medjuljudskim odnosima 23</td><td><a href="#">pogledaj</a></td><td><a href="#">u PDF</a></td><td><a href="#">(opozovi)</a></td></tr>
-		<tr><td>izmena akata</td><td>Prigovor po osnovi br 243,na clan 7543, zakona o medjuljudskim odnosima 23</td><td><a href="#">pogledaj</a></td><td><a href="#">u PDF</a></td><td><a href="#">(opozovi)</a></td></tr>
-		<tr><td>izmena akata</td><td>Prigovor po osnovi br 243,na clan 7543, zakona o medjuljudskim odnosima 23</td><td><a href="#">pogledaj</a></td><td><a href="#">u PDF</a></td><td><a href="#">(opozovi)</a></td></tr>
-		<tr><td>izmena akata</td><td>Prigovor po osnovi br 243,na clan 7543, zakona o medjuljudskim odnosima 23</td><td><a href="#">pogledaj</a></td><td><a href="#">u PDF</a></td><td><a href="#">(opozovi)</a></td></tr>
+		<tr><td>izmena akata</td><td class="documentId" style="display:none;">12</td><td>Prigovor po osnovi br 243,na clan 7543, zakona o medjuljudskim odnosima 23</td><td><a class="alterationPreview">pogledaj</a></td><td><a class="alterationToPdf">u PDF</a></td><td><a class="deleteAlteration">(opozovi)</a></td></tr>
+		<tr><td>izmena akata</td><td class="documentId" style="display:none;">23</td><td>Prigovor po osnovi br 243,na clan 7543, zakona o medjuljudskim odnosima 23</td><td><a class="alterationPreview">pogledaj</a></td><td><a class="alterationToPdf">u PDF</a></td><td><a class="deleteAlteration">(opozovi)</a></td></tr>
+		<tr><td>izmena akata</td><td class="documentId" style="display:none;">34</td><td>Prigovor po osnovi br 243,na clan 7543, zakona o medjuljudskim odnosima 23</td><td><a class="alterationPreview">pogledaj</a></td><td><a class="alterationToPdf">u PDF</a></td><td><a class="deleteAlteration">(opozovi)</a></td></tr>
+		<tr><td>izmena akata</td><td class="documentId" style="display:none;">56</td><td>Prigovor po osnovi br 243,na clan 7543, zakona o medjuljudskim odnosima 23</td><td><a class="alterationPreview">pogledaj</a></td><td><a class="alterationToPdf">u PDF</a></td><td><a class="deleteAlteration">(opozovi)</a></td></tr>
 	</table>
 </div>

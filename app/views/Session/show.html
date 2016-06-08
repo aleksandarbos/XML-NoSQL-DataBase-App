@@ -47,12 +47,12 @@
 			<h5>
 				<b>Zakazivanje sednice</b>
 			</h5>
-			<form>
+			<form action="@{Session.schedule()}" method="post">
 				<table class="invisibleTable">
-					<tr><th>Datum početka sednice:</th><td><input type="date" class="bigInput" name="documentDateFrom"/></td></tr>
-					<tr><th>Vreme početka sednice:</th><td><input type="time" class="bigInput" name="documentDateTo"/></td></tr>
+					<tr><th>Datum početka sednice:</th><td><input type="date" class="bigInput" name="sessionDate"/></td></tr>
+					<tr><th>Vreme početka sednice:</th><td><input type="time" class="bigInput" name="sessionTime"/></td></tr>
 					<tr><th></th><td></td></tr>
-					<tr><td colspan="2"><input type="button" class="bigButton" value="Zakaži"><input type="button" class="bigButton cancel" value="Odustani"></td></tr>
+					<tr><td colspan="2"><input type="submit" class="bigButton" value="Zakaži"><input type="button" class="bigButton cancel" value="Odustani"></td></tr>
 				</table>
 			</form>
 		</div>
@@ -66,6 +66,7 @@
 			<div class="votingCard">
 				<form>
 					<div class="votingStatute">
+						<input type"text" name="documentId" value="333" style="display:none;">
 						<p class="headingMain">AKT</p>
 						<p class="text">Prigovor po osnovi br 243,na clan 7543, zakona o medjuljudskim odnosima 23<br/><a href="#">(prikaži)</a></p>
 						<p class="heading">Usvojen u načelu: &nbsp&nbsp
