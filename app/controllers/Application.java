@@ -9,7 +9,7 @@ import util.Util;
 
 public class Application extends Controller {
 
-    private static DatabaseAccessor db = DatabaseAccessor.getInstance();
+    private DatabaseAccessor db = DatabaseAccessor.getInstance();
 
     public static void index() {
         render();
