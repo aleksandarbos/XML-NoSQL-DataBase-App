@@ -21,7 +21,7 @@ public class Users extends Controller {
             Application.index();
     }
 
-    public static void register(GradjaninTip citizen) throws JAXBException {
+    public static void addNewUser(GradjaninTip citizen) throws JAXBException {
         UsersDAO.addNewUser(citizen);
         Application.index();
     }
