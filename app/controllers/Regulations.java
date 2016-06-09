@@ -14,8 +14,9 @@ public class Regulations extends Controller {
         render();
     }
 
-    public static void addNewRegulation(String regulationName, String user, String regulationContent) throws JAXBException{
-        RegulationsDAO.addRegulation(regulationContent);
+    public static void create(String regulationName, String user, String regulationContent) throws JAXBException{
+    	System.out.println("dodaj akt: " + regulationName + ", predlozio korisnik: " + user + ", sadrzaj dokumenta: "+regulationContent);
+        //RegulationsDAO.addRegulation(regulationContent);
         show();
     }
 
