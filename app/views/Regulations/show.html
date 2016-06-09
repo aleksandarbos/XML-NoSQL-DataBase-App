@@ -1,14 +1,6 @@
 #{extends 'main2.html' /}
 #{set title:'Novi Sad - Predlaganje Akata' /}
-<script>
-	$(".izmeneMenu").show();
-	
-	$(document).ready(function(){		
-		$(".cancel").click(function(){
-			clearInputs(this);
-		});
-	});
-</script>
+<script type="text/javascript" src="@{'public/javascripts/regulations.js'}"></script>
 
 <div>
 	<h2>
@@ -19,11 +11,11 @@
 		Predloženi akti, biće razmotreni i eventualno usvojeni tokom naredne sednice skupštine.
 	</p>
 	<div class="center">
-		<form action="@{AlterationRegulationAdd.create()}" method="post">
+		<form action="@{Regulations.create()}" method="post">
 			<table class="invisibleTable">
 				<tr><th>Naziv akta:</th><td><input type="text" class="bigInput" name="regulationName"/></td></tr>
 				<tr><th>Akt predložio:</th><td><input type="text" class="bigInput" name="user" readonly /></td></tr>
-				<tr><th>Unos akta:</th><td><input type="file" class="bigInput" name="regulationPath"/></td></tr>
+				<tr><th>Sadržaj akta:</th><td><textarea class="veryBigInput" name="regulationContent"></textarea></td></tr>
 				<tr><th></th><td></td></tr>
 				<tr><td colspan="2"><input type="submit" class="bigButton" value="Predloži"><input type="button" class="bigButton cancel" value="Odustani"></td></tr>
 			</table>

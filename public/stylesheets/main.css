@@ -187,7 +187,7 @@ FLOAT PANEL HOLDERS
 	float:left; 
 	overflow:hidden; 
 	padding:2em;
-    background-image: url('images/logoBackground.png');
+    background-image: url('/public/images/logoBackground.png');
     background-repeat: no-repeat;
     background-position: center;
 }	
@@ -274,6 +274,11 @@ PAGES
 /*-------------------------------------------------
 FORMS
 -------------------------------------------------*/
+.veryBigInput {
+	width: 20em;
+	height:10em;
+	text-align: left;
+}
 .bigInput {
 	width: 20em;
 	height:2em;

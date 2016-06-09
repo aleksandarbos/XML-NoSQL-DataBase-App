@@ -6,10 +6,10 @@
         <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/main.css'}">
         <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/index.css'}">
         #{get 'moreStyles' /} 
-        <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">-->
+        <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>-->
         <link rel="shortcut icon" type="image/png" href="@{'/public/images/logo.png'}">
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 		<script type="text/javascript" src="@{'public/javascripts/jquery-1.6.4.min.js'}"></script>
 		<script type="text/javascript" src="@{'public/javascripts/common.js'}"></script>
     </head>
@@ -25,7 +25,7 @@
 				<ul>
 					<li><a href="@{Overview.show()}">Pregled akata</a></li>
 					<li><a href="@{Search.show()}">Pretraga akata</a></li>
-					<li><a href="@{AlterationOverview.show()}">Predložene izmene</a></li>
+					<li><a href="@{Alterations.show()}">Predložene izmene</a></li>
 					<li><a href="@{Session.show()}">Sednica skupštine</a></li>
 				</ul>
 			</div>
@@ -41,9 +41,9 @@
 					<li><a href="@{Search.show()}">Pretraga akata</a></li>
 				</ul>
 				<ul class="izmeneMenu" style="display:none;">
-					<li><a href="@{AlterationOverview.show()}">Pregled predloga</a></li>
-					<li><a href="@{AlterationRegulationAdd.show()}">Predlaganje akta</a></li>
-					<li><a href="@{AlterationAmendmentAdd.show()}">Predlaganje amandmana</a></li>
+					<li><a href="@{Alterations.show()}">Pregled predloga</a></li>
+					<li><a href="@{Regulations.show()}">Predlaganje akta</a></li>
+					<li><a href="@{Amandments.show()}">Predlaganje amandmana</a></li>
 				</ul>
 				<ul class="sednicaMenu" style="display:none;">
 					<li><a href="@{Session.show()}">Vođenje sednice</a></li>

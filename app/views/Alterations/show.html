@@ -1,25 +1,6 @@
 #{extends 'main2.html' /}
 #{set title:'Novi Sad - Predložene Izmene' /}
-<script>
-	$(".izmeneMenu").show();	
-	
-	$(document).ready(function() {
-		$(".deleteAlteration").click(function(){
-			if (confirm('Opozovi ovaj predlog?')) {
-				var id = $(this).parents("tr").find(".documentId").text();
-				$(location).attr('href', '/AlterationOverview/delete?id=' + id);
-			}
-		});
-		$(".alterationToPdf").click(function(){
-			var id = $(this).parents("tr").find(".documentId").text();
-			$(location).attr('href', '/AlterationOverview/topdf?id=' + id);
-		});
-		$(".alterationPreview").click(function(){
-			var id = $(this).parents("tr").find(".documentId").text();
-			$(location).attr('href', '/AlterationOverview/preview?id=' + id);
-		});
-	});
-</script>
+<script type="text/javascript" src="@{'public/javascripts/alterations.js'}"></script>
 
 <div>
 	<h2>
