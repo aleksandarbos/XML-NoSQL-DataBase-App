@@ -17,6 +17,7 @@ public class Converter {
      * Converts Java object -> XML. Notice: Java object must be an XMLRoot element!
      * @param objectToMarshall Java object that needs to be converted to XML.
      * @param filePathToSave Place where new XML file will be saved. If marshallType is TO_STRING then leave empty.
+     * @return Marshalled XML string if {@link MarshallType} is set on TO_STRING.
      * @throws JAXBException
      */
     public static String marshall(MarshallType marshallType, Object objectToMarshall, String filePathToSave) throws JAXBException {
