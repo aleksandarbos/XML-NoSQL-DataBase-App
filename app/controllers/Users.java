@@ -1,6 +1,7 @@
 package controllers;
 
 import dal.UsersDAO;
+import database.DatabaseAccessor;
 import models.rs.gov.parlament.korisnici.GradjaninTip;
 import play.mvc.Controller;
 
