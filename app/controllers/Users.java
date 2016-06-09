@@ -11,9 +11,9 @@ import models.rs.gov.parlament.korisnici.Gradjani;
 import models.rs.gov.parlament.korisnici.GradjaninTip;
 import models.rs.gov.parlament.korisnici.Korisnici;
 import play.mvc.Controller;
-import util.Converter;
-import util.MarshallType;
-import util.UnmarshallType;
+import converter.Converter;
+import converter.MarshallType;
+import converter.UnmarshallType;
 
 /**
  * Created by aleksandar on 7.6.16..
