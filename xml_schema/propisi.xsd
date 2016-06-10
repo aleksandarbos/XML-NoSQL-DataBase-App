@@ -139,4 +139,16 @@
             </xs:sequence>
         </xs:complexType>
     </xs:element>
+    <xs:simpleType name="Taksonomska_oblast">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="ZDRAVSTVO"/>
+            <xs:enumeration value="PROSVETA"/>
+            <xs:enumeration value="SPORT"/>
+            <xs:enumeration value="SAOBRACAJ"/>
+            <xs:enumeration value="TURIZAM"/>
+            <xs:enumeration value="PRAVO"/>
+            <xs:enumeration value="EKONOMIJA"/>
+            <xs:enumeration value="KULTURA"/>
+        </xs:restriction>
+    </xs:simpleType>
 </xs:schema>

@@ -10,51 +10,51 @@
     <xs:element name="Amandmani">
         <xs:complexType>
             <xs:sequence>
-                <xs:element maxOccurs="unbounded" name="Amandman">
+                <xs:element maxOccurs="unbounded" name="Amandman" minOccurs="0">
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:element name="Naziv_predloga" type="xs:string"/>
-                            <xs:element name="Tekst_za_izmenu">
+                            <xs:element name="Naziv" type="xs:string"/>
+                            <xs:element name="Deo_za_izmenu">
                                 <xs:complexType>
-                                    <xs:choice>
-                                        <xs:element name="Izmena">
-                                            <xs:complexType>
-                                                <xs:sequence>
-                                                  <xs:element maxOccurs="unbounded" ref="pp:Clan"/>
-                                                </xs:sequence>
-                                            </xs:complexType>
-                                        </xs:element>
-                                        <xs:element name="Dopuna">
-                                            <xs:complexType>
-                                                <xs:sequence>
-                                                  <xs:element maxOccurs="unbounded" ref="pp:Clan"/>
-                                                </xs:sequence>
-                                            </xs:complexType>
-                                        </xs:element>
-                                        <xs:element name="Brisanje">
-                                            <xs:complexType>
-                                                <xs:sequence>
-                                                  <xs:element maxOccurs="unbounded" ref="pp:Clan"/>
-                                                </xs:sequence>
-                                            </xs:complexType>
-                                        </xs:element>
-                                    </xs:choice>
+                                    <xs:sequence>
+                                        <xs:element ref="pp:Propis"/>
+                                        <xs:element ref="pp:Clan"/>
+                                    </xs:sequence>
                                 </xs:complexType>
                             </xs:element>
+                            <xs:element name="Sadrzaj" type="xs:string"> </xs:element>
                             <xs:element name="Obrazlozenje" type="xs:string"/>
-                            <xs:element name="Saglasni">
-                                <xs:complexType>
-                                    <xs:all>
-                                        <xs:element ref="kp:Odbornik"/>
-                                        <xs:element ref="kp:Predsednik_skupstine"/>
-                                    </xs:all>
-                                </xs:complexType>
-                            </xs:element>
                         </xs:sequence>
-                        <xs:attribute name="Po_clanu_poslovnika_narodne_skupstine" type="xs:int"/>
+                        <xs:attribute name="Tip" type="ap:Tip_amandmana" use="required"/>
+                        <xs:attribute name="Status" type="ap:Status_amandmana" use="required"/>
+                        <xs:attributeGroup ref="ap:podaci_o_dokumentu"/>
                     </xs:complexType>
                 </xs:element>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
+    <xs:simpleType name="Tip_amandmana">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="DODAVANJE"/>
+            <xs:enumeration value="IZMENA"/>
+            <xs:enumeration value="BRISANJE"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="Status_amandmana">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="PREDLOZEN"/>
+            <xs:enumeration value="PRIHVACEN"/>
+            <xs:enumeration value="ODBIJEN"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:attributeGroup name="podaci_o_dokumentu">
+        <xs:attribute form="unqualified" name="Oznaka" type="xs:int" use="required"/>
+        <xs:attribute name="Oblast" type="pp:Taksonomska_oblast" use="required"/>
+        <xs:attribute name="Predlagac" type="xs:string"/>
+        <xs:attribute name="Datum_predlaganja" type="xs:date"/>
+        <xs:attribute name="Datum_glasanja" type="xs:date"/>
+        <xs:attribute name="Broj_glasova_za" type="xs:int"/>
+        <xs:attribute name="Broj_glasova_protiv" type="xs:int"/>
+        <xs:attribute name="Broj_glasova_uzdrzano" type="xs:int" use="required"/>
+    </xs:attributeGroup>
 </xs:schema>
