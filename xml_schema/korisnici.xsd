@@ -8,39 +8,31 @@
     <xs:element name="Korisnici">
         <xs:complexType>
             <xs:sequence>
-                <xs:element maxOccurs="unbounded" ref="kp:Gradjanin" minOccurs="0"/>
-                <xs:element maxOccurs="unbounded" ref="kp:Odbornik" minOccurs="0"/>
-                <xs:element ref="kp:Predsednik_skupstine" maxOccurs="unbounded" minOccurs="0"/>
+                <xs:element name="Korisnik">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="Tip" type="kp:Tip_korisnika"/>
+                            <xs:element name="Ime" type="xs:string"/>
+                            <xs:element name="Prezime" type="xs:string"/>
+                            <xs:element name="Email">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:pattern value="[aA-zZ]+[0-9]*@[aA-zZ]+(\.[aA-zZ]+)+"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
+                            <xs:element name="Lozinka" type="xs:string"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
-    <xs:element name="Gradjanin" type="kp:Gradjanin_tip"/>
-    <xs:element name="Odbornik" type="kp:Odbornik_tip"/>
-    <xs:element name="Predsednik_skupstine" type="kp:Predsednik_skupstine_tip"/>
-    <xs:complexType name="Odbornik_tip">
-        <xs:complexContent>
-            <xs:extension base="kp:Gradjanin_tip"/>
-        </xs:complexContent>
-    </xs:complexType>
-    <xs:complexType name="Gradjanin_tip">
-        <xs:sequence>
-            <xs:element name="Ime" type="xs:string"/>
-            <xs:element name="Prezime" type="xs:string"/>
-            <xs:element name="Email">
-                <xs:simpleType>
-                    <xs:restriction base="xs:string">
-                        <xs:pattern value="[aA-zZ]+[0-9]*@[aA-zZ]+(\.[aA-zZ]+)+"/>
-                    </xs:restriction>
-                </xs:simpleType>
-            </xs:element>
-            <xs:element name="Lozinka" type="xs:string"/>
-        </xs:sequence>
-    </xs:complexType>
-    <xs:complexType name="Predsednik_skupstine_tip">
-        <xs:complexContent>
-            <xs:extension base="kp:Odbornik_tip">
-                <xs:attribute name="Aktuelni" type="xs:boolean"/>
-            </xs:extension>
-        </xs:complexContent>
-    </xs:complexType>
+    <xs:simpleType name="Tip_korisnika">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="GRADJANIN"/>
+            <xs:enumeration value="ODBORNIK"/>
+            <xs:enumeration value="PREDSEDNIK"/>
+        </xs:restriction>
+    </xs:simpleType>
 </xs:schema>
