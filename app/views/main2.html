@@ -4,7 +4,6 @@
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
         <meta charset="${_response_encoding}">
         <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/main.css'}">
-        <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/index.css'}">
         #{get 'moreStyles' /} 
         <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
@@ -24,7 +23,7 @@
 				<h1>Skupština grada Novog Sada</h1>
 				<ul>
 					<li><a href="@{Overview.show()}">Pregled akata</a></li>
-					<li><a href="@{Search.show()}">Pretraga akata</a></li>
+					<li><a href="@{Search.show()}">Pretraga dokumenata</a></li>
 					<li><a href="@{Alterations.show()}">Predložene izmene</a></li>
 					<li><a href="@{Session.show()}">Sednica skupštine</a></li>
 				</ul>
@@ -38,7 +37,7 @@
 					<li><a href="@{Overview.show()}">Pregled akata</a></li>
 				</ul>
 				<ul class="pretragaMenu" style="display:none;">
-					<li><a href="@{Search.show()}">Pretraga akata</a></li>
+					<li><a href="@{Search.show()}">Pretraga dokumenata</a></li>
 				</ul>
 				<ul class="izmeneMenu" style="display:none;">
 					<li><a href="@{Alterations.show()}">Pregled predloga</a></li>

@@ -1,11 +1,17 @@
 .jumbotron {
     text-align: center;
-    background-color: rgba(2, 124, 148, 0.15) !important;
+    background-color: rgba(2, 124, 148, 0.45) !important;
 }
 
 
 .h2, h2 {
     font-size: 40px !important;
+	color:#FFF  !important; 
+	font-family: 'Georgia', serif  !important;
+}
+.h4, h4 {
+	color:#FFF  !important; 
+	font-family: 'Georgia', serif  !important;
 }
 
 .panel-login {

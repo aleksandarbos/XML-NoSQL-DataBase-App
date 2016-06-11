@@ -42,32 +42,52 @@
 						<input type="text" name="regulationId" value="333" style="display:none;" />
 						<p class="headingMain">AKT</p>
 						<p class="text">Prigovor po osnovi br 243,na clan 7543, zakona o medjuljudskim odnosima 23<br/><a href="#">(prikaži)</a></p>
-						<p class="heading">Usvojen u načelu: &nbsp&nbsp
-							<select name="votingFirstResult" class="smallInput firstVoting">
+						<p class="heading votingRegulationResult">Usvojen u načelu: &nbsp&nbsp
+							<select name="votingFirstResult" class="smallInput votingResult">
 								<option value="no">NE</option>
 								<option value="yes">DA</option>
 							</select></p>
-						<p class="value">ZA: <input type="text" class="tinyInput votesNumber" name="votesFirstNumberYes" pattern="\d{1,3}" title="Pozitivan ceo broj!" required /> &nbsp&nbsp
-										PROTIV: <input type="text" class="tinyInput votesNumber" name="votesFirstNumberNo" pattern="\d{1,3}" title="Pozitivan ceo broj!" required /> &nbsp&nbsp
-										UZDRŽANI: <input type="text" class="tinyInput votesNumber" name="votesFirstNumberOff" pattern="\d{1,3}" title="Pozitivan ceo broj!" required /></p>	
-						<p class="heading"><input type="button" class="veryBigButton acceptRegulation" value="Potvrdi odluku" /><hr/></p>
+						<p class="value votesLabel">
+								ZA: <input type="text" class="tinyInput votesNumber" name="votesFirstNumberYes" pattern="\d{1,3}" title="Pozitivan ceo broj!" required /> &nbsp&nbsp
+								PROTIV: <input type="text" class="tinyInput votesNumber" name="votesFirstNumberNo" pattern="\d{1,3}" title="Pozitivan ceo broj!" required /> &nbsp&nbsp
+								UZDRŽANI: <input type="text" class="tinyInput votesNumber" name="votesFirstNumberOff" pattern="\d{1,3}" title="Pozitivan ceo broj!" required /></p>	
+						<p class="heading"><input type="button" class="veryBigButton acceptRegulation" value="Potvrdi odluku" disabled /><hr/></p>
 					</form>
 				</div>
-				<div class="votingAmandments" style="display:none;">	
+				<div class="votingAmandments" style="display:none;">
+					<span class="amandmentsLeft" style="display:none;">2</span>	
 					<div class="votingAmandment"><br/>
 						<form>						
 							<input type="text" name="amandmentId" value="333" style="display:none;" />
 							<p class="headingMain">Amandman</p>
 							<p class="text">Prigovor po osnovi br 243,na clan 7543, zakona o medjuljudskim odnosima 23<br/><a href="#">(prikaži)</a></p>
 							<p class="heading">Usvojen u načelu: &nbsp&nbsp
-								<select name="votingAmandmentResult" class="smallInput">
+								<select name="votingAmandmentResult" class="smallInput votingResult">
 									<option value="no">NE</option>
 									<option value="yes">DA</option>
 								</select></p>
-							<p class="value">ZA: <input type="text" class="tinyInput votesNumber" name="votesAmandmentNumberYes" pattern="\d{1,3}" title="Pozitivan ceo broj!" required /> &nbsp&nbsp
-											PROTIV: <input type="text" class="tinyInput votesNumber" name="votesAmandmentNumberNo" pattern="\d{1,3}" title="Pozitivan ceo broj!" required /> &nbsp&nbsp
-											UZDRŽANI: <input type="text" class="tinyInput votesNumber" name="votesAmandmentNumberOff" pattern="\d{1,3}" title="Pozitivan ceo broj!" required /></p>
-							<p class="heading"><input type="button" class="veryBigButton acceptAmandment" value="Potvrdi odluku" /><hr/></p>
+							<p class="value votesLabel">
+									ZA: <input type="text" class="tinyInput votesNumber" name="votesAmandmentNumberYes" pattern="\d{1,3}" title="Pozitivan ceo broj!" required /> &nbsp&nbsp
+									PROTIV: <input type="text" class="tinyInput votesNumber" name="votesAmandmentNumberNo" pattern="\d{1,3}" title="Pozitivan ceo broj!" required /> &nbsp&nbsp
+									UZDRŽANI: <input type="text" class="tinyInput votesNumber" name="votesAmandmentNumberOff" pattern="\d{1,3}" title="Pozitivan ceo broj!" required /></p>
+							<p class="heading"><input type="button" class="veryBigButton acceptAmandment" value="Potvrdi odluku" disabled /><hr/></p>
+						</form>
+					</div>		
+					<div class="votingAmandment"><br/>
+						<form>						
+							<input type="text" name="amandmentId" value="333" style="display:none;" />
+							<p class="headingMain">Amandman</p>
+							<p class="text">Prigovor po osnovi br 243,na clan 7543, zakona o medjuljudskim odnosima 23<br/><a href="#">(prikaži)</a></p>
+							<p class="heading">Usvojen u načelu: &nbsp&nbsp
+								<select name="votingAmandmentResult" class="smallInput votingResult">
+									<option value="no">NE</option>
+									<option value="yes">DA</option>
+								</select></p>
+							<p class="value votesLabel" class="votesLabel">
+									ZA: <input type="text" class="tinyInput votesNumber" name="votesAmandmentNumberYes" pattern="\d{1,3}" title="Pozitivan ceo broj!" required /> &nbsp&nbsp
+									PROTIV: <input type="text" class="tinyInput votesNumber" name="votesAmandmentNumberNo" pattern="\d{1,3}" title="Pozitivan ceo broj!" required /> &nbsp&nbsp
+									UZDRŽANI: <input type="text" class="tinyInput votesNumber" name="votesAmandmentNumberOff" pattern="\d{1,3}" title="Pozitivan ceo broj!" required /></p>
+							<p class="heading"><input type="button" class="veryBigButton acceptAmandment" value="Potvrdi odluku" disabled /><hr/></p>
 						</form>
 					</div>				
 				</div>
@@ -76,14 +96,15 @@
 					<form>	
 						<input type="text" name="regulationFinalId" value="333" style="display:none;" />
 						<p class="heading">AKT USVOJEN U CELINI: &nbsp&nbsp
-							<select name="votingFinalResult" class="smallInput">
+							<select name="votingFinalResult" class="smallInput votingResult">
 								<option value="no">NE</option>
 								<option value="yes">DA</option>
 							</select></p>
-						<p class="value">ZA: <input type="text" class="tinyInput votesNumber" name="votesFinalNumberYes" pattern="\d{1,3}" title="Pozitivan ceo broj!" required /> &nbsp&nbsp
-										PROTIV: <input type="text" class="tinyInput votesNumber" name="votesFinalNumberNo" pattern="\d{1,3}" title="Pozitivan ceo broj!" required /> &nbsp&nbsp
-										UZDRŽANI: <input type="text" class="tinyInput votesNumber" name="votesFinalNumberOff" pattern="\d{1,3}" title="Pozitivan ceo broj!" required /></p>
-						<p class="heading"><input type="button" class="veryBigButton acceptRegulationTotal" value="Potvrdi odluku" /></p>
+						<p class="value votesLabel">
+								ZA: <input type="text" class="tinyInput votesNumber" name="votesFinalNumberYes" pattern="\d{1,3}" title="Pozitivan ceo broj!" required /> &nbsp&nbsp
+								PROTIV: <input type="text" class="tinyInput votesNumber" name="votesFinalNumberNo" pattern="\d{1,3}" title="Pozitivan ceo broj!" required /> &nbsp&nbsp
+								UZDRŽANI: <input type="text" class="tinyInput votesNumber" name="votesFinalNumberOff" pattern="\d{1,3}" title="Pozitivan ceo broj!" required /></p>
+						<p class="heading"><input type="button" class="veryBigButton acceptRegulationTotal" value="Potvrdi odluku" disabled /></p>
 					</form>
 				</div>
 			</div>	

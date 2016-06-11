@@ -32,15 +32,15 @@
 					<select name="documentStatus" class="bigInput selectStatus">
 						<option value=""></option>
 						<option value="nominated">Predložen</option>
-						<option value="adopted">Usvojen</option>
-						<option value="published">Objavljen</option>
-						<option value="applied">Primenjen</option>
-						<option value="withdrawn">Povučen</option>
+						<option value="voted">Usvojen</option>
+						<option value="published" class="hideDate">Objavljen</option>
+						<option value="applied" class="hideDate">Primenjen</option>
+						<option value="withdrawn" class="hideDate">Povučen</option>
 					</select></td></tr>
 				<tr><th>Tip dokumenta:</th><td>
-					<select name="documentType" class="bigInput">
+					<select name="documentType" class="bigInput selectType">
 						<option value=""></option>
-						<option value="statute">Akat</option>
+						<option value="regulation">Akt</option>
 						<option value="amendment">Amandman</option>
 					</select></td></tr>
 				<tr><th>Dokument predložio:</th><td>
@@ -52,7 +52,7 @@
 				<tr class="statusNominated"><th>Datum predlaganja:</th><td>od&nbsp 
 					<input type="date" class="mediumInput" name="nominatedDateFrom"/> do 
 					<input type="date" class="mediumInput" name="nominatedDateTo"/></td></tr>
-				<tr class="statusAdopted"><th>Datum usvajanja:</th><td>od&nbsp 
+				<tr class="statusVoted"><th>Datum glasanja:</th><td>od&nbsp 
 					<input type="date" class="mediumInput" name="adoptionDateFrom"/> do 
 					<input type="date" class="mediumInput" name="adoptionDateTo"/></td></tr>
 				<tr class="statusPublished"><th>Datum objave:</th><td>od&nbsp 
