@@ -28,10 +28,10 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element ref="{http://www.parlament.gov.rs/propisi}Odeljak" maxOccurs="unbounded"/>
+ *         &lt;element ref="{http://www.parlament.gov.rs/propisi}Clan" maxOccurs="unbounded"/>
  *       &lt;/sequence>
- *       &lt;attribute name="Oznaka_glave" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
- *       &lt;attribute name="Naziv_glave" type="{http://www.w3.org/2001/XMLSchema}string" />
+ *       &lt;attribute name="Oznaka_pododeljka" type="{http://www.w3.org/2001/XMLSchema}int" />
+ *       &lt;attribute name="Naziv_pododeljka" type="{http://www.w3.org/2001/XMLSchema}string" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -41,85 +41,93 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "odeljak"
+    "clan"
 })
-@XmlRootElement(name = "Glava")
-public class Glava {
+@XmlRootElement(name = "Pododeljak")
+public class Pododeljak {
 
-    @XmlElement(name = "Odeljak", required = true)
-    protected List<Odeljak> odeljak;
-    @XmlAttribute(name = "Oznaka_glave", required = true)
-    protected int oznakaGlave;
-    @XmlAttribute(name = "Naziv_glave")
-    protected String nazivGlave;
+    @XmlElement(name = "Clan", required = true)
+    protected List<Clan> clan;
+    @XmlAttribute(name = "Oznaka_pododeljka")
+    protected Integer oznakaPododeljka;
+    @XmlAttribute(name = "Naziv_pododeljka")
+    protected String nazivPododeljka;
 
     /**
-     * Gets the value of the odeljak property.
+     * Gets the value of the clan property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the odeljak property.
+     * This is why there is not a <CODE>set</CODE> method for the clan property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getOdeljak().add(newItem);
+     *    getClan().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link Odeljak }
+     * {@link Clan }
      * 
      * 
      */
-    public List<Odeljak> getOdeljak() {
-        if (odeljak == null) {
-            odeljak = new ArrayList<Odeljak>();
+    public List<Clan> getClan() {
+        if (clan == null) {
+            clan = new ArrayList<Clan>();
         }
-        return this.odeljak;
+        return this.clan;
     }
 
     /**
-     * Gets the value of the oznakaGlave property.
+     * Gets the value of the oznakaPododeljka property.
      * 
+     * @return
+     *     possible object is
+     *     {@link Integer }
+     *     
      */
-    public int getOznakaGlave() {
-        return oznakaGlave;
+    public Integer getOznakaPododeljka() {
+        return oznakaPododeljka;
     }
 
     /**
-     * Sets the value of the oznakaGlave property.
+     * Sets the value of the oznakaPododeljka property.
      * 
+     * @param value
+     *     allowed object is
+     *     {@link Integer }
+     *     
      */
-    public void setOznakaGlave(int value) {
-        this.oznakaGlave = value;
+    public void setOznakaPododeljka(Integer value) {
+        this.oznakaPododeljka = value;
     }
 
     /**
-     * Gets the value of the nazivGlave property.
+     * Gets the value of the nazivPododeljka property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getNazivGlave() {
-        return nazivGlave;
+    public String getNazivPododeljka() {
+        return nazivPododeljka;
     }
 
     /**
-     * Sets the value of the nazivGlave property.
+     * Sets the value of the nazivPododeljka property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setNazivGlave(String value) {
-        this.nazivGlave = value;
+    public void setNazivPododeljka(String value) {
+        this.nazivPododeljka = value;
     }
 
 }

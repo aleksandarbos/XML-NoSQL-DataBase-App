@@ -6,7 +6,7 @@
 //
 
 
-package models.rs.gov.parlament.propisi;
+package models.rs.gov.parlament.amandmani;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -15,6 +15,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.datatype.XMLGregorianCalendar;
+import models.rs.gov.parlament.propisi.TaksonomskaOblast;
 
 
 /**
@@ -27,21 +28,15 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="Pravni_osnov" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="Naziv_organa" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="Naziv_saglasnog_organa" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="Status" type="{http://www.parlament.gov.rs/propisi}Status_akta"/>
+ *         &lt;element name="Tip" type="{http://www.parlament.gov.rs/amandmani}Tip_amandmana"/>
+ *         &lt;element name="Status" type="{http://www.parlament.gov.rs/amandmani}Status_amandmana"/>
  *         &lt;element name="Oblast" type="{http://www.parlament.gov.rs/propisi}Taksonomska_oblast"/>
  *         &lt;element name="Predlagac" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="Datum_predaje" type="{http://www.w3.org/2001/XMLSchema}date"/>
  *         &lt;element name="Datum_glasanja" type="{http://www.w3.org/2001/XMLSchema}date"/>
- *         &lt;element name="Datum_objave" type="{http://www.w3.org/2001/XMLSchema}date"/>
- *         &lt;element name="Datum_pocetka_vazenja" type="{http://www.w3.org/2001/XMLSchema}date"/>
- *         &lt;element name="Datum_prestanka_vazenja" type="{http://www.w3.org/2001/XMLSchema}date"/>
  *         &lt;element name="Broj_glasova_za" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="Broj_glasova_protiv" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="Broj_glasova_uzdrzano" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         &lt;element name="Objavljen_u_sluzbenom_glasniku" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -52,33 +47,23 @@ import javax.xml.datatype.XMLGregorianCalendar;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "pravniOsnov",
-    "nazivOrgana",
-    "nazivSaglasnogOrgana",
+    "tip",
     "status",
     "oblast",
     "predlagac",
     "datumPredaje",
     "datumGlasanja",
-    "datumObjave",
-    "datumPocetkaVazenja",
-    "datumPrestankaVazenja",
     "brojGlasovaZa",
     "brojGlasovaProtiv",
-    "brojGlasovaUzdrzano",
-    "objavljenUSluzbenomGlasniku"
+    "brojGlasovaUzdrzano"
 })
 @XmlRootElement(name = "Preambula")
 public class Preambula {
 
-    @XmlElement(name = "Pravni_osnov", required = true)
-    protected String pravniOsnov;
-    @XmlElement(name = "Naziv_organa", required = true)
-    protected String nazivOrgana;
-    @XmlElement(name = "Naziv_saglasnog_organa")
-    protected String nazivSaglasnogOrgana;
+    @XmlElement(name = "Tip", required = true)
+    protected TipAmandmana tip;
     @XmlElement(name = "Status", required = true)
-    protected StatusAkta status;
+    protected StatusAmandmana status;
     @XmlElement(name = "Oblast", required = true)
     protected TaksonomskaOblast oblast;
     @XmlElement(name = "Predlagac", required = true)
@@ -89,94 +74,35 @@ public class Preambula {
     @XmlElement(name = "Datum_glasanja", required = true)
     @XmlSchemaType(name = "date")
     protected XMLGregorianCalendar datumGlasanja;
-    @XmlElement(name = "Datum_objave", required = true)
-    @XmlSchemaType(name = "date")
-    protected XMLGregorianCalendar datumObjave;
-    @XmlElement(name = "Datum_pocetka_vazenja", required = true)
-    @XmlSchemaType(name = "date")
-    protected XMLGregorianCalendar datumPocetkaVazenja;
-    @XmlElement(name = "Datum_prestanka_vazenja", required = true)
-    @XmlSchemaType(name = "date")
-    protected XMLGregorianCalendar datumPrestankaVazenja;
     @XmlElement(name = "Broj_glasova_za")
     protected int brojGlasovaZa;
     @XmlElement(name = "Broj_glasova_protiv")
     protected int brojGlasovaProtiv;
     @XmlElement(name = "Broj_glasova_uzdrzano")
     protected int brojGlasovaUzdrzano;
-    @XmlElement(name = "Objavljen_u_sluzbenom_glasniku", required = true)
-    protected String objavljenUSluzbenomGlasniku;
 
     /**
-     * Gets the value of the pravniOsnov property.
+     * Gets the value of the tip property.
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link TipAmandmana }
      *     
      */
-    public String getPravniOsnov() {
-        return pravniOsnov;
+    public TipAmandmana getTip() {
+        return tip;
     }
 
     /**
-     * Sets the value of the pravniOsnov property.
+     * Sets the value of the tip property.
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link TipAmandmana }
      *     
      */
-    public void setPravniOsnov(String value) {
-        this.pravniOsnov = value;
-    }
-
-    /**
-     * Gets the value of the nazivOrgana property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getNazivOrgana() {
-        return nazivOrgana;
-    }
-
-    /**
-     * Sets the value of the nazivOrgana property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setNazivOrgana(String value) {
-        this.nazivOrgana = value;
-    }
-
-    /**
-     * Gets the value of the nazivSaglasnogOrgana property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getNazivSaglasnogOrgana() {
-        return nazivSaglasnogOrgana;
-    }
-
-    /**
-     * Sets the value of the nazivSaglasnogOrgana property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setNazivSaglasnogOrgana(String value) {
-        this.nazivSaglasnogOrgana = value;
+    public void setTip(TipAmandmana value) {
+        this.tip = value;
     }
 
     /**
@@ -184,10 +110,10 @@ public class Preambula {
      * 
      * @return
      *     possible object is
-     *     {@link StatusAkta }
+     *     {@link StatusAmandmana }
      *     
      */
-    public StatusAkta getStatus() {
+    public StatusAmandmana getStatus() {
         return status;
     }
 
@@ -196,10 +122,10 @@ public class Preambula {
      * 
      * @param value
      *     allowed object is
-     *     {@link StatusAkta }
+     *     {@link StatusAmandmana }
      *     
      */
-    public void setStatus(StatusAkta value) {
+    public void setStatus(StatusAmandmana value) {
         this.status = value;
     }
 
@@ -300,78 +226,6 @@ public class Preambula {
     }
 
     /**
-     * Gets the value of the datumObjave property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link XMLGregorianCalendar }
-     *     
-     */
-    public XMLGregorianCalendar getDatumObjave() {
-        return datumObjave;
-    }
-
-    /**
-     * Sets the value of the datumObjave property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link XMLGregorianCalendar }
-     *     
-     */
-    public void setDatumObjave(XMLGregorianCalendar value) {
-        this.datumObjave = value;
-    }
-
-    /**
-     * Gets the value of the datumPocetkaVazenja property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link XMLGregorianCalendar }
-     *     
-     */
-    public XMLGregorianCalendar getDatumPocetkaVazenja() {
-        return datumPocetkaVazenja;
-    }
-
-    /**
-     * Sets the value of the datumPocetkaVazenja property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link XMLGregorianCalendar }
-     *     
-     */
-    public void setDatumPocetkaVazenja(XMLGregorianCalendar value) {
-        this.datumPocetkaVazenja = value;
-    }
-
-    /**
-     * Gets the value of the datumPrestankaVazenja property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link XMLGregorianCalendar }
-     *     
-     */
-    public XMLGregorianCalendar getDatumPrestankaVazenja() {
-        return datumPrestankaVazenja;
-    }
-
-    /**
-     * Sets the value of the datumPrestankaVazenja property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link XMLGregorianCalendar }
-     *     
-     */
-    public void setDatumPrestankaVazenja(XMLGregorianCalendar value) {
-        this.datumPrestankaVazenja = value;
-    }
-
-    /**
      * Gets the value of the brojGlasovaZa property.
      * 
      */
@@ -417,30 +271,6 @@ public class Preambula {
      */
     public void setBrojGlasovaUzdrzano(int value) {
         this.brojGlasovaUzdrzano = value;
-    }
-
-    /**
-     * Gets the value of the objavljenUSluzbenomGlasniku property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getObjavljenUSluzbenomGlasniku() {
-        return objavljenUSluzbenomGlasniku;
-    }
-
-    /**
-     * Sets the value of the objavljenUSluzbenomGlasniku property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setObjavljenUSluzbenomGlasniku(String value) {
-        this.objavljenUSluzbenomGlasniku = value;
     }
 
 }
