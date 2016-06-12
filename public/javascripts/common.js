@@ -9,3 +9,6 @@ function clearInputs(button) {
 		$(this).val("");
 	});
 }
+
+$(document).ready(function() {
+})

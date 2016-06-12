@@ -1,0 +1,28 @@
+#{extends 'main2.html' /}
+#{set title:'Novi Sad - Sednica Skupštine' /}
+<script type="text/javascript" src="@{'public/javascripts/session.js'}"></script>
+
+<div>	
+	<h2>
+		Sednica skupštine grada Novog Sada	
+	</h2>
+	<p>
+		Tokom sednice, predsednik skupštine usvaja akate u načelu, pojedinostima, i celini. Takođe, odlučuje o usvajanju amandmana.<br/>
+		Predsednik skupštine odlučuje o tome kada će sednica biti održana.
+	</p>
+	<div>
+		<div class="center">
+			<h5>
+				<b>Zakazivanje sednice</b>
+			</h5>
+			<form action="@{Session.schedule()}" method="post">
+				<table class="invisibleTable">
+					<tr><th>Datum početka sednice:</th><td><input type="date" class="bigInput" name="sessionDate"/></td></tr>
+					<tr><th>Vreme početka sednice:</th><td><input type="time" class="bigInput" name="sessionTime"/></td></tr>
+					<tr><th></th><td></td></tr>
+					<tr><td colspan="2"><input type="submit" class="bigButton" value="Zakaži"><input type="button" class="bigButton cancel" value="Odustani"></td></tr>
+				</table>
+			</form>
+		</div>
+	</div>	
+</div>

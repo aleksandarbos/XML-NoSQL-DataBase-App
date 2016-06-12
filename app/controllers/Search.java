@@ -7,7 +7,8 @@ import play.mvc.With;
 public class Search extends Controller {
 
     public static void show() {
-    	render();
+        String userType = session.get("user-type");
+    	render(userType);
     }
     
     public static void search(String documentText, String documentDomain, String documentName, String documentStatus, String documentType, String user, String authority, String collection,

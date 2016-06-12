@@ -45,7 +45,7 @@ function typeChangedSearch() {
 }
 
 $(document).ready(function() {
-
+	
 	stateChangedSearch();
 
 	$(".alterationToPdf").click(function() {

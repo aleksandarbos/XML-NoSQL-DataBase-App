@@ -1,5 +1,6 @@
 package controllers;
 
+import play.mvc.Before;
 import play.mvc.Controller;
 import play.mvc.With;
 
@@ -7,7 +8,8 @@ import play.mvc.With;
 public class Overview extends Controller {
 
     public static void show(){
-    	render();
+        String userType = session.get("user-type");
+    	render(userType);
     }
     
     public static void topdf(int id) {

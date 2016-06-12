@@ -1,6 +1,7 @@
 $(".sednicaMenu").show();
 
-$(document).ready(function() {		
+$(document).ready(function() {	
+		
 	$(".cancel").click(function() {
 		clearInputs(this);
 	}); 	

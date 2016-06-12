@@ -1,5 +1,6 @@
 package controllers;
 
+import play.mvc.Before;
 import play.mvc.Controller;
 import play.mvc.With;
 
@@ -13,7 +14,8 @@ import dal.RegulationsDAO;
 public class Regulations extends Controller {
 
     public static void show(){
-        render();
+        String userType = session.get("user-type");
+        render(userType);
     }
 
     public static void create(String regulationName, String user, String regulationContent) throws JAXBException{
@@ -21,5 +23,10 @@ public class Regulations extends Controller {
         RegulationsDAO.addRegulation(regulationName, user, regulationContent);
         show();
     }
-
+    
+    @Before(unless="time")
+    public static void checkAccess() {
+    	if (session.get("user-type").equals("GRADJANIN"))
+    		Overview.show();
+    }
 }

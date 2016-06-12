@@ -19,13 +19,15 @@
 				<img src="/public/images/grb.png"/>
 			</div>
 			<div class="header-menu">
-				<h6>Prijavljeni ste kao: <span class="nameSurnameHeading">${session.get("user")}</span><br/><a href="@{Users.logOut()}">odjavi se</a></h6>
+				<h6>Vi ste <span class="nameSurnameHeading">${session.get("user")}</span><br/><a href="@{Users.logOut()}">(odjavi se)</a></h6>
 				<h1>Skupština grada Novog Sada</h1>
 				<ul>
 					<li><a href="@{Overview.show()}">Pregled akata</a></li>
-					<li><a href="@{Search.show()}">Pretraga dokumenata</a></li>
+					<li><a href="@{Search.show()}">Pretraga dokumenata</a></li>					
+					#{if userType != 'GRADJANIN'}
 					<li><a href="@{Alterations.show()}">Predložene izmene</a></li>
-					<li><a href="@{Session.show()}">Sednica skupštine</a></li>
+					#{/if}
+					<li><a href="@{Session.time()}">Sednica skupštine</a></li>
 				</ul>
 			</div>
 		</div>
@@ -45,7 +47,11 @@
 					<li><a href="@{Amandments.show()}">Predlaganje amandmana</a></li>
 				</ul>
 				<ul class="sednicaMenu" style="display:none;">
+					<li><a href="@{Session.time()}">Održavanje sednica</a></li>								
+					#{if userType == 'PREDSEDNIK'}
+					<li><a href="@{Session.setSchedule()}">Zakazivanje sednice</a></li>
 					<li><a href="@{Session.show()}">Vođenje sednice</a></li>
+					#{/if}
 				</ul>
 			</div>
 		

@@ -13,5 +13,4 @@ public class Secure extends Controller {
         if(session.get("user") == null)
             Application.index();
     }
-
 }
