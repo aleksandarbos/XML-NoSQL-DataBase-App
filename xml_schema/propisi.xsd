@@ -6,7 +6,7 @@
     <xs:element name="Propisi">
         <xs:complexType>
             <xs:sequence maxOccurs="1" minOccurs="1">
-                <xs:element maxOccurs="unbounded" ref="pp:Propis"/>
+                <xs:element maxOccurs="unbounded" ref="pp:Propis" minOccurs="0"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -36,7 +36,7 @@
                     </xs:complexType>
                 </xs:element>
             </xs:sequence>
-            <xs:attribute name="Oznaka" type="xs:int"/>
+            <xs:attribute name="Oznaka" type="xs:int" use="required"/>
         </xs:complexType>
     </xs:element>
     <xs:element name="Preambula">
@@ -71,9 +71,10 @@
     </xs:element>
     <xs:element name="Glava">
         <xs:complexType>
-            <xs:sequence>
-                <xs:element maxOccurs="unbounded" minOccurs="1" ref="pp:Odeljak"/>
-            </xs:sequence>
+            <xs:choice>
+                <xs:element maxOccurs="unbounded" ref="pp:Odeljak"/>
+                <xs:element maxOccurs="unbounded" ref="pp:Clan"/>
+            </xs:choice>
             <xs:attribute name="Oznaka_glave" type="xs:int" use="required"/>
             <xs:attribute name="Naziv_glave" type="xs:string"/>
         </xs:complexType>
@@ -100,41 +101,53 @@
     <xs:element name="Clan">
         <xs:complexType mixed="false">
             <xs:sequence maxOccurs="1">
-                <xs:element maxOccurs="unbounded" name="Stav">
-                    <xs:complexType>
-                        <xs:sequence minOccurs="0">
-                            <xs:element maxOccurs="unbounded" minOccurs="2" name="Tacka">
-                                <xs:complexType>
-                                    <xs:sequence minOccurs="0">
-                                        <xs:element maxOccurs="unbounded" minOccurs="2"
-                                            name="Podtacka">
-                                            <xs:complexType>
-                                                <xs:sequence minOccurs="0">
-                                                  <xs:element maxOccurs="unbounded" minOccurs="2"
-                                                  name="Alineja">
-                                                  <xs:complexType>
-                                                  <xs:attribute name="Oznaka_alineje" type="xs:int"
-                                                  use="required"/>
-                                                  </xs:complexType>
-                                                  </xs:element>
-                                                </xs:sequence>
-                                                <xs:attribute name="Oznaka_podtacke" type="xs:int"
-                                                  use="required"> </xs:attribute>
-                                            </xs:complexType>
-                                        </xs:element>
-                                    </xs:sequence>
-                                    <xs:attribute name="Oznaka_tacke" type="xs:int" use="required"/>
-                                </xs:complexType>
-                            </xs:element>
-                        </xs:sequence>
-                        <xs:attribute name="Oznaka_stava" type="xs:int" use="required"/>
-                    </xs:complexType>
-                </xs:element>
+                <xs:element maxOccurs="unbounded" ref="pp:Stav"/>
             </xs:sequence>
             <xs:attribute name="Oznaka_clana" type="xs:int" use="required"> </xs:attribute>
             <xs:attribute name="Naziv_clana" type="xs:string"> </xs:attribute>
         </xs:complexType>
     </xs:element>
+    <xs:complexType mixed="true" name="Stav_tip">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="pp:Referenca"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="pp:Tacka"/>
+        </xs:sequence>
+        <xs:attribute name="Oznaka_stava" type="xs:int" use="required"/>
+    </xs:complexType>
+    <xs:complexType mixed="true" name="Tacka_tip">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="pp:Referenca"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="pp:Podtacka"/>
+        </xs:sequence>
+        <xs:attribute name="Oznaka_tacke" type="xs:int" use="required"/>
+    </xs:complexType>
+    <xs:complexType mixed="true" name="Podtacka_tip">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="pp:Referenca"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="pp:Alineja"/>
+        </xs:sequence>
+        <xs:attribute name="Oznaka_podtacke" type="xs:int" use="required"/>
+    </xs:complexType>
+    <xs:complexType mixed="true" name="Alineja_tip">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="pp:Referenca"/>
+        </xs:sequence>
+        <xs:attribute name="Oznaka_alineje" type="xs:int" use="required"/>
+    </xs:complexType>
+    <xs:element name="Stav" type="pp:Stav_tip"> </xs:element>
+    <xs:element name="Tacka" type="pp:Tacka_tip"> </xs:element>
+    <xs:element name="Podtacka" type="pp:Podtacka_tip"> </xs:element>
+    <xs:element name="Alineja" type="pp:Alineja_tip"> </xs:element>
+    <xs:simpleType name="Status_akta">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="PREDLOZEN"/>
+            <xs:enumeration value="PRIHVACEN"/>
+            <xs:enumeration value="ODBIJEN"/>
+            <xs:enumeration value="OBJAVLJEN"/>
+            <xs:enumeration value="U_PRIMENI"/>
+            <xs:enumeration value="VAN_SNAGE"/>
+        </xs:restriction>
+    </xs:simpleType>
     <xs:simpleType name="Taksonomska_oblast">
         <xs:restriction base="xs:string">
             <xs:enumeration value="ZDRAVSTVO"/>
@@ -147,14 +160,14 @@
             <xs:enumeration value="KULTURA"/>
         </xs:restriction>
     </xs:simpleType>
-    <xs:simpleType name="Status_akta">
-        <xs:restriction base="xs:string">
-            <xs:enumeration value="PREDLOZEN"/>
-            <xs:enumeration value="PRIHVACEN"/>
-            <xs:enumeration value="ODBIJEN"/>
-            <xs:enumeration value="OBJAVLJEN"/>
-            <xs:enumeration value="U_PRIMENI"/>
-            <xs:enumeration value="VAN_SNAGE"/>
-        </xs:restriction>
-    </xs:simpleType>
+    <xs:element name="Referenca">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attribute name="Oznaka_propisa" type="xs:int" use="required"/>
+                    <xs:attribute name="Oznaka_clana" type="xs:int" use="required"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
 </xs:schema>

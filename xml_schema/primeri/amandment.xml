@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Amandman xmlns="http://www.parlament.gov.rs/amandmani"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.parlament.gov.rs/amandmani file:/E:/Users/NemanjaM/Documents/Practice/XML/Projekat/XML-NoSQL-DataBase-App/xml_schema/amandmani.xsd" Oznaka="123">
+    <Preambula>
+        <Tip>BRISANJE</Tip>
+        <Status>PREDLOZEN</Status>
+        <Oblast>ZDRAVSTVO</Oblast>
+        <Predlagac>Miki</Predlagac>
+        <Datum_predaje>2010-10-20</Datum_predaje>
+        <Datum_glasanja>2010-10-20</Datum_glasanja>
+        <Broj_glasova_za>10</Broj_glasova_za>
+        <Broj_glasova_protiv>10</Broj_glasova_protiv>
+        <Broj_glasova_uzdrzano>15</Broj_glasova_uzdrzano>
+    </Preambula>
+    <Naziv>Predlog izmena na 123</Naziv>
+    <Deo_za_izmenu>
+        <Oznaka_propisa>1</Oznaka_propisa>
+        <Oznaka_clana>12</Oznaka_clana>
+    </Deo_za_izmenu>
+    <Sadrzaj>Unutar člana 3 iz podnetog zakonika. Menjaju se reči "moguće je" u "trebalo bi". Ovakvu izmenu izvršiti
+        unutar celog stava</Sadrzaj>
+    <Obrazlozenje>Imajući u vidu da Predlog zakona ni u jednoj svojoj odredbi izričito ne potencira, a da je
+        cilj zakona i potenciranje, smatramo da je veoma korisno dodati odredbu kakvu predlažemo
+        u clanu 3.
+    </Obrazlozenje>
+</Amandman>

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Propis xmlns="http://www.parlament.gov.rs/propisi"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.parlament.gov.rs/propisi file:/E:/Users/NemanjaM/Documents/Practice/XML/Projekat/XML-NoSQL-DataBase-App/xml_schema/propisi.xsd" Oznaka="1">
+    <Naziv>O PROMETU NEPOKRETNOSTI</Naziv>
+    <Sadrzaj>
+        <Glava Oznaka_glave="1" Naziv_glave="Osnovne odredbe">
+            <Clan Oznaka_clana="1">
+                <Stav Oznaka_stava="1">
+                    Ovim zakonom uređuje se: zaštita, upravljanje, lov, korišćenje i unapređivanje populacija divljači u 
+                    lovištu; zaštita, očuvanje i unapređivanje staništa divljači; zaštita, uređivanje i održavanje lovišta i druga pitanja 
+                    od značaja za divljač i lovstvo.
+                </Stav>
+                <Stav Oznaka_stava="2">
+                     Divljač je prirodno bogatstvo i imovina Republike Srbije koja se koristi pod uslovima i na način predviđen ovim zakonom.
+                </Stav>
+            </Clan>
+            <Clan Oznaka_clana="2">
+                <Stav Oznaka_stava="3">
+                     Divljač je prirodno bogatstvo i imovina Republike Srbije koja se koristi pod uslovima i na način predviđen ovim zakonom.
+                </Stav>
+            </Clan>
+            <Clan Oznaka_clana="3">
+                <Stav Oznaka_stava="4">
+                     Divljač je prirodno bogatstvo i imovina Republike Srbije koja se koristi pod uslovima i na način predviđen ovim zakonom.                     
+                </Stav>
+            </Clan>
+            <Clan Oznaka_clana="4">
+                <Stav Oznaka_stava="5">
+                     Cilj ovog zakona je obezbeđivanje održivog gazdovanja populacijama divljači i 
+                        njihovih staništa na način i u obimu kojim se trajno održava i unapređuje vitalnost 
+                        populacija divljači, proizvodna sposobnost staništa i biološka raznovrsnost, čime se 
+                        postiže ispunjavanje ekonomskih, ekoloških i socijalnih funkcija lovstva.
+                </Stav>
+                <Stav Oznaka_stava="6">
+                     Radi ostvarivanja i zaštite prava i interesa lovnih radnika i unapređivanja lovstva u skladu sa 
+                        održivim gazdovanjem populacijama divljači, opštim interesom i opšteprihvaćenim međunarodnim standardima 
+                        u lovstvu osniva se Lovačka komora (u daljem tekstu: Komora), 
+                        kao profesionalna organizacija, sa pravima i obavezama utvrđenim ovim zakonom i statutom Komore.
+                </Stav>
+            </Clan>
+            <Clan Oznaka_clana="5">
+                <Stav Oznaka_stava="7">
+                    Zabranjeno je:
+                    <Tacka Oznaka_tacke="1">ugrožavati opstanak divljači u prirodi i njena staništa;</Tacka>                    
+                    <Tacka Oznaka_tacke="2">proganjati, zlostavljati, namerno povređivati i uznemiravati divljač;</Tacka>                    
+                    <Tacka Oznaka_tacke="3">zarobljavati i držati divljač u zatvorenom ili ograđenom prostoru, namerno uništavati mesto za 
+                    razmnožavanje i odmor divljači, uzimati jaja od divljači, kao i sakupljati jaja zaštićenih vrsta ptica;</Tacka>                    
+                    <Tacka Oznaka_tacke="4">unositi u lovište divljač iz parkova divljači, zooloških vrtova i sa farmi divljači, kao i oštećenih jedinki divljači;</Tacka>                        
+                </Stav>
+            </Clan>
+            <Clan Oznaka_clana="6">
+                <Stav Oznaka_stava="8">
+                        Korisnik divljači dužan je da u slučajevima iz stava 1. ovog člana postupa na human način.
+                </Stav>
+                <Stav Oznaka_stava="9">
+                        Divljač se može unositi u lovište samo ako se njenim unošenjem ne ugrožava biološka 
+                        ravnoteža i biološka raznovrsnost.
+                </Stav>
+                <Stav Oznaka_stava="10">
+                        Zabrane iz člana 22. tač.<Referenca Oznaka_propisa="12" Oznaka_clana="12"> 3) i 4) </Referenca>ovog zakona ne odnose se na divljač ugroženu od 
+                        elementarnih nepogoda, u slučajevima sprečavanja i suzbijanja zaraznih bolesti, 
+                        organizovanog hvatanja povređene divljači, naseljavanja divljači i ispitivanja 
+                        urođenih osobina lovačkih pasa, kao i na divljač za potrebe naučnog istraživanja, 
+                        nastave, zooloških vrtova i muzeja, ako je za to data saglasnost Ministarstva.
+                </Stav>
+            </Clan>
+            <Clan Oznaka_clana="7">
+                <Stav Oznaka_stava="11">
+                        Ministar i ministar nadležan za poslove zaštite životne sredine sporazumno proglašavaju 
+                        lovostajem zaštićene vrste divljači, trajanje lovne sezone na lovostajem zaštićene vrste 
+                        divljači u otvorenim i ograđenim lovištima, ograđenim delovima lovišta i poligonima za 
+                        lov divljači, kao i mere zaštite i regulisanja brojnosti populacija trajno zaštićenih i 
+                        lovostajem zaštićenih vrsta divljači, a na osnovu procene ugroženosti pojedinih vrsta, 
+                        brojnosti populacija i obaveza iz potvrđenih međunarodnih ugovora.
+                </Stav>
+            </Clan>
+        </Glava>
+        <Glava Oznaka_glave="2">
+            <Clan Oznaka_clana="8">
+                <Stav Oznaka_stava="12">
+                        Redovnu proveru kvaliteta stručnog rada imaoca licence za izradu planskih dokumenata vrši 
+                        Ministarstvo, a na teritoriji autonomne pokrajine nadležni pokrajinski organ, i to u 
+                        postupku davanja saglasnosti na planske dokumente.
+                </Stav>
+            </Clan>
+            <Clan Oznaka_clana="9">
+                <Stav Oznaka_stava="13">
+					Skupština Komore bira između svojih članova predsednika, kao i sastav upravnog odbora, 
+					nadzornog odbora, organa Komore koji rešava o izdavanju i oduzimanju licence i Etičkog 
+					komiteta, u čijim sastavima moraju biti predstavnici Ministarstva i autonomne pokrajine 
+					koji su članovi Komore.
+                </Stav>
+            </Clan>
+            <Clan Oznaka_clana="10">
+                <Stav Oznaka_stava="14">
+                    Za osnivanje i početak rada Komore sredstva se obezbeđuju u budžetu Republike Srbije.
+                </Stav>
+            </Clan>
+            <Clan Oznaka_clana="11">
+                <Stav Oznaka_stava="15">
+                     Komora ima svojstvo pravnog lica koje stiče registracijom u Registar privrednih subjekata, 
+                        u skladu sa zakonom kojim se uređuje registracija privrednih subjekata.
+                </Stav>
+            </Clan>
+        </Glava>
+        
+        
+    </Sadrzaj>
+    <Prilozi></Prilozi>
+</Propis>

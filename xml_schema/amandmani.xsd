@@ -21,13 +21,13 @@
                 <xs:element name="Deo_za_izmenu">
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:element ref="pp:Propis"/>
-                            <xs:element ref="pp:Clan"/>
+                            <xs:element name="Oznaka_propisa" type="xs:int"/>
+                            <xs:element name="Oznaka_clana" type="xs:int"/>
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
-                <xs:element name="Sadrzaj" type="xs:string"> </xs:element>
-                <xs:element name="Obrazlozenje" type="xs:string"/>
+                <xs:element name="Sadrzaj" type="ap:Sadrzaj_tip"> </xs:element>
+                <xs:element name="Obrazlozenje" type="ap:Sadrzaj_tip"/>
             </xs:sequence>
             <xs:attribute form="unqualified" name="Oznaka" type="xs:int" use="required"/>
         </xs:complexType>
@@ -61,4 +61,9 @@
             </xs:sequence>
         </xs:complexType>
     </xs:element>
+    <xs:complexType mixed="true" name="Sadrzaj_tip">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="pp:Referenca"/>
+        </xs:sequence>
+    </xs:complexType>
 </xs:schema>
