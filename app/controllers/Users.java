@@ -1,7 +1,7 @@
 package controllers;
 
 import dal.UsersDAO;
-import models.rs.gov.parlament.korisnici.GradjaninTip;
+import models.rs.gov.parlament.korisnici.Korisnik;
 import play.mvc.Controller;
 
 import javax.xml.bind.JAXBException;
@@ -14,25 +14,25 @@ public class Users extends Controller {
 
     private static final String USERS_DOC_ID = "/parliament/users.xml";
 
-    public static void login(GradjaninTip citizen) throws IOException, JAXBException {
-        if(UsersDAO.getCitizenFromDatabase(citizen) != null)
+    public static void login(Korisnik user) throws IOException, JAXBException {
+        if(UsersDAO.getCitizenFromDatabase(user) != null)
             Overview.show();
         else
             Application.index();
     }
 
-    public static void addNewUser(GradjaninTip citizen) throws JAXBException {
-        UsersDAO.addNewUser(citizen);
+    public static void addNewUser(Korisnik user) throws JAXBException {
+        UsersDAO.addNewUser(user);
         Application.index();
     }
 
-    public static void removeUser(GradjaninTip citizen) throws JAXBException {
-        UsersDAO.deleteUser(citizen);
+    public static void removeUser(Korisnik user) throws JAXBException {
+        UsersDAO.deleteUser(user);
         Application.index();
     }
 
-    public static void updateUser(GradjaninTip citizen) throws JAXBException {
-        UsersDAO.updateUser(citizen);
+    public static void updateUser(Korisnik user) throws JAXBException {
+        UsersDAO.updateUser(user);
         Application.index();
     }
 
