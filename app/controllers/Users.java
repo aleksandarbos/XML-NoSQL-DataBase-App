@@ -3,6 +3,7 @@ package controllers;
 import dal.UsersDAO;
 import models.rs.gov.parlament.korisnici.Korisnik;
 import play.mvc.Controller;
+import play.mvc.Scope;
 
 import javax.xml.bind.JAXBException;
 import java.io.IOException;
@@ -15,10 +16,18 @@ public class Users extends Controller {
     private static final String USERS_DOC_ID = "/parliament/users.xml";
 
     public static void login(Korisnik user) throws IOException, JAXBException {
-        if(UsersDAO.getCitizenFromDatabase(user) != null)
+        Korisnik foundUser = UsersDAO.getCitizenFromDatabase(user);
+        if(foundUser != null) {
+            session.put("user", foundUser.toString());   // only string objects allowed to put in session
             Overview.show();
+        }
         else
             Application.index();
+    }
+
+    public static void logOut() {
+        session.clear();
+        Application.index();
     }
 
     public static void addNewUser(Korisnik user) throws JAXBException {

@@ -9,10 +9,8 @@ import util.Util;
 
 public class Application extends Controller {
 
-    private DatabaseAccessor db = DatabaseAccessor.getInstance();
-
     public static void index() {
+        DatabaseAccessor db = DatabaseAccessor.getInstance();
         render();
     }
-
 }

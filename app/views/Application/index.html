@@ -36,10 +36,10 @@
                             <div id="login-form">
                                 #{form @Users.login(), method:'POST'}
                                     <div class="form-group">
-                                        <input type="email" name="citizen.ime" id="email" tabindex="1" class="form-control" placeholder="Email adresa" value="">
+                                        <input type="email" name="user.email" id="email" tabindex="1" class="form-control" placeholder="Email adresa" value="">
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Lozinka">
+                                        <input type="password" name="user.lozinka" id="password" tabindex="2" class="form-control" placeholder="Lozinka">
                                     </div>
                                     <div class="form-group">
                                         <div class="row">
@@ -53,16 +53,16 @@
                             <div id="register-form" style="display: none">
                                 #{form @Users.addNewUser(), method:'POST'}
                                     <div class="form-group">
-                                        <input type="text" name="citizen.ime" id="name" tabindex="1" class="form-control" placeholder="Ime" value="">
+                                        <input type="text" name="user.ime" id="name" tabindex="1" class="form-control" placeholder="Ime" value="">
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" name="citizen.prezime" id="surname" tabindex="1" class="form-control" placeholder="Prezime" value="">
+                                        <input type="text" name="user.prezime" id="surname" tabindex="1" class="form-control" placeholder="Prezime" value="">
                                     </div>
                                     <div class="form-group">
-                                        <input type="email" name="citizen.email" id="email" tabindex="1" class="form-control" placeholder="Email adresa" value="">
+                                        <input type="email" name="user.email" id="email" tabindex="1" class="form-control" placeholder="Email adresa" value="">
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Lozinka">
+                                        <input type="password" name="user.lozinka" id="password" tabindex="2" class="form-control" placeholder="Lozinka">
                                     </div>
                                     <div class="form-group">
                                         <input type="password" name="confirm-password" id="confirm-password" tabindex="2" class="form-control" placeholder="Ponovite lozinku">
