@@ -25,6 +25,12 @@ The goal of this project is to implement city hall informational system. System 
 #### DataBase access:
   - http url:``` http://147.91.177.194:8000/qconsole/ ``` 
 
+#### Screenshots:
+ - Login page:
+![login](https://cloud.githubusercontent.com/assets/15141614/15992868/446d1120-30d7-11e6-8bbe-470eecb50a29.png)
+ - Index page:
+![index](https://cloud.githubusercontent.com/assets/15141614/15992873/7a1808b6-30d7-11e6-9e39-f8dc8075aadc.png)
+
 #### Licence:
   - MIT
   
