@@ -8,23 +8,24 @@
     <xs:element name="Korisnici">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="Korisnik" maxOccurs="unbounded">
-                    <xs:complexType>
-                        <xs:sequence>
-                            <xs:element name="Tip" type="kp:Tip_korisnika"/>
-                            <xs:element name="Ime" type="xs:string"/>
-                            <xs:element name="Prezime" type="xs:string"/>
-                            <xs:element name="Email">
-                                <xs:simpleType>
-                                    <xs:restriction base="xs:string">
-                                        <xs:pattern value="[aA-zZ]+[0-9]*@[aA-zZ]+(\.[aA-zZ]+)+"/>
-                                    </xs:restriction>
-                                </xs:simpleType>
-                            </xs:element>
-                            <xs:element name="Lozinka" type="xs:string"/>
-                        </xs:sequence>
-                    </xs:complexType>
+                <xs:element maxOccurs="unbounded" ref="kp:Korisnik"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Korisnik">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Tip" type="kp:Tip_korisnika"/>
+                <xs:element name="Ime" type="xs:string"/>
+                <xs:element name="Prezime" type="xs:string"/>
+                <xs:element name="Email">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:pattern value="[aA-zZ]+[0-9]*@[aA-zZ]+(\.[aA-zZ]+)+"/>
+                        </xs:restriction>
+                    </xs:simpleType>
                 </xs:element>
+                <xs:element name="Lozinka" type="xs:string"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
