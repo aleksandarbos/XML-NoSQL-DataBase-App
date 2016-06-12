@@ -187,7 +187,7 @@ public class Korisnik {
     }
 
     public String toString() {
-        return this.ime + " " + this.prezime + " " + this.email;
+        return this.ime + " " + this.prezime + " " + this.email + " " + this.tip.toString().toUpperCase();
     }
 
 }
