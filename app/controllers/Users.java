@@ -3,7 +3,6 @@ package controllers;
 import dal.UsersDAO;
 import models.rs.gov.parlament.korisnici.Korisnik;
 import play.mvc.Controller;
-import play.mvc.Scope;
 
 import javax.xml.bind.JAXBException;
 import java.io.IOException;
