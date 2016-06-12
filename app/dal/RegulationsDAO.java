@@ -19,11 +19,13 @@ public class RegulationsDAO {
     /**
      * Adds new regulation to collection defined in COLLECTION_ID of {@link Regulations} class with
      * automatically generated document ID.
-     * @param regulationString Regulation text which is converted and added to database.
+     * @param regulationName The title of regulation.
+     * @param user The user who is uploading regulation to database records.
+     * @param regulationContent Regulation xml text which is converted and added to database.
      * @throws JAXBException
      */
-    public static void addRegulation(String regulationString) throws JAXBException{
-        StringHandle handle = new StringHandle(regulationString);
+    public static void addRegulation(String regulationName, String user, String regulationContent) throws JAXBException{
+        StringHandle handle = new StringHandle(regulationContent);
 
         DocumentMetadataHandle metadata = new DocumentMetadataHandle();
         metadata.getCollections().add(COLLECTION_ID);
@@ -36,4 +38,6 @@ public class RegulationsDAO {
         System.out.println("[INFO] Added regulation with docId: " + desc.getUri() + " to "
                 + "database collection: " + COLLECTION_ID);
     }
+
+    // TODO: Implement fetchAllRegulations()
 }

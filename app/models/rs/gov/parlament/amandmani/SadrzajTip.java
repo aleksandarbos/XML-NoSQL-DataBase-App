@@ -6,28 +6,30 @@
 //
 
 
-package models.rs.gov.parlament.propisi;
+package models.rs.gov.parlament.amandmani;
 
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlElementRef;
+import javax.xml.bind.annotation.XmlMixed;
 import javax.xml.bind.annotation.XmlType;
+
+import models.rs.gov.parlament.propisi.Referenca;
 
 
 /**
- * <p>Java class for anonymous complex type.
+ * <p>Java class for Sadrzaj_tip complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType>
+ * &lt;complexType name="Sadrzaj_tip">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element ref="{http://www.parlament.gov.rs/propisi}Propis" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element ref="{http://www.parlament.gov.rs/propisi}Referenca" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -37,42 +39,43 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "propis"
+@XmlType(name = "Sadrzaj_tip", propOrder = {
+    "content"
 })
-@XmlRootElement(name = "Propisi")
-public class Propisi {
+public class SadrzajTip {
 
-    @XmlElement(name = "Propis")
-    protected List<Propis> propis;
+    @XmlElementRef(name = "Referenca", namespace = "http://www.parlament.gov.rs/propisi", type = Referenca.class, required = false)
+    @XmlMixed
+    protected List<Object> content;
 
     /**
-     * Gets the value of the propis property.
+     * Gets the value of the content property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the propis property.
+     * This is why there is not a <CODE>set</CODE> method for the content property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getPropis().add(newItem);
+     *    getContent().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link Propis }
+     * {@link String }
+     * {@link Referenca }
      * 
      * 
      */
-    public List<Propis> getPropis() {
-        if (propis == null) {
-            propis = new ArrayList<Propis>();
+    public List<Object> getContent() {
+        if (content == null) {
+            content = new ArrayList<Object>();
         }
-        return this.propis;
+        return this.content;
     }
 
 }

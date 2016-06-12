@@ -16,8 +16,13 @@ public class Users extends Controller {
 
     public static void login(Korisnik user) throws IOException, JAXBException {
         Korisnik foundUser = UsersDAO.getCitizenFromDatabase(user);
+
         if(foundUser != null) {
-            session.put("user", foundUser.toString());   // only string objects allowed to put in session
+            session.put("user", foundUser.toString()); // NOTE: only string objects allowed to put in session
+            session.put("user-name", foundUser.getIme());
+            session.put("user-surname", foundUser.getPrezime());
+            session.put("user-type", foundUser.getTip().toString().toUpperCase());
+            session.put("user-email", foundUser.getEmail());
             Overview.show();
         }
         else
