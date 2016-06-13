@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet version="2.0" 
+<xsl:stylesheet version="2.0"
+	xmlns:a="http://www.parlament.gov.rs/amandmani" 
+	xmlns:p="http://www.parlament.gov.rs/propisi"
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
 	<xsl:template match="/">
 		<html>
 			<head>
-				<title><xsl:value-of select="//Naziv"/></title>
+				<title><xsl:value-of select="//p:Naziv"/><xsl:value-of select="//a:Naziv"/></title>
 				<style type="text/css">
 					h1 {
 						font-size: 24pt;
@@ -52,11 +54,11 @@
 		</html>
 	</xsl:template>
 	
-	<xsl:template match="Naziv">
+	<xsl:template match="p:Naziv">
 		<h1><xsl:value-of select="text()"/></h1>
 	</xsl:template>
 	
-	<xsl:template match="Deo">
+	<xsl:template match="p:Deo">
 		<h2>DEO 
 			<xsl:choose>
 				<xsl:when test="@Oznaka_dela = 1">
@@ -97,7 +99,7 @@
 		<xsl:apply-templates/> 
 	</xsl:template>
 	
-	<xsl:template match="Glava">
+	<xsl:template match="p:Glava">
 		<h3>
 			<xsl:choose>
 				<xsl:when test="@Oznaka_glave = 1">
@@ -138,12 +140,12 @@
 		<xsl:apply-templates/> 
 	</xsl:template>
 	
-	<xsl:template match="Odeljak">
+	<xsl:template match="p:Odeljak">
 		<h3><xsl:value-of select="@Oznaka_odeljka"/>. <xsl:value-of select="@Naziv_odeljka"/></h3>
 		<xsl:apply-templates/> 
 	</xsl:template>
 	
-	<xsl:template match="Pododeljak">
+	<xsl:template match="p:Pododeljak">
 		<h4>
 			<xsl:choose>
 				<xsl:when test="@Oznaka_pododeljka = 1">
@@ -205,68 +207,72 @@
 		<xsl:apply-templates/> 
 	</xsl:template>
 	
-	<xsl:template match="Clan">
+	<xsl:template match="p:Clan">
 		<h5><xsl:value-of select="@Naziv_clana"/><br/>
 		Član <xsl:value-of select="@Oznaka_clana"/>.</h5>
 		<xsl:apply-templates/> 
 	</xsl:template>
 	
-	<xsl:template match="Stav">
+	<xsl:template match="p:Stav">
 		<p><xsl:value-of select="text()"/></p>
-		<xsl:apply-templates select="Tacka"/> 
+		<xsl:apply-templates select="p:Tacka"/> 
 	</xsl:template>
 	
-	<xsl:template match="Tacka">
+	<xsl:template match="p:Tacka">
 		<li>
 			<xsl:value-of select="@Oznaka_tacke"/>) <xsl:value-of select="text()"/>
 		</li><br/>
-		<xsl:apply-templates select="Podtacka"/>
+		<xsl:apply-templates select="p:Podtacka"/>
 	</xsl:template>
 	
-	<xsl:template match="Podtacka">
+	<xsl:template match="p:Podtacka">
 		<li>
 			(<xsl:value-of select="@Oznaka_podtacke"/>) <xsl:value-of select="text()"/>
 		</li><br/>
-		<xsl:apply-templates select="Alineja"/> 
+		<xsl:apply-templates select="p:Alineja"/> 
 	</xsl:template>
 	
-	<xsl:template match="Alineja">
+	<xsl:template match="p:Alineja">
 		<li>
 			- <xsl:value-of select="@Oznaka_alineje"/> <xsl:value-of select="text()"/>
 		</li><br/>
 	</xsl:template>
 	
-	<xsl:template match="Amandman">
+	<xsl:template match="a:Amandman">
 		<h5>
 			AMANDMAN
 		</h5>
 		<xsl:apply-templates/> 
 	</xsl:template>
 	
-	<xsl:template match="Sadrzaj">
+	<xsl:template match="a:Naziv">
+		<h1><xsl:value-of select="text()"/></h1>
+	</xsl:template>
+	
+	<xsl:template match="a:Sadrzaj">
 		<p>
 			<xsl:value-of select="text()"/>
 		</p>
-		<xsl:apply-templates select="Referenca"/> 
+		<xsl:apply-templates select="a:Referenca"/> 
 	</xsl:template>
 	
-	<xsl:template match="Obrazlozenje">
+	<xsl:template match="a:Obrazlozenje">
 		<h5>
 			Obrazloženje:
 		</h5>
 		<p>
 			<xsl:value-of select="text()"/>
 		</p>
-		<xsl:apply-templates select="Referenca"/> 
+		<xsl:apply-templates select="a:Referenca"/> 
 	</xsl:template>
 	
-	<xsl:template match="Preambula">
+	<xsl:template match="a:Preambula">
 		<p class="hide">
 			<xsl:value-of select="text()"/>
 		</p>
 	</xsl:template>
 	
-	<xsl:template match="Deo_za_izmenu">
+	<xsl:template match="a:Deo_za_izmenu">
 		<p class="hide">
 			<xsl:value-of select="text()"/>
 		</p>

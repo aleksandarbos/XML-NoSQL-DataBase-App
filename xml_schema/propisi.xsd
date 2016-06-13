@@ -36,7 +36,7 @@
                     </xs:complexType>
                 </xs:element>
             </xs:sequence>
-            <xs:attribute name="Oznaka" type="xs:int" use="required"/>
+            <xs:attribute name="Uri_propisa" type="xs:string" use="required"/>
         </xs:complexType>
     </xs:element>
     <xs:element name="Preambula">
@@ -164,8 +164,8 @@
         <xs:complexType>
             <xs:simpleContent>
                 <xs:extension base="xs:string">
-                    <xs:attribute name="Oznaka_propisa" type="xs:int" use="required"/>
-                    <xs:attribute name="Oznaka_clana" type="xs:int" use="required"/>
+                    <xs:attribute name="Uri_propisa" type="xs:string" use="required"/>
+                    <xs:attribute name="Oznaka_clana" type="xs:int" use="optional"/>
                 </xs:extension>
             </xs:simpleContent>
         </xs:complexType>

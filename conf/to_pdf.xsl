@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+<xsl:stylesheet version="1.0"
+	xmlns:p="http://www.parlament.gov.rs/propisi"
+	xmlns:a="http://www.parlament.gov.rs/amandmani" 
+ 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 	xmlns:fo="http://www.w3.org/1999/XSL/Format">
 
 	<xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes"/>
@@ -20,7 +23,7 @@
         </fo:root>
 	</xsl:template>
 	
-	<xsl:template match="Naziv">
+	<xsl:template match="p:Naziv">
 		<fo:block font-family="Arial" 
 			font-weight="bold" 
 			font-size="18pt" 
@@ -31,7 +34,7 @@
 		</fo:block>
 	</xsl:template>
 	
-	<xsl:template match="Deo">
+	<xsl:template match="p:Deo">
 		<fo:block font-family="Arial" 
 			font-weight="bold" 
 			font-size="16pt" 
@@ -85,7 +88,7 @@
 		<xsl:apply-templates/> 
 	</xsl:template>
 	
-	<xsl:template match="Glava">
+	<xsl:template match="p:Glava">
 		<fo:block font-family="Arial" 
 			font-weight="bold" 
 			font-size="15pt" 
@@ -131,7 +134,7 @@
 		<xsl:apply-templates/> 
 	</xsl:template>
 	
-	<xsl:template match="Odeljak">
+	<xsl:template match="p:Odeljak">
 		<fo:block font-family="Arial" 
 			font-weight="bold" 
 			font-size="14pt" 
@@ -143,7 +146,7 @@
 		<xsl:apply-templates/> 
 	</xsl:template>
 	
-	<xsl:template match="Pododeljak">
+	<xsl:template match="p:Pododeljak">
 		<fo:block font-family="Arial" 
 			font-weight="bold" 
 			font-size="14pt" 
@@ -210,7 +213,7 @@
 		<xsl:apply-templates/> 
 	</xsl:template>
 	
-	<xsl:template match="Clan">
+	<xsl:template match="p:Clan">
 		<fo:block font-family="Arial" 
 			font-size="14pt" 
 			font-weight="bold" 
@@ -230,7 +233,7 @@
 		<xsl:apply-templates/> 
 	</xsl:template>
 	
-	<xsl:template match="Stav">
+	<xsl:template match="p:Stav">
 		<fo:block font-family="Arial" 
 			font-size="12pt" 
 			text-align="justify"
@@ -239,10 +242,10 @@
 			space-after="12pt">
 			<xsl:value-of select="text()"/>
 		</fo:block>
-		<xsl:apply-templates select="Tacka"/> 
+		<xsl:apply-templates select="p:Tacka"/> 
 	</xsl:template>
 	
-	<xsl:template match="Tacka">
+	<xsl:template match="p:Tacka">
 		<fo:block font-family="Arial" 
 			font-size="12pt" 
 			text-align="justify"
@@ -251,10 +254,10 @@
 			space-after="12pt">
 			<xsl:value-of select="@Oznaka_tacke"/>) <xsl:value-of select="text()"/>
 		</fo:block>
-		<xsl:apply-templates select="Podtacka"/>
+		<xsl:apply-templates select="p:Podtacka"/>
 	</xsl:template>
 	
-	<xsl:template match="Podtacka">
+	<xsl:template match="p:Podtacka">
 		<fo:block font-family="Arial" 
 			font-size="12pt" 
 			text-align="justify"
@@ -263,10 +266,10 @@
 			space-after="12pt">
 			(<xsl:value-of select="@Oznaka_podtacke"/>) <xsl:value-of select="text()"/>
 		</fo:block>
-		<xsl:apply-templates select="Alineja"/> 
+		<xsl:apply-templates select="p:Alineja"/> 
 	</xsl:template>
 	
-	<xsl:template match="Alineja">
+	<xsl:template match="p:Alineja">
 		<fo:block font-family="Arial" 
 			font-size="12pt" 
 			text-align="justify"
@@ -277,7 +280,7 @@
 		</fo:block>
 	</xsl:template>
 	
-	<xsl:template match="Amandman">
+	<xsl:template match="a:Amandman">
 		<fo:block font-family="Arial" 
 			font-weight="bold" 
 			font-size="14pt" 
@@ -289,7 +292,18 @@
 		<xsl:apply-templates/> 
 	</xsl:template>
 	
-	<xsl:template match="Sadrzaj">
+	<xsl:template match="a:Naziv">
+		<fo:block font-family="Arial" 
+			font-weight="bold" 
+			font-size="18pt" 
+			text-align="center"
+			space-before="12pt"
+			space-after="12pt">
+			<xsl:value-of select="text()"/>
+		</fo:block>
+	</xsl:template>
+	
+	<xsl:template match="a:Sadrzaj">
 		<fo:block font-family="Arial" 
 			font-size="12pt" 
 			text-align="justify"
@@ -297,10 +311,9 @@
 			space-after="12pt">
 			<xsl:value-of select="text()"/>
 		</fo:block>
-		<xsl:apply-templates/> 
 	</xsl:template>
 	
-	<xsl:template match="Obrazlozenje">
+	<xsl:template match="a:Obrazlozenje">
 		<fo:block font-family="Arial" 
 			font-size="12pt" 
 			font-weight="bold" 
@@ -316,7 +329,6 @@
 			space-after="12pt">
 			<xsl:value-of select="text()"/>
 		</fo:block>
-		<xsl:apply-templates/> 
 	</xsl:template>
 	
 </xsl:stylesheet>

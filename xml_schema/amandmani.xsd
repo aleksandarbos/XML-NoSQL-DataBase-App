@@ -21,15 +21,15 @@
                 <xs:element name="Deo_za_izmenu">
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:element name="Oznaka_propisa" type="xs:int"/>
-                            <xs:element name="Oznaka_clana" type="xs:int"/>
+                            <xs:element name="Uri_propisa" type="xs:string"/>
+                            <xs:element name="Oznaka_clana" type="xs:int" minOccurs="0"/>
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
                 <xs:element name="Sadrzaj" type="ap:Sadrzaj_tip"> </xs:element>
                 <xs:element name="Obrazlozenje" type="ap:Sadrzaj_tip"/>
             </xs:sequence>
-            <xs:attribute form="unqualified" name="Oznaka" type="xs:int" use="required"/>
+            <xs:attribute form="unqualified" name="Uri_amandmana" type="xs:string" use="required"/>
         </xs:complexType>
     </xs:element>
     <xs:simpleType name="Tip_amandmana">

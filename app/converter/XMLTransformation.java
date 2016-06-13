@@ -1,6 +1,5 @@
 package converter;
 
-
 import com.sun.org.apache.xalan.internal.xsltc.trax.TransformerFactoryImpl;
 import org.apache.fop.apps.*;
 import org.xml.sax.SAXException;
@@ -14,34 +13,40 @@ import java.io.*;
 
 public class XMLTransformation {
 
-	private static void transformToPdf() throws SAXException, TransformerException, IOException {
+	public static void transformToPdf() {
 		
-		File xmlFile = new File("xml_schema/primeri/amandment.xml");
+		File xmlFile = new File("xml_schema/primeri/regulation.xml");
 		File pdfFile = new File("xml_schema/primeri/amandment.pdf");
 		File xsltFile = new File("conf/to_pdf.xsl");
 
 		FopFactory fopFactory = FopFactory.newInstance();
-		fopFactory.setUserConfig(new File("conf/fop.xconf"));
-		TransformerFactory transformerFactory = new TransformerFactoryImpl();
-
-		System.out.println("[INFO] Transformation to PDF: Started.");
-		StreamSource transformSource = new StreamSource(xsltFile);
-		StreamSource source = new StreamSource(xmlFile);
-		FOUserAgent userAgent = fopFactory.newFOUserAgent();
-		ByteArrayOutputStream outStream = new ByteArrayOutputStream();
-		Transformer xslFoTransformer = transformerFactory.newTransformer(transformSource);
-		Fop fop = fopFactory.newFop(MimeConstants.MIME_PDF, userAgent, outStream);
-		Result res = new SAXResult(fop.getDefaultHandler());
-		xslFoTransformer.transform(source, res);
-
-		OutputStream out = new BufferedOutputStream(new FileOutputStream(pdfFile));
-		out.write(outStream.toByteArray());
-		out.close();
-		System.out.println("[INFO] Transformation to PDF: End.");
+		try {
+			fopFactory.setUserConfig(new File("conf/fop.xconf"));
+			TransformerFactory transformerFactory = new TransformerFactoryImpl();	
+			System.out.println("[INFO] Transformation to PDF: Started.");
+			StreamSource transformSource = new StreamSource(xsltFile);
+			StreamSource source = new StreamSource(xmlFile);
+			FOUserAgent userAgent = fopFactory.newFOUserAgent();
+			ByteArrayOutputStream outStream = new ByteArrayOutputStream();
+			Transformer xslFoTransformer = transformerFactory.newTransformer(transformSource);
+			Fop fop = fopFactory.newFop(MimeConstants.MIME_PDF, userAgent, outStream);
+			Result res = new SAXResult(fop.getDefaultHandler());
+			xslFoTransformer.transform(source, res);
+			OutputStream out = new BufferedOutputStream(new FileOutputStream(pdfFile));
+			out.write(outStream.toByteArray());
+			out.close();
+			System.out.println("[INFO] Transformation to PDF: End.");
+		} catch (TransformerException e) {
+			e.printStackTrace();
+		} catch (FOPException e) {
+			e.printStackTrace();
+		} catch (SAXException | IOException e) {
+			e.printStackTrace();
+		}
 
 	}
 
-	private static void transformToXhtml() {
+	public static void transformToXhtml() {
 		File xmlFile = new File("xml_schema/primeri/amandment.xml");
 		File xhtmlFile = new File("xml_schema/primeri/amandment.html");
 		File xsltFile = new File("conf/to_html.xsl");
