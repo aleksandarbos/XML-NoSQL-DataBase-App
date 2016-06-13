@@ -10,11 +10,25 @@
 		Sledi tabela sa prikazom svih usvojenih akata i onih koji su u proceduri.
 	</p>
 	<table class="tabelaPregled">
+		
 		<tr><th class="status">Status</th><th class="tip">Tip</th><th class="naziv">Naziv</th><th class="pregled">&nbsp </th><th class="pdf">&nbsp </th></tr>
-		<tr><td>izmena akata</td><td>u proceduri</td><td class="documentId" style="display:none;">12</td><td>Prigovor po osnovi br 243,na clan 7543, zakona o medjuljudskim odnosima 23</td><td><a class="alterationPreview">pogledaj</a></td><td><a class="alterationToPdf">u PDF</a></td></tr>
-		<tr><td>izmena akata</td><td>u proceduri</td><td class="documentId" style="display:none;">23</td><td>Prigovor po osnovi br 243,na clan 7543, zakona o medjuljudskim odnosima 23</td><td><a class="alterationPreview">pogledaj</a></td><td><a class="alterationToPdf">u PDF</a></td></tr>
-		<tr><td>izmena akata</td><td>u proceduri</td><td class="documentId" style="display:none;">34</td><td>Prigovor po osnovi br 243,na clan 7543, zakona o medjuljudskim odnosima 23</td><td><a class="alterationPreview">pogledaj</a></td><td><a class="alterationToPdf">u PDF</a></td></tr>
-		<tr><td>izmena akata</td><td>u proceduri</td><td class="documentId" style="display:none;">56</td><td>Prigovor po osnovi br 243,na clan 7543, zakona o medjuljudskim odnosima 23</td><td><a class="alterationPreview">pogledaj</a></td><td><a class="alterationToPdf">u PDF</a></td></tr>
+		#{list items: combined, as:'document'}
+		<tr>
+			<td>${document.getPreambula().getStatus()}</td>
+			<td> 
+				#{if document.getTipDokumenta() == 'PROPIS'}
+					akt
+				#{/if}
+				#{else}
+					amandman
+				#{/else}
+			</td>
+			<td class="documentId" style="display:none;">${document.getOznaka()}</td>
+			<td>${document.getNaziv()}</td>
+			<td><a class="alterationPreview">pogledaj</a></td>
+			<td><a class="alterationToPdf">u PDF</a></td>
+		</tr>
+		#{/list}
 		
 	</table>
 </div>

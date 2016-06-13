@@ -46,6 +46,13 @@
 					.hide {
   					    display: none;
 					}
+					a {
+						color:#59B2E0;
+					}
+					a:hover {
+						color:#069;
+						cursor:pointer
+					}
 				</style>
 			</head>
 			<body>
@@ -251,9 +258,8 @@
 	
 	<xsl:template match="a:Sadrzaj">
 		<p>
-			<xsl:value-of select="text()"/>
+			<xsl:value-of select="."/>
 		</p>
-		<xsl:apply-templates select="a:Referenca"/> 
 	</xsl:template>
 	
 	<xsl:template match="a:Obrazlozenje">
@@ -262,8 +268,8 @@
 		</h5>
 		<p>
 			<xsl:value-of select="text()"/>
+			<xsl:apply-templates select="a:Referenca"/> 
 		</p>
-		<xsl:apply-templates select="a:Referenca"/> 
 	</xsl:template>
 	
 	<xsl:template match="a:Preambula">
@@ -276,6 +282,12 @@
 		<p class="hide">
 			<xsl:value-of select="text()"/>
 		</p>
+	</xsl:template>
+	
+	<xsl:template match="a:Referenca">
+		<a href="#">
+			<xsl:value-of select="text()"/>
+		</a>
 	</xsl:template>
 	
 </xsl:stylesheet>

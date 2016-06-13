@@ -37,6 +37,7 @@
                 </xs:element>
             </xs:sequence>
             <xs:attribute name="Uri_propisa" type="xs:string" use="required"/>
+            <xs:attribute fixed="PROPIS" name="Tip_dokumenta" type="xs:string" use="required"/>
         </xs:complexType>
     </xs:element>
     <xs:element name="Preambula">

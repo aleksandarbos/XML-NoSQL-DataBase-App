@@ -30,6 +30,7 @@
                 <xs:element name="Obrazlozenje" type="ap:Sadrzaj_tip"/>
             </xs:sequence>
             <xs:attribute form="unqualified" name="Uri_amandmana" type="xs:string" use="required"/>
+            <xs:attribute fixed="AMANDMAN" name="Tip_dokumenta" type="xs:string" use="required"/>
         </xs:complexType>
     </xs:element>
     <xs:simpleType name="Tip_amandmana">

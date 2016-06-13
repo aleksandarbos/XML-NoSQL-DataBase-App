@@ -1,9 +1,12 @@
 package converter;
 
 import com.sun.org.apache.xalan.internal.xsltc.trax.TransformerFactoryImpl;
+
+import org.apache.commons.io.FilenameUtils;
 import org.apache.fop.apps.*;
 import org.xml.sax.SAXException;
 
+import javax.swing.JFileChooser;
 import javax.xml.transform.*;
 import javax.xml.transform.sax.SAXResult;
 import javax.xml.transform.stream.StreamResult;
@@ -14,9 +17,17 @@ import java.io.*;
 public class XMLTransformation {
 
 	public static void transformToPdf() {
-		
-		File xmlFile = new File("xml_schema/primeri/regulation.xml");
+
 		File pdfFile = new File("tmp/amandment.pdf");
+		JFileChooser fileChooser = new JFileChooser();
+		if (fileChooser.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
+			pdfFile = fileChooser.getSelectedFile();
+			if (!FilenameUtils.getExtension(pdfFile.getName()).equalsIgnoreCase("pdf"))
+				pdfFile = new File(pdfFile.toString() + ".pdf");
+		} else
+			return;
+		  
+		File xmlFile = new File("xml_schema/primeri/regulation.xml");
 		File xsltFile = new File("conf/to_pdf.xsl");
 
 		FopFactory fopFactory = FopFactory.newInstance();
