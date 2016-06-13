@@ -5,7 +5,7 @@ import play.mvc.Controller;
 import play.mvc.With;
 
 @With(Secure.class)
-public class Amandments extends Controller {
+public class Amendments extends Controller {
 
     public static void show() {
         String userType = session.get("user-type");
