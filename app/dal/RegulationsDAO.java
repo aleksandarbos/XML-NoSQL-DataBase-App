@@ -5,9 +5,17 @@ import com.marklogic.client.document.DocumentUriTemplate;
 import com.marklogic.client.io.DocumentMetadataHandle;
 import com.marklogic.client.io.StringHandle;
 import controllers.Regulations;
+import converter.Converter;
+import converter.UnmarshallType;
 import database.DatabaseAccessor;
+import database.XQueryInvoker;
+import models.rs.gov.parlament.propisi.Propis;
 
 import javax.xml.bind.JAXBException;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Vector;
 
 /**
  * Created by aleksandar on 9.6.16..
@@ -39,5 +47,22 @@ public class RegulationsDAO {
                 + "database collection: " + COLLECTION_ID);
     }
 
-    // TODO: Implement fetchAllRegulations()
+    /**
+     * Fetches all regulations from regulations collection in database.
+     * @return Vector of found regulations.
+     * @throws IOException XQuery file not found or cannot be opened.
+     * @throws JAXBException
+     */
+    public static Vector<Propis> fetchAllRegulations() throws IOException, JAXBException {
+        Vector<String> responsesStr = XQueryInvoker.execute("/regulations/fetch-all.xqy");
+        Vector<Propis> regulations = new Vector<Propis>();
+        Iterator<String> it = responsesStr.iterator();
+
+        while(it.hasNext()) {
+            Propis regulation = (Propis) Converter.unmarshall(UnmarshallType.FROM_STRING, it.next(), Propis.class);
+            regulations.add(regulation);
+        }
+
+        return regulations;
+    }
 }

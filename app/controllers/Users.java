@@ -18,7 +18,7 @@ public class Users extends Controller {
         Korisnik foundUser = UsersDAO.getCitizenFromDatabase(user);
 
         if(foundUser != null) {
-            session.put("user", foundUser.toString()); // NOTE: only string objects allowed to put in session
+            session.put("user", foundUser.toString()); // NOTE: only string objects allowed
             session.put("user-name", foundUser.getIme());
             session.put("user-surname", foundUser.getPrezime());
             session.put("user-type", foundUser.getTip().toString().toUpperCase());
