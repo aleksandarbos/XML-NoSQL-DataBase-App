@@ -8,14 +8,13 @@ import controllers.Regulations;
 import converter.Converter;
 import converter.UnmarshallType;
 import database.DatabaseAccessor;
+import database.DatabaseQuery;
 import database.XQueryInvoker;
 import models.rs.gov.parlament.propisi.Propis;
 
 import javax.xml.bind.JAXBException;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Vector;
+import java.util.*;
 
 /**
  * Created by aleksandar on 9.6.16..
@@ -53,7 +52,7 @@ public class RegulationsDAO {
      * @throws IOException XQuery file not found or cannot be opened.
      * @throws JAXBException
      */
-    public static Vector<Propis> fetchAllRegulations() throws IOException, JAXBException {
+    public static Vector<Propis> fetchAllRegulationsXQuery() throws IOException, JAXBException {
         Vector<String> responsesStr = XQueryInvoker.execute("/regulations/fetch-all.xqy");
         Vector<Propis> regulations = new Vector<Propis>();
         Iterator<String> it = responsesStr.iterator();
@@ -64,5 +63,48 @@ public class RegulationsDAO {
         }
 
         return regulations;
+    }
+
+    /**
+     * Fetches all regulations from regulations collection in database.
+     * @return HashMap<String, Propis> of found regulations, where key=>docUri and value=>regulationObject.
+     * @throws IOException
+     * @throws JAXBException
+     */
+    public static HashMap<String, Propis> fetchAllRegulations() throws IOException, JAXBException {
+        HashMap<String, Object> searchResults = DatabaseQuery.search("", "/parliament/regulations", Propis.class);
+        HashMap<String, Propis> returnValues = new HashMap<String, Propis>();
+
+        for (Map.Entry<String, Object> entry : searchResults.entrySet()) {
+            String key = entry.getKey();
+            Object value = entry.getValue();
+            returnValues.put(key, (Propis) value);
+        }
+
+        return returnValues;
+    }
+
+    /**
+     * Fetches all regulations from regulations collection in database by custom query.
+     * @return HashMap<String, Propis> of found regulations, where key=>docUri and value=>regulationObject.
+     * @throws IOException
+     * @throws JAXBException
+     */
+    public static HashMap<String, Propis> fetchRegulationsByQuery(String query) throws IOException, JAXBException {
+        HashMap<String, Object> searchResults = DatabaseQuery.search(query, "/parliament/regulations", Propis.class);
+        HashMap<String, Propis> returnValues = new HashMap<String, Propis>();
+
+        for (Map.Entry<String, Object> entry : searchResults.entrySet()) {
+            String key = entry.getKey();
+            Object value = entry.getValue();
+            returnValues.put(key, (Propis) value);
+        }
+
+        return returnValues;
+    }
+
+
+    public static void updateRegulation(Propis regulation) {
+        
     }
 }
