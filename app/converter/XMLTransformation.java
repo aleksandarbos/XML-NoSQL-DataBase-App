@@ -16,7 +16,7 @@ public class XMLTransformation {
 	public static void transformToPdf() {
 		
 		File xmlFile = new File("xml_schema/primeri/regulation.xml");
-		File pdfFile = new File("xml_schema/primeri/amandment.pdf");
+		File pdfFile = new File("tmp/amandment.pdf");
 		File xsltFile = new File("conf/to_pdf.xsl");
 
 		FopFactory fopFactory = FopFactory.newInstance();
@@ -48,7 +48,7 @@ public class XMLTransformation {
 
 	public static void transformToXhtml() {
 		File xmlFile = new File("xml_schema/primeri/amandment.xml");
-		File xhtmlFile = new File("xml_schema/primeri/amandment.html");
+		File xhtmlFile = new File("tmp/amandment.html");
 		File xsltFile = new File("conf/to_html.xsl");
 
 		try {
