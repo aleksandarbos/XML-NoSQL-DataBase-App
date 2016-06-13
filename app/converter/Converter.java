@@ -1,5 +1,8 @@
 package converter;
 
+import converter.types.MarshallType;
+import converter.types.UnmarshallType;
+
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;

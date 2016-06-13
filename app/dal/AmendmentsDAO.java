@@ -6,7 +6,7 @@ import com.marklogic.client.io.DocumentMetadataHandle;
 import com.marklogic.client.io.StringHandle;
 import controllers.Regulations;
 import converter.Converter;
-import converter.MarshallType;
+import converter.types.MarshallType;
 import database.DatabaseAccessor;
 import models.rs.gov.parlament.amandmani.Amandman;
 
@@ -22,12 +22,10 @@ public class AmendmentsDAO {
     /**
      * Adds new amendment to collection defined in COLLECTION_ID of {@link Regulations} class with
      * automatically generated document ID.
-     * @param amendmentName The title of amendment.
-     * @param userName The user who is uploading amendment to database records.
      * @param amendment Amandment object and added to database.
      * @throws JAXBException
      */
-    public static void addAmandment(String regulationUri, String amendmentName, String userName, Amandman amendment) throws JAXBException{
+    public static void addAmandment(Amandman amendment) throws JAXBException{
 
         String amendmentContent = Converter.marshall(MarshallType.TO_STRING, amendment, "");
         StringHandle handle = new StringHandle(amendmentContent);

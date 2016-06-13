@@ -1,8 +1,8 @@
 package dal;
 
 import converter.Converter;
-import converter.MarshallType;
-import converter.UnmarshallType;
+import converter.types.MarshallType;
+import converter.types.UnmarshallType;
 import database.DatabaseAccessor;
 import models.rs.gov.parlament.korisnici.Korisnici;
 import models.rs.gov.parlament.korisnici.Korisnik;

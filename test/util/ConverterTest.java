@@ -1,13 +1,6 @@
 package util;
 
-import converter.Converter;
-import converter.MarshallType;
-import converter.UnmarshallType;
-import models.rs.gov.parlament.korisnici.*;
 import org.junit.Test;
-
-import javax.xml.bind.JAXBException;
-import java.util.List;
 
 /**
  * Created by aleksandar on 5.6.16..

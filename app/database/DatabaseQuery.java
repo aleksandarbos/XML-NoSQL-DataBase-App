@@ -6,7 +6,7 @@ import com.marklogic.client.query.MatchLocation;
 import com.marklogic.client.query.QueryManager;
 import com.marklogic.client.query.StringQueryDefinition;
 import converter.Converter;
-import converter.UnmarshallType;
+import converter.types.UnmarshallType;
 import org.w3c.dom.Node;
 
 import javax.xml.bind.JAXBException;

@@ -1,4 +1,4 @@
-package converter;
+package converter.types;
 
 /**
  * Created by aleksandar on 5.6.16..

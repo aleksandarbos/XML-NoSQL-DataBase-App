@@ -6,7 +6,8 @@ import com.marklogic.client.io.DocumentMetadataHandle;
 import com.marklogic.client.io.StringHandle;
 import controllers.Regulations;
 import converter.Converter;
-import converter.UnmarshallType;
+import converter.types.MarshallType;
+import converter.types.UnmarshallType;
 import database.DatabaseAccessor;
 import database.DatabaseQuery;
 import database.XQueryInvoker;
@@ -26,12 +27,11 @@ public class RegulationsDAO {
     /**
      * Adds new regulation to collection defined in COLLECTION_ID of {@link Regulations} class with
      * automatically generated document ID.
-     * @param regulationName The title of regulation.
-     * @param user The user who is uploading regulation to database records.
-     * @param regulationContent Regulation xml text which is converted and added to database.
+     * @param regulation Regulation object that will be written to database records.
      * @throws JAXBException
      */
-    public static void addRegulation(String regulationName, String user, String regulationContent) throws JAXBException{
+    public static void addRegulation(Propis regulation) throws JAXBException{
+        String regulationContent = Converter.marshall(MarshallType.TO_STRING, regulation, "");
         StringHandle handle = new StringHandle(regulationContent);
 
         DocumentMetadataHandle metadata = new DocumentMetadataHandle();
@@ -72,7 +72,7 @@ public class RegulationsDAO {
      * @throws JAXBException
      */
     public static HashMap<String, Propis> fetchAllRegulations() throws IOException, JAXBException {
-        HashMap<String, Object> searchResults = DatabaseQuery.search("", "/parliament/regulations", Propis.class);
+        HashMap<String, Object> searchResults = DatabaseQuery.search("", COLLECTION_ID, Propis.class);
         HashMap<String, Propis> returnValues = new HashMap<String, Propis>();
 
         for (Map.Entry<String, Object> entry : searchResults.entrySet()) {
@@ -91,7 +91,7 @@ public class RegulationsDAO {
      * @throws JAXBException
      */
     public static HashMap<String, Propis> fetchRegulationsByQuery(String query) throws IOException, JAXBException {
-        HashMap<String, Object> searchResults = DatabaseQuery.search(query, "/parliament/regulations", Propis.class);
+        HashMap<String, Object> searchResults = DatabaseQuery.search(query, COLLECTION_ID, Propis.class);
         HashMap<String, Propis> returnValues = new HashMap<String, Propis>();
 
         for (Map.Entry<String, Object> entry : searchResults.entrySet()) {
@@ -104,7 +104,7 @@ public class RegulationsDAO {
     }
 
 
-    public static void updateRegulation(Propis regulation) {
+    public static void updateRegulation(String regulationUri, Propis regulation) {
         
     }
 }
