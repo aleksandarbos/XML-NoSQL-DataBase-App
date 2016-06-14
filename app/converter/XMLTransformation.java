@@ -19,14 +19,14 @@ public class XMLTransformation {
 	public static void transformToPdf() {
 
 		File pdfFile = new File("tmp/amandment.pdf");
-		JFileChooser fileChooser = new JFileChooser();
+		/*JFileChooser fileChooser = new JFileChooser();
 		if (fileChooser.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
 			pdfFile = fileChooser.getSelectedFile();
 			if (!FilenameUtils.getExtension(pdfFile.getName()).equalsIgnoreCase("pdf"))
 				pdfFile = new File(pdfFile.toString() + ".pdf");
 		} else
 			return;
-		  
+		  */
 		File xmlFile = new File("xml_schema/primeri/regulation.xml");
 		File xsltFile = new File("conf/to_pdf.xsl");
 
@@ -58,7 +58,7 @@ public class XMLTransformation {
 	}
 
 	public static void transformToXhtml() {
-		File xmlFile = new File("xml_schema/primeri/amandment.xml");
+		File xmlFile = new File("xml_schema/primeri/regulation.xml");
 		File xhtmlFile = new File("tmp/amandment.html");
 		File xsltFile = new File("conf/to_html.xsl");
 

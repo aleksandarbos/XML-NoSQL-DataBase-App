@@ -27,7 +27,7 @@
             </Clan>
             <Clan Oznaka_clana="4">
                 <Stav Oznaka_stava="5">
-                     Cilj ovog zakona je obezbeđivanje održivog gazdovanja populacijama divljači i 
+                     Cilj ovog zakona je<Referenca Uri_propisa="#">Predlog zakona</Referenca> obezbeđivanje održivog gazdovanja populacijama divljači i 
                         njihovih staništa na način i u obimu kojim se trajno održava i unapređuje vitalnost 
                         populacija divljači, proizvodna sposobnost staništa i biološka raznovrsnost, čime se 
                         postiže ispunjavanje ekonomskih, ekoloških i socijalnih funkcija lovstva.
@@ -58,7 +58,7 @@
                         ravnoteža i biološka raznovrsnost.
                 </Stav>
                 <Stav Oznaka_stava="10">
-                        Zabrane iz člana 22. tač.<Referenca Oznaka_propisa="12" Oznaka_clana="12"> 3) i 4) </Referenca>ovog zakona ne odnose se na divljač ugroženu od 
+                        Zabrane iz člana 22. tač. ovog zakona ne odnose se na divljač ugroženu od 
                         elementarnih nepogoda, u slučajevima sprečavanja i suzbijanja zaraznih bolesti, 
                         organizovanog hvatanja povređene divljači, naseljavanja divljači i ispitivanja 
                         urođenih osobina lovačkih pasa, kao i na divljač za potrebe naučnog istraživanja, 

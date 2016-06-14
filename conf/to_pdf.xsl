@@ -234,27 +234,25 @@
 	</xsl:template>
 	
 	<xsl:template match="p:Stav">
-		<fo:block font-family="Arial" 
+		<fo:block  
 			font-size="12pt" 
 			text-align="justify"
 			text-indent="1.5cm"
 			space-before="12pt"
 			space-after="12pt">
-			<xsl:value-of select="text()"/>
+			<xsl:apply-templates/>
 		</fo:block>
-		<xsl:apply-templates select="p:Tacka"/> 
 	</xsl:template>
 	
 	<xsl:template match="p:Tacka">
-		<fo:block font-family="Arial" 
+		<fo:block 
 			font-size="12pt" 
 			text-align="justify"
 			text-indent="1.5cm"
 			space-before="12pt"
 			space-after="12pt">
-			<xsl:value-of select="@Oznaka_tacke"/>) <xsl:value-of select="text()"/>
+			<xsl:value-of select="@Oznaka_tacke"/>) <xsl:apply-templates/>
 		</fo:block>
-		<xsl:apply-templates select="p:Podtacka"/>
 	</xsl:template>
 	
 	<xsl:template match="p:Podtacka">
@@ -264,9 +262,8 @@
 			text-indent="1.5cm"
 			space-before="12pt"
 			space-after="12pt">
-			(<xsl:value-of select="@Oznaka_podtacke"/>) <xsl:value-of select="text()"/>
+			(<xsl:value-of select="@Oznaka_podtacke"/>) <xsl:apply-templates/>
 		</fo:block>
-		<xsl:apply-templates select="p:Alineja"/> 
 	</xsl:template>
 	
 	<xsl:template match="p:Alineja">
@@ -276,8 +273,18 @@
 			text-indent="1.5cm"
 			space-before="12pt"
 			space-after="12pt">
-			- <xsl:value-of select="@Oznaka_alineje"/> <xsl:value-of select="text()"/>
+			- <xsl:value-of select="@Oznaka_alineje"/> <xsl:apply-templates/>
 		</fo:block>
+	</xsl:template>
+	
+	<xsl:template match="p:Referenca">
+		<fo:basic-link color="#069"
+			text-decoration="underline">
+			<xsl:attribute name="external-destination">
+				<xsl:value-of select="@Uri_propisa"/>
+			</xsl:attribute>
+			<xsl:apply-templates/> 
+		</fo:basic-link>
 	</xsl:template>
 	
 	<xsl:template match="a:Amandman">
@@ -309,7 +316,7 @@
 			text-align="justify"
 			space-before="26pt"
 			space-after="12pt">
-			<xsl:value-of select="text()"/>
+			<xsl:apply-templates/>
 		</fo:block>
 	</xsl:template>
 	
@@ -327,8 +334,22 @@
 			text-align="justify"
 			space-before="12pt"
 			space-after="12pt">
-			<xsl:value-of select="text()"/>
+			<xsl:apply-templates/> 
 		</fo:block>
+	</xsl:template>
+	
+	<xsl:template match="a:Referenca">
+		<fo:basic-link color="#069"
+			text-decoration="underline">
+			<xsl:attribute name="external-destination">
+				<xsl:value-of select="@Uri_propisa"/>
+			</xsl:attribute>
+			<xsl:apply-templates/> 
+		</fo:basic-link>
+	</xsl:template>
+	
+	<xsl:template match="text()">
+		<xsl:value-of select="concat(' ',normalize-space(.),' ')"/>
 	</xsl:template>
 	
 </xsl:stylesheet>

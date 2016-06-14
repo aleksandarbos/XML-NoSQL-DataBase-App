@@ -221,28 +221,35 @@
 	</xsl:template>
 	
 	<xsl:template match="p:Stav">
-		<p><xsl:value-of select="text()"/></p>
-		<xsl:apply-templates select="p:Tacka"/> 
+		<p>
+			<xsl:apply-templates/></p>
 	</xsl:template>
 	
 	<xsl:template match="p:Tacka">
 		<li>
-			<xsl:value-of select="@Oznaka_tacke"/>) <xsl:value-of select="text()"/>
+			<xsl:value-of select="@Oznaka_tacke"/>) <xsl:apply-templates/>
 		</li><br/>
-		<xsl:apply-templates select="p:Podtacka"/>
 	</xsl:template>
 	
 	<xsl:template match="p:Podtacka">
 		<li>
-			(<xsl:value-of select="@Oznaka_podtacke"/>) <xsl:value-of select="text()"/>
+			(<xsl:value-of select="@Oznaka_podtacke"/>) <xsl:apply-templates/>
 		</li><br/>
-		<xsl:apply-templates select="p:Alineja"/> 
 	</xsl:template>
 	
 	<xsl:template match="p:Alineja">
 		<li>
-			- <xsl:value-of select="@Oznaka_alineje"/> <xsl:value-of select="text()"/>
+			- <xsl:value-of select="@Oznaka_alineje"/> <xsl:apply-templates/>
 		</li><br/>
+	</xsl:template>
+	
+	<xsl:template match="p:Referenca">
+		<a>
+			<xsl:attribute name="href">
+				<xsl:value-of select="@Uri_propisa"/>
+			</xsl:attribute>
+			<xsl:apply-templates/>
+		</a>
 	</xsl:template>
 	
 	<xsl:template match="a:Amandman">
@@ -258,7 +265,7 @@
 	
 	<xsl:template match="a:Sadrzaj">
 		<p>
-			<xsl:value-of select="."/>
+			<xsl:apply-templates/>
 		</p>
 	</xsl:template>
 	
@@ -267,8 +274,7 @@
 			Obrazloženje:
 		</h5>
 		<p>
-			<xsl:value-of select="text()"/>
-			<xsl:apply-templates select="a:Referenca"/> 
+			<xsl:apply-templates/>
 		</p>
 	</xsl:template>
 	
@@ -285,9 +291,16 @@
 	</xsl:template>
 	
 	<xsl:template match="a:Referenca">
-		<a href="#">
-			<xsl:value-of select="text()"/>
+		<a>
+			<xsl:attribute name="href">
+				<xsl:value-of select="@Uri_propisa"/>
+			</xsl:attribute>
+			<xsl:apply-templates/>
 		</a>
+	</xsl:template>
+	
+	<xsl:template match="text()">
+		<xsl:value-of select="concat(' ',normalize-space(.),' ')"/>
 	</xsl:template>
 	
 </xsl:stylesheet>
