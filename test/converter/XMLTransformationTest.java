@@ -11,4 +11,9 @@ public class XMLTransformationTest {
         XMLTransformation.transformToPdf();
     }
 
+    @Test
+    public void transformToXHtml() throws Exception {
+        XMLTransformation.transformToXhtml();
+    }
+
 }

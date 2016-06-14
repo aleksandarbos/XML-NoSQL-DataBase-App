@@ -86,7 +86,6 @@ public class RegulationsDAO {
         return returnValues;
     }
 
-
     public static void updateRegulation(String regulationUri, Propis regulation) {
         
     }

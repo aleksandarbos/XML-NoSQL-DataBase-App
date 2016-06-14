@@ -6,6 +6,7 @@ import converter.types.UnmarshallType;
 import database.DatabaseAccessor;
 import models.rs.gov.parlament.korisnici.Korisnici;
 import models.rs.gov.parlament.korisnici.Korisnik;
+import models.rs.gov.parlament.korisnici.TipKorisnika;
 
 import javax.xml.bind.JAXBException;
 
@@ -44,7 +45,7 @@ public class UsersDAO {
     public static void addNewUser(Korisnik user) throws JAXBException {
         Korisnici users = fetchUsersFromDatabase();
         users.getKorisnik().add(user);              // TODO: Change in schema KorisniciWrapper -> Korisnici
-
+        user.setTip(TipKorisnika.GRADJANIN);
         writeChangesToDatabase(users);
 
         System.out.println("Added to database: Name: "+ user.getIme() + ", "
