@@ -17,24 +17,14 @@ import java.io.FileNotFoundException;
 import java.io.OutputStream;
 import java.util.HashMap;
 
-/**
- * 
- * [PRIMER 6]
- * 
- * Primer demonstrira single-field pretraživanje XML dokumenata u okviru XMLDB
- * na osnovu sadržaja dokumenata upotrebom SearchQueryDefinition klase MarkLogic
- * Java API-ja.
- * 
- */
 public class DatabaseQuery {
 
-	private static DatabaseAccessor db;
+	private DatabaseAccessor db = DatabaseAccessor.getInstance();
 	
 	private static TransformerFactory transformerFactory;
 
 	static {
 		transformerFactory = TransformerFactory.newInstance();
-		db = DatabaseAccessor.getInstance();
 	}
 
 	/**
@@ -50,7 +40,7 @@ public class DatabaseQuery {
 
 		HashMap<String, Object> returnValues = new HashMap<String, Object>();
 		// Initialize query manager
-		QueryManager queryManager = db.client.newQueryManager();
+		QueryManager queryManager = DatabaseAccessor.client.newQueryManager();
 		
 		// Query definition is used to specify Google-style query string
 		StringQueryDefinition queryDefinition = queryManager.newStringDefinition();
@@ -84,7 +74,7 @@ public class DatabaseQuery {
 
 		}
 
-		db.client.release();
+		// DatabaseAccessor.client.release(); TODO: inspect clients
 
 		return returnValues;
 	}

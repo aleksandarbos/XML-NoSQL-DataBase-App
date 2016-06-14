@@ -10,12 +10,12 @@ import converter.types.MarshallType;
 import converter.types.UnmarshallType;
 import database.DatabaseAccessor;
 import database.DatabaseQuery;
-import database.XQueryInvoker;
 import models.rs.gov.parlament.propisi.Propis;
 
 import javax.xml.bind.JAXBException;
 import java.io.IOException;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by aleksandar on 9.6.16..
@@ -46,25 +46,6 @@ public class RegulationsDAO {
                 + "database collection: " + COLLECTION_ID);
 
         setDocUri(desc.getUri());
-    }
-
-    /**
-     * Fetches all regulations from regulations collection in database.
-     * @return Vector of found regulations.
-     * @throws IOException XQuery file not found or cannot be opened.
-     * @throws JAXBException
-     */
-    public static Vector<Propis> fetchAllRegulationsXQuery() throws IOException, JAXBException {
-        Vector<String> responsesStr = XQueryInvoker.execute("/regulations/fetch-all.xqy");
-        Vector<Propis> regulations = new Vector<Propis>();
-        Iterator<String> it = responsesStr.iterator();
-
-        while(it.hasNext()) {
-            Propis regulation = (Propis) Converter.unmarshall(UnmarshallType.FROM_STRING, it.next(), Propis.class);
-            regulations.add(regulation);
-        }
-
-        return regulations;
     }
 
     /**

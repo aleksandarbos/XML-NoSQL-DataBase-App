@@ -1,12 +1,9 @@
 package converter;
 
 import com.sun.org.apache.xalan.internal.xsltc.trax.TransformerFactoryImpl;
-
-import org.apache.commons.io.FilenameUtils;
 import org.apache.fop.apps.*;
 import org.xml.sax.SAXException;
 
-import javax.swing.JFileChooser;
 import javax.xml.transform.*;
 import javax.xml.transform.sax.SAXResult;
 import javax.xml.transform.stream.StreamResult;
@@ -51,7 +48,9 @@ public class XMLTransformation {
 			e.printStackTrace();
 		} catch (FOPException e) {
 			e.printStackTrace();
-		} catch (SAXException | IOException e) {
+		} catch (SAXException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 

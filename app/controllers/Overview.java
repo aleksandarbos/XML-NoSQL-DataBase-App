@@ -1,36 +1,42 @@
 package controllers;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.xml.bind.JAXBException;
-
 import converter.XMLTransformation;
+import dal.AmendmentsDAO;
 import dal.RegulationsDAO;
 import models.rs.gov.parlament.amandmani.Amandman;
 import models.rs.gov.parlament.propisi.Propis;
-import play.mvc.Before;
 import play.mvc.Controller;
 import play.mvc.With;
+
+import javax.xml.bind.JAXBException;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 @With(Secure.class)
 public class Overview extends Controller {
 
-    public static void show(){
+    public static void show() {
         String userType = session.get("user-type");
-        List<Propis> regulations = new ArrayList<>();
-        List<Amandman> amandments = new ArrayList<>();
-       /* try {
-			regulations = RegulationsDAO.fetchAllRegulationsXQuery();
-        	amandments = AmandmentsDAO.fetchAllRegulationsXQuery();
-		} catch (IOException | JAXBException e) {
-			e.printStackTrace();
-		}*/
-        List<Object> combined = new ArrayList<>();
-        combined.addAll(regulations);
-        combined.addAll(amandments);
-    	render(userType, combined);
+
+        HashMap<String, Propis> regulations = null;
+        HashMap<String, Amandman> amandments = null;
+
+        try {
+            regulations = RegulationsDAO.fetchAllRegulations();
+            amandments = AmendmentsDAO.fetchAllAmendments();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JAXBException e) {
+            e.printStackTrace();
+        }
+
+        List<Object> combined = new ArrayList<Object>();
+        combined.addAll(regulations.values());
+        combined.addAll(amandments.values());
+
+        render(userType, combined);
     }
     
     public static void topdf(int id) {

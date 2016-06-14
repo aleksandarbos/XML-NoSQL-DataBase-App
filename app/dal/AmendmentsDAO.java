@@ -9,9 +9,13 @@ import converter.Converter;
 import converter.types.MarshallType;
 import converter.types.UnmarshallType;
 import database.DatabaseAccessor;
+import database.DatabaseQuery;
 import models.rs.gov.parlament.amandmani.Amandman;
 
 import javax.xml.bind.JAXBException;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by aleksandar on 13.6.16..
@@ -47,6 +51,25 @@ public class AmendmentsDAO {
                 + "database collection: " + COLLECTION_ID);
 
         setDocUri(desc.getUri());
+    }
+
+    /**
+     * Fetches all regulations from regulations collection in database.
+     * @return HashMap<String, Amandman> of found regulations, where key=>docUri and value=>amendmentObject.
+     * @throws IOException
+     * @throws JAXBException
+     */
+    public static HashMap<String, Amandman> fetchAllAmendments() throws IOException, JAXBException {
+        HashMap<String, Object> searchResults = DatabaseQuery.search("", COLLECTION_ID, Amandman.class);
+        HashMap<String, Amandman> returnValues = new HashMap<String, Amandman>();
+
+        for (Map.Entry<String, Object> entry : searchResults.entrySet()) {
+            String key = entry.getKey();
+            Object value = entry.getValue();
+            returnValues.put(key, (Amandman) value);
+        }
+
+        return returnValues;
     }
 
     /**
