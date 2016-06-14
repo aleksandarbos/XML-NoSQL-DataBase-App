@@ -226,13 +226,13 @@ FOOTER CLASSES
 PAGES
 -------------------------------------------------*/
 .tabelaPregled .status {
-	width:2.5em;
+	width:3em;
 }
 .tabelaPregled .tip {
-	width:2.5em;
+	width:3em;
 }
 .tabelaPregled .naziv {
-	width:16em;
+	width:15em;
 }
 .tabelaPregled .pregled {
 	width:2em;

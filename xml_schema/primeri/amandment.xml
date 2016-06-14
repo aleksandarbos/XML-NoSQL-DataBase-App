@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Amandman
-        xmlns="http://www.parlament.gov.rs/amandmani"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ap="http://www.parlament.gov.rs/propisi"
-        xsi:schemaLocation="http://www.parlament.gov.rs/amandmani /xml_schema/amandmani.xsd"
-        Uri_amandmana="" Tip_dokumenta="AMANDMAN">
+<Amandman 
+    xmlns="http://www.parlament.gov.rs/amandmani"
+    xmlns:p="http://www.parlament.gov.rs/propisi"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.parlament.gov.rs/amandmani file:/E:/Users/NemanjaM/Documents/Practice/XML/Projekat/XML-NoSQL-DataBase-App/xml_schema/amandmani.xsd" Uri_amandmana="123" Tip_dokumenta="AMANDMAN">
     <Preambula>
         <Tip>BRISANJE</Tip>
         <Status>PREDLOZEN</Status>
@@ -17,12 +17,12 @@
     </Preambula>
     <Naziv>Predlog izmena na 123</Naziv>
     <Deo_za_izmenu>
-        <Uri_propisa></Uri_propisa>
+        <Uri_propisa>1</Uri_propisa>
         <Oznaka_clana>12</Oznaka_clana>
     </Deo_za_izmenu>
-    <Sadrzaj>Unutar člana 3 iz podnetog zakonika. Menjaju se reči "moguće je" u "trebalo bi". Ovakvu izmenu izvršiti
+    <Sadrzaj>Unutar člana 3 iz podnetog zakonika. Menjaju se reči "moguće je" u "trebalo bi".<p:Referenca Uri_propisa="www.github.com/mojeRepo">rrrPredlog zakonarrr</p:Referenca> Ovakvu izmenu izvršiti
         unutar celog stava</Sadrzaj>
-    <Obrazlozenje>Imajući u vidu da <ap:Referenca Uri_propisa="/parliament/regulations/4702994916404006768.xml">Predlog zakona</ap:Referenca> ni u jednoj svojoj odredbi izričito ne potencira, a da je
+    <Obrazlozenje>Imajući u vidu da<p:Referenca Uri_propisa="#">rrrPredlog zakonarrr</p:Referenca>ni u jednoj svojoj odredbi izričito ne potencira, a da je
         cilj zakona i potenciranje, smatramo da je veoma korisno dodati odredbu kakvu predlažemo
         u clanu 3.
     </Obrazlozenje>
