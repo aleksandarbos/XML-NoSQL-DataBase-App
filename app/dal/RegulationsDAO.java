@@ -44,6 +44,8 @@ public class RegulationsDAO {
 
         System.out.println("[INFO] Added regulation with docId: " + desc.getUri() + " to "
                 + "database collection: " + COLLECTION_ID);
+
+        setDocUri(desc.getUri());
     }
 
     /**
@@ -106,5 +108,20 @@ public class RegulationsDAO {
 
     public static void updateRegulation(String regulationUri, Propis regulation) {
         
+    }
+
+    /**
+     * Helper method that adds docUri field to already created document and stores it to database.
+     * @param docUri DocUri of created document.
+     * @throws JAXBException
+     */
+    private static void setDocUri(String docUri) throws JAXBException {
+        String xmlDocString = DatabaseAccessor.readXmlFromDatabase(docUri);
+        Propis regulation = (Propis) Converter.unmarshall(UnmarshallType.FROM_STRING, xmlDocString, Propis.class);
+
+        regulation.setUriPropisa(docUri);
+
+        String editedXmlDocString = Converter.marshall(MarshallType.TO_STRING, regulation, "");
+        DatabaseAccessor.writeXmlToDatabase(docUri, editedXmlDocString);
     }
 }
