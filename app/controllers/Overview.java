@@ -1,6 +1,5 @@
 package controllers;
 
-import converter.XMLTransformation;
 import dal.AmendmentsDAO;
 import dal.RegulationsDAO;
 import models.rs.gov.parlament.amandmani.Amandman;
@@ -39,15 +38,15 @@ public class Overview extends Controller {
         render(userType, combined);
     }
     
-    public static void topdf(int id) {
-    	System.out.println("daj pdf za dokument: " + id);
-    	XMLTransformation.transformToPdf();
+    public static void topdf(String docUri) {
+    	System.out.println("daj pdf za dokument: " + docUri);
+    	//XMLTransformation.transformToPdf();
     	show();
     }
     
-    public static void preview(int id) {
-    	System.out.println("daj html za dokument: " + id);
-    	XMLTransformation.transformToXhtml();
+    public static void preview(String docUri) {
+    	System.out.println("daj html za dokument: " + docUri);
+    	//XMLTransformation.transformToXhtml();
     	show();
     }
 }
