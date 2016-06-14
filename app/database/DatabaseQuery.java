@@ -19,8 +19,6 @@ import java.util.HashMap;
 
 public class DatabaseQuery {
 
-	private DatabaseAccessor db = DatabaseAccessor.getInstance();
-	
 	private static TransformerFactory transformerFactory;
 
 	static {
@@ -37,6 +35,7 @@ public class DatabaseQuery {
      * @throws JAXBException
      */
 	public static HashMap<String, Object> search(String criteria, String collection, Class resultClass) throws FileNotFoundException, JAXBException {
+		DatabaseAccessor.getInstance();
 
 		HashMap<String, Object> returnValues = new HashMap<String, Object>();
 		// Initialize query manager

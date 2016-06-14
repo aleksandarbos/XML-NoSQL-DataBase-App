@@ -87,16 +87,30 @@
 	<h3>
 		Rezultati pretrage:
 	</h3>
-	<div class="searchResult">
-		<table class="tabelaPregled">
-			<tr><th class="status">Status</th><th class="tip">Tip</th><th class="naziv">Naziv</th><th class="pregled">&nbsp </th><th class="pdf">&nbsp </th></tr>
-			<tr><td>izmena akata</td><td>u proceduri</td><td class="documentId" style="display:none;">12</td><td>Prigovor po osnovi br 243,na clan 7543, zakona o medjuljudskim odnosima 23</td><td><a class="alterationPreview">pogledaj</a></td><td><a class="alterationToPdf">u PDF</a></td></tr>
-			<tr><td>izmena akata</td><td>u proceduri</td><td class="documentId" style="display:none;">23</td><td>Prigovor po osnovi br 243,na clan 7543, zakona o medjuljudskim odnosima 23</td><td><a class="alterationPreview">pogledaj</a></td><td><a class="alterationToPdf">u PDF</a></td></tr>
-			<tr><td>izmena akata</td><td>u proceduri</td><td class="documentId" style="display:none;">34</td><td>Prigovor po osnovi br 243,na clan 7543, zakona o medjuljudskim odnosima 23</td><td><a class="alterationPreview">pogledaj</a></td><td><a class="alterationToPdf">u PDF</a></td></tr>
-			<tr><td>izmena akata</td><td>u proceduri</td><td class="documentId" style="display:none;">56</td><td>Prigovor po osnovi br 243,na clan 7543, zakona o medjuljudskim odnosima 23</td><td><a class="alterationPreview">pogledaj</a></td><td><a class="alterationToPdf">u PDF</a></td></tr>
-		</table>
-	</div>
-	<div class="searchNoResult">
-		<h4>Nije pronađen nijedan dokument (prema zadatim kriterijumima)</h4>
-	</div>
+	#{if results != null}
+		<div class="searchResult">
+			<table class="tabelaPregled">
+				<tr><th class="status">Status</th><th class="tip">Tip</th><th class="naziv">Naziv</th><th class="pregled">&nbsp </th><th class="pdf">&nbsp </th></tr>
+				#{list items: results, as:'document'}
+					<tr>
+						<td>${document.getPreambula().getStatus()}</td>
+						<td>
+							akt
+						</td>
+						<td class="documentId" style="display:none;">
+							${document.getUriPropisa()}
+						</td>
+						<td>${document.getNaziv()}</td>
+						<td><a class="alterationPreview">pogledaj</a></td>
+						<td><a class="alterationToPdf">u PDF</a></td>
+					</tr>
+				#{/list}
+			</table>
+		</div>
+	#{/if}
+	#{else}
+		<div class="searchNoResult">
+			<h4>Nije pronađen nijedan dokument (prema zadatim kriterijumima)</h4>
+		</div>
+	#{/else}
 </div>
