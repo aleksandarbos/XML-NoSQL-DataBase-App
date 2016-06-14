@@ -19,19 +19,18 @@ public class Search extends Controller {
     	render(userType);
     }
 
-    @GET
-    public static void search(String documentText, String documentDomain, String documentName, String documentStatus, String documentType, String user, String authority, String collection,
-    						String nominatedDateFrom, String nominatedDateTo, String adoptionDateFrom, String adoptionDateTo, String announcementDateFrom, String announcementDateTo, 
-    						String inuseDateFrom, String inuseDateTo, String withdrawalDateFrom, String withdrawalDateTo, 
-    						int votesYesFrom, int votesYesTo, int votesNoFrom, int votesNoTo, int votesOffFrom, int votesOffTo) throws IOException, JAXBException {
-    	
-    	textSearch(documentText);
-    }
-
-    private static void textSearch(String textQuery) throws IOException, JAXBException {
-        HashMap<String, Propis> searchResults = RegulationsDAO.fetchRegulationsByQuery(textQuery);
+    public static void searchText(String documentText) {
+        HashMap<String, Propis> searchResults = RegulationsDAO.fetchRegulationsByQuery(documentText);
         Collection<Propis> results = searchResults.values();
         renderTemplate("Search/show.html", results);
+    }
+
+    public static void searchDetails(String documentDomain, String documentName, String documentStatus, String documentType, String user, String authority, String collection,
+    						String nominatedDateFrom, String nominatedDateTo, String adoptionDateFrom, String adoptionDateTo, String announcementDateFrom, String announcementDateTo, 
+    						String inuseDateFrom, String inuseDateTo, String withdrawalDateFrom, String withdrawalDateTo, 
+    						int votesYesFrom, int votesYesTo, int votesNoFrom, int votesNoTo, int votesOffFrom, int votesOffTo) {
+    	
+    	
     }
     
     public static void topdf(int id) {

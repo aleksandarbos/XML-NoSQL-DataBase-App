@@ -13,6 +13,8 @@ import database.DatabaseQuery;
 import models.rs.gov.parlament.propisi.Propis;
 
 import javax.xml.bind.JAXBException;
+
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -73,9 +75,16 @@ public class RegulationsDAO {
      * @throws IOException
      * @throws JAXBException
      */
-    public static HashMap<String, Propis> fetchRegulationsByQuery(String query) throws IOException, JAXBException {
-        HashMap<String, Object> searchResults = DatabaseQuery.search(query, COLLECTION_ID, Propis.class);
+    public static HashMap<String, Propis> fetchRegulationsByQuery(String query) {
+    	
+        HashMap<String, Object> searchResults = null;
         HashMap<String, Propis> returnValues = new HashMap<String, Propis>();
+        
+		try {
+			searchResults = DatabaseQuery.search(query, COLLECTION_ID, Propis.class);
+		} catch (FileNotFoundException | JAXBException e) {
+			e.printStackTrace();
+		}
 
         for (Map.Entry<String, Object> entry : searchResults.entrySet()) {
             String key = entry.getKey();

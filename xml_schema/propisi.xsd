@@ -13,7 +13,7 @@
     <xs:element name="Propis">
         <xs:complexType>
             <xs:sequence>
-                <xs:element minOccurs="0" ref="pp:Preambula"/>
+                <xs:element minOccurs="1" ref="pp:Preambula"/>
                 <xs:element name="Naziv" type="xs:string"> </xs:element>
                 <xs:element name="Sadrzaj">
                     <xs:complexType>

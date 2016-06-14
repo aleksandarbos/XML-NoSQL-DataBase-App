@@ -15,13 +15,12 @@ import java.nio.charset.StandardCharsets;
 
 
 public class XMLTransformation {
-	public static void transformToPdf(String docUri) throws JAXBException {
-		DatabaseAccessor.getInstance();
-		String docData = DatabaseAccessor.readXmlFromDatabase(docUri);
+	public static void transformToPdf(String docUri) {
 
 		File pdfFile = new File("tmp/amandment.pdf");
 		File xsltFile = new File("conf/to_pdf.xsl");
 
+		String docData = DatabaseAccessor.getInstance().readXmlFromDatabase(docUri);
 		InputStream stream = new ByteArrayInputStream(docData.getBytes(StandardCharsets.UTF_8));
 
 		FopFactory fopFactory = FopFactory.newInstance();
@@ -53,27 +52,32 @@ public class XMLTransformation {
 
 	}
 
-	public static void transformToXhtml(String docUri) {
+	public static String transformToXhtml(String docUri) {
 
-		DatabaseAccessor.getInstance();
-		String docData = DatabaseAccessor.readXmlFromDatabase(docUri);
-
-		InputStream stream = new ByteArrayInputStream(docData.getBytes(StandardCharsets.UTF_8));
-		File xhtmlFile = new File("tmp/amandment.html");
 		File xsltFile = new File("conf/to_html.xsl");
+		String result = null;
+		
+		String docData = DatabaseAccessor.getInstance().readXmlFromDatabase(docUri);
+		InputStream stream = new ByteArrayInputStream(docData.getBytes(StandardCharsets.UTF_8));
 
 		try {
+		    StringWriter writerStream = new StringWriter();
+		    StreamResult resultStream = new StreamResult(writerStream);
+		    
 			System.out.println("[INFO] Transformation to XHTML: Started.");
 			TransformerFactory factory = TransformerFactory.newInstance();
 			Transformer transformer = factory.newTransformer(new StreamSource(xsltFile));
 			Source text = new StreamSource(stream);
-			transformer.transform(text, new StreamResult(xhtmlFile));
+			transformer.transform(text, resultStream);
+			
+		    result = writerStream.toString();		    
 			System.out.println("[INFO] Transformation to XHTML: End.");
 		} catch (TransformerConfigurationException e) {
 			e.printStackTrace();
 		} catch (TransformerException e) {
 			e.printStackTrace();
 		}
-
+		
+		return result;
 	}
 }

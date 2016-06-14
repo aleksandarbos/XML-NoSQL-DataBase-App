@@ -43,6 +43,16 @@ function typeChangedSearch() {
 	}
 	stateChangedSearch();
 }
+function searchChanged() {
+	var val = $(".selectSearch").val();
+	if (val == "text") {
+		$(".textSearchForm").slideDown();
+		$(".detailsSearchForm").slideUp();
+	} else {
+		$(".textSearchForm").slideUp();
+		$(".detailsSearchForm").slideDown();
+	}
+}
 
 $(document).ready(function() {
 	
@@ -58,12 +68,21 @@ $(document).ready(function() {
 	});
 	
 	$(".showHideSearch").click(function() {
-		$(".searchParameters").slideToggle();
+		var val = $(".selectSearch").val();
+		if (val == "text") {
+			$(".textSearchForm").slideToggle();
+		} else {
+			$(".detailsSearchForm").slideToggle();
+		}
 	});
 	
 	$(".cancel").click(function() {
 		clearInputs(this);
 		stateChangedSearch();
+	});
+	
+	$(".selectSearch").change(function() {
+		searchChanged();		
 	});
 	
 	$(".selectStatus").change(function() {

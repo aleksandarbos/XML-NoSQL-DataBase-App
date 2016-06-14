@@ -8,7 +8,11 @@ import play.mvc.Controller;
 import play.mvc.With;
 
 import javax.xml.bind.JAXBException;
+
+import converter.XMLTransformation;
+
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -38,15 +42,14 @@ public class Overview extends Controller {
         render(userType, combined);
     }
     
-    public static void topdf(String docUri) {
-    	System.out.println("daj pdf za dokument: " + docUri);
-    	//XMLTransformation.transformToPdf();
-    	show();
+    public static void topdf(String id) {
+    	System.out.println("daj pdf za dokument: " + id);
+    	XMLTransformation.transformToPdf(id);
     }
     
-    public static void preview(String docUri) {
-    	System.out.println("daj html za dokument: " + docUri);
-    	//XMLTransformation.transformToXhtml();
-    	show();
+    public static void preview(String  id) {
+    	System.out.println("daj html za dokument: " + id);
+    	String html = XMLTransformation.transformToXhtml(id);
+    	renderHtml(html);
     }
 }

@@ -12,11 +12,27 @@
 	</p>
 	<div class="center">
 		<div class="showHideFormLabel"><a class="showHideSearch">prikaži/sakrij kriterijume pretrage</a></div>
-		<form class="searchParameters" action="@{Search.search()}" method="get">
+		
+		<table class="invisibleTable">
+			<tr><th>Kriterijum pretrage:</th><td>
+				<select name="documentDomain" class="bigInput selectSearch">
+					<option value="text">Prema tekstu</option>
+					<option value="details">Prema detaljima</option>
+				</select></td></tr>
+		</table>
+		
+		<form class="textSearchForm" action="@{Search.searchText()}" method="get">
 			<table class="invisibleTable">
 				<tr><th>Tekst za pretragu:</th><td>
 					<input type="text" class="bigInput" name="documentText"/></td></tr>
-				<tr><td><hr/></td></tr>
+				<tr><td colspan="2">
+					<input type="submit" class="bigButton" value="Pretraži">
+					<input type="button" class="bigButton cancel" value="Odustani"></td></tr>
+			</table>
+		</form>
+			
+		<form class="detailsSearchForm" action="@{Search.searchDetails()}" method="get" style="display:none;">
+			<table class="invisibleTable">
 				<tr><th>Taksonomska oblast:</th><td>
 					<select name="documentDomain" class="bigInput">
 						<option value=""></option>
@@ -82,7 +98,8 @@
 					<input type="button" class="bigButton cancel" value="Odustani"></td></tr>
 			</table>
 		</form>
-		<div class="showHideFormLabel searchParameters"><a class="showHideSearch">prikaži/sakrij kriterijume pretrage</a></div>
+		
+		<div class="showHideFormLabel"><a class="showHideSearch">prikaži/sakrij kriterijume pretrage</a></div>
 	</div>
 	<h3>
 		Rezultati pretrage:

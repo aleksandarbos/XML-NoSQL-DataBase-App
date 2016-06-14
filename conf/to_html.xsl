@@ -54,6 +54,7 @@
 						cursor:pointer
 					}
 				</style>
+        		<link rel="shortcut icon" type="image/png" href="@{'/public/images/logo.png'}"></link>
 			</head>
 			<body>
 				<xsl:apply-templates/> 
@@ -244,12 +245,18 @@
 	</xsl:template>
 	
 	<xsl:template match="p:Referenca">
-		<a>
+		<a target="_blank">
 			<xsl:attribute name="href">
-				<xsl:value-of select="@Uri_propisa"/>
+				/overview/preview?id=<xsl:value-of select="@Uri_propisa"/>
 			</xsl:attribute>
 			<xsl:apply-templates/>
 		</a>
+	</xsl:template>
+	
+	<xsl:template match="p:Preambula">
+		<p class="hide">
+			<xsl:value-of select="text()"/>
+		</p>
 	</xsl:template>
 	
 	<xsl:template match="a:Amandman">
@@ -291,9 +298,9 @@
 	</xsl:template>
 	
 	<xsl:template match="a:Referenca">
-		<a>
+		<a target="_blank">
 			<xsl:attribute name="href">
-				<xsl:value-of select="@Uri_propisa"/>
+				/overview/preview?id=<xsl:value-of select="@Uri_propisa"/>
 			</xsl:attribute>
 			<xsl:apply-templates/>
 		</a>
