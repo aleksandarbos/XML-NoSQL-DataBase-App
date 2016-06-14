@@ -186,4 +186,8 @@ public class Korisnik {
         this.lozinka = value;
     }
 
+    @Override
+    public String toString() {
+        return this.ime + " " + this.prezime + " " + this.email + " " + this.tip.toString().toUpperCase();
+    }
 }

@@ -26,12 +26,6 @@ public class Amendments extends Controller {
 
         Amandman amendment = (Amandman) Converter.unmarshall(UnmarshallType.FROM_STRING, amendmentContent, Amandman.class);
         amendment.setNaziv(amandmentName);
-        // amendment.setRegulationUri(affectedRegulationUri); TODO: add property regulationUri to amendment schema
-
-        Amandman.DeoZaIzmenu editingPart = new Amandman.DeoZaIzmenu(); // TODO: make DeoZaIzmenu global
-        editingPart.setOznakaClana(affectedClause);
-        amendment.setDeoZaIzmenu(editingPart);
-        // amendment.setAffectedType(affectedType); TODO: add property affected type
 
         AmendmentsDAO.addAmandment(amendment);
 

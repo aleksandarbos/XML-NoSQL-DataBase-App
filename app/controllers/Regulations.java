@@ -3,7 +3,9 @@ package controllers;
 import converter.Converter;
 import converter.types.UnmarshallType;
 import dal.RegulationsDAO;
+import models.rs.gov.parlament.propisi.Preambula;
 import models.rs.gov.parlament.propisi.Propis;
+import models.rs.gov.parlament.propisi.StatusAkta;
 import play.mvc.Before;
 import play.mvc.Controller;
 import play.mvc.With;
@@ -25,8 +27,10 @@ public class Regulations extends Controller {
     	System.out.println("dodaj akt: " + regulationName + ", predlozio korisnik: " + user + ", sadrzaj dokumenta: "+regulationContent);
 
         Propis regulation = (Propis) Converter.unmarshall(UnmarshallType.FROM_STRING, regulationContent, Propis.class);
+        regulation.setPreambula(new Preambula());
         regulation.setNaziv(regulationName);
-        // regulation.setUser("user"); TODO: add property user
+        regulation.getPreambula().setPredlagac(user);
+        regulation.getPreambula().setStatus(StatusAkta.PREDLOZEN);
 
         RegulationsDAO.addRegulation(regulation);
 

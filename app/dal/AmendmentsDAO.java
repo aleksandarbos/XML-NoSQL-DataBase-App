@@ -7,6 +7,7 @@ import com.marklogic.client.io.StringHandle;
 import controllers.Regulations;
 import converter.Converter;
 import converter.types.MarshallType;
+import converter.types.UnmarshallType;
 import database.DatabaseAccessor;
 import models.rs.gov.parlament.amandmani.Amandman;
 
@@ -18,6 +19,10 @@ import javax.xml.bind.JAXBException;
 public class AmendmentsDAO {
 
     private static final String COLLECTION_ID = "/parliament/amendments";
+
+    static {
+        DatabaseAccessor db = DatabaseAccessor.getInstance();
+    }
 
     /**
      * Adds new amendment to collection defined in COLLECTION_ID of {@link Regulations} class with
@@ -40,6 +45,23 @@ public class AmendmentsDAO {
 
         System.out.println("[INFO] Added amendment with docId: " + desc.getUri() + " to "
                 + "database collection: " + COLLECTION_ID);
+
+        setDocUri(desc.getUri());
+    }
+
+    /**
+     * Helper method that adds docUri field to already created document and stores it to database.
+     * @param docUri DocUri of created document.
+     * @throws JAXBException
+     */
+    private static void setDocUri(String docUri) throws JAXBException {
+        String xmlDocString = DatabaseAccessor.readXmlFromDatabase(docUri);
+        Amandman amendment = (Amandman) Converter.unmarshall(UnmarshallType.FROM_STRING, xmlDocString, Amandman.class);
+
+        amendment.setUriAmandmana(docUri);
+
+        String editedXmlDocString = Converter.marshall(MarshallType.TO_STRING, amendment, "");
+        DatabaseAccessor.writeXmlToDatabase(docUri, editedXmlDocString);
     }
 
 }
