@@ -107,15 +107,10 @@ public class DatabaseQuery {
 			namespaceCriteria = "amandmani";
 		}
 
-		System.out.println("-------------------***: " + documentType);
-
-
-		if(documentType.equals("regulation"))
+		if(documentType.equals("regulation") || documentType.equals(""))
 			documentType = "PROPIS";
 		else
 			documentType = "AMANDMAN";
-
-		System.out.println("-------------------***: " + documentType);
 
 		query.append("declare namespace pp = \"http://www.parlament.gov.rs/" + namespaceCriteria + "\";\n" +
 				"for $x in collection(\"/parliament/" + collectionCriteria + "\")\n" +
