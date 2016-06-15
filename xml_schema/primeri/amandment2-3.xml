@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Amandman xmlns="http://www.parlament.gov.rs/amandmani"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.parlament.gov.rs/amandmani file:/E:/Users/NemanjaM/Documents/Practice/XML/Projekat/XML-NoSQL-DataBase-App/xml_schema/amandmani.xsd" Uri_amandmana="" Tip_dokumenta="AMANDMAN">
+    <Preambula>
+        <Tip>IZMENA</Tip>
+        <Status>PREDLOZEN</Status>
+        <Oblast>EKONOMIJA</Oblast>
+        <Predlagac></Predlagac>
+        <Datum_predaje>2016-10-10</Datum_predaje>
+        <Datum_glasanja>2016-10-10</Datum_glasanja>
+        <Broj_glasova_za>1</Broj_glasova_za>
+        <Broj_glasova_protiv>1</Broj_glasova_protiv>
+        <Broj_glasova_uzdrzano>1</Broj_glasova_uzdrzano>
+    </Preambula>
+    <Naziv>Amandman na izvrsavanje presude</Naziv>
+    <Deo_za_izmenu>
+        <Uri_propisa>d</Uri_propisa><Oznaka_clana>4</Oznaka_clana>
+    </Deo_za_izmenu>
+    <Sadrzaj>
+        U članu 3 poslije stav 1 dodaje se stav 2, koji glasi:
+        U slučaju iz stava 1 tačka 5 ovog zakona „Zavod za izvršenje krivičnih
+        sankcija ili sud koji je naredio izdavanje potjernice , dužan je da o tome obavijesti
+        sud nadležan za primjenu amnestije u roku od 3 dana od dana stupanja na snagu
+        ovog zakona“. 
+    </Sadrzaj>
+    <Obrazlozenje>
+        U slučaju iz stava 1 tačka 5 ovog zakona, potrebno je dodatno precizirati
+        organe i rok za postupanje u vezi sa primjenom zakona o amnestiji. 
+    </Obrazlozenje>
+</Amandman>
