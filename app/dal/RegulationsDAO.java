@@ -10,6 +10,8 @@ import converter.types.MarshallType;
 import converter.types.UnmarshallType;
 import database.DatabaseAccessor;
 import database.DatabaseQuery;
+import database.XQueryInvoker;
+import models.rs.gov.parlament.amandmani.Amandman;
 import models.rs.gov.parlament.propisi.Propis;
 
 import javax.xml.bind.JAXBException;
@@ -88,8 +90,54 @@ public class RegulationsDAO {
         return returnValues;
     }
 
-    public static void updateRegulation(String regulationUri, Propis regulation) {
-        
+    /**
+     * Updating regulation by accepted amendment content.
+     * @param amendment Amendment object with all editing content.
+     */
+    public static void updateRegulation(Amandman amendment) {
+        StringBuilder query = new StringBuilder();
+
+        int numOfMember = 0;
+        int numOfPosition = 0;
+        int numOfPoint = 0;
+        int numOfSubPoint = 0;
+        int numOfBulletPoint = 0;
+
+        String regulationDocUri = "";
+        String amendmentContent = "";
+
+        try {
+            numOfMember = amendment.getDeoZaIzmenu().getOznakaClana();
+            numOfPosition = amendment.getDeoZaIzmenu().getOznakaStava();
+            numOfPoint = amendment.getDeoZaIzmenu().getOznakaTacke();
+            numOfSubPoint = amendment.getDeoZaIzmenu().getOznakaPodtacke();
+            numOfBulletPoint = amendment.getDeoZaIzmenu().getOznakaAlineje();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        regulationDocUri = amendment.getDeoZaIzmenu().getUriPropisa();
+        amendmentContent = amendment.getSadrzaj().getContent().get(0).toString();
+
+        query.append("declare namespace pp = \"http://www.parlament.gov.rs/propisi\";\n" +
+                "for $node in doc(\"" + regulationDocUri + "\")");
+                if(numOfMember != 0) query.append("//pp:Clan[@Oznaka_clana = " + numOfMember + "]");
+                if(numOfPosition != 0) query.append("//pp:Stav[@Oznaka_stava = " + numOfPosition + "]");
+                if(numOfPoint != 0) query.append("//pp:Tacka[@Oznaka_tacke = " + numOfPoint + "]");
+                if(numOfSubPoint != 0) query.append("//pp:Podtacka[@Oznaka_podtacke = " + numOfSubPoint + "]");
+                if(numOfSubPoint != 0) query.append("//pp:Alineja[@Oznaka_alineje = " + numOfBulletPoint + "]");
+                query.append(" \nreturn xdmp:node-replace($node/text(), " +
+                "text{\"" + amendmentContent + "\"});");
+
+        System.out.println("\n" + query.toString() + "\n");
+
+        try {
+            XQueryInvoker.execute(query.toString());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
     public static void deleteRegulation(String regulationUri) {
