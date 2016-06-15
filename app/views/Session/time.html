@@ -10,16 +10,25 @@
 		Tokom sednice, predsednik skupštine usvaja akate u načelu, pojedinostima, i celini. Takođe, odlučuje o usvajanju amandmana.<br/>
 		Predsednik skupštine odlučuje o tome kada će sednica biti održana.
 	</p>
-	<br/><br/><br/>
-	<h5 class="sessionIsScheduled">
-		Naredna sednica je zakazana za: <span class="sessionDate"><b>12.06.2016.</b></span> u <span class="sessionTime"><b>13:15</b></span>
-	</h5>
-	<h4 class="sessionIsNotScheduled">
-		<b>Trenutno nema zakazane sednice</b>
-	</h4>
-	<h5 class="sessionIsRunning">
-		<b>Sednica je u toku</b>
-	</h5>
-		
 	<br/><br/><br/><br/>
+	
+	#{if assemblySession.isScheduled()}
+		#{if assemblySession.isRunning()}
+			<h5>
+				<b>Sednica je u toku</b>
+			</h5>
+		#{/if}
+		#{else}
+			<h5>
+				Naredna sednica je zakazana za: <b>${assemblySession.getDate()}</b> u <b>${assemblySession.getTime()}</b>
+			</h5>
+		#{/else}	
+	#{/if}
+	#{else}
+		<h4>
+			<b>Trenutno nema zakazane sednice</b>
+		</h4>
+	#{/else}
+		
+	<br/><br/><br/><br/><br/>
 </div>

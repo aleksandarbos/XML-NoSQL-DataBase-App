@@ -11,6 +11,7 @@ import javax.xml.bind.JAXBException;
 
 import converter.XMLTransformation;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -44,7 +45,9 @@ public class Overview extends Controller {
     
     public static void topdf(String id) {
     	System.out.println("daj pdf za dokument: " + id);
-    	XMLTransformation.transformToPdf(id);
+    	//InputStream download = XMLTransformation.transformToPdf(id);
+    	InputStream download = XMLTransformation.transformToPdfFile(id);
+    	renderBinary(download);
     }
     
     public static void preview(String  id) {

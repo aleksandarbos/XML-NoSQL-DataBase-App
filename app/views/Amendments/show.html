@@ -34,8 +34,8 @@
 						<option value="BRISANJE">Brisanje</option>
 					</select></td></tr>
 				
-				<tr><th>Amandman predložio:</th><td><input type="text" class="bigInput" name="user" value="Marko Markovic" readonly /></td></tr>
-				<tr><th>Sadržaj amandmana:</th><td><textarea class="veryBigInput" name="amendmentContent"></textarea></td></tr>
+				<tr><th>Amandman predložio:</th><td><input type="text" class="bigInput" name="user" value="${session.get("user-name")} ${session.get("user-surname")}" readonly /></td></tr>
+				<tr><th>Sadržaj amandmana:</th><td><textarea class="veryBigInput" name="amendmentContent" required></textarea></td></tr>
 				<tr><th></th><td></td></tr>
 				<tr><td colspan="2"><input type="submit" class="bigButton" value="Predloži"><input type="button" class="bigButton cancel" value="Odustani"></td></tr>
 			</table>

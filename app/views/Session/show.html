@@ -11,9 +11,20 @@
 		Predsednik skupštine odlučuje o tome kada će sednica biti održana.
 	</p>
 	<div>
+
+		#{if !assemblySession.isRunning()}
+		<br/><br/><br/><br/>
+		<h5>
+			<b>Sednica nije u toku.</b>
+		</h5>
+		<br/><br/><br/><br/><br/>
+		#{/if}
+		#{else}
 		<h5>
 			<b>Usvajanje akata</b>
 		</h5>
+	
+	
 		<div class="votingCards">
 			
 			<div class="votingCard">
@@ -88,6 +99,9 @@
 					</form>
 				</div>
 			</div>	
-		</div>		
+		</div>
+		
+		
+		#{/else}		
 	</div>	
 </div>

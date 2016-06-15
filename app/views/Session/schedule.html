@@ -11,18 +11,41 @@
 		Predsednik skupštine odlučuje o tome kada će sednica biti održana.
 	</p>
 	<div>
-		<div class="center">
+	
+	
+	#{if assemblySession.isScheduled()}
+		#{if assemblySession.isRunning()}
+			<br/><br/><br/><br/>
 			<h5>
-				<b>Zakazivanje sednice</b>
+				<b>Trenutno nije moguće zakazati sednicu. Sednica je u toku.</b>
+					
 			</h5>
+			<br/><br/><br/><br/><br/>
+		#{/if}
+		#{else}
+			<br/><br/><br/><br/>
+			<h5>
+				<b>Trenutno nije moguće zakazati sednicu. Sednica je već zakazana.</b>
+			</h5>
+			<br/><br/><br/><br/><br/>
+		#{/else}	
+		<a href="@{Session.stop()}">Otkazi (ovo obrisati kasnije)<a>
+	#{/if}
+	#{else}
+		<h5>
+			<b>Zakazivanje sednice</b>
+		</h5>
+		<div class="center">
 			<form action="@{Session.schedule()}" method="post">
 				<table class="invisibleTable">
-					<tr><th>Datum početka sednice:</th><td><input type="date" class="bigInput" name="sessionDate"/></td></tr>
-					<tr><th>Vreme početka sednice:</th><td><input type="time" class="bigInput" name="sessionTime"/></td></tr>
+					<tr><th>Datum početka sednice:</th><td><input type="date" class="bigInput" name="sessionDate" required /></td></tr>
+					<tr><th>Vreme početka sednice:</th><td><input type="time" class="bigInput" name="sessionTime" required /></td></tr>
 					<tr><th></th><td></td></tr>
 					<tr><td colspan="2"><input type="submit" class="bigButton" value="Zakaži"><input type="button" class="bigButton cancel" value="Odustani"></td></tr>
 				</table>
 			</form>
 		</div>
+	#{/else}
+	
 	</div>	
 </div>

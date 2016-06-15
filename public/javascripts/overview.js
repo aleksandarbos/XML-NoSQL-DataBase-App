@@ -2,9 +2,10 @@ $(".pregledMenu").show();
 
 $(document).ready(function() {
 	
-	$(".alterationToPdf").click(function() {
+	$(".alterationToPdf").click(function() {	
 		var id = $(this).parents("tr").find(".documentId").text();
-		$(location).attr('href', '/overview/topdf?id=' + id);
+		var url = '/overview/topdf?id='+id;
+		window.open( url, "_blank");
 	});
 	$(".alterationPreview").click(function() {		
 		var id = $(this).parents("tr").find(".documentId").text();
