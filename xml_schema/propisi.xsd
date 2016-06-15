@@ -66,7 +66,7 @@
             <xs:sequence maxOccurs="1" minOccurs="1">
                 <xs:element ref="pp:Glava" maxOccurs="unbounded" minOccurs="2"/>
             </xs:sequence>
-            <xs:attribute name="Oznaka_dela" type="xs:int"/>
+            <xs:attribute name="Oznaka_dela" type="xs:int" use="required"/>
             <xs:attribute name="Naziv_dela" type="xs:string"/>
         </xs:complexType>
     </xs:element>

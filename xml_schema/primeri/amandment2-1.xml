@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Amandman xmlns="http://www.parlament.gov.rs/amandmani"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.parlament.gov.rs/amandmani file:/E:/Users/NemanjaM/Documents/Practice/XML/Projekat/XML-NoSQL-DataBase-App/xml_schema/amandmani.xsd" Uri_amandmana="" Tip_dokumenta="AMANDMAN">
+    <Preambula>
+        <Tip>BRISANJE</Tip>
+        <Status>PREDLOZEN</Status>
+        <Oblast>EKONOMIJA</Oblast>
+        <Predlagac></Predlagac>
+        <Datum_predaje>2016-10-10</Datum_predaje>
+        <Datum_glasanja>2016-10-10</Datum_glasanja>
+        <Broj_glasova_za>1</Broj_glasova_za>
+        <Broj_glasova_protiv>1</Broj_glasova_protiv>
+        <Broj_glasova_uzdrzano>1</Broj_glasova_uzdrzano>
+    </Preambula>
+    <Naziv>Amandman na zakon o amnestiji</Naziv>
+    <Deo_za_izmenu>
+        <Uri_propisa>a</Uri_propisa>
+        <Oznaka_clana>2</Oznaka_clana>
+    </Deo_za_izmenu>
+    <Sadrzaj>
+        U članu 1 riječi: “25% od izrečene kazne zatvora“ zamjenjuju se riječima:
+        „20% od izrečene kazne zatvora“.
+    </Sadrzaj>
+    <Obrazlozenje>
+        S obzirom na činjenicu da se ovim zakonom obuhvata veliki broj krivičnih
+        djela uz određene izuzetke koji su pravljeni i ranijim zakonima o amnestiji,
+        smatramo da je 25% oslobođenja od izvršenja izrečene kazne zatvora visok
+        procenat, te predlažemo da se za krivična djela navedena zakonom, osuđena lica
+        oslobode 20% izvršenja kazne zatvora. 
+    </Obrazlozenje>
+</Amandman>
