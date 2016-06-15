@@ -20,11 +20,11 @@ public class RegulationsDAOTest {
 
     @Test
     public void fetchRegulationsByQuery() throws Exception {
-        HashMap<String, Propis> searchResults = RegulationsDAO.fetchRegulationsByQuery("NEPOKRETNOSTI");
+        HashMap<String, Object> searchResults = RegulationsDAO.fetchRegulationsByQuery("NEPOKRETNOSTI");
 
-        for (Map.Entry<String, Propis> entry : searchResults.entrySet()) {
-            Propis regulation = entry.getValue();
-            assertTrue(regulation.getNaziv().equals("O PROMETU NEPOKRETNOSTI"));
+        for (Map.Entry<String, Object> entry : searchResults.entrySet()) {
+            Object regulation = entry.getValue();
+            assertTrue(((Propis)regulation).getNaziv().equals("O PROMETU NEPOKRETNOSTI"));
         }
     }
 

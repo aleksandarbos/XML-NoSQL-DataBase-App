@@ -16,7 +16,7 @@
 				<tr><th>Naziv amandmana:</th><td><input type="text"class="bigInput" name="amandmentName"/></td></tr>
 				
 				<tr><th>Odnosi se na akt:</th><td>
-            		<select name="affectedRegulation"class="bigInput">
+            		<select name="affectedRegulationUri"class="bigInput">
 					#{list items: regulations, as:'regulation'}
                         <option value="${regulation.getUriPropisa()}">${regulation.getNaziv()}</option>
 					#{/list}
