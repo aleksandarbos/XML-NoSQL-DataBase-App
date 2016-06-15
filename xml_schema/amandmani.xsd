@@ -22,7 +22,11 @@
                     <xs:complexType>
                         <xs:sequence>
                             <xs:element name="Uri_propisa" type="xs:string"/>
-                            <xs:element name="Oznaka_clana" type="xs:int" minOccurs="0"/>
+                            <xs:element name="Oznaka_clana" type="xs:int" minOccurs="1"/>
+                            <xs:element minOccurs="0" name="Oznaka_stava" type="xs:int"/>
+                            <xs:element minOccurs="0" name="Oznaka_tacke" type="xs:int"/>
+                            <xs:element minOccurs="0" name="Oznaka_podtacke" type="xs:int"/>
+                            <xs:element minOccurs="0" name="Oznaka_alineje" type="xs:int"/>
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
