@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Amandman xmlns="http://www.parlament.gov.rs/amandmani">
+    <Preambula>
+        <Tip>IZMENA</Tip>
+        <Status>PREDLOZEN</Status>
+        <Oblast>EKONOMIJA</Oblast>
+        <Predlagac>gaja@parlament.rs</Predlagac>
+        <Datum_predaje>2016-06-15</Datum_predaje>
+        <Datum_glasanja>2016-06-15</Datum_glasanja>
+        <Broj_glasova_za>1</Broj_glasova_za>
+        <Broj_glasova_protiv>1</Broj_glasova_protiv>
+        <Broj_glasova_uzdrzano>1</Broj_glasova_uzdrzano>
+    </Preambula>
+    <Naziv>Amandman na zakon o budzetskom sistemu</Naziv>
+    <Deo_za_izmenu>
+        <Uri_propisa>adresaadresa</Uri_propisa>
+        <Oznaka_clana>4</Oznaka_clana>
+    </Deo_za_izmenu>
+    <Sadrzaj>
+        U članu 4 st. 4 iza reči "principi" dodaje se reč "javnosti", nakon čega se tekst
+        nastavlja u neizmenjenom obliku.
+    </Sadrzaj>
+    <Obrazlozenje>
+        Na ovaj način Predlog zakona će se dovesti u sklad sa članovima 3 i 53 Ustava
+        Republike Srbije.
+        Pored toga, Predlog zakona će se uskladiti sa standardima Međunarodnog monetarnog
+        fonda (Code of Good Practices on Fiscal Transparency iz 1998), Organizacije za
+        ekonomsku saradnju i razvoj (Best Practice on Budget Transparency iz 2001), Evropske
+        unije (Finansijske regulative) koji proizilaze iz strateških ciljeva Evropske
+        komisije za period 2005-2009, prema kojima su „najviši standardi javnosti u oblasti
+        javnih finansija od suštinskog značaja za legitimitet svake moderne vlade“.
+        Javnost budžeta je jedan od principa na kojima se zasniva upravljanje javnim sredstvima
+        u modernim demokratskim državama. Princip javnosti, saglasno Ustavu i navedenim
+        međunarodnim standardima mora se poštovati u svim fazama pripreme i izvršavanja
+        budžeta.
+    </Obrazlozenje>
+</Amandman>
