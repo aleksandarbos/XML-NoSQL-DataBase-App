@@ -39,8 +39,7 @@ public class XQueryInvoker {
 			System.out.println("your query returned an empty sequence.");
 		}
 		
-		// Release the client
-		db.client.release();
+		// db.client.release(); // TODO: inspect client releases
 		
 		return responses;
 

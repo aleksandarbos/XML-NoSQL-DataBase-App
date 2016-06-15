@@ -94,28 +94,51 @@ public class DatabaseQuery {
 														 int votesYesFrom, int votesYesTo, int votesNoFrom, int votesNoTo, int votesOffFrom, int votesOffTo) throws IOException, JAXBException {
 		StringBuilder query = new StringBuilder();
 		HashMap<String, Object> results = new HashMap<String, Object>();
+		String collectionCriteria = "";
+		String namespaceCriteria = "";
+		int criteriaCnt = 0;
 
-		query.append("declare namespace pp = \"http://www.parlament.gov.rs/propisi\";\n" +
-				"for $x in collection(\"/parliament/" + ((documentType.equals("PROPIS"))?"regulations":"amendments") + "\")\n" +
+		if(documentType.equals("") || documentType.equals("regulation")) {
+			collectionCriteria = "regulations";
+			namespaceCriteria = "propisi";
+		}
+		else {
+			collectionCriteria = "amendments";
+			namespaceCriteria = "amandmani";
+		}
+
+		System.out.println("-------------------***: " + documentType);
+
+
+		if(documentType.equals("regulation"))
+			documentType = "PROPIS";
+		else
+			documentType = "AMANDMAN";
+
+		System.out.println("-------------------***: " + documentType);
+
+		query.append("declare namespace pp = \"http://www.parlament.gov.rs/" + namespaceCriteria + "\";\n" +
+				"for $x in collection(\"/parliament/" + collectionCriteria + "\")\n" +
 				"let $y := fn:root($x)\n" +
 				"where $y//");
-		query.append("@Tip_dokumenta = \"" + documentType+ "\"\n");
-		if(documentName != null) query.append("and $y//pp:Naziv/text() = \"" + documentName + "\" \n");
-		query.append("and $y//pp:Preambula/pp:Status/text() = \"" + documentStatus + "\"\n");
-		if(user != null) query.append("and $y//pp:Preambula/pp:Predlagac/text() = \"" + user + "\"\n");
+		if(!documentType.equals("")) { criteriaCnt++; query.append("@Tip_dokumenta = \"" + documentType+ "\"\n"); }
+		if(documentName != null && !documentName.equals("")) { query.append(checkAnd(++criteriaCnt)+" $y//pp:Naziv/text() = \"" + documentName + "\" \n"); }
+		if(!documentStatus.equals("")) query.append(checkAnd(++criteriaCnt)+" $y//pp:Preambula/pp:Status/text() = \"" + documentStatus + "\"\n");
+		if(user != null && !user.equals("")) query.append(checkAnd(++criteriaCnt)+" $y//pp:Preambula/pp:Predlagac/text() = \"" + user + "\"\n");
 		if(votesYesFrom != 0 && votesNoFrom != 0) {
-			query.append("and $y//pp:Preambula/pp:Broj_glasova_za >= " + votesYesFrom + "\n");
-			query.append("and $y//pp:Preambula/pp:Broj_glasova_za >= " + votesYesTo + "\n");
+			query.append(checkAnd(++criteriaCnt)+" $y//pp:Preambula/pp:Broj_glasova_za >= " + votesYesFrom + "\n");
+			query.append(checkAnd(++criteriaCnt)+" $y//pp:Preambula/pp:Broj_glasova_za >= " + votesYesTo + "\n");
 		}
 		if(votesNoFrom != 0 && votesNoTo != 0) {
-			query.append("and $y//pp:Preambula/pp:Broj_glasova_protiv >= " + votesNoFrom + "\n");
-			query.append("and $y//pp:Preambula/pp:Broj_glasova_protiv >= " + votesNoTo + "\n");
+			query.append(checkAnd(++criteriaCnt)+" $y//pp:Preambula/pp:Broj_glasova_protiv >= " + votesNoFrom + "\n");
+			query.append(checkAnd(++criteriaCnt)+" $y//pp:Preambula/pp:Broj_glasova_protiv >= " + votesNoTo + "\n");
 		}
 		if(votesOffFrom != 0 && votesOffTo != 0) {
-			query.append("and $y//pp:Preambula/pp:Broj_glasova_za >= " + votesOffFrom + "\n");
-			query.append("and $y//pp:Preambula/pp:Broj_glasova_za >= " + votesOffTo + "\n");
+			query.append(checkAnd(++criteriaCnt)+" $y//pp:Preambula/pp:Broj_glasova_za >= " + votesOffFrom + "\n");
+			query.append(checkAnd(++criteriaCnt)+" $y//pp:Preambula/pp:Broj_glasova_za >= " + votesOffTo + "\n");
 		}
 		query.append("return $y\n");
+		System.out.println(query.toString());
 
 		Vector<String> searchResults = XQueryInvoker.execute(query.toString()); // will be invoked
 
@@ -130,7 +153,6 @@ public class DatabaseQuery {
 				results.put(((Amandman)docObj).getUriAmandmana(), (Amandman) docObj);
 			}
 		}
-
 		return results;
 	}
 
@@ -168,6 +190,12 @@ public class DatabaseQuery {
 		} catch (TransformerException e) {
 			e.printStackTrace();
 		}
+	}
+
+	private static String checkAnd(int criteriaCnt) {
+		if(criteriaCnt > 1)
+			return "and";
+		return "";
 	}
 
 }
