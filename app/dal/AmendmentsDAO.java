@@ -13,6 +13,7 @@ import database.DatabaseQuery;
 import models.rs.gov.parlament.amandmani.Amandman;
 
 import javax.xml.bind.JAXBException;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -85,6 +86,27 @@ public class AmendmentsDAO {
 
         String editedXmlDocString = Converter.marshall(MarshallType.TO_STRING, amendment, "");
         DatabaseQuery.writeXmlToDatabase(docUri, editedXmlDocString);
+    }
+
+
+    /**
+     * Fetches all amendments from amendments collection in database by custom query.
+     * @return HashMap<String, Amandman> of found amendments, where key=>docUri and value=>amendmentObject.
+     * @throws IOException
+     * @throws JAXBException
+     */
+    public static HashMap<String, Object> fetchAmendmentsByQuery(String query) {
+        HashMap<String, Object> returnValues = null;
+
+        try {
+            returnValues = DatabaseQuery.search(query, COLLECTION_ID, Amandman.class);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (JAXBException e) {
+            e.printStackTrace();
+        }
+
+        return returnValues;
     }
 
 }

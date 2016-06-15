@@ -1,13 +1,11 @@
 package controllers;
 
+import dal.AmendmentsDAO;
 import dal.RegulationsDAO;
 import database.DatabaseQuery;
-import models.rs.gov.parlament.propisi.Propis;
 import play.mvc.Controller;
 import play.mvc.With;
 
-import javax.xml.bind.JAXBException;
-import java.io.IOException;
 import java.util.Collection;
 import java.util.HashMap;
 
@@ -19,9 +17,17 @@ public class Search extends Controller {
     	render(userType);
     }
 
-    public static void searchText(String documentText) {
-        HashMap<String, Propis> searchResults = RegulationsDAO.fetchRegulationsByQuery(documentText);
-        Collection<Propis> results = searchResults.values();
+    public static void searchText(String documentText, String documentType) {
+		HashMap<String, Object> searchResults = null;
+
+		if(documentType.equals("regulations")) {
+			searchResults = RegulationsDAO.fetchRegulationsByQuery(documentText);
+		} else {
+			searchResults = AmendmentsDAO.fetchAmendmentsByQuery(documentText);
+		}
+
+		Collection<Object> results = searchResults.values();
+
 		flash("documentText", documentText);
         renderTemplate("Search/show.html", results);
     }

@@ -23,6 +23,12 @@
 		
 		<form class="textSearchForm" action="@{Search.searchText()}" method="get">
 			<table class="invisibleTable">
+                <tr><th>Tip dokumenta:</th><td>
+                    <select name="documentType" class="bigInput selectSearch">
+                        <option value="regulations" selected>Propisi</option>
+                        <option value="amendments">Amandmani</option>
+                    </select></td>
+				</tr>
 				<tr><th>Tekst za pretragu:</th><td>
 					<input type="text" class="bigInput" name="documentText" value="${flash.documentText}"/></td></tr>
 				<tr><td colspan="2">
@@ -59,7 +65,7 @@
 				<tr><th>Tip dokumenta:</th><td>
 					<select name="documentType" class="bigInput selectType" value="${flash.documentType}">
 						<option value=""></option>
-						<option value="regulation">Akt</option>
+						<option value="regulation" selected>Akt</option>
 						<option value="amendment">Amandman</option>
 					</select></td></tr>
 				<tr><th>Dokument predložio:</th><td>
@@ -113,17 +119,22 @@
 					#{list items: results, as:'document'}
 						<tr>
 							<td>${document.getPreambula().getStatus()}</td>
-							<td>
-								akt
-							</td>
-							<td class="documentId" style="display:none;">
 								#{if document.getTipDokumenta() == "PROPIS"}
-									${document.getUriPropisa()}
+                                    <td>
+                                        AKT
+                                    </td>
+                                    <td class="documentId" style="display:none;">
+										${document.getUriPropisa()}
+									</td>
 								#{/if}
 								#{else}
-									${document.getUriAmandmana()}
+                                    <td>
+                                        AMANDMAN
+                                    </td>
+                                    <td class="documentId" style="display:none;">
+										${document.getUriAmandmana()}
+                                    </td>
 								#{/else}
-							</td>
 							<td>${document.getNaziv()}</td>
 							<td><a class="alterationPreview">pogledaj</a></td>
 							<td><a class="alterationToPdf">u PDF</a></td>

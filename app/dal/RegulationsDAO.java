@@ -74,23 +74,15 @@ public class RegulationsDAO {
      * @throws IOException
      * @throws JAXBException
      */
-    public static HashMap<String, Propis> fetchRegulationsByQuery(String query) {
-    	
-        HashMap<String, Object> searchResults = null;
-        HashMap<String, Propis> returnValues = new HashMap<String, Propis>();
-        
+    public static HashMap<String, Object> fetchRegulationsByQuery(String query) {
+        HashMap<String, Object> returnValues = null;
+
 		try {
-			searchResults = DatabaseQuery.search(query, COLLECTION_ID, Propis.class);
+            returnValues = DatabaseQuery.search(query, COLLECTION_ID, Propis.class);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (JAXBException e) {
             e.printStackTrace();
-        }
-
-        for (Map.Entry<String, Object> entry : searchResults.entrySet()) {
-            String key = entry.getKey();
-            Object value = entry.getValue();
-            returnValues.put(key, (Propis) value);
         }
 
         return returnValues;
