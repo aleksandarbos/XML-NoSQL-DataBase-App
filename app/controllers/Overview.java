@@ -1,5 +1,6 @@
 package controllers;
 
+import converter.XMLTransformation;
 import dal.AmendmentsDAO;
 import dal.RegulationsDAO;
 import models.rs.gov.parlament.amandmani.Amandman;
@@ -8,10 +9,6 @@ import play.mvc.Controller;
 import play.mvc.With;
 
 import javax.xml.bind.JAXBException;
-
-import converter.XMLTransformation;
-
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -44,10 +41,9 @@ public class Overview extends Controller {
     }
     
     public static void topdf(String id) {
-    	System.out.println("daj pdf za dokument: " + id);
-    	//InputStream download = XMLTransformation.transformToPdf(id);
-    	InputStream download = XMLTransformation.transformToPdfFile(id);
-    	renderBinary(download);
+        response.setHeader("Content-Type", "application/pdf");
+        InputStream download = XMLTransformation.transformToPdfFile(id);
+        renderBinary(download, id+".pdf");
     }
     
     public static void preview(String  id) {

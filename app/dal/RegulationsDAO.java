@@ -82,9 +82,11 @@ public class RegulationsDAO {
         
 		try {
 			searchResults = DatabaseQuery.search(query, COLLECTION_ID, Propis.class);
-		} catch (FileNotFoundException | JAXBException e) {
+		} catch (FileNotFoundException e) {
 			e.printStackTrace();
-		}
+		} catch (JAXBException e) {
+            e.printStackTrace();
+        }
 
         for (Map.Entry<String, Object> entry : searchResults.entrySet()) {
             String key = entry.getKey();

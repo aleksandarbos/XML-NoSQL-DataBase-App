@@ -5,7 +5,6 @@ import database.DatabaseAccessor;
 import org.apache.fop.apps.*;
 import org.xml.sax.SAXException;
 
-import javax.xml.bind.JAXBException;
 import javax.xml.transform.*;
 import javax.xml.transform.sax.SAXResult;
 import javax.xml.transform.stream.StreamResult;
