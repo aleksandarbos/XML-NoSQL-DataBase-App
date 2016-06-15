@@ -1,0 +1,134 @@
+<?xml  version="1.0" encoding="UTF-8"?>
+<Propis Uri_propisa="/parliament/regulations/" Tip_dokumenta="PROPIS" xmlns="http://www.parlament.gov.rs/propisi">
+    <Preambula>
+        <Status>PREDLOZEN</Status>
+        <Predlagac>gaja@parlament.rs</Predlagac>
+        <Broj_glasova_za>0</Broj_glasova_za>
+        <Broj_glasova_protiv>0</Broj_glasova_protiv>
+        <Broj_glasova_uzdrzano>0</Broj_glasova_uzdrzano>
+    </Preambula>
+    <Naziv>Zakon o budžetskom sistemu</Naziv>
+    <Sadrzaj>
+        <Glava Oznaka_glave="1" Naziv_glave="Osnovne odredbe">
+            <Clan Oznaka_clana="1">
+                <Stav Oznaka_stava="1">
+                    Ovim zakonom uređuje se: planiranje, priprema, donošenje i izvršenje budžeta Republike Srbije; planiranje, priprema, 
+                    donošenje i izvršenje budžeta autonomnih pokrajina i jedinica lokalne samouprave (u daljem tekstu: budžet lokalne vlasti); 
+                    priprema i donošenje finansijskih planova Republičkog fonda za penzijsko i invalidsko osiguranje, Republičkog fonda za
+                    zdravstveno osiguranje, Fonda za socijalno osiguranje vojnih osiguranika i Nacionalne službe za zapošljavanje (u daljem 
+                    tekstu: organizacije za obavezno socijalno osiguranje); budžetsko računovodstvo i izveštavanje, finansijsko upravljanje,
+                    kontrola i revizija korisnika javnih sredstava i budžeta Republike Srbije, budžeta lokalne vlasti i finansijskih planova 
+                    organizacija za obavezno socijalno osiguranje; nadležnost i organizacija Uprave za trezor, kao organa uprave u sastavu 
+                    Ministarstva finansija (u daljem tekstu: Uprava za trezor) i trezora lokalne vlasti; druga pitanja od značaja za funkcionisanje 
+                    budžetskog sistema. 
+                </Stav>
+            </Clan>
+            <Clan Oznaka_clana="2">
+                <Stav Oznaka_stava="1">
+                    Zakon o budžetu Republike Srbije jeste zakon kojim se procenjuju prihodi i primanja, te utvrđuju rashodi i izdaci za jednu
+                    ili tri godine (kapitalni izdaci iskazuju se za tri godine), a donosi ga Narodna skupština; sadrži i odredbe bitne za izvršenje
+                    tog zakona; u slučaju kad se budžet donosi za tri godine prihodi i primanja, rashodi i izdaci iskazuju se za svaku godinu posebno.
+                </Stav>
+                <Stav Oznaka_stava="2">
+                    Odluka o budžetu jeste odluka kojom se procenjuju prihodi i primanja, te utvrđuju rashodi i izdaci za jednu ili tri godine 
+                    (kapitalni izdaci iskazuju se za tri godine), a donosi ga skupština autonomne pokrajine, odnosno skupština opštine, odnosno 
+                    grada ili grada Beograda (u daljem tekstu: skupština lokalne vlasti); sadrži i odredbe bitne za izvršenje te odluke; u slučaju 
+                    kad se budžet donosi za tri godine prihodi i primanja, rashodi i izdaci iskazuju se za svaku godinu posebno;
+                </Stav>
+                <Stav Oznaka_stava="3">
+                    Finansijski plan jeste akt direktnog ili indirektnog korisnika budžetskih sredstava, kao i akt organizacije za obavezno socijalno 
+                    osiguranje, koji uključuje i finansijske planove indirektnih korisnika sredstava organizacija za obavezno socijalno osiguranje, 
+                    izrađen na osnovu uputstva za pripremu budžeta, u skladu sa smernicama za izradu srednjoročnih planova i projekcijama 
+                    srednjoročnog okvira rashoda predviđenih Fiskalnom strategijom, koji sadrži procenu obima prihoda i primanja i obim rashoda i 
+                    izdataka za period od jedne ili tri godine (kapitalni izdaci iskazuju se za tri godine).
+                </Stav>
+            </Clan>
+            <Clan Oznaka_clana="3">
+                <Stav Oznaka_stava="1">
+                    Budžetski sistem čine budžet Republike Srbije, budžeti lokalne vlasti i finansijski planovi organizacija za obavezno socijalno 
+                    osiguranje.
+                    Integritet budžetskog sistema obezbeđuje se zajedničkim pravnim osnovom, jedinstvenom budžetskom klasifikacijom, upotrebom 
+                    jedinstvene budžetske dokumentacije za izradu nacrta budžeta, srednjoročnih i finansijskih planova, jedinstvenim sistemom budžetskog 
+                    računovodstva, jedinstvenim kriterijumima za budžetsku kontrolu i reviziju, prenosom statističkih izveštaja i podataka sa jednog nivoa
+                    budžeta na drugi i principima na kojima se zasniva budžetski postupak, u skladu sa ovim zakonom.                 
+                </Stav>
+            </Clan>
+            <Clan Oznaka_clana="4">
+                <Stav Oznaka_stava="1">
+                    Budžetski sistem treba da ostvari sledeće ciljeve i to:
+                    Ukupnu fiskalnu održivost i kontrolu, koja podrazumeva sprovođenje politika bez značajnih izmena u konsolidovanom bilansu sektora države,
+                    uz sveobuhvatnu kontrolu ukupnih budžetskih sredstava, kroz uspostavljanje ograničenja na rashode i izdatke koji su zagarantovani zakonom, 
+                    kako na ukupnom nivou, tako i na nivou korisnika budžetskih sredstava;
+                </Stav>
+                <Stav Oznaka_stava="2">
+                    Alokacijsku efikasnost koja podrazumeva mogućnost uspostavljanja prioriteta unutar budžeta, raspoređivanje sredstava u skladu sa prioritetima 
+                    Vlade unutar budžeta, kao i mogućnost prebacivanja sredstava sa starih na nove ili sa manje produktivnih na više produktivne prioritete;
+                </Stav>
+                <Stav Oznaka_stava="3">
+                    Tehničku ili operativnu efikasnost koja podrazumeva korišćenje budžetskih sredstava i mogućnost njihove primene sa što nižim troškovima ;
+                </Stav>
+                <Stav Oznaka_stava="4">
+                    Alokacijsku efikasnost koja podrazumeva raspoređivanje sredstava budžeta sa ciljem unapređenja rodne ravnopravnosti.
+                    Budžetski sistem obezbeđuje sveobuhvatne, relevantne i pouzdane informacije o radu Vlade.
+                    Prioritetni budžetski ciljevi u pripremi i izvršenju budžeta su i makroekonomska stabilnost, niska inflacija, ekonomski razvoj, podsticanje
+                    regionalnog razvoja i smanjenje finansijskog rizika Republike Srbije.
+                    Prilikom pripreme i izvršenja budžeta moraju se poštovati principi efikasnosti, ekonomičnosti, efektivnosti, javnosti, potpunosti, tačnosti
+                    i jedinstvene budžetske klasifikacije.
+                </Stav>
+            </Clan>
+            <Clan Oznaka_clana="5">
+                <Stav Oznaka_stava="1">
+                    Budžetski prihodi i primanja koji pripadaju Republici Srbiji, odnosno lokalnoj vlasti, raspoređuju se i iskazuju po vrstama.
+                    Budžetski rashodi i izdaci Republike Srbije, odnosno lokalne vlasti određuju se po pojedinačnoj nameni u budžetu.
+                    Prihodi i primanja se iskazuju u ukupno ostvarenim iznosima, a rashodi i izdaci u ukupno izvršenim iznosima.
+                    Ukoliko se pojedini prihodi i primanja, rashodi i izdaci, kao i budžet lokalne vlasti utvrđuju relativno, kao procenat budžeta ili rashoda
+                    budžeta Republike Srbije, odnosno budžeta lokalne vlasti, njihov iznos, odnosno visina utvrdiće se primenjujući, kao osnovicu, poreske prihode.
+                    Izuzetno, u slučaju da viši nivo vlasti svojim aktom opredeli nižem nivou vlasti namenska sredstva za nadoknadu šteta usled elementarnih nepogoda, 
+                    lokalni organ uprave nadležan za finansije na osnovu tog akta otvara odgovarajuće aproprijacije za izvršavanje izdataka po tom osnovu.
+                    Izuzetno, u slučaju da jedan nivo vlasti svojim aktom opredeli drugom nivou vlasti namenska transferna sredstva, kao i u slučaju ugovaranja donacije, 
+                    čiji iznosi nisu mogli biti poznati u postupku donošenja budžeta, odnosno finansijskog plana organizacija za obavezno socijalno osiguranje, organ
+                    uprave nadležan za finansije na osnovu tog akta otvara odgovarajuće aproprijacije za izvršavanje rashoda i izdataka po tom osnovu.
+                    Budžetski prihodi i primanja moraju biti u ravnoteži sa budžetskim rashodima i izdacima.
+                    U toku godine Vlada, odnosno nadležni izvršni organ lokalne vlasti, može raspolagati sredstvima koja su u budžetu ostvarena do isteka tekuće godine. 
+                    U slučaju da se radi o sredstvima za sufinansiranje projekata finansiranih od strane Evropske unije, a po osnovu odgovarajućeg finansijskog sporazuma 
+                    između Vlade Republike Srbije i Evropske unije, neutrošena sredstva prenose se u narednu godinu.
+                    Korisnik budžetskih sredstava može stvarati obaveze i koristiti budžetsku aproprijaciju do iznosa utvrđenog za pojedinu namenu u budžetu, odnosno do
+                    iznosa aproprijacije utvrđene u okviru programa.
+                    Naplata prihoda nije ograničena iznosima iskazanih prihoda u budžetu.
+                    Odgovornost za donošenje budžeta i finansijskog plana organizacije za obavezno socijalno osiguranje.
+                </Stav>
+            </Clan>
+            <Clan Oznaka_clana="6">
+                <Stav Oznaka_stava="1">
+                    <Tacka Oznaka_tacke="1"> Narodna skupština donosi zakon o budžetu Republike Srbije.
+                        Skupština lokalne vlasti donosi odluku o budžetu lokalne vlasti.
+                        Finansijski plan organizacije za obavezno socijalno osiguranje donosi nadležni organ organizacije za obavezno socijalno osiguranje, u skladu sa 
+                        zakonom i drugim propisom, uz saglasnost Narodne skupštine.;</Tacka>
+                    <Tacka Oznaka_tacke="2">Odgovornost za izvršenje budžeta i finansijskog plana organizacije za obavezno socijalno osiguranje;</Tacka>
+                </Stav>
+            </Clan>
+            <Clan Oznaka_clana="37">
+                <Stav Oznaka_stava="1">
+                    Na osnovu uputstva za pripremu nacrta budžeta Republike i srednjoročnih planova, direktni korisnici budžetskih sredstava izrađuju predlog srednjoročnog i 
+                    finansijskog plana.
+                    Predlog finansijskog plana iz stava 1. ovog člana obuhvata:
+                    <Tacka Oznaka_tacke="1"> rashode i izdatke za trogodišnji period, iskazane po budžetskoj klasifikaciji; </Tacka>
+                    <Tacka Oznaka_tacke="2"> detaljno pisano obrazloženje rashoda i izdataka, kao i izvora finansiranja ; </Tacka>
+                    <Tacka Oznaka_tacke="3"> rodnu analizu rashoda i izdataka. </Tacka>
+                </Stav>
+                <Stav Oznaka_stava="2">
+                    Predlog finansijskog plana budžetskog korisnika podnosi se u iznosu jednakom iznosu obima sredstava prve godine srednjoročnog okvira rashoda,
+                    definisanog u Fiskalnoj strategiji.
+                    Delovi predloga finansijskog plana iz stava 2. ovog člana sastoje se iz pisanog objašnjenja, koje obuhvata i obrazloženje, srednjoročnu kvantifikaciju
+                    i procenu efekata novih politika i investicionih prioriteta, na osnovu Uputstva za pripremu budžeta Republike i srednjoročnih planova korisnika
+                    sredstava Republike Srbije i finansijskog zahteva.
+                    Priprema i dostavljanje finansijskih planova organizacija za obavezno socijalno osiguranje i predloga finansijskih planova indirektnih korisnika 
+                    sredstava budžeta Republike Srbije.
+                </Stav>
+           </Clan>
+        </Glava>
+    </Sadrzaj>
+    <Prilozi>
+    </Prilozi>
+</Propis>
+
