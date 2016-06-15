@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Amandman xmlns="http://www.parlament.gov.rs/amandmani"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.parlament.gov.rs/amandmani file:/E:/Users/NemanjaM/Documents/Practice/XML/Projekat/XML-NoSQL-DataBase-App/xml_schema/amandmani.xsd" Uri_amandmana="" Tip_dokumenta="AMANDMAN">
+    <Preambula>
+        <Tip>DODAVANJE</Tip>
+        <Status>PREDLOZEN</Status>
+        <Oblast>SPORT</Oblast>
+        <Predlagac></Predlagac>
+        <Datum_predaje>2016-06-06</Datum_predaje>
+    </Preambula>
+    <Naziv>ZAKON O SPORTU, ISPRAVKA PROGLASA</Naziv>
+    <Deo_za_izmenu>
+        <Uri_propisa>s</Uri_propisa><Oznaka_clana>2</Oznaka_clana>
+    </Deo_za_izmenu>
+    <Sadrzaj>
+        U članu 4. dodaje se novi stav.
+        Prilikom sklapanja ugovora o radu i tijekom trajanja radnog odnosa, radnik je dužan
+        obavijestiti poslodavca o bolesti ili drugoj okolnosti koja ga onemogućuje ili bitno ometa u
+        izvršenju obveza iz ugovora o radu ili koja ugrožava život ili zdravlje osoba s kojima u
+        izvršenju ugovora o radu radnik dolazi u dodir.
+    </Sadrzaj>
+    <Obrazlozenje>
+        Ovo je fer rješenje koje štiti poslodavca od strane onih radnika koji su neodgovorni i
+        manipulacijama žele da steknu određene benefite. Osim toga predloženi amandman je i u
+        funkciji zaštite radnika, jer se bitno smanjuje mogućnost povrede ili oboljenja na poslu.
+        Najbolji primjer, koliko ovaj amandman ima smisao, je slučaj pilota „German Wings-a“ koji
+        nije prijavio bolesti poslodavcu i ubio 149 ljudi.
+        Ovakvo rješenje je poznato u zakonima zemalja u regionu te drugih zemalja EU. Npr. Hrvatska,
+        Crna gora, Srbija, RS, Njemačka i još na desetine zemalja i potpunosti je usklađeno sa
+        Ekonomsko - socijalnom poveljom i Konvencijama MOR-a.
+    </Obrazlozenje>
+</Amandman>

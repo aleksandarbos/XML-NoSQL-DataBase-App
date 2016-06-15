@@ -55,10 +55,10 @@
                 <xs:element name="Oblast" type="pp:Taksonomska_oblast"/>
                 <xs:element name="Predlagac" type="xs:string"/>
                 <xs:element name="Datum_predaje" type="xs:date"/>
-                <xs:element name="Datum_glasanja" type="xs:date"/>
-                <xs:element name="Broj_glasova_za" type="xs:int"/>
-                <xs:element name="Broj_glasova_protiv" type="xs:int"/>
-                <xs:element name="Broj_glasova_uzdrzano" type="xs:int"/>
+                <xs:element name="Datum_glasanja" type="xs:date" minOccurs="0"/>
+                <xs:element name="Broj_glasova_za" type="xs:int" minOccurs="0"/>
+                <xs:element name="Broj_glasova_protiv" type="xs:int" minOccurs="0"/>
+                <xs:element name="Broj_glasova_uzdrzano" type="xs:int" minOccurs="0"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>

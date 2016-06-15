@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Propis xmlns="http://www.parlament.gov.rs/propisi"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.parlament.gov.rs/propisi file:/E:/Users/NemanjaM/Documents/Practice/XML/Projekat/XML-NoSQL-DataBase-App/xml_schema/propisi.xsd" Uri_propisa="" Tip_dokumenta="PROPIS">
+    <Preambula>
+        <Pravni_osnov></Pravni_osnov>
+        <Naziv_organa></Naziv_organa>
+        <Status>PREDLOZEN</Status>
+        <Oblast>SPORT</Oblast>
+        <Predlagac></Predlagac>
+        <Datum_predaje>2010-10-10</Datum_predaje>
+    </Preambula>
+    <Naziv>ZAKON O SPOTRU</Naziv>
+    <Sadrzaj>
+        <Glava Oznaka_glave="1" Naziv_glave="Uvodne odredbe">
+            <Clan Oznaka_clana="1">
+                <Stav Oznaka_stava="1">
+                    Ovim zakonom uređuju se prava i obaveze sportista i ostalih fizičkih lica u
+                    sistemu sporta, pitanja vezana za pravni položaj, organizaciju i registraciju
+                    preduzetnika i pravnih lica u sistemu sporta (u daljem tekstu: organizacije u oblasti
+                    sporta), opšti interes i potrebe i interesi građana u oblasti sporta, finansiranje,
+                    kategorizacije u oblasti sporta, nacionalna strategija razvoja sporta u Republici Srbiji,
+                    školski i univerzitetski sport i fizičko vaspitanje dece predškolskog uzrasta, sportski
+                    objekti, organizovanje sportskih priredaba, nacionalna priznanja i nagrade za
+                    poseban doprinos razvoju i afirmaciji sporta, vođenje evidencija i nadzor nad radom
+                    organizacija u oblasti sporta. 
+                </Stav>
+            </Clan>
+            <Clan Oznaka_clana="2">
+                <Stav Oznaka_stava="1">
+                    Sport je delatnost od posebnog značaja za Republiku Srbiju.
+                </Stav>
+                <Stav Oznaka_stava="2">
+                    Sport je deo fizičke kulture koji obuhvata svaki oblik organizovanog i
+                    neorganizovanog obavljanja sportskih aktivnosti i sportskih delatnosti od strane
+                    fizičkih i pravnih lica u sistemu sporta, u cilju zadovoljenja potreba čoveka za
+                    stvaralaštvom, afirmacijom, fizičkim vežbanjem i takmičenjem sa drugima.
+                </Stav>
+            </Clan>
+            <Clan Oznaka_clana="3">
+                <Stav Oznaka_stava="1">
+                    Pojedini izrazi upotrebljeni u ovom zakonu imaju sledeće značenje:
+                    <Tacka Oznaka_tacke="1">
+                        sportske aktivnosti jesu svi oblici fizičke i umne aktivnosti koji, kroz
+                        neorganizovano ili organizovano učešće, imaju za cilj izražavanje ili poboljšanje
+                        fizičke spremnosti i duhovnog blagostanja, stvaranje društvenih odnosa ili postizanje
+                        rezultata na takmičenjima svih nivoa;
+                    </Tacka>
+                    <Tacka Oznaka_tacke="2">
+                        sportske delatnosti jesu delatnosti kojima se obezbeđuju uslovi za
+                        obavljanje sportskih aktivnosti, odnosno omogućava njihovo obavljanje, a naročito:
+                        organizovanje učešća i vođenje sportskih takmičenja, uključujući i međunarodna
+                        takmičenja, obučavanje za bavljenje sportskim aktivnostima i planiranje i vođenje
+                        sportskih aktivnosti; sportsko suđenje; organizovanje sportskih priprema i sportskih
+                        priredaba; obezbeđenje i upravljanje sportskom opremom i objektima; stručno
+                        obrazovanje, osposobljavanje, usavršavanje i informisanje u oblasti sporta;
+                        naučnoistraživački i istraživačko-razvojni rad u sportu; propaganda i marketing u
+                        sportu; savetodavne i stručne usluge u sportu; sportsko posredovanje, organizovanje
+                        poslovanja organizacija u oblasti sporta;
+                    </Tacka>
+                    <Tacka Oznaka_tacke="3">
+                        sportska rekreacija (rekreativni sport, sport za sve, masovni sport) jeste
+                        oblast sporta koja obuhvata dobrovoljno bavljenje fizičkim vežbanjem, odnosno
+                        sportskim aktivnostima radi odmora, osveženja, zabave, unapređivanja zdravlja ili
+                        unapređivanja sopstvenih rezultata i radi zadovoljenja potreba za kretanjem, igrom i
+                        druženjem, u svim segmentima stanovništva;
+                    </Tacka>
+                    <Tacka Oznaka_tacke="4">
+                        vrhunski sport jeste oblast sporta koja obuhvata sportske aktivnosti koje
+                        za rezultat imaju izuzetne (vrhunske) rezultate i sportske kvalitete;
+                    </Tacka>
+                    <Tacka Oznaka_tacke="5">
+                        sport dece jeste organizovan oblik fizičkog vežbanja, odnosno sportskih
+                        aktivnosti, usklađen sa antropološkim karakteristikama dečjeg uzrasta;
+                    </Tacka>
+                    <Tacka Oznaka_tacke="6">
+                        sportska organizacija jeste organizacija koja se osniva radi obavljanja
+                        sportskih aktivnosti i sportskih delatnosti, u skladu sa ovim zakonom;
+                    </Tacka>
+                    <Tacka Oznaka_tacke="7">
+                        sportista jeste lice koje se bavi sportskim aktivnostima;
+                    </Tacka>
+                    <Tacka Oznaka_tacke="8">
+                        sportista amater jeste sportista kome zarada nije cilj bavljenja sportskim
+                        aktivnostima i tim aktivnostima se ne bavi u vidu zanimanja;
+                    </Tacka>
+                </Stav>
+                <Stav Oznaka_stava="2">
+                    Termini kojima su u ovom zakonu označeni položaji, profesije, odnosno
+                    zanimanja, izraženi u gramatičkom muškom rodu, podrazumevaju prirodni muški i
+                    ženski rod lica na koja se odnose.
+                    Organizacije u oblasti sporta označavaju položaje, profesije i zanimanja u
+                    oblasti sporta utvrđene u skladu sa ovim zakonom, u muškom, odnosno ženskom
+                    gramatičkom rodu, u zavisnosti od roda nosioca položaja, profesije ili zanimanja.
+                </Stav>
+                <Stav Oznaka_stava="3">
+                    Mišljenje da li neka aktivnost, odnosno delatnost spada u sportsku aktivnost,
+                    odnosno sportsku delatnost i kojoj sportskoj disciplini i sportskoj grani, odnosno
+                    oblasti pripada, kao i koji međunarodni sportski savez ima status nadležnog
+                    međunarodnog sportskog saveza u skladu sa ovim zakonom, u slučaju potrebe, daje
+                    ministarstvo nadležno za sport (u daljem tekstu: Ministarstvo), a na osnovu 4                     prethodno pribavljenog stručnog mišljenja Sportskog saveza Srbije, Olimpijskog
+                    komiteta Srbije i Paraolimpijskog komiteta Srbije.
+                </Stav>
+            </Clan>
+            <Clan Oznaka_clana="4">
+                <Stav Oznaka_stava="1">
+                    Prilikom vođenja evidencija i drugih zbirki podataka i prilikom izdavanja ili
+                    podnošenja dokumenata od strane učesnika u sistemu sporta u skladu sa ovim
+                    zakonom, ostvaruje se zaštita podataka o ličnosti i privatnosti u skladu sa odredbama
+                    ovog zakona i zakona kojim se uređuje zaštita podataka o ličnosti.
+                </Stav>
+                <Stav Oznaka_stava="2">
+                    Nadležni nacionalni sportski savez u skladu sa zakonom prikuplja, čuva i vrši
+                    druge radnje obrade ličnih podataka sportiste, sportskog stručnjaka i stručnjaka u
+                    sportu, u zavisnosti od vrste evidencije koju nadležni nacionalni sportski savez vodi u
+                    skladu sa ovim zakonom (ime i prezime; pol; datum rođenja; državljanstvo; broj
+                    ličnog dokumenta koji služi kao sredstvo identifikacije na sportskim priredbama;
+                    adresa prebivališta i boravišta; podaci za kontakt; grana sporta i sportska disciplina;
+                    naziv sportske organizacije u kojoj se obavljaju sportske aktivnosti i delatnosti i za
+                    koju je sportista, odnosno sportski stručnjak registrovan; fotografija; broj sportskog
+                    registracionog dokumenta; postignuti sportski rezultati; disciplinske kazne;
+                    angažovani sportski posrednik; osnov angažovanja u sportskoj organizaciji ili savezu;
+                    zaključeni ugovori sa sportskom organizacijom ili savezom; školska stručna sprema,
+                    odnosno stručna osposobljenost sportskog stručnjaka; sportsko zvanje sportskog
+                    stručnjaka; broj i datum izdavanja dozvole za rad sportskog stručnjaka i rok njenog
+                    važenja; realizovani transfer, ustupanje ili drugi vid prelaska sportiste ili sportskog
+                    stručnjaka u drugu sportsku organizaciju; naknada za razvoj sportiste pri zaključenju
+                    prvog profesionalnog ugovora; drugi podaci utvrđeni sportskim pravilima nadležnog
+                    međunarodnog sportskog saveza), uključujući i obradu posebno osetljivih podataka
+                    (zdravstveno stanje sportiste, korišćena medicinska sredstva i dr.), i drugim
+                    organizacijama u oblasti sporta prenosi lične podatke sportiste, sportskog stručnjaka
+                    i stručnjaka u sportu koji su neophodni za ostvarivanje prava, obaveza i odgovornosti
+                    tih lica u tim organizacijama u skladu sa ovim zakonom. 
+                </Stav>
+                <Stav Oznaka_stava="3">U dokumentima čije je izdavanje ili drugo postupanje sa njima predviđeno
+                    odredbama ovog zakona unose se sledeći podaci o ličnosti, u zavisnosti od vrste i
+                    namene dokumenta: ime, ime roditelja i prezime; datum i mesto rođenja;
+                    stručni/akademski naziv; sportsko zvanje; naziv i nivo dozvole za rad; datum
+                    položenog stručnog/završnog ispita i postignut uspeh na ispitu, odnosno ukupna
+                    prosečna ocena; fotografija; ocena zdravstvene sposobnosti za bavljenje sportskim
+                    aktivnostima i stručnim radom u sportu; sportski rang prema odgovarajućoj
+                    nacionalnoj kategorizaciji; uzrasna sportska kategorija; funkcija koja se obavlja u
+                    organizaciji u oblasti sporta; podaci za kontakt; jedinstveni matični broj zastupnika
+                    organizacije u oblasti sporta; broj isprave (lične karte ili putne isprave) koja služi za
+                    identifikaciju lica; datum izdavanja i rok važnosti dokumenta; potpis.
+                </Stav>
+                <Stav Oznaka_stava="4">
+                    Za potrebe naučnoistraživačkog rada i prilikom izrade sportsko-političkih i
+                    statističkih analiza, lični podaci učesnika u sistemu sporta koriste se i objavljuju na
+                    način kojim se obezbeđuje zaštita identiteta učesnika u sistemu sporta, u skladu sa
+                    zakonom
+                </Stav>
+            </Clan>
+            <Clan Oznaka_clana="5">
+                <Stav Oznaka_stava="1">
+                    Prava i obaveze utvrđene ovim zakonom primenjuju se na sve organizacije u
+                    oblasti sporta koje imaju svoje sedište na teritoriji Republike Srbije i na svako
+                    obavljanje sportskih aktivnosti i delatnosti na teritoriji Republike Srbije.
+                </Stav>
+            </Clan>
+        </Glava>
+        <Glava Oznaka_glave="2">
+            <Odeljak Oznaka_odeljka="1" Naziv_odeljka="FIZIČKA LICA U SISTEMU SPORTA">
+                <Clan Oznaka_clana="6">
+                    <Stav Oznaka_stava="1">
+                        Sportista može da se bavi sportskim aktivnostima samostalno ili u okviru
+                        organizacija u oblasti sporta.
+                    </Stav>
+                    <Stav Oznaka_stava="2">
+                        Sportista može da se bavi sportskim aktivnostima amaterski ili profesionalno.
+                    </Stav>
+                </Clan>
+                <Clan Oznaka_clana="7">
+                    <Stav Oznaka_stava="1">
+                        Prava, obaveze i odgovornosti sportista amatera uređuju se zakonom,
+                        sportskim pravilima nadležnog nacionalnog sportskog saveza i opštim aktima
+                        sportske organizacije, a prava, obaveze i odgovornosti sportista takmičara amatera
+                        kojima se obezbeđuje novčana naknada za bavljenje sportom - i ugovorom između
+                        sportiste i sportske organizacije (ugovor o stipendiranju maloletnog sportiste za
+                        sportsko usavršavanje ili ugovor o bavljenju sportom).
+                    </Stav>
+                    <Stav Oznaka_stava="2">
+                        Prava, obaveze i odgovornosti profesionalnih sportista uređuju se zakonom,
+                        sportskim pravilima nadležnog nacionalnog granskog sportskog saveza, kolektivnim
+                        ugovorom, pravilnikom o radu (kad nije zaključen kolektivni ugovor kod poslodavca) i
+                        ugovorom o radu između sportiste i sportske organizacije.
+                    </Stav>
+                    <Stav Oznaka_stava="3">
+                        Poseban kolektivni ugovor zaključuju reprezentativni sindikat i odgovarajuće
+                        reprezentativno udruženje u sportu, u skladu sa zakonom.
+                    </Stav>
+                    <Stav Oznaka_stava="4">
+                        Maloletni sportista pri zaključenju i izvršenju ugovora o radu sa sportskom
+                        organizacijom uživa posebnu zaštitu propisanu zakonom kojim se uređuju uslovi za
+                        zasnivanje radnog odnosa i rad lica mlađih od 18 godina.
+                    </Stav>
+                    <Stav Oznaka_stava="5">
+                        Sportska organizacija i sportista dužni su da se pridržavaju prava i obaveza
+                        utvrđenih aktima iz st. 1. i 2. ovog člana.
+                    </Stav>
+                </Clan>
+                <Clan Oznaka_clana="8">
+                    <Stav Oznaka_stava="1">
+                        Sportisti koji nema punovažno zaključen ugovor sa određenom sportskom
+                        organizacijom ne može biti sportskim pravilima uskraćeno pravo zaključenja ugovora
+                        sa drugom sportskom organizacijom, odnosno prelazak u drugu sportsku
+                        organizaciju i registrovanje i nastupanje za nju na sportskim takmičenjima u svojstvu
+                        sportiste, osim ako ovim zakonom nije drukčije određeno. 
+                    </Stav>
+                    <Stav Oznaka_stava="2">
+                        Sportista ima pravo na naknadu štete koju pretrpi aktima diskriminacije
+                        organizacije u oblasti sporta iz st. 1. i 2. ovog člana.
+                    </Stav>
+                    <Stav Oznaka_stava="3">
+                        Sportska organizacija iz koje sportista odlazi ne može da potražuje naknadu
+                        za razvoj, odnosno obuku sportiste iz stava 4. ovog člana ukoliko je sportista ili
+                        njegov roditelj ili staratelj toj sportskoj organizaciji plaćao članarinu ili naknadu za
+                        bavljenje sportskim aktivnostima, sportsku opremu i sportske pripreme, odnosno
+                        naknada mora biti srazmerno umanjena.
+                    </Stav>
+                </Clan>
+                <Clan Oznaka_clana="9">
+                    <Stav Oznaka_stava="1">
+                        Ugovor i sve izmene i dopune ugovora, uključujući i sporazumni raskid
+                        ugovora između sportiste i sportske organizacije zaključuje se u pisanoj formi i
+                        overava u skladu sa zakonom, a u protivnom je ništav.
+                    </Stav>
+                    <Stav Oznaka_stava="2">
+                        Ugovor između sportiste i sportske organizacije potpisuju sportista i lice
+                        ovlašćeno za zastupanje sportske organizacije, a u slučaju da je sportista lice bez
+                        potpune poslovne sposobnosti, ugovor se potpisuje u skladu sa članom 10. stav 6.
+                        ovog zakona.
+                    </Stav>
+                    <Stav Oznaka_stava="3">
+                        U slučaju zaključenja ugovora i utvrđivanja ništavosti, poništenja,
+                        sporazumnog raskida ugovora ili raskida ugovora između sportske organizacije i
+                        sportiste zbog neispunjenja ugovornih obaveza, sportska organizacija je dužna da o
+                        tome bez odlaganja obavesti nadležni nacionalni granski sportski savez.
+                    </Stav>
+                    <Stav Oznaka_stava="4">
+                        Neispunjenje ugovornih obaveza između sportiste i sportske organizacije ceni
+                        se u skladu sa članom 10. stav 5, članom 13. st. 1, 3. i 4. i članom 17. st. 2−4. ovog
+                        zakona
+                    </Stav>
+                </Clan>
+                <Clan Oznaka_clana="10">
+                    <Stav Oznaka_stava="1">
+                        Sportista amater koji se bavi sportskim aktivnostima kao član sportskog
+                        udruženja, bez ugovora, ima prava utvrđena sportskim pravilima i opštim aktom
+                        sportske organizacije.
+                    </Stav>
+                </Clan>
+                <Clan Oznaka_clana="11">
+                    <Stav Oznaka_stava="1">
+                        Ugovor o transferu je, pisani i overen u skladu sa zakonom, ugovor između
+                        sportske organizacije sa kojom sportista ima punovažno zaključen ugovor u skladu
+                        sa ovim zakonom i sportske organizacije u koju sportista prelazi, na osnovu koga se
+                        sportska organizacija sa kojom sportista ima punovažno zaključen ugovor saglašava
+                        da uz određenu naknadu prevremeno sporazumno raskine ugovor sa sportistom
+                        kako bi prešao u sportsku organizaciju sa kojom se zaključuje ugovor o transferu.
+                    </Stav>
+                </Clan>
+            </Odeljak>
+            <Odeljak Oznaka_odeljka="2" Naziv_odeljka="ORGANIZACIJE U OBLASTI SPORTA">
+                <Clan Oznaka_clana="12">
+                    <Stav Oznaka_stava="1">
+                        Radi obavljanja sportskih aktivnosti i sportskih delatnosti sportska
+                        organizacija može se osnovati kao udruženje (u daljem tekstu: sportsko udruženje) ili
+                        kao privredno društvo (u daljem tekstu: sportsko privredno društvo), u skladu sa ovim
+                        zakonom, a na pitanja koja nisu uređena ovim zakonom primenjuju se opšti propisi o
+                        udruženjima, odnosno privrednim društvima.
+                    </Stav>
+                    <Stav Oznaka_stava="2">
+                        Članovi uprave sportske organizacije, uključujući i zastupnika i likvidacionog
+                        upravnika sportske organizacije ne mogu biti sledeća lica:
+                        <Tacka Oznaka_tacke="1">osnivači, vlasnici udela ili akcija, zastupnici, likvidacioni upravnici,
+                            zaposleni ili članovi sportske organizacije koja se takmiči u istom rangu takmičenja</Tacka>
+                        <Tacka Oznaka_tacke="2">članovi uprave i službena lica nadležnog sportskog saveza, odnosno
+                            službena lica organizacije u oblasti sporta koja upravlja sportskom ligom</Tacka>
+                        <Tacka Oznaka_tacke="3">lice koje vrši javnu funkciju, kao ni lice koje vrši funkciju u organu političke
+                            stranke</Tacka>
+                        <Tacka Oznaka_tacke="4">vlasnici i članovi organa sportskih kladionica, kao ni zaposleni u sportskoj
+                            kladionici</Tacka>
+                        <Tacka Oznaka_tacke="5">koja su osuđena za krivična dela protiv privrede, imovine i službene
+                            dužnosti, kao i za sledeća krivična dela: teško ubistvo, teška krađa, razbojnička
+                            krađa, razbojništvo, utaja, prevara, neosnovano korišćenje kredita i druge
+                            pogodnosti, iznuda, ucena i zelenaštvo, omogućavanje upotrebe doping sredstava,
+                            neovlašćena proizvodnja i stavljanje u promet doping sredstava, nasilničko
+                            ponašanje na sportskoj priredbi ili javnom skupu i dogovaranje ishoda takmičenja,
+                            dok traju pravne posledice osude</Tacka>
+                    </Stav>
+                </Clan>
+                <Clan Oznaka_clana="13">
+                    <Stav Oznaka_stava="1">
+                        Sportska organizacija koja učestvuje u sportskim takmičenjima obavezno u
+                        nazivu ispred reči „klub” sadrži naziv sportske grane ili discipline u kojoj se takmiči, a
+                        ako učestvuje u sportskim takmičenjima u više sportskih grana ili disciplina, u nazivu
+                        obavezno sadrži reči: „sportski klub”.
+                    </Stav>
+                </Clan>
+                <Clan Oznaka_clana="14">
+                    <Stav Oznaka_stava="1">
+                        Sportsko udruženje, u smislu ovog zakona, jeste dobrovoljna nedobitna
+                        organizacija zasnovana na slobodi udruživanja više fizičkih i/ili pravnih lica,
+                        organizovana na osnovu statuta i osnovana radi ostvarivanja zajedničkog cilja u
+                        oblasti sporta
+                    </Stav>
+                    <Stav Oznaka_stava="2">
+                        Na spontana i privremena povezivanja više lica radi ostvarivanja određenih
+                        sportskih ciljeva shodno se primenjuju propisi, odnosno pravna pravila o ortakluku,
+                        ako ovim zakonom nije drukčije određeno.
+                    </Stav>
+                </Clan>
+                <Clan Oznaka_clana="15">
+                    <Stav Oznaka_stava="1">
+                        Osnivački akt sportskog udruženja sačinjava se u pisanoj formi i sadrži:
+                        poslovno ime, pravnu formu, sedište i matični broj osnivača i potpis zastupnika
+                        osnivača ako je osnivač pravno lice, odnosno lično ime, adresu, jedinstveni matični
+                        broj građana i potpis osnivača ako je osnivač fizičko lice; ime, adresu i broj i zemlju
+                        izdavanja putne isprave ako je osnivač strano fizičko lice; osnovne ciljeve sportskog
+                        udruženja; naziv i sedište sportskog udruženja; lično ime, adresu, jedinstveni matični
+                        broj građana, odnosno broj i zemlju izdavanja putne isprave lica ovlašćenog za
+                        zastupanje sportskog udruženja; datum donošenja osnivačkog akta.
+                    </Stav>
+                </Clan>                
+            </Odeljak>
+        </Glava>
+        <Glava Oznaka_glave="3" Naziv_glave=" OPŠTI INTERES">
+            <Clan Oznaka_clana="16">
+                <Stav Oznaka_stava="1">
+                    Godišnje i posebne programe dostavljaju nosioci, odnosno predlagači
+                    programa i projekata u smislu ovog zakona prema dinamici utvrđenoj Programskim
+                    kalendarom iz člana 117. ovog zakona
+                </Stav>
+                <Stav Oznaka_stava="2">
+                    Nadležni nacionalni sportski savezi koji ostvaruju opšti interes u oblasti sporta
+                    iz člana 112. stav 1. tačka 2) ovog zakona uz predlog godišnjeg programa podnose i
+                    predlog programa, odnosno aktivnosti od opšteg interesa za koje se saglasno ovom
+                    zakonu podnosi posebni program i ne mogu da konkurišu po javnom pozivu
+                </Stav>
+            </Clan>
+            <Clan Oznaka_clana="17">
+                <Stav Oznaka_stava="1">
+                    Predlog programa, odnosno projekta može se izuzetno odnositi i na aktivnosti
+                    koje se realizuju u dužem vremenskom periodu, do četiri godine, pod uslovom da je
+                    to nužno s obzirom na prirodu i ciljeve aktivnosti, da su predlogom programa, 
+                    odnosno projekta za svaku godinu predviđena potrebna sredstva i da su merljivi
+                    godišnji rezultati realizacije programa
+                </Stav>
+                <Stav Oznaka_stava="2">
+                    Nastavak realizacije programa, odnosno projekta iz stava 1. ovog člana
+                    odobrava se svake godine
+                </Stav>
+                <Stav Oznaka_stava="3">
+                    Realizacija, odnosno nastavak programa, odnosno projekta iz st. 1. i 2. ovog
+                    člana može se odobriti samo ako je podnet godišnji izveštaj za prethodnu budžetsku
+                    godinu u skladu s ugovorom o realizovanju programa, odnosno projekta i ako su
+                    ostvareni očekivani rezultat
+                </Stav>
+            </Clan>
+            <Clan Oznaka_clana="18">
+                <Stav Oznaka_stava="1">
+                    Predlog godišnjih programa iz člana 112. stav 1. tač. 1), 2), 7) i 8) ovog
+                    zakona podnose Olimpijski komitet Srbije, Paraolimpijski komitet Srbije i Sportski
+                    savez Srbije, u skladu sa ovim zakonom
+                </Stav>
+            </Clan>
+            <Clan Oznaka_clana="19">
+                <Stav Oznaka_stava="1">
+                    Odobravanje godišnjih i posebnih programa iz člana 113. stav 1. ovog zakona
+                    vrši se u skladu sa ovim zakonom i Strategijom, a kod godišnjih programa i u odnosu
+                    na kategorizacije u smislu ovog zakona i programe razvoja nadležnih nacionalnih
+                    sportskih saveza
+                </Stav>
+            </Clan>
+            <Clan Oznaka_clana="20">
+                <Stav Oznaka_stava="1">
+                    Organizacije u oblasti sporta mogu da podnose programe, odnosno projekte
+                    u skladu sa ovim zakonom individualno ili udruženo sa drugim organizacijama u
+                    oblasti sporta
+                </Stav>
+                <Stav Oznaka_stava="2">
+                    U slučaju partnerskih programa, odnosno projekata iz stava 1. ovog člana
+                    samo jedna organizacija je direktno odgovorna za upravljanje finansijskim sredstvima
+                    svih partnerskih organizacija u programu, odnosno projektu
+                </Stav>
+            </Clan>
+            <Clan Oznaka_clana="21">
+                <Stav Oznaka_stava="1">
+                    Za ocenu godišnjih i posebnih programa, odnosno projekata ministar formira
+                    stručnu komisiju u kojoj, pored predstavnika Ministarstva, učestvuju i predstavnici
+                    Olimpijskog komiteta Srbije, Paraolimpijskog komiteta Srbije, Sportskog saveza
+                    Srbije i Republičkog zavoda
+                </Stav>
+            </Clan>
+            <Clan Oznaka_clana="22">
+                <Stav Oznaka_stava="1">
+                    Sa nosiocem odobrenog programa ili projekta Ministarstvo zaključuje ugovor
+                    o realizovanju programa, odnosno projekta kojim se obavezno uređuje: naziv i
+                    sedište nosioca programa, odnosno projekta; vrsta i sadržina programa, odnosno
+                    projekta; vreme realizacije programa, odnosno projekta, odnosno obavljanja
+                    aktivnosti; ciljevi i očekivani rezultati; visina dodeljenih sredstava; vremenski plan
+                    upotrebe sredstava; način nadzora nad odvijanjem realizacije programa, odnosno
+                    projekta obaveze nosioca programa u pogledu podnošenja izveštaja o realizaciji
+                    programa, odnosno projekta; dokazivanje realizacije programa, odnosno projekta,
+                    namenskog korišćenja sredstava, medijskog predstavljanja programa, odnosno
+                    projekta i učešća Republike Srbije u njegovom finansiranju
+                </Stav>
+                <Stav Oznaka_stava="2">
+                    Ukoliko se nosilac odobrenog programa, odnosno projekta ne odazove pozivu
+                    za zaključenje ugovora u roku od osam dana od dana prijema poziva, smatraće se
+                    da je odustao od predloga programa
+                </Stav>
+            </Clan>
+        </Glava>        
+    </Sadrzaj>
+    <Prilozi></Prilozi>
+</Propis>

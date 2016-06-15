@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Amandman xmlns="http://www.parlament.gov.rs/amandmani"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.parlament.gov.rs/amandmani file:/E:/Users/NemanjaM/Documents/Practice/XML/Projekat/XML-NoSQL-DataBase-App/xml_schema/amandmani.xsd" Uri_amandmana="" Tip_dokumenta="AMANDMAN">
+    <Preambula>
+        <Tip>DODAVANJE</Tip>
+        <Status>PREDLOZEN</Status>
+        <Oblast>SPORT</Oblast>
+        <Predlagac></Predlagac>
+        <Datum_predaje>2016-06-06</Datum_predaje>
+    </Preambula>
+    <Naziv>Izmena znacenja reci sportski sudija</Naziv>
+    <Deo_za_izmenu>
+        <Uri_propisa>12</Uri_propisa><Oznaka_clana>2</Oznaka_clana>
+    </Deo_za_izmenu>
+    <Sadrzaj>
+        U članu 7. Stav 2. Riječ: „ pravičnu“ briše se.         
+    </Sadrzaj>
+    <Obrazlozenje>
+        Radi se o potpuno nepotrebnom uvođenju pravnog standarda čije će tumačenje izazvati velike
+        probleme u praksi, a time i pravnu nesigurnost. Ovo tim više što u sistemu kolektivnog
+        pregovaranja radnici i poslodavci sporazumno utvrđuju plate, tako da se uvođenjm novog
+        pravnog standarda ništa kvalitativno, u pogledu prava radnika, ne dobija, nego se samostvara
+        mogućnost multipliciranja problema.
+    </Obrazlozenje>
+</Amandman>
