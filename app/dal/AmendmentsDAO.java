@@ -78,13 +78,13 @@ public class AmendmentsDAO {
      * @throws JAXBException
      */
     private static void setDocUri(String docUri) throws JAXBException {
-        String xmlDocString = DatabaseAccessor.readXmlFromDatabase(docUri);
+        String xmlDocString = DatabaseQuery.readXmlFromDatabase(docUri);
         Amandman amendment = (Amandman) Converter.unmarshall(UnmarshallType.FROM_STRING, xmlDocString, Amandman.class);
 
         amendment.setUriAmandmana(docUri);
 
         String editedXmlDocString = Converter.marshall(MarshallType.TO_STRING, amendment, "");
-        DatabaseAccessor.writeXmlToDatabase(docUri, editedXmlDocString);
+        DatabaseQuery.writeXmlToDatabase(docUri, editedXmlDocString);
     }
 
 }

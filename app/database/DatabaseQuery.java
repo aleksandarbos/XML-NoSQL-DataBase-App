@@ -1,6 +1,9 @@
 package database;
 
+import com.marklogic.client.io.DOMHandle;
+import com.marklogic.client.io.DocumentMetadataHandle;
 import com.marklogic.client.io.SearchHandle;
+import com.marklogic.client.io.StringHandle;
 import com.marklogic.client.query.MatchDocumentSummary;
 import com.marklogic.client.query.MatchLocation;
 import com.marklogic.client.query.QueryManager;
@@ -70,7 +73,7 @@ public class DatabaseQuery {
 			result = matches[i];
 			String docUri = result.getUri();
 
-			String readXml = DatabaseAccessor.readXmlFromDatabase(docUri);
+			String readXml = readXmlFromDatabase(docUri);
 			Object resultObject = Converter.unmarshall(UnmarshallType.FROM_STRING, readXml, resultClass);
 
 			returnValues.put(docUri, resultObject);
@@ -156,6 +159,44 @@ public class DatabaseQuery {
 		} 
 
 		return results;
+	}
+
+
+	/**
+	 * Reads xml file from database and returns it as a string.
+	 * @param docId Resource location.
+	 * @return Converted found xml to string.
+	 */
+	public static String readXmlFromDatabase(String docId) {
+		DOMHandle content = new DOMHandle();
+		DatabaseAccessor.getInstance();
+		DocumentMetadataHandle metadata = new DocumentMetadataHandle();
+
+		System.out.println("[INFO] Retrieving \"" + docId + "\" from "
+				+ (DatabaseAccessor.props.database.equals("") ? "default" : DatabaseAccessor.props.database)
+				+ " database.");
+
+		DatabaseAccessor.xmlManager.read(docId, metadata, content);
+
+		return content.toString();
+	}
+
+	public static void writeXmlToDatabase(String docId, String xmlFile) {
+		StringHandle content = new StringHandle();
+		DatabaseAccessor.getInstance();
+		content.set(xmlFile);
+
+		DatabaseAccessor.xmlManager.write(docId, content);
+		System.out.println("[INFO] Overwrite: " + docId + ", in database.");
+	}
+
+	public static void removeXmlFromDatabase(String docId) {
+		String query = "xdmp:document-delete(\"" + docId + "\")";
+		try {
+			XQueryInvoker.execute(query);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**

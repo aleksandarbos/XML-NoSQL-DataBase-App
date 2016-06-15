@@ -3,7 +3,7 @@ package dal;
 import converter.Converter;
 import converter.types.MarshallType;
 import converter.types.UnmarshallType;
-import database.DatabaseAccessor;
+import database.DatabaseQuery;
 import models.rs.gov.parlament.korisnici.Korisnici;
 import models.rs.gov.parlament.korisnici.Korisnik;
 import models.rs.gov.parlament.korisnici.TipKorisnika;
@@ -37,7 +37,7 @@ public class UsersDAO {
     public static Korisnici fetchUsersFromDatabase() throws JAXBException {
         System.out.println("[INFO] Fetching users form database...");
 
-        String inputUsersXmlString = DatabaseAccessor.readXmlFromDatabase(USERS_DOC_ID);
+        String inputUsersXmlString = DatabaseQuery.readXmlFromDatabase(USERS_DOC_ID);
 
         return  (Korisnici) Converter.unmarshall(UnmarshallType.FROM_STRING, inputUsersXmlString, Korisnici.class);
     }
@@ -90,7 +90,7 @@ public class UsersDAO {
 
         String outputUsersXmlString = Converter.marshall(MarshallType.TO_STRING, users, "");
 
-        DatabaseAccessor.writeXmlToDatabase(USERS_DOC_ID, outputUsersXmlString);
+        DatabaseQuery.writeXmlToDatabase(USERS_DOC_ID, outputUsersXmlString);
     }
 
 }

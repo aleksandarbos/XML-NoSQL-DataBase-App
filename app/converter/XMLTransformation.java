@@ -1,7 +1,7 @@
 package converter;
 
 import com.sun.org.apache.xalan.internal.xsltc.trax.TransformerFactoryImpl;
-import database.DatabaseAccessor;
+import database.DatabaseQuery;
 import org.apache.fop.apps.*;
 import org.xml.sax.SAXException;
 
@@ -18,7 +18,7 @@ public class XMLTransformation {
 
 	File xsltFile = new File("conf/to_pdf.xsl");
 
-	String docData = DatabaseAccessor.getInstance().readXmlFromDatabase(docUri);
+	String docData = DatabaseQuery.readXmlFromDatabase(docUri);
 	InputStream stream = new ByteArrayInputStream(docData.getBytes(StandardCharsets.UTF_8));
 	
 	PipedInputStream in = new PipedInputStream();
@@ -55,7 +55,7 @@ public class XMLTransformation {
 		File pdfFile = new File("tmp/result.pdf");
 		File xsltFile = new File("conf/to_pdf.xsl");
 		
-		String docData = DatabaseAccessor.getInstance().readXmlFromDatabase(docUri);
+		String docData = DatabaseQuery.readXmlFromDatabase(docUri);
 		InputStream stream = new ByteArrayInputStream(docData.getBytes(StandardCharsets.UTF_8));
 		InputStream targetStream = null;
 		
@@ -95,7 +95,7 @@ public class XMLTransformation {
 		File xsltFile = new File("conf/to_html.xsl");
 		String result = null;
 		
-		String docData = DatabaseAccessor.getInstance().readXmlFromDatabase(docUri);
+		String docData = DatabaseQuery.readXmlFromDatabase(docUri);
 		InputStream stream = new ByteArrayInputStream(docData.getBytes(StandardCharsets.UTF_8));
 
 		try {
