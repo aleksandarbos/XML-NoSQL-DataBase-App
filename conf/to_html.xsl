@@ -54,7 +54,7 @@
 						cursor:pointer
 					}
 				</style>
-        		<link rel="shortcut icon" type="image/png" href="@{'/public/images/logo.png'}"></link>
+        		<link rel="shortcut icon" type="image/png" href="/public/images/logo.png"></link>
 			</head>
 			<body>
 				<xsl:apply-templates/> 
@@ -63,11 +63,14 @@
 	</xsl:template>
 	
 	<xsl:template match="p:Naziv">
-		<h1><xsl:value-of select="text()"/></h1>
+		<h1>
+			<xsl:value-of select="text()"/>
+		</h1>
 	</xsl:template>
 	
 	<xsl:template match="p:Deo">
-		<h2>DEO 
+		<h2>
+			DEO 
 			<xsl:choose>
 				<xsl:when test="@Oznaka_dela = 1">
 					PRVI
@@ -103,7 +106,8 @@
 					PRETERA GA...
 				</xsl:otherwise>
 			</xsl:choose><br/>
-		<xsl:value-of select="@Naziv_glave"/></h2>
+			<xsl:value-of select="@Naziv_glave"/>
+		</h2>
 		<xsl:apply-templates/> 
 	</xsl:template>
 	
@@ -216,14 +220,17 @@
 	</xsl:template>
 	
 	<xsl:template match="p:Clan">
-		<h5><xsl:value-of select="@Naziv_clana"/><br/>
-		Član <xsl:value-of select="@Oznaka_clana"/>.</h5>
+		<h5>
+			<xsl:value-of select="@Naziv_clana"/><br/>
+			Član <xsl:value-of select="@Oznaka_clana"/>.
+		</h5>
 		<xsl:apply-templates/> 
 	</xsl:template>
 	
 	<xsl:template match="p:Stav">
 		<p>
-			<xsl:apply-templates/></p>
+			<xsl:apply-templates/>
+		</p>
 	</xsl:template>
 	
 	<xsl:template match="p:Tacka">
@@ -267,7 +274,9 @@
 	</xsl:template>
 	
 	<xsl:template match="a:Naziv">
-		<h1><xsl:value-of select="text()"/></h1>
+		<h1>
+			<xsl:value-of select="text()"/>
+		</h1>
 	</xsl:template>
 	
 	<xsl:template match="a:Sadrzaj">

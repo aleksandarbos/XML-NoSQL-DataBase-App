@@ -24,23 +24,18 @@
 	</xsl:template>
 	
 	<xsl:template match="p:Naziv">
-		<fo:block font-family="Arial" 
-			font-weight="bold" 
-			font-size="18pt" 
-			text-align="center"
-			space-before="12pt"
-			space-after="12pt">
+		<fo:block font-family="Arial" font-size="18pt" 
+			font-weight="bold" text-align="center"			
+			space-before="12pt" space-after="12pt">
 			<xsl:value-of select="text()"/>
 		</fo:block>
 	</xsl:template>
 	
 	<xsl:template match="p:Deo">
-		<fo:block font-family="Arial" 
-			font-weight="bold" 
-			font-size="16pt" 
-			text-align="center"
-			space-before="12pt"
-			space-after="12pt">DEO 
+		<fo:block font-family="Arial" font-size="16pt"
+			font-weight="bold" text-align="center"
+			space-before="12pt" space-after="12pt">
+			DEO 
 			<xsl:choose>
 				<xsl:when test="@Oznaka_dela = 1">
 					PRVI
@@ -77,24 +72,18 @@
 				</xsl:otherwise>
 			</xsl:choose>
 		</fo:block>
-		<fo:block font-family="Arial" 
-			font-weight="bold" 
-			font-size="16pt" 
-			text-align="center"
-			space-before="12pt"
-			space-after="12pt">
+		<fo:block font-family="Arial" font-size="16pt"
+			font-weight="bold" text-align="center"
+			space-before="12pt" space-after="12pt">
 			<xsl:value-of select="@Naziv_dela"/>
 		</fo:block>
 		<xsl:apply-templates/> 
 	</xsl:template>
 	
 	<xsl:template match="p:Glava">
-		<fo:block font-family="Arial" 
-			font-weight="bold" 
-			font-size="15pt" 
-			text-align="center"
-			space-before="12pt"
-			space-after="12pt">
+		<fo:block font-family="Arial" font-size="15pt"
+			font-weight="bold" text-align="center"
+			space-before="12pt" space-after="12pt">
 			<xsl:choose>
 				<xsl:when test="@Oznaka_glave = 1">
 					I
@@ -135,24 +124,18 @@
 	</xsl:template>
 	
 	<xsl:template match="p:Odeljak">
-		<fo:block font-family="Arial" 
-			font-weight="bold" 
-			font-size="14pt" 
-			text-align="center"
-			space-before="22pt"
-			space-after="12pt">
+		<fo:block font-family="Arial" font-size="14pt" 
+			font-weight="bold" text-align="center"
+			space-before="22pt" space-after="12pt">
 			<xsl:value-of select="@Oznaka_odeljka"/>. <xsl:value-of select="@Naziv_odeljka"/>
 		</fo:block>
 		<xsl:apply-templates/> 
 	</xsl:template>
 	
 	<xsl:template match="p:Pododeljak">
-		<fo:block font-family="Arial" 
-			font-weight="bold" 
-			font-size="14pt" 
-			text-align="center"
-			space-before="12pt"
-			space-after="12pt">
+		<fo:block font-family="Arial" font-size="14pt"
+			font-weight="bold" text-align="center"
+			space-before="12pt" space-after="12pt">
 			<xsl:choose>
 				<xsl:when test="@Oznaka_pododeljka = 1">
 					a
@@ -214,65 +197,48 @@
 	</xsl:template>
 	
 	<xsl:template match="p:Clan">
-		<fo:block font-family="Arial" 
-			font-size="14pt" 
-			font-weight="bold" 
-			text-align="center"
-			space-before="12pt"
-			space-after="12pt">
+		<fo:block font-family="Arial" font-size="14pt"
+			font-weight="bold" text-align="center"
+			space-before="12pt" space-after="12pt">
 			<xsl:value-of select="@Naziv_clana"/>
 		</fo:block>
-		<fo:block font-family="Arial" 
-			font-size="14pt" 
-			font-weight="bold" 
-			text-align="center"
-			space-before="12pt"
-			space-after="12pt">
-			Član <xsl:value-of select="@Oznaka_clana"/>.
+		<fo:block font-family="Arial" font-size="14pt"
+			font-weight="bold" text-align="center"
+			space-before="12pt" space-after="12pt">
+			Član 
+			<xsl:value-of select="@Oznaka_clana"/>.
 		</fo:block>
 		<xsl:apply-templates/> 
 	</xsl:template>
 	
 	<xsl:template match="p:Stav">
-		<fo:block  
-			font-size="12pt" 
-			text-align="justify"
-			text-indent="1.5cm"
-			space-before="12pt"
-			space-after="12pt">
+		<fo:block font-family="Arial" font-size="12pt" 
+			text-align="justify" text-indent="1.5cm"
+			space-before="12pt" space-after="12pt">
 			<xsl:apply-templates/>
 		</fo:block>
 	</xsl:template>
 	
 	<xsl:template match="p:Tacka">
-		<fo:block 
-			font-size="12pt" 
-			text-align="justify"
-			text-indent="1.5cm"
-			space-before="12pt"
-			space-after="12pt">
+		<fo:block font-family="Arial" font-size="12pt" 
+			text-align="justify" text-indent="1.5cm"
+			space-before="12pt" space-after="12pt">
 			<xsl:value-of select="@Oznaka_tacke"/>) <xsl:apply-templates/>
 		</fo:block>
 	</xsl:template>
 	
 	<xsl:template match="p:Podtacka">
-		<fo:block font-family="Arial" 
-			font-size="12pt" 
-			text-align="justify"
-			text-indent="1.5cm"
-			space-before="12pt"
-			space-after="12pt">
+		<fo:block font-family="Arial" font-size="12pt" 
+			text-align="justify" text-indent="1.5cm"
+			space-before="12pt" space-after="12pt">
 			(<xsl:value-of select="@Oznaka_podtacke"/>) <xsl:apply-templates/>
 		</fo:block>
 	</xsl:template>
 	
 	<xsl:template match="p:Alineja">
-		<fo:block font-family="Arial" 
-			font-size="12pt" 
-			text-align="justify"
-			text-indent="1.5cm"
-			space-before="12pt"
-			space-after="12pt">
+		<fo:block font-family="Arial" font-size="12pt" 
+			text-align="justify" text-indent="1.5cm"
+			space-before="12pt" space-after="12pt">
 			- <xsl:value-of select="@Oznaka_alineje"/> <xsl:apply-templates/>
 		</fo:block>
 	</xsl:template>
@@ -281,59 +247,46 @@
 		<fo:basic-link color="#069"
 			text-decoration="underline">
 			<xsl:attribute name="external-destination">
-				<xsl:value-of select="@Uri_propisa"/>
+				http://localhost:9000/overview/topdf?id=<xsl:value-of select="@Uri_propisa"/>
 			</xsl:attribute>
 			<xsl:apply-templates/> 
 		</fo:basic-link>
 	</xsl:template>
 	
 	<xsl:template match="a:Amandman">
-		<fo:block font-family="Arial" 
-			font-weight="bold" 
-			font-size="14pt" 
-			text-align="center"
-			space-before="12pt"
-			space-after="12pt">
+		<fo:block font-family="Arial" font-size="14pt"
+			font-weight="bold" text-align="center"
+			space-before="12pt" space-after="12pt">
 			AMANDMAN
 		</fo:block>
 		<xsl:apply-templates/> 
 	</xsl:template>
 	
 	<xsl:template match="a:Naziv">
-		<fo:block font-family="Arial" 
-			font-weight="bold" 
-			font-size="18pt" 
-			text-align="center"
-			space-before="12pt"
-			space-after="12pt">
+		<fo:block font-family="Arial" font-size="18pt" 
+			font-weight="bold" text-align="center"
+			space-before="12pt" space-after="12pt">
 			<xsl:value-of select="text()"/>
 		</fo:block>
 	</xsl:template>
 	
 	<xsl:template match="a:Sadrzaj">
-		<fo:block font-family="Arial" 
-			font-size="12pt" 
+		<fo:block font-family="Arial" font-size="12pt" 
 			text-align="justify"
-			space-before="26pt"
-			space-after="12pt">
+			space-before="26pt" space-after="12pt">
 			<xsl:apply-templates/>
 		</fo:block>
 	</xsl:template>
 	
 	<xsl:template match="a:Obrazlozenje">
-		<fo:block font-family="Arial" 
-			font-size="12pt" 
-			font-weight="bold" 
-			text-align="center"
-			space-before="12pt"
-			space-after="12pt">
+		<fo:block font-family="Arial" font-size="12pt" 
+			font-weight="bold" text-align="center"
+			space-before="12pt" space-after="12pt">
 			Obrazloženje:
 		</fo:block>
-		<fo:block font-family="Arial" 
-			font-size="12pt" 
+		<fo:block font-family="Arial" font-size="12pt" 
 			text-align="justify"
-			space-before="12pt"
-			space-after="12pt">
+			space-before="12pt" space-after="12pt">
 			<xsl:apply-templates/> 
 		</fo:block>
 	</xsl:template>
@@ -342,7 +295,7 @@
 		<fo:basic-link color="#069"
 			text-decoration="underline">
 			<xsl:attribute name="external-destination">
-				<xsl:value-of select="@Uri_propisa"/>
+				http://localhost:9000/overview/topdf?id=<xsl:value-of select="@Uri_propisa"/>
 			</xsl:attribute>
 			<xsl:apply-templates/> 
 		</fo:basic-link>
