@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Amandman xmlns="http://www.parlament.gov.rs/amandmani"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.parlament.gov.rs/amandmani file:/E:/Users/NemanjaM/Documents/Practice/XML/Projekat/XML-NoSQL-DataBase-App/xml_schema/amandmani.xsd" Uri_amandmana="" Tip_dokumenta="AMANDMAN">
+    <Preambula>
+        <Tip>IZMENA</Tip>
+        <Status>PREDLOZEN</Status>
+        <Oblast>SPORT</Oblast>
+        <Predlagac></Predlagac>
+        <Datum_predaje>2016-05-23</Datum_predaje>
+    </Preambula>
+    <Naziv></Naziv>
+    <Deo_za_izmenu>
+        <Uri_propisa></Uri_propisa>
+    </Deo_za_izmenu>
+    <Sadrzaj>
+        U članu 21. Stav 3. Mijenja se i glasi:
+        „Ako se probni rad raskida prije roka na koji je ugovoren, otkazni rok je 7 dana“.
+        Dodaje se novi stav 4. Koji glasi:
+        8
+        „Radnik koji ne zadovolji na poslovima radnog mjesta za vrijeme obavljanja probnog rada,
+        prestaje radni odnos sa danom isteka roka određenog ugovorom o probnom radu“.
+    </Sadrzaj>
+    <Obrazlozenje>
+        Potrebno je, u stavu 3. Precizirati da se otkazni rok odnosi samo na slučajeve otkazivanja
+        ugovora o probnom radu prije njegovog isteka.
+        Takođe mislimo da se uvođenjem novog stava 4. precizira moguća situacija u kojoj zaposlenik
+        na probnom radu ne zadovolji na poslovima radnog mjesta za vrijeme obavljanja probnog
+        rada. U tom slučaju ugovor prestaje da važi danom njegovog isteka. Ovakvo rješenje usklađeno
+        je sa rješenjem iz člana 93.tačka f) ovog zakona, koji reguliše prestanak ugovora o radu na
+        određeno vrijeme.
+    </Obrazlozenje>
+</Amandman>

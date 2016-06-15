@@ -24,18 +24,15 @@ public class Amendments extends Controller {
         HashMap<String, Propis> regulationsSearch = RegulationsDAO.fetchAllRegulations();
         Collection<Propis> regulations = regulationsSearch.values();
         render(regulations);
-
-    	// render(userType);
     }
 
     public static void create(String amandmentName, String affectedRegulationUri,
                               int affectedClause, String affectedType, String user,
                               String amendmentContent) throws JAXBException, IOException {
 
-        System.out.println("dodaj akt: " + amandmentName + ", predlozio korisnik: " + user + ", sadrzaj dokumenta: "+amendmentContent+", menja se dokument sa id: "+affectedRegulationUri+", id clana: "+affectedClause+", tip izmene "+affectedType);
-
         Amandman amendment = (Amandman) Converter.unmarshall(UnmarshallType.FROM_STRING, amendmentContent, Amandman.class);
         amendment.setNaziv(amandmentName);
+        amendment.setUriAmandmana(affectedRegulationUri);
 
         AmendmentsDAO.addAmandment(amendment);
 

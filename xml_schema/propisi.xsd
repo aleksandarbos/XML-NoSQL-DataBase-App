@@ -50,14 +50,14 @@
                 <xs:element name="Oblast" type="pp:Taksonomska_oblast"/>
                 <xs:element name="Predlagac" type="xs:string"/>
                 <xs:element name="Datum_predaje" type="xs:date"/>
-                <xs:element name="Datum_glasanja" type="xs:date"/>
-                <xs:element name="Datum_objave" type="xs:date"/>
-                <xs:element name="Datum_pocetka_vazenja" type="xs:date"/>
-                <xs:element name="Datum_prestanka_vazenja" type="xs:date"/>
-                <xs:element name="Broj_glasova_za" type="xs:int"/>
-                <xs:element name="Broj_glasova_protiv" type="xs:int"/>
-                <xs:element name="Broj_glasova_uzdrzano" type="xs:int"/>
-                <xs:element name="Objavljen_u_sluzbenom_glasniku" type="xs:string"/>
+                <xs:element name="Datum_glasanja" type="xs:date" form="qualified" minOccurs="0"/>
+                <xs:element name="Datum_objave" type="xs:date" minOccurs="0"/>
+                <xs:element name="Datum_pocetka_vazenja" type="xs:date" minOccurs="0"/>
+                <xs:element name="Datum_prestanka_vazenja" type="xs:date" minOccurs="0"/>
+                <xs:element name="Broj_glasova_za" type="xs:int" minOccurs="0"/>
+                <xs:element name="Broj_glasova_protiv" type="xs:int" minOccurs="0"/>
+                <xs:element name="Broj_glasova_uzdrzano" type="xs:int" minOccurs="0"/>
+                <xs:element name="Objavljen_u_sluzbenom_glasniku" type="xs:string" minOccurs="0"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
