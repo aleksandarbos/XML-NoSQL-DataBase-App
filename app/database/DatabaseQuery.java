@@ -91,7 +91,7 @@ public class DatabaseQuery {
 	public static HashMap<String, Object> metadataSearch(String documentDomain, String documentName, String documentStatus, String documentType, String user, String authority, String collection,
 														 String nominatedDateFrom, String nominatedDateTo, String adoptionDateFrom, String adoptionDateTo, String announcementDateFrom, String announcementDateTo,
 														 String inuseDateFrom, String inuseDateTo, String withdrawalDateFrom, String withdrawalDateTo,
-														 int votesYesFrom, int votesYesTo, int votesNoFrom, int votesNoTo, int votesOffFrom, int votesOffTo) throws IOException, JAXBException {
+														 int votesYesFrom, int votesYesTo, int votesNoFrom, int votesNoTo, int votesOffFrom, int votesOffTo) {
 		StringBuilder query = new StringBuilder();
 		HashMap<String, Object> results = new HashMap<String, Object>();
 		String collectionCriteria = "";
@@ -140,19 +140,26 @@ public class DatabaseQuery {
 		query.append("return $y\n");
 		System.out.println(query.toString());
 
-		Vector<String> searchResults = XQueryInvoker.execute(query.toString()); // will be invoked
+		Vector<String> searchResults;
+		try {
+			searchResults = XQueryInvoker.execute(query.toString());
+			for(String docStr : searchResults) {
+				Object docObj;
+				if(docStr.contains("<Propis")) {
+					docObj = Converter.unmarshall(UnmarshallType.FROM_STRING, docStr, Propis.class);
+					results.put(((Propis)docObj).getUriPropisa(), (Propis) docObj);
+				}
+				else {
+					docObj = Converter.unmarshall(UnmarshallType.FROM_STRING, docStr, Amandman.class);
+					results.put(((Amandman)docObj).getUriAmandmana(), (Amandman) docObj);
+				}
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (JAXBException e) {
+			e.printStackTrace();
+		} 
 
-		for(String docStr : searchResults) {
-			Object docObj;
-			if(docStr.contains("<Propis")) {
-				docObj = Converter.unmarshall(UnmarshallType.FROM_STRING, docStr, Propis.class);
-				results.put(((Propis)docObj).getUriPropisa(), (Propis) docObj);
-			}
-			else {
-				docObj = Converter.unmarshall(UnmarshallType.FROM_STRING, docStr, Amandman.class);
-				results.put(((Amandman)docObj).getUriAmandmana(), (Amandman) docObj);
-			}
-		}
 		return results;
 	}
 

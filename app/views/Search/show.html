@@ -24,7 +24,7 @@
 		<form class="textSearchForm" action="@{Search.searchText()}" method="get">
 			<table class="invisibleTable">
 				<tr><th>Tekst za pretragu:</th><td>
-					<input type="text" class="bigInput" name="documentText"/></td></tr>
+					<input type="text" class="bigInput" name="documentText" value="${flash.documentText}"/></td></tr>
 				<tr><td colspan="2">
 					<input type="submit" class="bigButton" value="Pretraži">
 					<input type="button" class="bigButton cancel" value="Odustani"></td></tr>
@@ -34,7 +34,7 @@
 		<form class="detailsSearchForm" action="@{Search.searchDetails()}" method="get" style="display:none;">
 			<table class="invisibleTable">
 				<tr><th>Taksonomska oblast:</th><td>
-					<select name="documentDomain" class="bigInput">
+					<select name="documentDomain" class="bigInput" value="${flash.documentDomain}">
 						<option value=""></option>
 						<option value="ZDRAVSTVO">Zdravstvo</option>
 						<option value="PROSVETA">Prosveta</option>
@@ -46,9 +46,9 @@
 						<option value="KULTURA">Kultura</option>
 					</select></td></tr>
 				<tr><th>Naziv dokumenta:</th><td>
-					<input type="text" class="bigInput" name="documentName"/></td></tr>
+					<input type="text" class="bigInput" name="documentName" value="${flash.documentName}"/></td></tr>
 				<tr><th>Status dokumenta:</th><td>
-					<select name="documentStatus" class="bigInput selectStatus">
+					<select name="documentStatus" class="bigInput selectStatus" value="${flash.documentStatus}">
 						<option value=""></option>
 						<option value="nominated">Predložen</option>
 						<option value="voted">Usvojen</option>
@@ -57,41 +57,42 @@
 						<option value="withdrawn" class="hideDate">Povučen</option>
 					</select></td></tr>
 				<tr><th>Tip dokumenta:</th><td>
-					<select name="documentType" class="bigInput selectType">
+					<select name="documentType" class="bigInput selectType" value="${flash.documentType}">
 						<option value=""></option>
 						<option value="regulation">Akt</option>
 						<option value="amendment">Amandman</option>
 					</select></td></tr>
 				<tr><th>Dokument predložio:</th><td>
-					<input type="text" class="bigInput" name="user"/></td></tr>
+					<input type="text" class="bigInput" name="user" value="${flash.user}"/></td></tr>
 				<tr class="statusAdopted"><th>Dokument usvojio:</th><td>
-					<input type="text" class="bigInput" name="authority"/></td></tr>
+					<input type="text" class="bigInput" name="authority" value="${flash.authority}"/></td></tr>
 				<tr class="statusPublished"><th>Službeni glasnik u kom je dokument objavljen:</th><td>
-					<input type="text" class="mediumInput" name="collection" pattern="\d{1,3}\/((199\d)|(200\d)|(201[06]))" title="Oznaka u formatu (broj)/(godina). Godina je između 1990 i 2016"/><i> (npr 23/2016) </i></td></tr>
+					<input type="text" class="mediumInput" name="collection" pattern="\d{1,3}\/((199\d)|(200\d)|(201[06]))" 
+						title="Oznaka u formatu (broj)/(godina). Godina je između 1990 i 2016" value="${flash.collection}"/><i> (npr 23/2016) </i></td></tr>
 				<tr class="statusNominated"><th>Datum predlaganja:</th><td>od&nbsp 
-					<input type="date" class="mediumInput" name="nominatedDateFrom"/> do 
-					<input type="date" class="mediumInput" name="nominatedDateTo"/></td></tr>
+					<input type="date" class="mediumInput" name="nominatedDateFrom" value="${flash.nominatedDateFrom}"/> do 
+					<input type="date" class="mediumInput" name="nominatedDateTo" value="${flash.nominatedDateTo}"/></td></tr>
 				<tr class="statusVoted"><th>Datum glasanja:</th><td>od&nbsp 
-					<input type="date" class="mediumInput" name="adoptionDateFrom"/> do 
-					<input type="date" class="mediumInput" name="adoptionDateTo"/></td></tr>
+					<input type="date" class="mediumInput" name="adoptionDateFrom" value="${flash.adoptionDateFrom}"/> do 
+					<input type="date" class="mediumInput" name="adoptionDateTo" value="${flash.adoptionDateTo}"/></td></tr>
 				<tr class="statusPublished"><th>Datum objave:</th><td>od&nbsp 
-					<input type="date" class="mediumInput" name="announcementDateFrom"/> do 
-					<input type="date" class="mediumInput" name="announcementDateTo"/></td></tr>
+					<input type="date" class="mediumInput" name="announcementDateFrom" value="${flash.announcementDateFrom}"/> do 
+					<input type="date" class="mediumInput" name="announcementDateTo" value="${flash.announcementDateTo}"/></td></tr>
 				<tr class="statusApplied"><th>Datum početka primene:</th><td>od&nbsp 
-					<input type="date" class="mediumInput" name="inuseDateFrom"/> do 
-					<input type="date" class="mediumInput" name="inuseDateTo"/></td></tr>
+					<input type="date" class="mediumInput" name="inuseDateFrom" value="${flash.inuseDateFrom}"/> do 
+					<input type="date" class="mediumInput" name="inuseDateTo" value="${flash.inuseDateTo}"/></td></tr>
 				<tr class="statusWithdrawn"><th>Datum prestanka važenja:</th><td>od&nbsp 
-					<input type="date" class="mediumInput" name="withdrawalDateFrom"/> do 
-					<input type="date" class="mediumInput" name="withdrawalDateTo"/></td></tr>
+					<input type="date" class="mediumInput" name="withdrawalDateFrom" value="${flash.withdrawalDateFrom}"/> do 
+					<input type="date" class="mediumInput" name="withdrawalDateTo" value="${flash.withdrawalDateTo}"/></td></tr>
 				<tr class="statusAdopted"><th>Rezultati glasanja:</th><td>ZA: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp od 
-					<input type="text" class="smallInput" name="votesYesFrom" pattern="\d{1,3}" title="Pozitivan ceo broj!"/> do 
-					<input type="text" class="smallInput" name="votesYesTo" pattern="\d{1,3}" title="Pozitivan ceo broj!"/></td></tr>
+					<input type="text" class="smallInput" name="votesYesFrom" pattern="\d{1,3}" title="Pozitivan ceo broj!" value="${flash.votesYesFrom}"/> do 
+					<input type="text" class="smallInput" name="votesYesTo" pattern="\d{1,3}" title="Pozitivan ceo broj!" value="${flash.votesYesTo}"/></td></tr>
 				<tr class="statusAdopted"><th> &nbsp </th><td>PROTIV: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp od 
-					<input type="text" class="smallInput" name="votesNoFrom" pattern="\d{1,3}" title="Pozitivan ceo broj!"/> do 
-					<input type="text" class="smallInput" name="votesNoTo" pattern="\d{1,3}" title="Pozitivan ceo broj!"/></td></tr>
+					<input type="text" class="smallInput" name="votesNoFrom" pattern="\d{1,3}" title="Pozitivan ceo broj!" value="${flash.votesNoFrom}"/> do 
+					<input type="text" class="smallInput" name="votesNoTo" pattern="\d{1,3}" title="Pozitivan ceo broj!" value="${flash.votesNoTo}"/></td></tr>
 				<tr class="statusAdopted"><th> &nbsp </th><td>UZDRŽANI: &nbsp od 
-					<input type="text" class="smallInput" name="votesOffFrom" pattern="\d{1,3}" title="Pozitivan ceo broj!"/> do 
-					<input type="text" class="smallInput" name="votesOffTo" pattern="\d{1,3}" title="Pozitivan ceo broj!"/></td></tr>
+					<input type="text" class="smallInput" name="votesOffFrom" pattern="\d{1,3}" title="Pozitivan ceo broj!" value="${flash.votesOffFrom}"/> do 
+					<input type="text" class="smallInput" name="votesOffTo" pattern="\d{1,3}" title="Pozitivan ceo broj!" value="${flash.votesOffTo}"/></td></tr>
 				<tr><th> &nbsp </th></tr>
 				<tr><td colspan="2">
 					<input type="submit" class="bigButton" value="Pretraži">
@@ -101,33 +102,40 @@
 		
 		<div class="showHideFormLabel"><a class="showHideSearch">prikaži/sakrij kriterijume pretrage</a></div>
 	</div>
-	<h3>
-		Rezultati pretrage:
-	</h3>
-	#{if results != null}
-		<div class="searchResult">
-			<table class="tabelaPregled">
-				<tr><th class="status">Status</th><th class="tip">Tip</th><th class="naziv">Naziv</th><th class="pregled">&nbsp </th><th class="pdf">&nbsp </th></tr>
-				#{list items: results, as:'document'}
-					<tr>
-						<td>${document.getPreambula().getStatus()}</td>
-						<td>
-							akt
-						</td>
-						<td class="documentId" style="display:none;">
-							${document.getUriPropisa()}
-						</td>
-						<td>${document.getNaziv()}</td>
-						<td><a class="alterationPreview">pogledaj</a></td>
-						<td><a class="alterationToPdf">u PDF</a></td>
-					</tr>
-				#{/list}
-			</table>
-		</div>
+	#{if results!= null}	
+		<h3>
+			Rezultati pretrage:
+		</h3>
+		#{if results.size() > 0}
+			<div class="searchResult">
+				<table class="tabelaPregled">
+					<tr><th class="status">Status</th><th class="tip">Tip</th><th class="naziv">Naziv</th><th class="pregled">&nbsp </th><th class="pdf">&nbsp </th></tr>
+					#{list items: results, as:'document'}
+						<tr>
+							<td>${document.getPreambula().getStatus()}</td>
+							<td>
+								akt
+							</td>
+							<td class="documentId" style="display:none;">
+								#{if document.getTipDokumenta() == "PROPIS"}
+									${document.getUriPropisa()}
+								#{/if}
+								#{else}
+									${document.getUriAmandmana()}
+								#{/else}
+							</td>
+							<td>${document.getNaziv()}</td>
+							<td><a class="alterationPreview">pogledaj</a></td>
+							<td><a class="alterationToPdf">u PDF</a></td>
+						</tr>
+					#{/list}
+				</table>
+			</div>
+		#{/if}
+		#{else}
+			<div class="searchNoResult">
+				<h4>Nije pronađen nijedan dokument (prema zadatim kriterijumima)</h4>
+			</div>
+		#{/else}
 	#{/if}
-	#{else}
-		<div class="searchNoResult">
-			<h4>Nije pronađen nijedan dokument (prema zadatim kriterijumima)</h4>
-		</div>
-	#{/else}
 </div>

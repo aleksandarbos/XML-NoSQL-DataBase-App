@@ -254,7 +254,7 @@
 	<xsl:template match="p:Referenca">
 		<a target="_blank">
 			<xsl:attribute name="href">
-				localhost:9000/overview/preview?id=<xsl:value-of select="@Uri_propisa"/>
+				www.localhost:9000/overview/topdf?id=<xsl:value-of select="@Uri_propisa"/>
 			</xsl:attribute>
 			<xsl:apply-templates/>
 		</a>
@@ -304,15 +304,6 @@
 		<p class="hide">
 			<xsl:value-of select="text()"/>
 		</p>
-	</xsl:template>
-	
-	<xsl:template match="a:Referenca">
-		<a target="_blank">
-			<xsl:attribute name="href">
-				localhost:9000/overview/preview?id=<xsl:value-of select="@Uri_propisa"/>
-			</xsl:attribute>
-			<xsl:apply-templates/>
-		</a>
 	</xsl:template>
 	
 	<xsl:template match="text()">

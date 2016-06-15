@@ -57,15 +57,6 @@ function searchChanged() {
 $(document).ready(function() {
 	
 	stateChangedSearch();
-
-	$(".alterationToPdf").click(function() {
-		var id = $(this).parents("tr").find(".documentId").text();
-		$(location).attr('href', '/search/topdf?id=' + id);
-	});
-	$(".alterationPreview").click(function() {
-		var id = $(this).parents("tr").find(".documentId").text();
-		$(location).attr('href', '/search/preview?id=' + id);
-	});
 	
 	$(".showHideSearch").click(function() {
 		var val = $(".selectSearch").val();
@@ -92,4 +83,5 @@ $(document).ready(function() {
 	$(".selectType").change(function() {
 		typeChangedSearch();		
 	});
+	
 });
