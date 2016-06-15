@@ -254,7 +254,7 @@
 	<xsl:template match="p:Referenca">
 		<a target="_blank">
 			<xsl:attribute name="href">
-				/overview/preview?id=<xsl:value-of select="@Uri_propisa"/>
+				localhost:9000/overview/preview?id=<xsl:value-of select="@Uri_propisa"/>
 			</xsl:attribute>
 			<xsl:apply-templates/>
 		</a>
@@ -309,7 +309,7 @@
 	<xsl:template match="a:Referenca">
 		<a target="_blank">
 			<xsl:attribute name="href">
-				/overview/preview?id=<xsl:value-of select="@Uri_propisa"/>
+				localhost:9000/overview/preview?id=<xsl:value-of select="@Uri_propisa"/>
 			</xsl:attribute>
 			<xsl:apply-templates/>
 		</a>

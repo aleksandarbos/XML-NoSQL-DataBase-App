@@ -38,8 +38,6 @@ public class XMLTransformation {
 		Result res = new SAXResult(fop.getDefaultHandler());			
 		xslFoTransformer.transform(source, res);
 		outt.write(outStream.toByteArray());
-		outt.flush();
-		in.close();
 		System.out.println("[INFO] Transformation to PDF: End.");
 	} catch (TransformerException e) {
 		e.printStackTrace();
