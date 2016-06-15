@@ -17,10 +17,12 @@ public class Search extends Controller {
     	render(userType);
     }
 
-    public static void searchText(String documentText, String documentType) {
+    public static void searchText(String documentText, String documentType1) {
 		HashMap<String, Object> searchResults = null;
+		flash("documentText", documentText);
+		flash("documentType1", documentType1);
 
-		if(documentType.equals("regulations")) {
+		if(documentType1.equals("regulations")) {
 			searchResults = RegulationsDAO.fetchRegulationsByQuery(documentText);
 		} else {
 			searchResults = AmendmentsDAO.fetchAmendmentsByQuery(documentText);
@@ -28,7 +30,6 @@ public class Search extends Controller {
 
 		Collection<Object> results = searchResults.values();
 
-		flash("documentText", documentText);
         renderTemplate("Search/show.html", results);
     }
 

@@ -101,40 +101,43 @@ public class DatabaseQuery {
 		String namespaceCriteria = "";
 		int criteriaCnt = 0;
 
-		if(documentType.equals("") || documentType.equals("regulation")) {
+		if(documentType.equals("regulation")) {
 			collectionCriteria = "regulations";
 			namespaceCriteria = "propisi";
+			documentType = "PROPIS";
 		}
 		else {
 			collectionCriteria = "amendments";
 			namespaceCriteria = "amandmani";
-		}
-
-		if(documentType.equals("regulation") || documentType.equals(""))
-			documentType = "PROPIS";
-		else
 			documentType = "AMANDMAN";
+		}
 
 		query.append("declare namespace pp = \"http://www.parlament.gov.rs/" + namespaceCriteria + "\";\n" +
 				"for $x in collection(\"/parliament/" + collectionCriteria + "\")\n" +
 				"let $y := fn:root($x)\n" +
 				"where $y//");
-		if(!documentType.equals("")) { criteriaCnt++; query.append("@Tip_dokumenta = \"" + documentType+ "\"\n"); }
-		if(documentName != null && !documentName.equals("")) { query.append(checkAnd(++criteriaCnt)+" $y//pp:Naziv/text() = \"" + documentName + "\" \n"); }
-		if(!documentStatus.equals("")) query.append(checkAnd(++criteriaCnt)+" $y//pp:Preambula/pp:Status/text() = \"" + documentStatus + "\"\n");
-		if(user != null && !user.equals("")) query.append(checkAnd(++criteriaCnt)+" $y//pp:Preambula/pp:Predlagac/text() = \"" + user + "\"\n");
-		if(votesYesFrom != 0 && votesNoFrom != 0) {
+		if(!documentType.equals("")) {
+			criteriaCnt++; 
+			query.append("@Tip_dokumenta = \"" + documentType+ "\"\n");
+		}
+		if(documentName != null && !documentName.equals("")) 
+			query.append(checkAnd(++criteriaCnt)+" $y//pp:Naziv/text() = \"" + documentName + "\" \n");
+		if(!documentStatus.equals("")) 
+			query.append(checkAnd(++criteriaCnt)+" $y//pp:Preambula/pp:Status/text() = \"" + documentStatus + "\"\n");
+		if(user != null && !user.equals("")) 
+			query.append(checkAnd(++criteriaCnt)+" $y//pp:Preambula/pp:Predlagac/text() = \"" + user + "\"\n");
+		if(votesYesFrom != 0)
 			query.append(checkAnd(++criteriaCnt)+" $y//pp:Preambula/pp:Broj_glasova_za >= " + votesYesFrom + "\n");
-			query.append(checkAnd(++criteriaCnt)+" $y//pp:Preambula/pp:Broj_glasova_za >= " + votesYesTo + "\n");
-		}
-		if(votesNoFrom != 0 && votesNoTo != 0) {
+		if (votesYesTo != 0)
+			query.append(checkAnd(++criteriaCnt)+" $y//pp:Preambula/pp:Broj_glasova_za <= " + votesYesTo + "\n");
+		if(votesNoFrom != 0)
 			query.append(checkAnd(++criteriaCnt)+" $y//pp:Preambula/pp:Broj_glasova_protiv >= " + votesNoFrom + "\n");
-			query.append(checkAnd(++criteriaCnt)+" $y//pp:Preambula/pp:Broj_glasova_protiv >= " + votesNoTo + "\n");
-		}
-		if(votesOffFrom != 0 && votesOffTo != 0) {
+		if (votesNoTo != 0)
+			query.append(checkAnd(++criteriaCnt)+" $y//pp:Preambula/pp:Broj_glasova_protiv <= " + votesNoTo + "\n");
+		if(votesOffFrom != 0)
 			query.append(checkAnd(++criteriaCnt)+" $y//pp:Preambula/pp:Broj_glasova_za >= " + votesOffFrom + "\n");
-			query.append(checkAnd(++criteriaCnt)+" $y//pp:Preambula/pp:Broj_glasova_za >= " + votesOffTo + "\n");
-		}
+		if(votesOffTo != 0)
+			query.append(checkAnd(++criteriaCnt)+" $y//pp:Preambula/pp:Broj_glasova_za <= " + votesOffTo + "\n");
 		query.append("return $y\n");
 		System.out.println(query.toString());
 

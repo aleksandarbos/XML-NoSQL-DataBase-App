@@ -24,8 +24,8 @@
 		<form class="textSearchForm" action="@{Search.searchText()}" method="get">
 			<table class="invisibleTable">
                 <tr><th>Tip dokumenta:</th><td>
-                    <select name="documentType" class="bigInput selectSearch">
-                        <option value="regulations" selected>Propisi</option>
+                    <select name="documentType1" class="bigInput selectSearch" select="${flash.documentType1}">
+                        <option value="regulations">Akt</option>
                         <option value="amendments">Amandmani</option>
                     </select></td>
 				</tr>
@@ -39,8 +39,13 @@
 			
 		<form class="detailsSearchForm" action="@{Search.searchDetails()}" method="get" style="display:none;">
 			<table class="invisibleTable">
+				<tr><th>Tip dokumenta:</th><td>
+					<select name="documentType" class="bigInput selectType" value="${flash.documentType}">
+						<option value="regulation">Akt</option>
+						<option value="amendment">Amandman</option>
+					</select></td></tr>
 				<tr><th>Taksonomska oblast:</th><td>
-					<select name="documentDomain" class="bigInput" value="${flash.documentDomain}">
+					<select name="documentDomain" class="bigInput">
 						<option value=""></option>
 						<option value="ZDRAVSTVO">Zdravstvo</option>
 						<option value="PROSVETA">Prosveta</option>
@@ -61,12 +66,6 @@
 						<option value="published" class="hideDate">Objavljen</option>
 						<option value="applied" class="hideDate">Primenjen</option>
 						<option value="withdrawn" class="hideDate">Povučen</option>
-					</select></td></tr>
-				<tr><th>Tip dokumenta:</th><td>
-					<select name="documentType" class="bigInput selectType" value="${flash.documentType}">
-						<option value=""></option>
-						<option value="regulation" selected>Akt</option>
-						<option value="amendment">Amandman</option>
 					</select></td></tr>
 				<tr><th>Dokument predložio:</th><td>
 					<input type="text" class="bigInput" name="user" value="${flash.user}"/></td></tr>
@@ -137,7 +136,7 @@
 								#{/else}
 							<td>${document.getNaziv()}</td>
 							<td><a class="alterationPreview">pogledaj</a></td>
-							<td><a class="alterationToPdf">u PDF</a></td>
+							<td><a class="alterationToPdf"preuzmi</a></td>
 						</tr>
 					#{/list}
 				</table>
