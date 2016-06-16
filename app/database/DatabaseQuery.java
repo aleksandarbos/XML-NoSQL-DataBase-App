@@ -190,6 +190,16 @@ public class DatabaseQuery {
 
 		return content.toString();
 	}
+	
+	public static Amandman readAmendmentFromDatabase(String amandmentId){
+        String xmlDocString = DatabaseQuery.readXmlFromDatabase(amandmentId);
+		return (Amandman) Converter.unmarshall(UnmarshallType.FROM_STRING, xmlDocString, Amandman.class);
+	}
+	
+	public static Propis readRegulationFromDatabase(String regulationId){
+        String xmlDocString = DatabaseQuery.readXmlFromDatabase(regulationId);
+		return (Propis) Converter.unmarshall(UnmarshallType.FROM_STRING, xmlDocString, Propis.class);
+	}
 
 	public static void writeXmlToDatabase(String docId, String xmlFile) {
 		StringHandle content = new StringHandle();

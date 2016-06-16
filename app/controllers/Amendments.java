@@ -5,6 +5,7 @@ import converter.XMLController;
 import converter.types.UnmarshallType;
 import dal.AmendmentsDAO;
 import dal.RegulationsDAO;
+import database.DatabaseQuery;
 import models.rs.gov.parlament.amandmani.Amandman;
 import models.rs.gov.parlament.amandmani.TipAmandmana;
 import models.rs.gov.parlament.propisi.Propis;
@@ -14,8 +15,10 @@ import play.mvc.With;
 
 import javax.xml.bind.JAXBException;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 
 @With(Secure.class)
 public class Amendments extends Controller {
@@ -23,8 +26,11 @@ public class Amendments extends Controller {
     public static void show() throws IOException, JAXBException {
         String userType = session.get("user-type");
 
-        HashMap<String, Propis> regulationsSearch = RegulationsDAO.fetchAllRegulations();
-        Collection<Propis> regulations = regulationsSearch.values();
+        List<Object> list = DatabaseQuery.searchByStatus("PREDLOZEN", "REGULATIONS");
+        List<Propis> regulations = new ArrayList<>();
+        for (Object propis : list) {
+        	regulations.add((Propis) propis);
+		}
         render(userType, regulations);
     }
 
