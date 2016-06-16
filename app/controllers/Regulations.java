@@ -1,6 +1,7 @@
 package controllers;
 
 import converter.Converter;
+import converter.XMLController;
 import converter.types.UnmarshallType;
 import dal.RegulationsDAO;
 import models.rs.gov.parlament.propisi.Preambula;
@@ -35,6 +36,18 @@ public class Regulations extends Controller {
         RegulationsDAO.addRegulation(regulation);
 
         show();
+    }
+    
+    public static String checkDocument(String amendmentContent) {
+    	if (!XMLController.checkWellFormness(amendmentContent)) {
+    		return "error1"; // lose formiran
+    	} else {
+    		if (!XMLController.checkValidity(amendmentContent, "regulation")) {
+    			return "error2"; // nije u skladu sa semom
+    		} else {
+    			return "ok";
+    		}
+    	}
     }
 
     @Before(unless="time")

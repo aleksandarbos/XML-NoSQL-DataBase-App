@@ -1,6 +1,7 @@
 package controllers;
 
 import converter.Converter;
+import converter.XMLController;
 import converter.types.UnmarshallType;
 import dal.AmendmentsDAO;
 import dal.RegulationsDAO;
@@ -23,13 +24,14 @@ public class Amendments extends Controller {
 
         HashMap<String, Propis> regulationsSearch = RegulationsDAO.fetchAllRegulations();
         Collection<Propis> regulations = regulationsSearch.values();
-        render(regulations);
+        render(userType, regulations);
     }
 
     public static void create(String amandmentName, String affectedRegulationUri,
                               int affectedClause, String affectedType, String user,
                               String amendmentContent) throws JAXBException, IOException {
-
+    	
+    	
         Amandman amendment = (Amandman) Converter.unmarshall(UnmarshallType.FROM_STRING, amendmentContent, Amandman.class);
         amendment.setNaziv(amandmentName);
         amendment.setUriAmandmana(affectedRegulationUri);
@@ -37,6 +39,18 @@ public class Amendments extends Controller {
         AmendmentsDAO.addAmandment(amendment);
 
         show();
+    }
+    
+    public static String checkDocument(String amendmentContent) {
+    	if (!XMLController.checkWellFormness(amendmentContent)) {
+    		return "error1"; // lose formiran
+    	} else {
+    		if (!XMLController.checkValidity(amendmentContent, "amandment")) {
+    			return "error2"; // nije u skladu sa semom
+    		} else {
+    			return "ok";
+    		}
+    	}
     }
     
     @Before(unless="time")

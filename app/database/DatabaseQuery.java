@@ -91,7 +91,7 @@ public class DatabaseQuery {
      * @throws IOException
      * @throws JAXBException
      */
-	public static HashMap<String, Object> metadataSearch(String documentDomain, String documentName, String documentStatus, String documentType, String user, String authority, String collection,
+	public static HashMap<String, Object> metadataSearch(String documentName, String documentStatus, String documentType, String user, String authority, String collection,
 														 String nominatedDateFrom, String nominatedDateTo, String adoptionDateFrom, String adoptionDateTo, String announcementDateFrom, String announcementDateTo,
 														 String inuseDateFrom, String inuseDateTo, String withdrawalDateFrom, String withdrawalDateTo,
 														 int votesYesFrom, int votesYesTo, int votesNoFrom, int votesNoTo, int votesOffFrom, int votesOffTo) {
