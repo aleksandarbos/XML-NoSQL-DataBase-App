@@ -8,6 +8,8 @@ import com.marklogic.client.query.MatchDocumentSummary;
 import com.marklogic.client.query.MatchLocation;
 import com.marklogic.client.query.QueryManager;
 import com.marklogic.client.query.StringQueryDefinition;
+
+import controllers.Amendments;
 import converter.Converter;
 import converter.types.UnmarshallType;
 import models.rs.gov.parlament.amandmani.Amandman;
@@ -202,13 +204,29 @@ public class DatabaseQuery {
 		System.out.println("[INFO] Overwrite: " + docId + ", in database.");
 	}
 
-	public static void removeXmlFromDatabase(String docId) {
+	private static void removeXmlFromDatabase(String docId) {
 		String query = "xdmp:document-delete(\"" + docId + "\")";
 		try {
 			XQueryInvoker.execute(query);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public static void removeDocumentFromDatabase(String docId) {
+		
+		String documentType = docId.split("/")[2];
+		if (documentType.equals("amendments")) {
+			removeXmlFromDatabase(docId);
+			return;
+		}
+		List<Amandman> amendments = searchAmandmentsByRegulationId(docId);
+		
+		for (Amandman amendment : amendments) {
+			String uri = amendment.getUriAmandmana();
+			removeXmlFromDatabase(uri);
+		}
+		
 	}
 
 	/**
@@ -275,7 +293,6 @@ public class DatabaseQuery {
 		query.append(checkAnd(++criteriaCnt) + " $y//pp:Preambula/pp:Predlagac/text() = \"" + user + "\"\n");
 		query.append("return $y\n");
 
-		System.out.println("KORISNICI: " + query);
 		Vector<String> searchResults;
 		try {
 			searchResults = XQueryInvoker.execute(query.toString());
@@ -288,6 +305,39 @@ public class DatabaseQuery {
 					docObj = Converter.unmarshall(UnmarshallType.FROM_STRING, docStr, Amandman.class);
 					results.add(docObj);
 				}
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (JAXBException e) {
+			e.printStackTrace();
+		}
+
+		return results;
+	}
+	
+	public static List<Amandman> searchAmandmentsByRegulationId(String regId) {
+		StringBuilder query = new StringBuilder();
+		List<Amandman> results = new ArrayList();
+		String collectionCriteria = "amendments";
+		String namespaceCriteria = "amandmani";
+		int criteriaCnt = 0;
+
+		query.append("declare namespace pp = \"http://www.parlament.gov.rs/" + namespaceCriteria + "\";\n"
+				+ "for $x in collection(\"/parliament/" + collectionCriteria + "\")\n" + "let $y := fn:root($x)\n"
+				+ "where $y//");
+	
+		criteriaCnt++;
+		query.append("@Tip_dokumenta = \"AMANDMAN\"\n");
+		
+		query.append(checkAnd(++criteriaCnt) + " $y//ap:Deo_za_izmenu/ap:Uri_propisa/text() = \"" + regId + "\"\n");
+		query.append("return $y\n");
+
+		Vector<String> searchResults;
+		try {
+			searchResults = XQueryInvoker.execute(query.toString());
+			for (String docStr : searchResults) {
+				Amandman docObj = (Amandman) Converter.unmarshall(UnmarshallType.FROM_STRING, docStr, Amandman.class);
+				results.add(docObj);
 			}
 		} catch (IOException e) {
 			e.printStackTrace();

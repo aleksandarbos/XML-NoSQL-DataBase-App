@@ -34,8 +34,8 @@ public class Alterations extends Controller {
     	render(userType, documents);
     }
     
-    public static void delete(int id) {
-    	System.out.println("obrisi dokument: " + id);
+    public static void delete(String id) {
+    	DatabaseQuery.removeDocumentFromDatabase(id);
     	show();
     }
     
