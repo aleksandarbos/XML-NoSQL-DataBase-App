@@ -3,8 +3,8 @@
  */
 public class Main {
     public static void main(String[] args) {
-
-
+        String str = "aca faca bla bla";
+        int idx = str.indexOf("bla");
     }
 
 }

@@ -30,13 +30,13 @@ public class RegulationsDAOTest {
 
         Amandman.DeoZaIzmenu editingPart = new Amandman.DeoZaIzmenu();
         amendment.setDeoZaIzmenu(editingPart);
-        editingPart.setUriPropisa("/parliament/regulations/17216008199143224158.xml");
-        editingPart.setOznakaDela(1);
-        editingPart.setOznakaGlave(1);
+        editingPart.setUriPropisa("/parliament/regulations/7505307062864767142.xml");
+        editingPart.setOznakaClana(2);
+        editingPart.setOznakaStava(3);
 
         SadrzajTip editingContent = new SadrzajTip();
         editingContent.getContent();
-        editingContent.getContent().add(new String("N0v1 CLAN KRALJ "));
+        editingContent.getContent().add(new String("TEST 321!!!"));
         amendment.setSadrzaj(editingContent);
 
         RegulationsDAO.updateRegulation(amendment);

@@ -20,6 +20,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Vector;
 
 /**
  * Created by aleksandar on 9.6.16..
@@ -95,11 +96,9 @@ public class RegulationsDAO {
      * Updating regulation by accepted amendment content.
      * @param amendment Amendment object with all editing content.
      */
-    public static void updateRegulation(Amandman amendment) {
+    public static void updateRegulation(Amandman amendment) throws IOException {
         StringBuilder query = new StringBuilder();
 
-        int numOfPart = 0;
-        int numOfHead = 0;
         int numOfMember = 0;
         int numOfPosition = 0;
         int numOfPoint = 0;
@@ -109,73 +108,162 @@ public class RegulationsDAO {
 
         String regulationDocUri = "";
         String amendmentContent = "";
+        StringBuilder getLastAttributeValQuery;
 
         TipAmandmana typeOfAmendment = null;
+        Vector<String> lastIdxResults = null;
+        int lastIdx = 0;
 
         try {
             typeOfAmendment = amendment.getPreambula().getTip();
-
-            numOfPart = amendment.getDeoZaIzmenu().getOznakaDela();
-            numOfHead = amendment.getDeoZaIzmenu().getOznakaGlave();
-            numOfMember = amendment.getDeoZaIzmenu().getOznakaClana();
-            numOfPosition = amendment.getDeoZaIzmenu().getOznakaStava();
-            numOfPoint = amendment.getDeoZaIzmenu().getOznakaTacke();
-            numOfSubPoint = amendment.getDeoZaIzmenu().getOznakaPodtacke();
-            numOfBulletPoint = amendment.getDeoZaIzmenu().getOznakaAlineje();
-
         } catch (Exception e) {
             e.printStackTrace();
+        }
+        if(amendment.getDeoZaIzmenu() != null) {
+            if(amendment.getDeoZaIzmenu().getOznakaClana() != 0) { numOfMember = amendment.getDeoZaIzmenu().getOznakaClana(); editDepth++; }
+            if(amendment.getDeoZaIzmenu().getOznakaStava() != null) { numOfPosition = amendment.getDeoZaIzmenu().getOznakaStava(); editDepth++; }
+            if(amendment.getDeoZaIzmenu().getOznakaTacke() != null) { numOfPoint = amendment.getDeoZaIzmenu().getOznakaTacke(); editDepth++; }
+            if(amendment.getDeoZaIzmenu().getOznakaPodtacke() != null) { numOfSubPoint = amendment.getDeoZaIzmenu().getOznakaPodtacke(); editDepth++; }
+            if(amendment.getDeoZaIzmenu().getOznakaAlineje() != null) { numOfBulletPoint = amendment.getDeoZaIzmenu().getOznakaAlineje(); editDepth++; }
         }
 
         regulationDocUri = amendment.getDeoZaIzmenu().getUriPropisa();
         amendmentContent = amendment.getSadrzaj().getContent().get(0).toString();
 
+        switch (typeOfAmendment) {
+            case IZMENA:
+                updateRegulationByEdit(numOfMember, numOfPosition, numOfPoint,
+                        numOfSubPoint, numOfBulletPoint, regulationDocUri, amendmentContent);
+                break;
+            case BRISANJE:
+                updateRegulationByDelete(numOfMember, numOfPosition, numOfPoint,
+                        numOfSubPoint, numOfBulletPoint, regulationDocUri);
+                break;
+            case DODAVANJE:
+                updateRegulationByAdd(numOfMember, numOfPosition, amendmentContent,
+                        numOfPoint, numOfSubPoint, editDepth, numOfBulletPoint,
+                        regulationDocUri);
+                break;
+        }
+    }
+
+    private static void updateRegulationByEdit(int numOfMember, int numOfPosition,
+                                               int numOfPoint, int numOfSubPoint,
+                                               int numOfBulletPoint, String regulationDocUri,
+                                               String amendmentContent) throws IOException {
+
+        StringBuilder query = new StringBuilder();
+        query.append("declare namespace pp = \"http://www.parlament.gov.rs/propisi\";\n" +
+                     "for $node in doc(\"" + regulationDocUri + "\")\n//pp:Sadrzaj\n");
+
+        if(numOfMember != 0) { query.append("//pp:Clan[@Oznaka_clana = " + numOfMember + "]\n"); }
+        if(numOfPosition != 0) { query.append("//pp:Stav[@Oznaka_stava = " + numOfPosition + "]\n"); }
+        if(numOfPoint != 0) { query.append("//pp:Tacka[@Oznaka_tacke = " + numOfPoint + "]\n"); }
+        if(numOfSubPoint != 0) { query.append("//pp:Podtacka[@Oznaka_podtacke = " + numOfSubPoint + "]\n"); }
+        if(numOfSubPoint != 0) { query.append("//pp:Alineja[@Oznaka_alineje = " + numOfBulletPoint + "]\n"); }
+
+        query.append("return xdmp:node-replace($node/text(), " +
+                    "text{\"" + amendmentContent + "\"});");
+        //System.out.println(query.toString());
+        XQueryInvoker.execute(query.toString());
+    }
+
+    private static void updateRegulationByDelete(int numOfMember, int numOfPosition,
+                                               int numOfPoint, int numOfSubPoint,
+                                               int numOfBulletPoint, String regulationDocUri
+                                               ) throws IOException {
+        StringBuilder query = new StringBuilder();
         query.append("declare namespace pp = \"http://www.parlament.gov.rs/propisi\";\n" +
                 "for $node in doc(\"" + regulationDocUri + "\")\n//pp:Sadrzaj\n");
-                if(numOfPart != 0) { query.append("//pp:Deo[@Oznaka_dela = " + numOfPart + "]\n"); editDepth++; }
-                if(numOfHead != 0) { query.append("//pp:Glava[@Oznaka_glave = " + numOfHead + "]\n"); editDepth++; }
-                if(numOfMember != 0) { query.append("//pp:Clan[@Oznaka_clana = " + numOfMember + "]\n"); editDepth++; }
-                if(numOfPosition != 0) { query.append("//pp:Stav[@Oznaka_stava = " + numOfPosition + "]\n"); editDepth++; }
-                if(numOfPoint != 0) { query.append("//pp:Tacka[@Oznaka_tacke = " + numOfPoint + "]\n"); editDepth++; }
-                if(numOfSubPoint != 0) { query.append("//pp:Podtacka[@Oznaka_podtacke = " + numOfSubPoint + "]\n"); editDepth++; }
-                if(numOfSubPoint != 0) { query.append("//pp:Alineja[@Oznaka_alineje = " + numOfBulletPoint + "]\n"); editDepth++; }
-                if(typeOfAmendment == TipAmandmana.IZMENA) {
-                    query.append(" \nreturn xdmp:node-replace($node/text(), " +
-                            "text{\"" + amendmentContent + "\"});");
-                } else if(typeOfAmendment == TipAmandmana.BRISANJE) {
-                    query.append(" \nreturn xdmp:node-delete($node);");
-                } else if(typeOfAmendment == TipAmandmana.DODAVANJE) {
-                    query.append(" \nreturn xdmp:node-insert-child($node, ");
-                        switch (editDepth) {
-                            case 1: // Deo depth
-                                query.append("<pp:Glava Oznaka_glave=''>"+amendmentContent+"</pp:Glava>);");
-                                break;
-                            case 2: // Part depth
-                                query.append("<pp:Clan Oznaka_clana=''>"+amendmentContent+"</pp:Clan>);");
-                                break;
-                            case 3: // Clan depth
-                                query.append("<pp:Stav Oznaka_stava=''>"+amendmentContent+"</pp:Stav>);");
-                                break;
-                            case 4: // Stav depth
-                                query.append("<pp:Tacka Oznaka_tacke=''>"+amendmentContent+"</pp:Tacka>);");
-                                break;
-                            case 6: // Tacka depth
-                                query.append("<pp:Podtacka Oznaka_podtacke=''>"+amendmentContent+"</pp:Podtacka>);");
-                                break;
-                            case 7: // Podtacka depth
-                                query.append("<pp:Alineja Oznaka_alineje=''>"+amendmentContent+"</pp:Alineja>);");
-                                break;
-                        }
+
+        if(numOfMember != 0) { query.append("//pp:Clan[@Oznaka_clana = " + numOfMember + "]\n"); }
+        if(numOfPosition != 0) { query.append("//pp:Stav[@Oznaka_stava = " + numOfPosition + "]\n"); }
+        if(numOfPoint != 0) { query.append("//pp:Tacka[@Oznaka_tacke = " + numOfPoint + "]\n"); }
+        if(numOfSubPoint != 0) { query.append("//pp:Podtacka[@Oznaka_podtacke = " + numOfSubPoint + "]\n"); }
+        if(numOfBulletPoint != 0) { query.append("//pp:Alineja[@Oznaka_alineje = " + numOfBulletPoint + "]\n"); }
+
+        query.append("return xdmp:node-delete($node);");
+        //System.out.println(query.toString());
+        XQueryInvoker.execute(query.toString());
+
+    }
+    private static void updateRegulationByAdd(int numOfMember, int numOfPosition, String amendmentContent,
+                                              int numOfPoint, int numOfSubPoint, int editDepth,
+                                              int numOfBulletPoint, String regulationDocUri) throws IOException {
+
+        StringBuilder query = new StringBuilder();
+        StringBuilder getLastAttributeValQuery = new StringBuilder();
+        Vector<String> lastIdxResults = null;
+        int lastIdx = 0;
+
+        query.append("declare namespace pp = \"http://www.parlament.gov.rs/propisi\";\n" +
+                "for $node in doc(\"" + regulationDocUri + "\")\n//pp:Sadrzaj\n");
+
+        getLastAttributeValQuery = new StringBuilder(query.toString()); // for another query, to get last index
+        getLastAttributeValQuery.insert(getLastAttributeValQuery.indexOf("//pp:"), " return\n");
+
+        if(numOfMember != 0) { query.append("//pp:Clan[@Oznaka_clana = " + numOfMember + "]\n"); }
+        if(numOfPosition != 0) { query.append("//pp:Stav[@Oznaka_stava = " + numOfPosition + "]\n"); }
+        if(numOfPoint != 0) { query.append("//pp:Tacka[@Oznaka_tacke = " + numOfPoint + "]\n"); }
+        if(numOfSubPoint != 0) { query.append("//pp:Podtacka[@Oznaka_podtacke = " + numOfSubPoint + "]\n"); }
+        if(numOfBulletPoint != 0) { query.append("//pp:Alineja[@Oznaka_alineje = " + numOfBulletPoint + "]\n"); }
+
+        query.append("return xdmp:node-insert-after($node, ");
+
+        switch (editDepth) {
+            case 1: // Clan depth
+                getLastAttributeValQuery.append("//pp:Clan[@Oznaka_clana]/last()");
+                lastIdxResults = XQueryInvoker.execute(getLastAttributeValQuery.toString());
+                if(lastIdxResults.size() > 0) {
+                    lastIdx = Integer.parseInt(lastIdxResults.get(0)) + 1;
+                } else {
+                    lastIdx = 1;
                 }
-
-        System.out.println("\n" + query.toString() + "\n");
-
-        try {
-            XQueryInvoker.execute(query.toString());
-        } catch (IOException e) {
-            e.printStackTrace();
+                query.append("<pp:Clan Oznaka_clana='"+lastIdx+"'>"+amendmentContent+"</pp:Clan>);");
+                break;
+            case 2: // Clan depth
+                getLastAttributeValQuery.append("//pp:Stav[@Oznaka_stava]/last()");
+                lastIdxResults = XQueryInvoker.execute(getLastAttributeValQuery.toString());
+                if(lastIdxResults.size() > 0) {
+                    lastIdx = Integer.parseInt(lastIdxResults.get(0)) + 1;
+                } else {
+                    lastIdx = 1;
+                }
+                query.append("<pp:Stav Oznaka_stava='"+lastIdx+"'>"+amendmentContent+"</pp:Stav>);");
+                break;
+            case 3: // Stav depth
+                getLastAttributeValQuery.append("//pp:Tacka[@Oznaka_tacke]/last()");
+                lastIdxResults = XQueryInvoker.execute(getLastAttributeValQuery.toString());
+                if(lastIdxResults.size() > 0) {
+                    lastIdx = Integer.parseInt(lastIdxResults.get(0)) + 1;
+                } else {
+                    lastIdx = 1;
+                }
+                query.append("<pp:Tacka Oznaka_tacke='"+lastIdx+"'>"+amendmentContent+"</pp:Tacka>);");
+                break;
+            case 4: // Tacka depth
+                getLastAttributeValQuery.append("//pp:Podtacka[@Oznaka_podtacke]/last()");
+                lastIdxResults = XQueryInvoker.execute(getLastAttributeValQuery.toString());
+                if(lastIdxResults.size() > 0) {
+                    lastIdx = Integer.parseInt(lastIdxResults.get(0)) + 1;
+                } else {
+                    lastIdx = 1;
+                }
+                query.append("<pp:Podtacka Oznaka_podtacke='"+lastIdx+"'>"+amendmentContent+"</pp:Podtacka>);");
+                break;
+            case 5: // Podtacka depth
+                getLastAttributeValQuery.append("//pp:Alineja[@Oznaka_alineje]/last()");
+                lastIdxResults = XQueryInvoker.execute(getLastAttributeValQuery.toString());
+                if(lastIdxResults.size() > 0) {
+                    lastIdx = Integer.parseInt(lastIdxResults.get(0)) + 1;
+                } else {
+                    lastIdx = 1;
+                }
+                query.append("<pp:Alineja Oznaka_alineje='"+lastIdx+"'>"+amendmentContent+"</pp:Podtacka>);");
+                break;
         }
-
+        System.out.println("\n"+query.toString()+"\n");
+        XQueryInvoker.execute(query.toString());
     }
 
     public static void deleteRegulation(String regulationUri) {
