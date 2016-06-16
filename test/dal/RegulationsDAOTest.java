@@ -31,14 +31,13 @@ public class RegulationsDAOTest {
         Amandman.DeoZaIzmenu editingPart = new Amandman.DeoZaIzmenu();
         amendment.setDeoZaIzmenu(editingPart);
         editingPart.setUriPropisa("/parliament/regulations/17216008199143224158.xml");
-        editingPart.setOznakaClana(5);
-        editingPart.setOznakaStava(1);
-        editingPart.setOznakaTacke(1);
-        editingPart.setOznakaPodtacke(1);
+        editingPart.setOznakaDela(1);
+        editingPart.setOznakaGlave(1);
+        editingPart.setOznakaClana(2);
 
         SadrzajTip editingContent = new SadrzajTip();
         editingContent.getContent();
-        editingContent.getContent().add(new String("+++ PODTACKA +++"));
+        editingContent.getContent().add(new String("N0v1 st4v "));
         amendment.setSadrzaj(editingContent);
 
         RegulationsDAO.updateRegulation(amendment);

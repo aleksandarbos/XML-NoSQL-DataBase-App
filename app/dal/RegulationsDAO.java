@@ -98,6 +98,8 @@ public class RegulationsDAO {
     public static void updateRegulation(Amandman amendment) {
         StringBuilder query = new StringBuilder();
 
+        int numOfPart = 0;
+        int numOfHead = 0;
         int numOfMember = 0;
         int numOfPosition = 0;
         int numOfPoint = 0;
@@ -112,6 +114,9 @@ public class RegulationsDAO {
 
         try {
             typeOfAmendment = amendment.getPreambula().getTip();
+
+            numOfPart = amendment.getDeoZaIzmenu().getOznakaDela();
+            numOfHead = amendment.getDeoZaIzmenu().getOznakaGlave();
             numOfMember = amendment.getDeoZaIzmenu().getOznakaClana();
             numOfPosition = amendment.getDeoZaIzmenu().getOznakaStava();
             numOfPoint = amendment.getDeoZaIzmenu().getOznakaTacke();
@@ -126,12 +131,14 @@ public class RegulationsDAO {
         amendmentContent = amendment.getSadrzaj().getContent().get(0).toString();
 
         query.append("declare namespace pp = \"http://www.parlament.gov.rs/propisi\";\n" +
-                "for $node in doc(\"" + regulationDocUri + "\")");
-                if(numOfMember != 0) { query.append("//pp:Clan[@Oznaka_clana = " + numOfMember + "]"); editDepth++; }
-                if(numOfPosition != 0) { query.append("//pp:Stav[@Oznaka_stava = " + numOfPosition + "]"); editDepth++; }
-                if(numOfPoint != 0) { query.append("//pp:Tacka[@Oznaka_tacke = " + numOfPoint + "]"); editDepth++; }
-                if(numOfSubPoint != 0) { query.append("//pp:Podtacka[@Oznaka_podtacke = " + numOfSubPoint + "]"); editDepth++; }
-                if(numOfSubPoint != 0) { query.append("//pp:Alineja[@Oznaka_alineje = " + numOfBulletPoint + "]"); editDepth++; }
+                "for $node in doc(\"" + regulationDocUri + "\")//pp:Sadrzaj");
+                if(numOfPart != 0) { query.append("//pp:Deo[@Oznaka_dela = " + numOfPart + "]\n"); editDepth++; }
+                if(numOfHead != 0) { query.append("//pp:Glava[@Oznaka_glave = " + numOfHead + "]\n"); editDepth++; }
+                if(numOfMember != 0) { query.append("//pp:Clan[@Oznaka_clana = " + numOfMember + "]\n"); editDepth++; }
+                if(numOfPosition != 0) { query.append("//pp:Stav[@Oznaka_stava = " + numOfPosition + "]\n"); editDepth++; }
+                if(numOfPoint != 0) { query.append("//pp:Tacka[@Oznaka_tacke = " + numOfPoint + "]\n"); editDepth++; }
+                if(numOfSubPoint != 0) { query.append("//pp:Podtacka[@Oznaka_podtacke = " + numOfSubPoint + "]\n"); editDepth++; }
+                if(numOfSubPoint != 0) { query.append("//pp:Alineja[@Oznaka_alineje = " + numOfBulletPoint + "]\n"); editDepth++; }
                 if(typeOfAmendment == TipAmandmana.IZMENA) {
                     query.append(" \nreturn xdmp:node-replace($node/text(), " +
                             "text{\"" + amendmentContent + "\"});");
@@ -140,19 +147,22 @@ public class RegulationsDAO {
                 } else if(typeOfAmendment == TipAmandmana.DODAVANJE) {
                     query.append(" \nreturn xdmp:node-insert-child($node, ");
                         switch (editDepth) {
-                            case 1: // Clan depth
+                            case 1: // Deo depth
+                                query.append("<pp:Glava Oznaka_glave=''>"+amendmentContent+"</pp:Glava>);");
+                                break;
+                            case 2: // Part depth
                                 query.append("<pp:Clan Oznaka_clana=''>"+amendmentContent+"</pp:Clan>);");
                                 break;
-                            case 2: // Stav depth
+                            case 3: // Clan depth
                                 query.append("<pp:Stav Oznaka_stava=''>"+amendmentContent+"</pp:Stav>);");
                                 break;
-                            case 3: // Tacka depth
+                            case 4: // Stav depth
                                 query.append("<pp:Tacka Oznaka_tacke=''>"+amendmentContent+"</pp:Tacka>);");
                                 break;
-                            case 4: // Podtacka depth
+                            case 6: // Tacka depth
                                 query.append("<pp:Podtacka Oznaka_podtacke=''>"+amendmentContent+"</pp:Podtacka>);");
                                 break;
-                            case 5: // Alineja depth
+                            case 7: // Podtacka depth
                                 query.append("<pp:Alineja Oznaka_alineje=''>"+amendmentContent+"</pp:Alineja>);");
                                 break;
                         }
