@@ -165,8 +165,6 @@ public class DatabaseQuery {
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
-		} catch (JAXBException e) {
-			e.printStackTrace();
 		}
 
 		return results;
@@ -306,8 +304,6 @@ public class DatabaseQuery {
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
-		} catch (JAXBException e) {
-			e.printStackTrace();
 		}
 
 		return results;
@@ -316,15 +312,11 @@ public class DatabaseQuery {
 	public static List<Amandman> searchAmandmentsByRegulationId(String regId) {
 		StringBuilder query = new StringBuilder();
 		List<Amandman> results = new ArrayList();
-		String namespaceCriteria = "amandmani";
-		int criteriaCnt = 0;
 
 		query.append("declare namespace ap = \"http://www.parlament.gov.rs/amandmani\";\n"
 				+ "for $x in collection(\"/parliament/amendments\")\n" + "let $y := fn:root($x)\n"
 				+ "where ");
-
-		query.append("$y//ap:Uri_propisa/text() = \"" + regId + "\"\n");
-		query.append("return $y\n");
+		query.append("$y//ap:Uri_propisa/text() = \"" + regId + "\"\n return $y\n");
 
 		Vector<String> searchResults;
 		try {
@@ -335,7 +327,43 @@ public class DatabaseQuery {
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
-		} catch (JAXBException e) {
+		}
+
+		return results;
+	}
+
+	public static List<Object> searchByStatus(String status, String type) {
+		StringBuilder query = new StringBuilder();
+		List<Object> results = new ArrayList();
+		String namespace, location, prefix;
+		
+		if (type.equals("REGULATIONS")) {
+			namespace = "propisi";
+			location = "regulations";
+			prefix = "pp";
+		} else {
+			namespace = "amandmani";
+			location = "amendments";
+			prefix = "ap";
+		}
+
+		query.append("declare namespace " + prefix + " = \"http://www.parlament.gov.rs/" + namespace + "\";\n"
+				+ "for $x in collection(\"/parliament/" + location + "\")\n" + "let $y := fn:root($x)\n"
+				+ "where ");
+		query.append("$y//"+prefix+":Preambula/"+prefix+":Status/text() = \"" + status + "\"\n return $y\n");
+
+		Vector<String> searchResults;
+		try {
+			searchResults = XQueryInvoker.execute(query.toString());
+			for (String docStr : searchResults) {
+				Object docObj;
+				if (type.equals("REGULATIONS"))
+					docObj = Converter.unmarshall(UnmarshallType.FROM_STRING, docStr, Propis.class);
+				else
+					docObj = Converter.unmarshall(UnmarshallType.FROM_STRING, docStr, Amandman.class);
+				results.add(docObj);
+			}
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 
@@ -347,5 +375,4 @@ public class DatabaseQuery {
 			return "and";
 		return "";
 	}
-
 }

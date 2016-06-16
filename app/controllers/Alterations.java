@@ -11,6 +11,7 @@ import dal.AmendmentsDAO;
 import dal.RegulationsDAO;
 import database.DatabaseAccessor;
 import database.DatabaseQuery;
+import models.AssemblySession;
 import models.rs.gov.parlament.amandmani.Amandman;
 import models.rs.gov.parlament.propisi.Propis;
 import play.mvc.Before;
@@ -21,6 +22,7 @@ import play.mvc.With;
 public class Alterations extends Controller {
 
     public static void show() {
+        AssemblySession assemblySession = new AssemblySession();
         String userType = session.get("user-type");
         String user = session.get("user-name") + " " + session.get("user-surname");
 
@@ -31,7 +33,7 @@ public class Alterations extends Controller {
         documents.addAll(regulations);
         documents.addAll(amandments);
         
-    	render(userType, documents);
+    	render(userType, documents, assemblySession);
     }
     
     public static void delete(String id) {

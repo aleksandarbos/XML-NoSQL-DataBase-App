@@ -6,6 +6,7 @@ import converter.types.UnmarshallType;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
+import javax.xml.bind.PropertyException;
 import javax.xml.bind.Unmarshaller;
 import java.io.File;
 import java.io.StringReader;
@@ -23,30 +24,36 @@ public class Converter {
      * @return Marshalled XML string if {@link MarshallType} is set on TO_STRING.
      * @throws JAXBException
      */
-    public static String marshall(MarshallType marshallType, Object objectToMarshall, String filePathToSave) throws JAXBException {
+    public static String marshall(MarshallType marshallType, Object objectToMarshall, String filePathToSave) {
         System.out.println("[INFO] JAXB marshalling instance of " + objectToMarshall.getClass() + " class.\n");
 
         Class objectClass = objectToMarshall.getClass();
         Package classPackage = objectClass.getPackage();
         String classPackageName = classPackage.getName();
-
         StringWriter sw = new StringWriter();
-        JAXBContext context = JAXBContext.newInstance(classPackageName);
 
-        Marshaller marshaller = context.createMarshaller();
-        marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-        marshaller.setProperty(Marshaller.JAXB_ENCODING, "UTF-8");
-        // marshaller.marshal(objectToMarshall, System.out); for debugging purposes
+        try {
+            JAXBContext context = JAXBContext.newInstance(classPackageName);
 
-        switch (marshallType) {
-            case TO_DISK:
-                marshaller.marshal(objectToMarshall, new File(filePathToSave));
-                System.out.println("[INFO] Marshalled file at: " + filePathToSave);
-                break;
-            case TO_STRING:
-                marshaller.marshal(objectToMarshall, sw);
-                break;
-        }
+            Marshaller marshaller = context.createMarshaller();
+			marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+	        marshaller.setProperty(Marshaller.JAXB_ENCODING, "UTF-8");
+	        // marshaller.marshal(objectToMarshall, System.out); for debugging purposes
+
+	        switch (marshallType) {
+	            case TO_DISK:
+	                marshaller.marshal(objectToMarshall, new File(filePathToSave));
+	                System.out.println("[INFO] Marshalled file at: " + filePathToSave);
+	                break;
+	            case TO_STRING:
+	                marshaller.marshal(objectToMarshall, sw);
+	                break;
+	        }
+		} catch (PropertyException e) {
+			e.printStackTrace();
+		} catch (JAXBException e) {
+			e.printStackTrace();
+		}
         return sw.toString();
     }
 
@@ -58,24 +65,29 @@ public class Converter {
      * @return  Converted Java object.
      * @throws JAXBException
      */
-    public static Object unmarshall(UnmarshallType unmarshallType, String data, Class classToCreate) throws JAXBException {
+    public static Object unmarshall(UnmarshallType unmarshallType, String data, Class classToCreate) {
         System.out.println("[INFO] JAXB unmarshalling to: " + classToCreate.getName() + " Java object.\n");
 
         Package objectPackage = classToCreate.getPackage();
-        JAXBContext context = JAXBContext.newInstance(objectPackage.getName());
-
-        Unmarshaller unmarshaller = context.createUnmarshaller();
+        JAXBContext context;
         Object unmarshalledObject = null;
+		try {
+			context = JAXBContext.newInstance(objectPackage.getName());
 
-        switch (unmarshallType) {
-            case FROM_DISK:
-                unmarshalledObject = unmarshaller.unmarshal(new File(data));
-                break;
-            case FROM_STRING:
-                StringReader stringReader = new StringReader(data);
-                unmarshalledObject = unmarshaller.unmarshal(stringReader);
-                break;
-        }
+	        Unmarshaller unmarshaller = context.createUnmarshaller();
+
+	        switch (unmarshallType) {
+	            case FROM_DISK:
+	                unmarshalledObject = unmarshaller.unmarshal(new File(data));
+	                break;
+	            case FROM_STRING:
+	                StringReader stringReader = new StringReader(data);
+	                unmarshalledObject = unmarshaller.unmarshal(stringReader);
+	                break;
+	        }
+		} catch (JAXBException e) {
+			e.printStackTrace();
+		}
 
         return unmarshalledObject;
     }
