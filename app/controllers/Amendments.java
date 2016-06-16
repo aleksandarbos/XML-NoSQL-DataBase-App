@@ -5,6 +5,7 @@ import converter.types.UnmarshallType;
 import dal.AmendmentsDAO;
 import dal.RegulationsDAO;
 import models.rs.gov.parlament.amandmani.Amandman;
+import models.rs.gov.parlament.amandmani.TipAmandmana;
 import models.rs.gov.parlament.propisi.Propis;
 import play.mvc.Before;
 import play.mvc.Controller;
@@ -32,7 +33,8 @@ public class Amendments extends Controller {
 
         Amandman amendment = (Amandman) Converter.unmarshall(UnmarshallType.FROM_STRING, amendmentContent, Amandman.class);
         amendment.setNaziv(amandmentName);
-        amendment.setUriAmandmana(affectedRegulationUri);
+        amendment.getDeoZaIzmenu().setUriPropisa(affectedRegulationUri);
+        amendment.getPreambula().setTip(checkAmendmentType(affectedType));
 
         AmendmentsDAO.addAmandment(amendment);
 
@@ -43,5 +45,15 @@ public class Amendments extends Controller {
     public static void checkAccess() {
     	if (session.get("user-type").equals("GRADJANIN"))
     		Overview.show();
+    }
+
+    private static TipAmandmana checkAmendmentType(String affectedType) {
+        if(affectedType.equals("IZMENA"))
+            return TipAmandmana.IZMENA;
+        else if(affectedType.equals("DODAVANJE"))
+            return TipAmandmana.DODAVANJE;
+        else
+            return TipAmandmana.BRISANJE;
+
     }
 }
