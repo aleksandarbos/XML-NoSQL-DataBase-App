@@ -35,7 +35,7 @@ public class Regulations extends Controller {
 
         RegulationsDAO.addRegulation(regulation);
 
-        show();
+        Alterations.show();
     }
     
     public static String checkDocument(String amendmentContent) {

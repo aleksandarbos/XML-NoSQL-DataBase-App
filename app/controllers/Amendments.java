@@ -37,10 +37,11 @@ public class Amendments extends Controller {
         amendment.setNaziv(amandmentName);
         amendment.getDeoZaIzmenu().setUriPropisa(affectedRegulationUri);
         amendment.getPreambula().setTip(checkAmendmentType(affectedType));
+        amendment.getPreambula().setPredlagac(user);
 
         AmendmentsDAO.addAmandment(amendment);
 
-        show();
+        Alterations.show();
     }
     
     public static String checkDocument(String amendmentContent) {
