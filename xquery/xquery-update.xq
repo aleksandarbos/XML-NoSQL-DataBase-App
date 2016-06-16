@@ -22,6 +22,8 @@ text{ concat(doc("/mydir/doc.txt")/text(), "
 This is another line of text.") } ) ;
 :)
 
+(: for $i in collection("/parliament/amendments") return xdmp:document-delete(fn:document-uri($i)) :)
+
 (: xdmp:document-delete("/parliament/regulations/7623921861952747138.xml") :)
 
 (:

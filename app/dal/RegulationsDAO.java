@@ -12,6 +12,7 @@ import database.DatabaseAccessor;
 import database.DatabaseQuery;
 import database.XQueryInvoker;
 import models.rs.gov.parlament.amandmani.Amandman;
+import models.rs.gov.parlament.amandmani.TipAmandmana;
 import models.rs.gov.parlament.propisi.Propis;
 
 import javax.xml.bind.JAXBException;
@@ -97,16 +98,25 @@ public class RegulationsDAO {
     public static void updateRegulation(Amandman amendment) {
         StringBuilder query = new StringBuilder();
 
+        int numOfPart = 0;
+        int numOfHead = 0;
         int numOfMember = 0;
         int numOfPosition = 0;
         int numOfPoint = 0;
         int numOfSubPoint = 0;
         int numOfBulletPoint = 0;
+        int editDepth = 0;
 
         String regulationDocUri = "";
         String amendmentContent = "";
 
+        TipAmandmana typeOfAmendment = null;
+
         try {
+            typeOfAmendment = amendment.getPreambula().getTip();
+
+            numOfPart = amendment.getDeoZaIzmenu().getOznakaDela();
+            numOfHead = amendment.getDeoZaIzmenu().getOznakaGlave();
             numOfMember = amendment.getDeoZaIzmenu().getOznakaClana();
             numOfPosition = amendment.getDeoZaIzmenu().getOznakaStava();
             numOfPoint = amendment.getDeoZaIzmenu().getOznakaTacke();
@@ -121,14 +131,42 @@ public class RegulationsDAO {
         amendmentContent = amendment.getSadrzaj().getContent().get(0).toString();
 
         query.append("declare namespace pp = \"http://www.parlament.gov.rs/propisi\";\n" +
-                "for $node in doc(\"" + regulationDocUri + "\")");
-                if(numOfMember != 0) query.append("//pp:Clan[@Oznaka_clana = " + numOfMember + "]");
-                if(numOfPosition != 0) query.append("//pp:Stav[@Oznaka_stava = " + numOfPosition + "]");
-                if(numOfPoint != 0) query.append("//pp:Tacka[@Oznaka_tacke = " + numOfPoint + "]");
-                if(numOfSubPoint != 0) query.append("//pp:Podtacka[@Oznaka_podtacke = " + numOfSubPoint + "]");
-                if(numOfSubPoint != 0) query.append("//pp:Alineja[@Oznaka_alineje = " + numOfBulletPoint + "]");
-                query.append(" \nreturn xdmp:node-replace($node/text(), " +
-                "text{\"" + amendmentContent + "\"});");
+                "for $node in doc(\"" + regulationDocUri + "\")\n//pp:Sadrzaj\n");
+                if(numOfPart != 0) { query.append("//pp:Deo[@Oznaka_dela = " + numOfPart + "]\n"); editDepth++; }
+                if(numOfHead != 0) { query.append("//pp:Glava[@Oznaka_glave = " + numOfHead + "]\n"); editDepth++; }
+                if(numOfMember != 0) { query.append("//pp:Clan[@Oznaka_clana = " + numOfMember + "]\n"); editDepth++; }
+                if(numOfPosition != 0) { query.append("//pp:Stav[@Oznaka_stava = " + numOfPosition + "]\n"); editDepth++; }
+                if(numOfPoint != 0) { query.append("//pp:Tacka[@Oznaka_tacke = " + numOfPoint + "]\n"); editDepth++; }
+                if(numOfSubPoint != 0) { query.append("//pp:Podtacka[@Oznaka_podtacke = " + numOfSubPoint + "]\n"); editDepth++; }
+                if(numOfSubPoint != 0) { query.append("//pp:Alineja[@Oznaka_alineje = " + numOfBulletPoint + "]\n"); editDepth++; }
+                if(typeOfAmendment == TipAmandmana.IZMENA) {
+                    query.append(" \nreturn xdmp:node-replace($node/text(), " +
+                            "text{\"" + amendmentContent + "\"});");
+                } else if(typeOfAmendment == TipAmandmana.BRISANJE) {
+                    query.append(" \nreturn xdmp:node-delete($node);");
+                } else if(typeOfAmendment == TipAmandmana.DODAVANJE) {
+                    query.append(" \nreturn xdmp:node-insert-child($node, ");
+                        switch (editDepth) {
+                            case 1: // Deo depth
+                                query.append("<pp:Glava Oznaka_glave=''>"+amendmentContent+"</pp:Glava>);");
+                                break;
+                            case 2: // Part depth
+                                query.append("<pp:Clan Oznaka_clana=''>"+amendmentContent+"</pp:Clan>);");
+                                break;
+                            case 3: // Clan depth
+                                query.append("<pp:Stav Oznaka_stava=''>"+amendmentContent+"</pp:Stav>);");
+                                break;
+                            case 4: // Stav depth
+                                query.append("<pp:Tacka Oznaka_tacke=''>"+amendmentContent+"</pp:Tacka>);");
+                                break;
+                            case 6: // Tacka depth
+                                query.append("<pp:Podtacka Oznaka_podtacke=''>"+amendmentContent+"</pp:Podtacka>);");
+                                break;
+                            case 7: // Podtacka depth
+                                query.append("<pp:Alineja Oznaka_alineje=''>"+amendmentContent+"</pp:Alineja>);");
+                                break;
+                        }
+                }
 
         System.out.println("\n" + query.toString() + "\n");
 

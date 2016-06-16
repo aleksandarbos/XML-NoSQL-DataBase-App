@@ -5,5 +5,11 @@
 // Generated on: 2016.06.14 at 10:46:39 AM CEST 
 //
 
-@javax.xml.bind.annotation.XmlSchema(namespace = "http://www.parlament.gov.rs/amandmani", elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
-package models.rs.gov.parlament.amandmani;
+@javax.xml.bind.annotation.XmlSchema(
+        namespace = "http://www.parlament.gov.rs/amandmani",
+        elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED,
+        xmlns = {@javax.xml.bind.annotation.XmlNs(prefix = "ap", namespaceURI="http://www.parlament.gov.rs/amandmani"),
+                @javax.xml.bind.annotation.XmlNs(prefix="xs", namespaceURI="http://www.w3.org/2001/XMLSchema")}
+)package models.rs.gov.parlament.amandmani;
+
+

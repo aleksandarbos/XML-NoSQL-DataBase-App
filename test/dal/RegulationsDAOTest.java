@@ -5,6 +5,8 @@ import converter.types.UnmarshallType;
 import database.DatabaseQuery;
 import models.rs.gov.parlament.amandmani.Amandman;
 import models.rs.gov.parlament.amandmani.SadrzajTip;
+import models.rs.gov.parlament.amandmani.TipAmandmana;
+import models.rs.gov.parlament.amandmani.Preambula;
 import models.rs.gov.parlament.propisi.Propis;
 import org.junit.Test;
 
@@ -21,15 +23,20 @@ public class RegulationsDAOTest {
     @Test
     public void updateRegulation() throws Exception {
         Amandman amendment = new Amandman();
+
+        Preambula preambula = new Preambula();
+        amendment.setPreambula(preambula);
+        amendment.getPreambula().setTip(TipAmandmana.DODAVANJE);
+
         Amandman.DeoZaIzmenu editingPart = new Amandman.DeoZaIzmenu();
         amendment.setDeoZaIzmenu(editingPart);
-        editingPart.setUriPropisa("/parliament/regulations/4027267063675780869.xml");
-        editingPart.setOznakaClana(3);
-        editingPart.setOznakaStava(4);
+        editingPart.setUriPropisa("/parliament/regulations/17216008199143224158.xml");
+        editingPart.setOznakaDela(1);
+        editingPart.setOznakaGlave(1);
 
         SadrzajTip editingContent = new SadrzajTip();
         editingContent.getContent();
-        editingContent.getContent().add(new String("**** CLAN 3, STAV 4 ****"));
+        editingContent.getContent().add(new String("N0v1 CLAN KRALJ "));
         amendment.setSadrzaj(editingContent);
 
         RegulationsDAO.updateRegulation(amendment);
