@@ -80,7 +80,8 @@ public class Session extends Controller {
     
     public static void regulation(String regulationId, String votingFirstResult, int votesFirstNumberYes, int votesFirstNumberNo, int votesFirstNumberOff) {
     	if (votingFirstResult.equals("no")) {
-    		updateRegulation(true, regulationId, votesFirstNumberYes, votesFirstNumberNo, votesFirstNumberOff, true);
+    		updateRegulation(false, regulationId, votesFirstNumberYes, votesFirstNumberNo, votesFirstNumberOff, true);
+    		show();
     	}
     }
     
