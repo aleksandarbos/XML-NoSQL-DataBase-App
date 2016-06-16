@@ -267,7 +267,7 @@ public class RegulationsDAO {
     }
 
     public static void deleteRegulation(String regulationUri) {
-        DatabaseQuery.removeXmlFromDatabase(regulationUri);
+        DatabaseQuery.removeDocumentFromDatabase(regulationUri);
     }
 
     /**

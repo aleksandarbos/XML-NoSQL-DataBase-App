@@ -61,11 +61,12 @@
 				<tr><th>Status dokumenta:</th><td>
 					<select name="documentStatus" class="bigInput selectStatus" value="${flash.documentStatus}">
 						<option value=""></option>
-						<option value="nominated">Predložen</option>
-						<option value="voted">Usvojen</option>
-						<option value="published" class="hideDate">Objavljen</option>
-						<option value="applied" class="hideDate">Primenjen</option>
-						<option value="withdrawn" class="hideDate">Povučen</option>
+						<option value="PREDLOZEN">Predložen</option>
+						<option value="PRIHVACEN">Usvojen</option>
+                        <option value="ODBIJEN">Odbijen</option>
+						<option value="OBJAVLJEN" class="hideDate">Objavljen</option>
+						<option value="U_PRIMENI" class="hideDate">Primenjen</option>
+						<option value="VAN_SNAGE" class="hideDate">Povučen</option>
 					</select></td></tr>
 				<tr><th>Dokument predložio:</th><td>
 					<input type="text" class="bigInput" name="user" value="${flash.user}"/></td></tr>
@@ -135,8 +136,8 @@
                                     </td>
 								#{/else}
 							<td>${document.getNaziv()}</td>
-							<td><a class="alterationPreview">pogledaj</a></td>
-							<td><a class="alterationToPdf"preuzmi</a></td>
+							<td><a class="alterationPreview">HTML</a></td>
+							<td><a class="alterationToPdf">PDF</a></td>
 						</tr>
 					#{/list}
 				</table>

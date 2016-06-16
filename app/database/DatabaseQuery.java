@@ -8,8 +8,6 @@ import com.marklogic.client.query.MatchDocumentSummary;
 import com.marklogic.client.query.MatchLocation;
 import com.marklogic.client.query.QueryManager;
 import com.marklogic.client.query.StringQueryDefinition;
-
-import controllers.Amendments;
 import converter.Converter;
 import converter.types.UnmarshallType;
 import models.rs.gov.parlament.amandmani.Amandman;
@@ -157,7 +155,7 @@ public class DatabaseQuery {
 			searchResults = XQueryInvoker.execute(query.toString());
 			for (String docStr : searchResults) {
 				Object docObj;
-				if (docStr.contains("<Propis")) {
+				if (docStr.contains("Tip_dokumenta=\"PROPIS\"")) {
 					docObj = Converter.unmarshall(UnmarshallType.FROM_STRING, docStr, Propis.class);
 					results.put(((Propis) docObj).getUriPropisa(), (Propis) docObj);
 				} else {
@@ -226,7 +224,7 @@ public class DatabaseQuery {
 			String uri = amendment.getUriAmandmana();
 			removeXmlFromDatabase(uri);
 		}
-		
+		removeXmlFromDatabase(docId);
 	}
 
 	/**
@@ -298,7 +296,7 @@ public class DatabaseQuery {
 			searchResults = XQueryInvoker.execute(query.toString());
 			for (String docStr : searchResults) {
 				Object docObj;
-				if (docStr.contains("<Propis")) {
+				if (docStr.contains("Tip_dokumenta=\"PROPIS\"")) {
 					docObj = Converter.unmarshall(UnmarshallType.FROM_STRING, docStr, Propis.class);
 					results.add(docObj);
 				} else {
@@ -318,18 +316,14 @@ public class DatabaseQuery {
 	public static List<Amandman> searchAmandmentsByRegulationId(String regId) {
 		StringBuilder query = new StringBuilder();
 		List<Amandman> results = new ArrayList();
-		String collectionCriteria = "amendments";
 		String namespaceCriteria = "amandmani";
 		int criteriaCnt = 0;
 
-		query.append("declare namespace pp = \"http://www.parlament.gov.rs/" + namespaceCriteria + "\";\n"
-				+ "for $x in collection(\"/parliament/" + collectionCriteria + "\")\n" + "let $y := fn:root($x)\n"
-				+ "where $y//");
-	
-		criteriaCnt++;
-		query.append("@Tip_dokumenta = \"AMANDMAN\"\n");
-		
-		query.append(checkAnd(++criteriaCnt) + " $y//ap:Deo_za_izmenu/ap:Uri_propisa/text() = \"" + regId + "\"\n");
+		query.append("declare namespace ap = \"http://www.parlament.gov.rs/amandmani\";\n"
+				+ "for $x in collection(\"/parliament/amendments\")\n" + "let $y := fn:root($x)\n"
+				+ "where ");
+
+		query.append("$y//ap:Uri_propisa/text() = \"" + regId + "\"\n");
 		query.append("return $y\n");
 
 		Vector<String> searchResults;

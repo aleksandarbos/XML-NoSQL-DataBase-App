@@ -12,10 +12,6 @@ import java.util.HashMap;
 public class DatabaseQueryTest {
     @Test
     public void metadataSearch() throws Exception {
-        DatabaseAccessor.getInstance();
-        HashMap<String, Object> results = DatabaseQuery.metadataSearch("ZDRAVSTVO", "O PROMETU NEPOKRETNOSTI t123", "PREDLOZEN", "PROPIS", "p0@parlament.rs",
-                "whatfuckever", "some collection", "fuck", "fuckenzi", "fuck", "shure", "yep", "ok",
-                "ooo", "fff", "sss", "ssda", 0, 0, 0, 0, 0, 0);
 
     }
 
