@@ -17,12 +17,12 @@ public class Search extends Controller {
     	render(userType);
     }
 
-    public static void searchText(String documentText, String documentType1) {
+    public static void searchText(String documentText, String documentType) {
 		HashMap<String, Object> searchResults = null;
 		flash("documentText", documentText);
-		flash("documentType1", documentType1);
+		flash("documentType", documentType);
 
-		if(documentType1.equals("regulations")) {
+		if(documentType.equals("regulations")) {
 			searchResults = RegulationsDAO.fetchRegulationsByQuery(documentText);
 		} else {
 			searchResults = AmendmentsDAO.fetchAmendmentsByQuery(documentText);
@@ -33,18 +33,17 @@ public class Search extends Controller {
         renderTemplate("Search/show.html", results);
     }
 
-    public static void searchDetails(String documentDomain, String documentName, String documentStatus, String documentType, String user, String authority, String collection,
+    public static void searchDetails(String documentName, String documentStatus, String documentType, String user, String authority, String collection,
     						String nominatedDateFrom, String nominatedDateTo, String adoptionDateFrom, String adoptionDateTo, String announcementDateFrom, String announcementDateTo, 
     						String inuseDateFrom, String inuseDateTo, String withdrawalDateFrom, String withdrawalDateTo, 
     						int votesYesFrom, int votesYesTo, int votesNoFrom, int votesNoTo, int votesOffFrom, int votesOffTo) {
 
-        HashMap<String, Object> searchResults = DatabaseQuery.metadataSearch(documentDomain, documentName, documentStatus, documentType, user, authority, collection,
+        HashMap<String, Object> searchResults = DatabaseQuery.metadataSearch(documentName, documentStatus, documentType, user, authority, collection,
                 nominatedDateFrom, nominatedDateTo, adoptionDateFrom, adoptionDateTo, announcementDateFrom, announcementDateTo,
                 inuseDateFrom, inuseDateTo, withdrawalDateFrom, withdrawalDateTo, votesYesFrom, votesYesTo, votesNoFrom, votesNoTo, votesOffFrom, votesOffTo);
 
         
 
-		flash("documentDomain", documentDomain);
 		flash("documentName", documentName);
 		flash("documentStatus", documentStatus);
 		flash("documentType", documentType);
@@ -69,8 +68,7 @@ public class Search extends Controller {
 		flash("votesOffTo", votesOffTo);
         
         
-        
-        
+
         
         Collection<Object> results = searchResults.values();
         renderTemplate("Search/show.html", results);

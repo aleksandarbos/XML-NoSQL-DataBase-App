@@ -10,11 +10,48 @@
 		Sledi tabela sa prikazom svih akata i amandmana u proceduri, koje ste Vi predložili.<br/>
 		Ukoliko želite, možete ih povući.
 	</p>
-	<table class="tabelaPregled">
-		<tr><th class="tip">Tip</th><th class="naziv">Naziv</th><th class="pregled">&nbsp </th><th class="pdf">&nbsp </th><th class="withdrawal">&nbsp</th></tr>
-		<tr><td>izmena akata</td><td class="documentId" style="display:none;">12</td><td>Prigovor po osnovi br 243,na clan 7543, zakona o medjuljudskim odnosima 23</td><td><a class="alterationPreview">pogledaj</a></td><td><a class="alterationToPdf">u PDF</a></td><td><a class="deleteAlteration">(opozovi)</a></td></tr>
-		<tr><td>izmena akata</td><td class="documentId" style="display:none;">23</td><td>Prigovor po osnovi br 243,na clan 7543, zakona o medjuljudskim odnosima 23</td><td><a class="alterationPreview">pogledaj</a></td><td><a class="alterationToPdf">u PDF</a></td><td><a class="deleteAlteration">(opozovi)</a></td></tr>
-		<tr><td>izmena akata</td><td class="documentId" style="display:none;">34</td><td>Prigovor po osnovi br 243,na clan 7543, zakona o medjuljudskim odnosima 23</td><td><a class="alterationPreview">pogledaj</a></td><td><a class="alterationToPdf">u PDF</a></td><td><a class="deleteAlteration">(opozovi)</a></td></tr>
-		<tr><td>izmena akata</td><td class="documentId" style="display:none;">56</td><td>Prigovor po osnovi br 243,na clan 7543, zakona o medjuljudskim odnosima 23</td><td><a class="alterationPreview">pogledaj</a></td><td><a class="alterationToPdf">u PDF</a></td><td><a class="deleteAlteration">(opozovi)</a></td></tr>
-	</table>
+	
+	
+	#{if documents.size() > 0}
+		<table class="tabelaPregled">
+			<tr><th class="tip">Tip</th><th class="naziv">Naziv</th><th class="pregled">&nbsp </th><th class="pdf">&nbsp </th><th class="withdrawal">&nbsp</th></tr>
+			
+			#{list items: documents, as:'document'}
+			<tr>
+				<td> 
+					#{if document.getTipDokumenta() == 'PROPIS'}
+						akt
+					#{/if}
+					#{else}
+						amandman
+					#{/else}
+				</td>
+	            <td class="documentId" style="display:none;">
+				#{if document.getTipDokumenta() == 'PROPIS'}
+					${document.getUriPropisa()}
+				#{/if}
+				#{else}
+					${document.getUriAmandmana()}
+				#{/else}
+	            </td>
+	
+				<td>${document.getNaziv()}</td>
+				
+				<td><a class="alterationPreview">HTML</a></td>
+				
+				<td><a class="alterationToPdf">PDF</a></td>
+				
+				<td><a class="deleteAlteration">(opozovi)</a></td>
+			</tr>
+			#{/list}
+			
+		</table>
+	#{/if}
+	#{else}
+		<br/><br/><br/><br/>
+		<h5>
+			Niste predložili nijedan dokument.
+		</h5>
+		<br/><br/><br/><br/><br/>
+	#{/else}
 </div>

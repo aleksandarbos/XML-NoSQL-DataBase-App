@@ -8,6 +8,8 @@ import com.marklogic.client.query.MatchDocumentSummary;
 import com.marklogic.client.query.MatchLocation;
 import com.marklogic.client.query.QueryManager;
 import com.marklogic.client.query.StringQueryDefinition;
+
+import controllers.Amendments;
 import converter.Converter;
 import converter.types.UnmarshallType;
 import models.rs.gov.parlament.amandmani.Amandman;
@@ -21,7 +23,9 @@ import javax.xml.transform.stream.StreamResult;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Vector;
 
 public class DatabaseQuery {
@@ -33,31 +37,36 @@ public class DatabaseQuery {
 	}
 
 	/**
-	 * Searches database entries with custom criteria, collection and specifies result type.
-	 * @param criteria Custom search criteria.
-	 * @param collection Collection where records will be queried.
+	 * Searches database entries with custom criteria, collection and specifies
+	 * result type.
+	 * 
+	 * @param criteria
+	 *            Custom search criteria.
+	 * @param collection
+	 *            Collection where records will be queried.
 	 * @param resultClass
 	 * @return
 	 * @throws FileNotFoundException
-     * @throws JAXBException
-     */
-	public static HashMap<String, Object> search(String criteria, String collection, Class resultClass) throws FileNotFoundException, JAXBException {
+	 * @throws JAXBException
+	 */
+	public static HashMap<String, Object> search(String criteria, String collection, Class resultClass)
+			throws FileNotFoundException, JAXBException {
 		DatabaseAccessor.getInstance();
 
 		HashMap<String, Object> returnValues = new HashMap<String, Object>();
 		// Initialize query manager
 		QueryManager queryManager = DatabaseAccessor.client.newQueryManager();
-		
+
 		// Query definition is used to specify Google-style query string
 		StringQueryDefinition queryDefinition = queryManager.newStringDefinition();
-		
-		if(!criteria.equals(""))
+
+		if (!criteria.equals(""))
 			queryDefinition.setCriteria(criteria);
-		
+
 		// Search within a specific collection
-		if(!collection.equals(""))
+		if (!collection.equals(""))
 			queryDefinition.setCollections(collection);
-		
+
 		// Perform search
 		SearchHandle results = queryManager.search(queryDefinition, new SearchHandle());
 		// Serialize search results to the standard output
@@ -87,87 +96,89 @@ public class DatabaseQuery {
 
 	/**
 	 * Searches by metadata invoking XQuery search.
-     * @return HashMap<String, Object> where k=>docId, and value is instance of => Amandman or Propis class.
-     * @throws IOException
-     * @throws JAXBException
-     */
-	public static HashMap<String, Object> metadataSearch(String documentDomain, String documentName, String documentStatus, String documentType, String user, String authority, String collection,
-														 String nominatedDateFrom, String nominatedDateTo, String adoptionDateFrom, String adoptionDateTo, String announcementDateFrom, String announcementDateTo,
-														 String inuseDateFrom, String inuseDateTo, String withdrawalDateFrom, String withdrawalDateTo,
-														 int votesYesFrom, int votesYesTo, int votesNoFrom, int votesNoTo, int votesOffFrom, int votesOffTo) {
+	 * 
+	 * @return HashMap<String, Object> where k=>docId, and value is instance of
+	 *         => Amandman or Propis class.
+	 * @throws IOException
+	 * @throws JAXBException
+	 */
+	public static HashMap<String, Object> metadataSearch(String documentName, String documentStatus,
+			String documentType, String user, String authority, String collection, String nominatedDateFrom,
+			String nominatedDateTo, String adoptionDateFrom, String adoptionDateTo, String announcementDateFrom,
+			String announcementDateTo, String inuseDateFrom, String inuseDateTo, String withdrawalDateFrom,
+			String withdrawalDateTo, int votesYesFrom, int votesYesTo, int votesNoFrom, int votesNoTo, int votesOffFrom,
+			int votesOffTo) {
 		StringBuilder query = new StringBuilder();
 		HashMap<String, Object> results = new HashMap<String, Object>();
 		String collectionCriteria = "";
 		String namespaceCriteria = "";
 		int criteriaCnt = 0;
 
-		if(documentType.equals("regulation")) {
+		if (documentType.equals("regulation")) {
 			collectionCriteria = "regulations";
 			namespaceCriteria = "propisi";
 			documentType = "PROPIS";
-		}
-		else {
+		} else {
 			collectionCriteria = "amendments";
 			namespaceCriteria = "amandmani";
 			documentType = "AMANDMAN";
 		}
 
-		query.append("declare namespace pp = \"http://www.parlament.gov.rs/" + namespaceCriteria + "\";\n" +
-				"for $x in collection(\"/parliament/" + collectionCriteria + "\")\n" +
-				"let $y := fn:root($x)\n" +
-				"where $y//");
-		if(!documentType.equals("")) {
-			criteriaCnt++; 
-			query.append("@Tip_dokumenta = \"" + documentType+ "\"\n");
+		query.append("declare namespace pp = \"http://www.parlament.gov.rs/" + namespaceCriteria + "\";\n"
+				+ "for $x in collection(\"/parliament/" + collectionCriteria + "\")\n" + "let $y := fn:root($x)\n"
+				+ "where $y//");
+		if (!documentType.equals("")) {
+			criteriaCnt++;
+			query.append("@Tip_dokumenta = \"" + documentType + "\"\n");
 		}
-		if(documentName != null && !documentName.equals("")) 
-			query.append(checkAnd(++criteriaCnt)+" $y//pp:Naziv/text() = \"" + documentName + "\" \n");
-		if(!documentStatus.equals("")) 
-			query.append(checkAnd(++criteriaCnt)+" $y//pp:Preambula/pp:Status/text() = \"" + documentStatus + "\"\n");
-		if(user != null && !user.equals("")) 
-			query.append(checkAnd(++criteriaCnt)+" $y//pp:Preambula/pp:Predlagac/text() = \"" + user + "\"\n");
-		if(votesYesFrom != 0)
-			query.append(checkAnd(++criteriaCnt)+" $y//pp:Preambula/pp:Broj_glasova_za >= " + votesYesFrom + "\n");
+		if (documentName != null && !documentName.equals(""))
+			query.append(checkAnd(++criteriaCnt) + " $y//pp:Naziv/text() = \"" + documentName + "\" \n");
+		if (!documentStatus.equals(""))
+			query.append(checkAnd(++criteriaCnt) + " $y//pp:Preambula/pp:Status/text() = \"" + documentStatus + "\"\n");
+		if (user != null && !user.equals(""))
+			query.append(checkAnd(++criteriaCnt) + " $y//pp:Preambula/pp:Predlagac/text() = \"" + user + "\"\n");
+		if (votesYesFrom != 0)
+			query.append(checkAnd(++criteriaCnt) + " $y//pp:Preambula/pp:Broj_glasova_za >= " + votesYesFrom + "\n");
 		if (votesYesTo != 0)
-			query.append(checkAnd(++criteriaCnt)+" $y//pp:Preambula/pp:Broj_glasova_za <= " + votesYesTo + "\n");
-		if(votesNoFrom != 0)
-			query.append(checkAnd(++criteriaCnt)+" $y//pp:Preambula/pp:Broj_glasova_protiv >= " + votesNoFrom + "\n");
+			query.append(checkAnd(++criteriaCnt) + " $y//pp:Preambula/pp:Broj_glasova_za <= " + votesYesTo + "\n");
+		if (votesNoFrom != 0)
+			query.append(checkAnd(++criteriaCnt) + " $y//pp:Preambula/pp:Broj_glasova_protiv >= " + votesNoFrom + "\n");
 		if (votesNoTo != 0)
-			query.append(checkAnd(++criteriaCnt)+" $y//pp:Preambula/pp:Broj_glasova_protiv <= " + votesNoTo + "\n");
-		if(votesOffFrom != 0)
-			query.append(checkAnd(++criteriaCnt)+" $y//pp:Preambula/pp:Broj_glasova_za >= " + votesOffFrom + "\n");
-		if(votesOffTo != 0)
-			query.append(checkAnd(++criteriaCnt)+" $y//pp:Preambula/pp:Broj_glasova_za <= " + votesOffTo + "\n");
+			query.append(checkAnd(++criteriaCnt) + " $y//pp:Preambula/pp:Broj_glasova_protiv <= " + votesNoTo + "\n");
+		if (votesOffFrom != 0)
+			query.append(checkAnd(++criteriaCnt) + " $y//pp:Preambula/pp:Broj_glasova_za >= " + votesOffFrom + "\n");
+		if (votesOffTo != 0)
+			query.append(checkAnd(++criteriaCnt) + " $y//pp:Preambula/pp:Broj_glasova_za <= " + votesOffTo + "\n");
 		query.append("return $y\n");
 		System.out.println(query.toString());
 
 		Vector<String> searchResults;
 		try {
 			searchResults = XQueryInvoker.execute(query.toString());
-			for(String docStr : searchResults) {
+			for (String docStr : searchResults) {
 				Object docObj;
-				if(docStr.contains("<Propis")) {
+				if (docStr.contains("<Propis")) {
 					docObj = Converter.unmarshall(UnmarshallType.FROM_STRING, docStr, Propis.class);
-					results.put(((Propis)docObj).getUriPropisa(), (Propis) docObj);
-				}
-				else {
+					results.put(((Propis) docObj).getUriPropisa(), (Propis) docObj);
+				} else {
 					docObj = Converter.unmarshall(UnmarshallType.FROM_STRING, docStr, Amandman.class);
-					results.put(((Amandman)docObj).getUriAmandmana(), (Amandman) docObj);
+					results.put(((Amandman) docObj).getUriAmandmana(), (Amandman) docObj);
 				}
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (JAXBException e) {
 			e.printStackTrace();
-		} 
+		}
 
 		return results;
 	}
 
-
 	/**
 	 * Reads xml file from database and returns it as a string.
-	 * @param docId Resource location.
+	 * 
+	 * @param docId
+	 *            Resource location.
 	 * @return Converted found xml to string.
 	 */
 	public static String readXmlFromDatabase(String docId) {
@@ -193,7 +204,7 @@ public class DatabaseQuery {
 		System.out.println("[INFO] Overwrite: " + docId + ", in database.");
 	}
 
-	public static void removeXmlFromDatabase(String docId) {
+	private static void removeXmlFromDatabase(String docId) {
 		String query = "xdmp:document-delete(\"" + docId + "\")";
 		try {
 			XQueryInvoker.execute(query);
@@ -201,13 +212,30 @@ public class DatabaseQuery {
 			e.printStackTrace();
 		}
 	}
+	
+	public static void removeDocumentFromDatabase(String docId) {
+		
+		String documentType = docId.split("/")[2];
+		if (documentType.equals("amendments")) {
+			removeXmlFromDatabase(docId);
+			return;
+		}
+		List<Amandman> amendments = searchAmandmentsByRegulationId(docId);
+		
+		for (Amandman amendment : amendments) {
+			String uri = amendment.getUriAmandmana();
+			removeXmlFromDatabase(uri);
+		}
+		
+	}
 
 	/**
 	 * Serializes DOM tree to an arbitrary OutputStream.
 	 *
-	 * @param node a node to be serialized
-	 * @param out an output stream to write the serialized 
-	 * DOM representation to
+	 * @param node
+	 *            a node to be serialized
+	 * @param out
+	 *            an output stream to write the serialized DOM representation to
 	 * 
 	 */
 	private static void transform(Node node, OutputStream out) {
@@ -223,12 +251,12 @@ public class DatabaseQuery {
 			// Nad "source" objektom (DOM stablo) vrši se transformacija
 			DOMSource source = new DOMSource(node);
 
-			// Rezultujući stream (argument metode) 
+			// Rezultujući stream (argument metode)
 			StreamResult result = new StreamResult(out);
 
 			// Poziv metode koja vrši opisanu transformaciju
 			transformer.transform(source, result);
-			
+
 		} catch (TransformerConfigurationException e) {
 			e.printStackTrace();
 		} catch (TransformerFactoryConfigurationError e) {
@@ -238,8 +266,90 @@ public class DatabaseQuery {
 		}
 	}
 
+	public static List<Object> searchByUser(String documentType, String user) {
+		StringBuilder query = new StringBuilder();
+		List<Object> results = new ArrayList();
+		String collectionCriteria = "";
+		String namespaceCriteria = "";
+		int criteriaCnt = 0;
+
+		if (documentType.equals("regulation")) {
+			collectionCriteria = "regulations";
+			namespaceCriteria = "propisi";
+			documentType = "PROPIS";
+		} else {
+			collectionCriteria = "amendments";
+			namespaceCriteria = "amandmani";
+			documentType = "AMANDMAN";
+		}
+
+		query.append("declare namespace pp = \"http://www.parlament.gov.rs/" + namespaceCriteria + "\";\n"
+				+ "for $x in collection(\"/parliament/" + collectionCriteria + "\")\n" + "let $y := fn:root($x)\n"
+				+ "where $y//");
+		if (!documentType.equals("")) {
+			criteriaCnt++;
+			query.append("@Tip_dokumenta = \"" + documentType + "\"\n");
+		}
+		query.append(checkAnd(++criteriaCnt) + " $y//pp:Preambula/pp:Predlagac/text() = \"" + user + "\"\n");
+		query.append("return $y\n");
+
+		Vector<String> searchResults;
+		try {
+			searchResults = XQueryInvoker.execute(query.toString());
+			for (String docStr : searchResults) {
+				Object docObj;
+				if (docStr.contains("<Propis")) {
+					docObj = Converter.unmarshall(UnmarshallType.FROM_STRING, docStr, Propis.class);
+					results.add(docObj);
+				} else {
+					docObj = Converter.unmarshall(UnmarshallType.FROM_STRING, docStr, Amandman.class);
+					results.add(docObj);
+				}
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (JAXBException e) {
+			e.printStackTrace();
+		}
+
+		return results;
+	}
+	
+	public static List<Amandman> searchAmandmentsByRegulationId(String regId) {
+		StringBuilder query = new StringBuilder();
+		List<Amandman> results = new ArrayList();
+		String collectionCriteria = "amendments";
+		String namespaceCriteria = "amandmani";
+		int criteriaCnt = 0;
+
+		query.append("declare namespace pp = \"http://www.parlament.gov.rs/" + namespaceCriteria + "\";\n"
+				+ "for $x in collection(\"/parliament/" + collectionCriteria + "\")\n" + "let $y := fn:root($x)\n"
+				+ "where $y//");
+	
+		criteriaCnt++;
+		query.append("@Tip_dokumenta = \"AMANDMAN\"\n");
+		
+		query.append(checkAnd(++criteriaCnt) + " $y//ap:Deo_za_izmenu/ap:Uri_propisa/text() = \"" + regId + "\"\n");
+		query.append("return $y\n");
+
+		Vector<String> searchResults;
+		try {
+			searchResults = XQueryInvoker.execute(query.toString());
+			for (String docStr : searchResults) {
+				Amandman docObj = (Amandman) Converter.unmarshall(UnmarshallType.FROM_STRING, docStr, Amandman.class);
+				results.add(docObj);
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (JAXBException e) {
+			e.printStackTrace();
+		}
+
+		return results;
+	}
+
 	private static String checkAnd(int criteriaCnt) {
-		if(criteriaCnt > 1)
+		if (criteriaCnt > 1)
 			return "and";
 		return "";
 	}
