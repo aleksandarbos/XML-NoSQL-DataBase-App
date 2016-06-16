@@ -12,6 +12,7 @@ import database.DatabaseAccessor;
 import database.DatabaseQuery;
 import database.XQueryInvoker;
 import models.rs.gov.parlament.amandmani.Amandman;
+import models.rs.gov.parlament.amandmani.TipAmandmana;
 import models.rs.gov.parlament.propisi.Propis;
 
 import javax.xml.bind.JAXBException;
@@ -102,11 +103,15 @@ public class RegulationsDAO {
         int numOfPoint = 0;
         int numOfSubPoint = 0;
         int numOfBulletPoint = 0;
+        int editDepth = 0;
 
         String regulationDocUri = "";
         String amendmentContent = "";
 
+        TipAmandmana typeOfAmendment = null;
+
         try {
+            typeOfAmendment = amendment.getPreambula().getTip();
             numOfMember = amendment.getDeoZaIzmenu().getOznakaClana();
             numOfPosition = amendment.getDeoZaIzmenu().getOznakaStava();
             numOfPoint = amendment.getDeoZaIzmenu().getOznakaTacke();
@@ -122,13 +127,36 @@ public class RegulationsDAO {
 
         query.append("declare namespace pp = \"http://www.parlament.gov.rs/propisi\";\n" +
                 "for $node in doc(\"" + regulationDocUri + "\")");
-                if(numOfMember != 0) query.append("//pp:Clan[@Oznaka_clana = " + numOfMember + "]");
-                if(numOfPosition != 0) query.append("//pp:Stav[@Oznaka_stava = " + numOfPosition + "]");
-                if(numOfPoint != 0) query.append("//pp:Tacka[@Oznaka_tacke = " + numOfPoint + "]");
-                if(numOfSubPoint != 0) query.append("//pp:Podtacka[@Oznaka_podtacke = " + numOfSubPoint + "]");
-                if(numOfSubPoint != 0) query.append("//pp:Alineja[@Oznaka_alineje = " + numOfBulletPoint + "]");
-                query.append(" \nreturn xdmp:node-replace($node/text(), " +
-                "text{\"" + amendmentContent + "\"});");
+                if(numOfMember != 0) { query.append("//pp:Clan[@Oznaka_clana = " + numOfMember + "]"); editDepth++; }
+                if(numOfPosition != 0) { query.append("//pp:Stav[@Oznaka_stava = " + numOfPosition + "]"); editDepth++; }
+                if(numOfPoint != 0) { query.append("//pp:Tacka[@Oznaka_tacke = " + numOfPoint + "]"); editDepth++; }
+                if(numOfSubPoint != 0) { query.append("//pp:Podtacka[@Oznaka_podtacke = " + numOfSubPoint + "]"); editDepth++; }
+                if(numOfSubPoint != 0) { query.append("//pp:Alineja[@Oznaka_alineje = " + numOfBulletPoint + "]"); editDepth++; }
+                if(typeOfAmendment == TipAmandmana.IZMENA) {
+                    query.append(" \nreturn xdmp:node-replace($node/text(), " +
+                            "text{\"" + amendmentContent + "\"});");
+                } else if(typeOfAmendment == TipAmandmana.BRISANJE) {
+                    query.append(" \nreturn xdmp:node-delete($node);");
+                } else if(typeOfAmendment == TipAmandmana.DODAVANJE) {
+                    query.append(" \nreturn xdmp:node-insert-child($node, ");
+                        switch (editDepth) {
+                            case 1: // Clan depth
+                                query.append("<pp:Clan Oznaka_clana=''>"+amendmentContent+"</pp:Clan>);");
+                                break;
+                            case 2: // Stav depth
+                                query.append("<pp:Stav Oznaka_stava=''>"+amendmentContent+"</pp:Stav>);");
+                                break;
+                            case 3: // Tacka depth
+                                query.append("<pp:Tacka Oznaka_tacke=''>"+amendmentContent+"</pp:Tacka>);");
+                                break;
+                            case 4: // Podtacka depth
+                                query.append("<pp:Podtacka Oznaka_podtacke=''>"+amendmentContent+"</pp:Podtacka>);");
+                                break;
+                            case 5: // Alineja depth
+                                query.append("<pp:Alineja Oznaka_alineje=''>"+amendmentContent+"</pp:Alineja>);");
+                                break;
+                        }
+                }
 
         System.out.println("\n" + query.toString() + "\n");
 
