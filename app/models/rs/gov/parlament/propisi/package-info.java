@@ -5,5 +5,9 @@
 // Generated on: 2016.06.14 at 10:46:39 AM CEST 
 //
 
-@javax.xml.bind.annotation.XmlSchema(namespace = "http://www.parlament.gov.rs/propisi", elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
-package models.rs.gov.parlament.propisi;
+@javax.xml.bind.annotation.XmlSchema(
+        namespace = "http://www.parlament.gov.rs/propisi",
+        elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED,
+        xmlns = {@javax.xml.bind.annotation.XmlNs(prefix = "pp", namespaceURI="http://www.parlament.gov.rs/propisi"),
+                @javax.xml.bind.annotation.XmlNs(prefix="xs", namespaceURI="http://www.w3.org/2001/XMLSchema")}
+)package models.rs.gov.parlament.propisi;

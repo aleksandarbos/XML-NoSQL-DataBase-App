@@ -33,11 +33,10 @@ public class RegulationsDAOTest {
         editingPart.setUriPropisa("/parliament/regulations/17216008199143224158.xml");
         editingPart.setOznakaDela(1);
         editingPart.setOznakaGlave(1);
-        editingPart.setOznakaClana(2);
 
         SadrzajTip editingContent = new SadrzajTip();
         editingContent.getContent();
-        editingContent.getContent().add(new String("N0v1 st4v "));
+        editingContent.getContent().add(new String("N0v1 CLAN KRALJ "));
         amendment.setSadrzaj(editingContent);
 
         RegulationsDAO.updateRegulation(amendment);

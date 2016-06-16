@@ -131,7 +131,7 @@ public class RegulationsDAO {
         amendmentContent = amendment.getSadrzaj().getContent().get(0).toString();
 
         query.append("declare namespace pp = \"http://www.parlament.gov.rs/propisi\";\n" +
-                "for $node in doc(\"" + regulationDocUri + "\")//pp:Sadrzaj");
+                "for $node in doc(\"" + regulationDocUri + "\")\n//pp:Sadrzaj\n");
                 if(numOfPart != 0) { query.append("//pp:Deo[@Oznaka_dela = " + numOfPart + "]\n"); editDepth++; }
                 if(numOfHead != 0) { query.append("//pp:Glava[@Oznaka_glave = " + numOfHead + "]\n"); editDepth++; }
                 if(numOfMember != 0) { query.append("//pp:Clan[@Oznaka_clana = " + numOfMember + "]\n"); editDepth++; }
