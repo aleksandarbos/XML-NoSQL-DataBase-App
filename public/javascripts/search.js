@@ -7,21 +7,21 @@ function stateChangedSearch() {
 	$(".statusPublished").hide(); 
 	$(".statusApplied").hide(); 
 	$(".statusWithdrawn").hide(); 
-	if (value == "nominated") {
+	if (value == "PREDLOZEN") {
 		$(".statusNominated").show(); 				
-	} else if (value == "voted") {
+	} else if (value == "PRIHVACEN" || value == "ODBIJEN") {
 		$(".statusNominated").show(); 
 		$(".statusVoted").show(); 
-	} else if (value == "published") {
+	} else if (value == "OBJAVLJEN") {
 		$(".statusNominated").show(); 
 		$(".statusVoted").show(); 
 		$(".statusPublished").show(); 
-	} else if (value == "applied") {
+	} else if (value == "U_PRIMENI") {
 		$(".statusNominated").show(); 
 		$(".statusVoted").show(); 
 		$(".statusPublished").show(); 
 		$(".statusApplied").show(); 
-	} else if (value == "withdrawn") {
+	} else if (value == "VAN_SNAGE") {
 		$(".statusNominated").show(); 
 		$(".statusVoted").show(); 
 		$(".statusPublished").show(); 
@@ -36,7 +36,7 @@ function typeChangedSearch() {
 		$(".hideDate").show();
 	} else if (type == "amendment") {
 		$(".hideDate").hide();
-		if (stat == "published" || stat == "applied" || stat == "withdrawn")
+		if (stat == "OBJAVLJEN" || stat == "U_PRIMENI" || stat == "VAN_SNAGE")
 			$(".selectStatus").val("voted");
 	} else {
 		$(".hideDate").show();
@@ -54,8 +54,19 @@ function searchChanged() {
 	}
 }
 
+function fillDropDowns() {
+	
+	$("select[name='searchType']").val($(".searchType").text());
+	$("select[name='documentType']").val($(".documentType").text());
+	$("select[name='documentStatus']").val($(".documentStatus").text());
+	$("select[name='documentDomain']").val($(".documentDomain").text());
+}
+
 $(document).ready(function() {
 	
+	fillDropDowns();
+	
+	searchChanged();	
 	stateChangedSearch();
 	
 	$(".showHideSearch").click(function() {
@@ -70,6 +81,7 @@ $(document).ready(function() {
 	$(".cancel").click(function() {
 		clearInputs(this);
 		stateChangedSearch();
+		$(".searchResult").remove();
 	});
 	
 	$(".selectSearch").change(function() {

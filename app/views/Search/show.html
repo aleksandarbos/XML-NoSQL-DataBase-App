@@ -3,6 +3,15 @@
 <script type="text/javascript" src="@{'public/javascripts/search.js'}"></script>
 
 <div>
+	<div style="display:none;">
+		<span class="searchType">${searchType}</span>
+		<span class="documentType">${documentType}</span>
+		#{if searchType == "details"}
+			<span class="documentDomain">${documentDomain}</span>
+			<span class="documentStatus">${documentStatus}</span>
+		#{/if}
+	</div>
+
 	<h2>
 		Pretraga usvojenih akata i akata u proceduri			
 	</h2>
@@ -15,7 +24,7 @@
 		
 		<table class="invisibleTable">
 			<tr><th>Kriterijum pretrage:</th><td>
-				<select name="documentDomain" class="bigInput selectSearch">
+				<select name="searchType" class="bigInput selectSearch">
 					<option value="text">Prema tekstu</option>
 					<option value="details">Prema detaljima</option>
 				</select></td></tr>
@@ -109,11 +118,11 @@
 		<div class="showHideFormLabel"><a class="showHideSearch">prikaži/sakrij kriterijume pretrage</a></div>
 	</div>
 	#{if results!= null}	
-		<h3>
-			Rezultati pretrage:
-		</h3>
-		#{if results.size() > 0}
-			<div class="searchResult">
+		<div class="searchResult">
+			<h3>
+				Rezultati pretrage:
+			</h3>
+			#{if results.size() > 0}
 				<table class="tabelaPregled">
 					<tr><th class="status">Status</th><th class="tip">Tip</th><th class="naziv">Naziv</th><th class="pregled">&nbsp </th><th class="pdf">&nbsp </th></tr>
 					#{list items: results, as:'document'}
@@ -141,12 +150,12 @@
 						</tr>
 					#{/list}
 				</table>
-			</div>
-		#{/if}
-		#{else}
-			<div class="searchNoResult">
-				<h4>Nije pronađen nijedan dokument (prema zadatim kriterijumima)</h4>
-			</div>
-		#{/else}
+			#{/if}
+			#{else}
+				<div class="searchNoResult">
+					<h4>Nije pronađen nijedan dokument (prema zadatim kriterijumima)</h4>
+				</div>
+			#{/else}
+		</div>
 	#{/if}
 </div>

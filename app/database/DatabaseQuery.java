@@ -100,7 +100,7 @@ public class DatabaseQuery {
 	 * @throws IOException
 	 * @throws JAXBException
 	 */
-	public static HashMap<String, Object> metadataSearch(String documentName, String documentStatus,
+	public static HashMap<String, Object> metadataSearch(String documentDomain, String documentName, String documentStatus,
 														 String documentType, String user, String authority, String collection, String nominatedDateFrom,
 														 String nominatedDateTo, String adoptionDateFrom, String adoptionDateTo, String announcementDateFrom,
 														 String announcementDateTo, String inuseDateFrom, String inuseDateTo, String withdrawalDateFrom,
@@ -131,6 +131,8 @@ public class DatabaseQuery {
 		}
 		if (documentName != null && !documentName.equals(""))
 			query.append(checkAnd(++criteriaCnt) + " $y//pp:Naziv/text() = \"" + documentName + "\" \n");
+		if (documentDomain != null && !documentDomain.equals(""))
+			query.append(checkAnd(++criteriaCnt) + " $y//pp:Preambula/pp:Oblast/text() = \"" + documentDomain + "\" \n");
 		if (!documentStatus.equals(""))
 			query.append(checkAnd(++criteriaCnt) + " $y//pp:Preambula/pp:Status/text() = \"" + documentStatus + "\"\n");
 		if (user != null && !user.equals(""))
