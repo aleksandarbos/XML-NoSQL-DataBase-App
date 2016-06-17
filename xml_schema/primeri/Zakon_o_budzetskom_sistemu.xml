@@ -1,26 +1,21 @@
-<?xml  version="1.0" encoding="UTF-8"?>
-<Propis Uri_propisa="/parliament/regulations/" Tip_dokumenta="PROPIS" xmlns="http://www.parlament.gov.rs/propisi">
+<?xml version="1.0" encoding="UTF-8"?>
+<Propis xmlns="http://www.parlament.gov.rs/propisi"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.parlament.gov.rs/propisi file:/E:/Users/NemanjaM/Documents/Practice/XML/Projekat/XML-NoSQL-DataBase-App/xml_schema/propisi.xsd" Uri_propisa="" Tip_dokumenta="PROPIS">
     <Preambula>
+        <Pravni_osnov></Pravni_osnov>
+        <Naziv_organa></Naziv_organa>
         <Status>PREDLOZEN</Status>
-        <Predlagac>gaja@parlament.rs</Predlagac>
-        <Broj_glasova_za>0</Broj_glasova_za>
-        <Broj_glasova_protiv>0</Broj_glasova_protiv>
-        <Broj_glasova_uzdrzano>0</Broj_glasova_uzdrzano>
+        <Oblast>EKONOMIJA</Oblast>
+        <Predlagac></Predlagac>
+        <Datum_predaje>2016-05-06</Datum_predaje>
     </Preambula>
     <Naziv>Zakon o budžetskom sistemu</Naziv>
     <Sadrzaj>
         <Glava Oznaka_glave="1" Naziv_glave="Osnovne odredbe">
             <Clan Oznaka_clana="1">
                 <Stav Oznaka_stava="1">
-                    Ovim zakonom uređuje se: planiranje, priprema, donošenje i izvršenje budžeta Republike Srbije; planiranje, priprema, 
-                    donošenje i izvršenje budžeta autonomnih pokrajina i jedinica lokalne samouprave (u daljem tekstu: budžet lokalne vlasti); 
-                    priprema i donošenje finansijskih planova Republičkog fonda za penzijsko i invalidsko osiguranje, Republičkog fonda za
-                    zdravstveno osiguranje, Fonda za socijalno osiguranje vojnih osiguranika i Nacionalne službe za zapošljavanje (u daljem 
-                    tekstu: organizacije za obavezno socijalno osiguranje); budžetsko računovodstvo i izveštavanje, finansijsko upravljanje,
-                    kontrola i revizija korisnika javnih sredstava i budžeta Republike Srbije, budžeta lokalne vlasti i finansijskih planova 
-                    organizacija za obavezno socijalno osiguranje; nadležnost i organizacija Uprave za trezor, kao organa uprave u sastavu 
-                    Ministarstva finansija (u daljem tekstu: Uprava za trezor) i trezora lokalne vlasti; druga pitanja od značaja za funkcionisanje 
-                    budžetskog sistema. 
+                    Овде ћемо пробати да испишемо нешто на ћирилици!!!
                 </Stav>
             </Clan>
             <Clan Oznaka_clana="2">
@@ -125,10 +120,9 @@
                     Priprema i dostavljanje finansijskih planova organizacija za obavezno socijalno osiguranje i predloga finansijskih planova indirektnih korisnika 
                     sredstava budžeta Republike Srbije.
                 </Stav>
-           </Clan>
+            </Clan>
         </Glava>
     </Sadrzaj>
     <Prilozi>
     </Prilozi>
 </Propis>
-
