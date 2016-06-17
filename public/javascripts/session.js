@@ -14,6 +14,12 @@ $(document).ready(function() {
 		checkVotes(this);
 	});
 	
+	$(".sessionDocumentPreview").click(function() {		
+		var id = $(this).parents("form").find(".documentId").val();
+		var url = '/overview/preview?id='+id;
+		window.open( url, "_blank");
+	});
+	
 	$(".acceptRegulation").click(function() {	
 		var form = $(this).parents("form");
 	
@@ -55,7 +61,7 @@ $(document).ready(function() {
 		var form = $(this).parents("form");
 		var amandmentsLeft = $(form).parents(".votingAmandments").find('.amandmentsLeft').text();
 	
-		var idInput = $(form).find("input[name='amandmentId']");
+		var idInput = $(form).find("input[name='amendmentId']");
 		var resultInput = $(form).find("select[name='votingAmandmentResult']");
 		var votesYesInput = $(form).find("input[name='votesAmandmentNumberYes']");
 		var votesNoInput = $(form).find("input[name='votesAmandmentNumberNo']");
@@ -74,7 +80,7 @@ $(document).ready(function() {
 			url: 'amandment',
 			async: 'false',
 			dataType: 'text',	
-			data: 'amandmentId=' + id + "&votingAmandmentResult=" + result + "&votesAmandmentNumberYes=" + votesYes + "&votesAmandmentNumberNo=" + votesNo + '&votesAmandmentNumberOff=' + votesOff,
+			data: 'amendmentId=' + id + "&votingAmandmentResult=" + result + "&votesAmandmentNumberYes=" + votesYes + "&votesAmandmentNumberNo=" + votesNo + '&votesAmandmentNumberOff=' + votesOff,
 			success: function(data) {
 				if (amandmentsLeft == 1) {
 					$(form).parents(".votingCard").find('.votingFinal').slideDown();

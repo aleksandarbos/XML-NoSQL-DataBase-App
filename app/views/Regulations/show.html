@@ -14,18 +14,6 @@
 		<form action="@{Regulations.create()}" method="post">
 			<table class="invisibleTable">
 				<tr><th>Naziv akta:</th><td><input type="text" class="bigInput" name="regulationName"/></td></tr>
-				<tr><th>Taksonomska oblast:</th><td>
-					<select name="documentDomain" class="bigInput" required>
-						<option value=""></option>
-						<option value="ZDRAVSTVO">Zdravstvo</option>
-						<option value="PROSVETA">Prosveta</option>
-						<option value="SPORT">Sport</option>
-						<option value="SAOBRACAJ">Saobraćaj</option>
-						<option value="TURIZAM">Turizam</option>
-						<option value="PRAVO">Pravo</option>
-						<option value="EKONOMIJA">Ekonomija</option>
-						<option value="KULTURA">Kultura</option>
-					</select></td></tr>
 				<tr><th>Akt predložio:</th><td><input type="text" class="bigInput" name="user" value="${session.get("user-name")} ${session.get("user-surname")}" readonly/></td></tr>
 				<tr><th>Sadržaj akta:</th><td><textarea class="veryBigInput" name="regulationContent" required></textarea></td></tr>
 				<tr class="error1 error" style="display:none"><th>&nbsp</th><td>XML sadržaj koji ste uneli nije dobro formiran!</td></tr>

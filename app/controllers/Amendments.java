@@ -34,13 +34,13 @@ public class Amendments extends Controller {
         render(userType, regulations);
     }
 
-    public static void create(String amandmentName, String affectedRegulationUri,
-                              int affectedClause, String affectedType, String user,
-                              String amendmentContent) throws JAXBException, IOException {
+    public static void create(String amandmentName, String affectedRegulationUri, String affectedType, 
+    							String user, String amendmentContent) throws JAXBException, IOException {
     	
     	
         Amandman amendment = (Amandman) Converter.unmarshall(UnmarshallType.FROM_STRING, amendmentContent, Amandman.class);
-        amendment.setNaziv(amandmentName);
+        if (!amandmentName.equals(""))
+        	amendment.setNaziv(amandmentName);
         amendment.getDeoZaIzmenu().setUriPropisa(affectedRegulationUri);
         amendment.getPreambula().setTip(checkAmendmentType(affectedType));
         amendment.getPreambula().setPredlagac(user);

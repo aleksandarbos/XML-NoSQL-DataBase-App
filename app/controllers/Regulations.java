@@ -29,7 +29,8 @@ public class Regulations extends Controller {
 
         Propis regulation = (Propis) Converter.unmarshall(UnmarshallType.FROM_STRING, regulationContent, Propis.class);
         regulation.setPreambula(new Preambula());
-        regulation.setNaziv(regulationName);
+        if (!regulationName.equals(""))
+        	regulation.setNaziv(regulationName);
         regulation.getPreambula().setPredlagac(user);
         regulation.getPreambula().setStatus(StatusAkta.PREDLOZEN);
 

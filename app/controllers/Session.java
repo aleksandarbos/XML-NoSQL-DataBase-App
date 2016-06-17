@@ -68,7 +68,7 @@ public class Session extends Controller {
     	if (content.size() != 0)
     		render("Session/show.html", userType, assemblySession, content);
     	else {
-        	AssemblySession.finishSession();
+        	//AssemblySession.finishSession();
         	time();    		
     	}
     }
@@ -85,7 +85,7 @@ public class Session extends Controller {
     	}
     }
     
-    public static void amandment(String amandmentId, String votingAmandmentResult, int votesAmandmentNumberYes, int votesAmandmentNumberNo, int votesAmandmentNumberOff) {
+    public static void amandment(String amendmentId, String votingAmandmentResult, int votesAmandmentNumberYes, int votesAmandmentNumberNo, int votesAmandmentNumberOff) {
     	Date currentDate = new Date();
     	GregorianCalendar calendar = new GregorianCalendar();
     	calendar.setTime(currentDate);
@@ -96,15 +96,19 @@ public class Session extends Controller {
 			e.printStackTrace();
 		}
 
-		Amandman amandment = DatabaseQuery.readAmendmentFromDatabase(amandmentId);		
-		amandment.getPreambula().setBrojGlasovaZa(votesAmandmentNumberYes);
-		amandment.getPreambula().setBrojGlasovaProtiv(votesAmandmentNumberNo);
-		amandment.getPreambula().setBrojGlasovaUzdrzano(votesAmandmentNumberOff);
-		amandment.getPreambula().setDatumGlasanja(date);
+		Amandman amendment = DatabaseQuery.readAmendmentFromDatabase(amendmentId);		
+		amendment.getPreambula().setBrojGlasovaZa(votesAmandmentNumberYes);
+		amendment.getPreambula().setBrojGlasovaProtiv(votesAmandmentNumberNo);
+		amendment.getPreambula().setBrojGlasovaUzdrzano(votesAmandmentNumberOff);
+		amendment.getPreambula().setDatumGlasanja(date);
 		if (votingAmandmentResult.equals("yes"))
-			amandment.getPreambula().setStatus(StatusAmandmana.PRIHVACEN);
+			amendment.getPreambula().setStatus(StatusAmandmana.PRIHVACEN);
 		else
-			amandment.getPreambula().setStatus(StatusAmandmana.ODBIJEN);
+			amendment.getPreambula().setStatus(StatusAmandmana.ODBIJEN);
+		
+		String xml = Converter.marshall(MarshallType.TO_STRING, amendment, "");
+		DatabaseQuery.writeXmlToDatabase(amendmentId, xml);
+		
     }
     
     public static void finals(String regulationFinalId, String votingFinalResult, int votesFinalNumberYes, int votesFinalNumberNo, int votesFinalNumberOff) {

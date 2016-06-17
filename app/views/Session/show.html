@@ -35,9 +35,9 @@
 				
 					<div class="votingStatute">
 						<form>
-							<input type="text" name="regulationId" value="${combination.getRegulation().getUriPropisa()}" style="display:none;" />
+							<input type="text" name="regulationId" class="documentId" value="${combination.getRegulation().getUriPropisa()}" style="display:none;" />
 							<p class="headingMain">AKT</p>
-							<p class="text">Prigovor po osnovi br 243,na clan 7543, zakona o medjuljudskim odnosima 23<br/><a href="#">(prikaži)</a></p>
+							<p class="text">${combination.getRegulation().getNaziv()}<br/><a class="sessionDocumentPreview">(prikaži)</a></p>
 							<p class="heading votingRegulationResult">Usvojen u načelu: &nbsp&nbsp
 								<select name="votingFirstResult" class="smallInput votingResult">
 									<option value="no">NE</option>
@@ -59,10 +59,10 @@
 						
 							<div class="votingAmandment"><br/>
 								<form>						
-									<input type="text" name="amandmentId" value="${amandment.getUriAmandmana()}" style="display:none;" />
+									<input type="text" name="amendmentId" class="documentId" value="${amandment.getUriAmandmana()}" style="display:none;" />
 									<p class="headingMain">Amandman</p>
-									<p class="text">Prigovor po osnovi br 243,na clan 7543, zakona o medjuljudskim odnosima 23<br/><a href="#">(prikaži)</a></p>
-									<p class="heading">Usvojen u načelu: &nbsp&nbsp
+									<p class="text">${amandment.getNaziv()}<br/><a class="sessionDocumentPreview">(prikaži)</a></p>
+									<p class="heading">Usvojen: &nbsp&nbsp
 										<select name="votingAmandmentResult" class="smallInput votingResult">
 											<option value="no">NE</option>
 											<option value="yes">DA</option>

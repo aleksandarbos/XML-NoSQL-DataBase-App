@@ -11,7 +11,7 @@ public class XMLTransformationTest {
 
     @Test
     public void transformToPdf() throws Exception {
-        XMLTransformation.transformToPdf("/parliament/regulations/4702994916404006768.xml");
+        XMLTransformation.transformToPdfFile("/parliament/regulations/4702994916404006768.xml");
     }
 
     @Test
