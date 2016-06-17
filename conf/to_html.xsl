@@ -253,8 +253,8 @@
 	
 	<xsl:template match="p:Referenca">
 		<a target="_blank">
-			<xsl:attribute name="href">
-				www.localhost:9000/overview/topdf?id=<xsl:value-of select="@Uri_propisa"/>
+			<xsl:attribute name="href">				
+				/../preview?id=<xsl:value-of select="@Uri_propisa"/>
 			</xsl:attribute>
 			<xsl:apply-templates/>
 		</a>
