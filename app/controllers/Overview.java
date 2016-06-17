@@ -14,6 +14,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @With(Secure.class)
 public class Overview extends Controller {
@@ -31,6 +32,12 @@ public class Overview extends Controller {
             e.printStackTrace();
         } catch (JAXBException e) {
             e.printStackTrace();
+        }
+
+        for (Map.Entry<String, Propis> entry : regulations.entrySet()) { // hot-fixing
+            String key = entry.getKey();
+            Propis value = entry.getValue();
+            value.setUriPropisa(key);
         }
 
         List<Object> combined = new ArrayList<Object>();
