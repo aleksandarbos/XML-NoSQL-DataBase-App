@@ -13,7 +13,9 @@ import database.DatabaseAccessor;
 import database.DatabaseQuery;
 import models.AssemblySession;
 import models.rs.gov.parlament.amandmani.Amandman;
+import models.rs.gov.parlament.amandmani.StatusAmandmana;
 import models.rs.gov.parlament.propisi.Propis;
+import models.rs.gov.parlament.propisi.StatusAkta;
 import play.mvc.Before;
 import play.mvc.Controller;
 import play.mvc.With;
@@ -30,8 +32,14 @@ public class Alterations extends Controller {
         List<Object> regulations = DatabaseQuery.searchByUser("regulation", user);
         List<Object> amandments = DatabaseQuery.searchByUser("amandments", user);
 
-        documents.addAll(regulations);
-        documents.addAll(amandments);
+        for (Object regulation : regulations) {
+			if (((Propis)regulation).getPreambula().getStatus()==StatusAkta.PREDLOZEN)
+				documents.add(regulation);
+		}
+        for (Object amendment : amandments) {
+			if (((Amandman)amendment).getPreambula().getStatus()==StatusAmandmana.PREDLOZEN)
+				documents.add(amendment);
+		}
         
     	render(userType, documents, assemblySession);
     }
