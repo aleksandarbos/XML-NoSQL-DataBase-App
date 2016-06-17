@@ -15,7 +15,8 @@
         <Glava Oznaka_glave="1" Naziv_glave="Uvodne odredbe">
             <Clan Oznaka_clana="1">
                 <Stav Oznaka_stava="1">
-                    Ovim zakonom uređuju se prava i obaveze sportista i ostalih fizičkih lica u
+                    Ovim zakonom uređuju se prava <Referenca Uri_propisa="/parliament/amendments/10674375874911941116.xml">Nekakva referenca</Referenca>
+					i obaveze sportista i ostalih fizičkih lica u
                     sistemu sporta, pitanja vezana za pravni položaj, organizaciju i registraciju
                     preduzetnika i pravnih lica u sistemu sporta (u daljem tekstu: organizacije u oblasti
                     sporta), opšti interes i potrebe i interesi građana u oblasti sporta, finansiranje,

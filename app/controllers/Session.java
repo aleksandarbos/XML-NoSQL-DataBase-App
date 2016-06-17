@@ -64,7 +64,7 @@ public class Session extends Controller {
     	if (content.size() != 0)
     		render("Session/show.html", userType, assemblySession, content);
     	else {
-        	//AssemblySession.finishSession();
+        	AssemblySession.finishSession();
         	time();    		
     	}
     }

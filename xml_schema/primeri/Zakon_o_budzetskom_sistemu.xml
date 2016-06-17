@@ -20,7 +20,8 @@
             </Clan>
             <Clan Oznaka_clana="2">
                 <Stav Oznaka_stava="1">
-                    Zakon o budžetu Republike Srbije jeste zakon kojim se procenjuju prihodi i primanja, te utvrđuju rashodi i izdaci za jednu
+                    Zakon o budžetu Republike<Referenca Uri_propisa="/parliament/amendments/10674375874911941116.xml">Nekakva referenca</Referenca>
+					Srbije jeste zakon kojim se procenjuju prihodi i primanja, te utvrđuju rashodi i izdaci za jednu
                     ili tri godine (kapitalni izdaci iskazuju se za tri godine), a donosi ga Narodna skupština; sadrži i odredbe bitne za izvršenje
                     tog zakona; u slučaju kad se budžet donosi za tri godine prihodi i primanja, rashodi i izdaci iskazuju se za svaku godinu posebno.
                 </Stav>
