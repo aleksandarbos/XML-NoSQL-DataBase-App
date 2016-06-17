@@ -4,7 +4,6 @@ import converter.Converter;
 import converter.XMLController;
 import converter.types.UnmarshallType;
 import dal.RegulationsDAO;
-import models.rs.gov.parlament.propisi.Preambula;
 import models.rs.gov.parlament.propisi.Propis;
 import models.rs.gov.parlament.propisi.StatusAkta;
 import play.mvc.Before;
@@ -28,7 +27,6 @@ public class Regulations extends Controller {
     	System.out.println("dodaj akt: " + regulationName + ", predlozio korisnik: " + user + ", sadrzaj dokumenta: "+regulationContent);
 
         Propis regulation = (Propis) Converter.unmarshall(UnmarshallType.FROM_STRING, regulationContent, Propis.class);
-        regulation.setPreambula(new Preambula());
         if (!regulationName.equals(""))
         	regulation.setNaziv(regulationName);
         regulation.getPreambula().setPredlagac(user);
