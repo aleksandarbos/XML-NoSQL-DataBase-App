@@ -1,31 +1,27 @@
 package controllers;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
-
-import javax.xml.datatype.DatatypeConfigurationException;
-import javax.xml.datatype.DatatypeFactory;
-import javax.xml.datatype.XMLGregorianCalendar;
-
 import converter.Converter;
 import converter.types.MarshallType;
-import converter.types.UnmarshallType;
+import dal.RegulationsDAO;
 import database.DatabaseQuery;
 import models.AssemblySession;
 import models.RegulationsAndAmandments;
 import models.rs.gov.parlament.amandmani.Amandman;
-import models.rs.gov.parlament.amandmani.Amandmani;
 import models.rs.gov.parlament.amandmani.StatusAmandmana;
 import models.rs.gov.parlament.propisi.Propis;
 import models.rs.gov.parlament.propisi.StatusAkta;
 import play.mvc.Before;
 import play.mvc.Controller;
 import play.mvc.With;
+
+import javax.xml.datatype.DatatypeConfigurationException;
+import javax.xml.datatype.DatatypeFactory;
+import javax.xml.datatype.XMLGregorianCalendar;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.List;
 
 @With(Secure.class)
 public class Session extends Controller {
@@ -58,7 +54,7 @@ public class Session extends Controller {
     	ArrayList<RegulationsAndAmandments> content = new ArrayList<RegulationsAndAmandments>();
     	
     	for (Object regulation : regulationsToVote) {
-			ArrayList<Amandman> amandments = new ArrayList<>();
+			ArrayList<Amandman> amandments = new ArrayList<Amandman>();
 			for (Object amandment : amandmentsToVote)
 				if (((Propis)regulation).getUriPropisa().equals(((Amandman)amandment).getDeoZaIzmenu().getUriPropisa()))
 					amandments.add((Amandman) amandment);
@@ -111,24 +107,19 @@ public class Session extends Controller {
 		
     }
     
-    public static void finals(String regulationFinalId, String votingFinalResult, int votesFinalNumberYes, int votesFinalNumberNo, int votesFinalNumberOff) {
+    public static void finals(String regulationFinalId, String votingFinalResult, int votesFinalNumberYes, int votesFinalNumberNo, int votesFinalNumberOff) throws IOException {
     	if (votingFinalResult.equals("no"))
     		updateRegulation(false, regulationFinalId, votesFinalNumberYes, votesFinalNumberNo, votesFinalNumberOff, false);
     	else
     		updateRegulation(true, regulationFinalId, votesFinalNumberYes, votesFinalNumberNo, votesFinalNumberOff, false);
 
-    	// TODO OVDE IDE PRECISCAVANJE DOKUMENATA
-    	/*
-    	Propis regulationToClean = DatabaseQuery.readRegulationFromDatabase(regulationFinalId);
     	List<Amandman> amandments = DatabaseQuery.searchAmandmentsByRegulationId(regulationFinalId);
-    	List<Amandman> amandmentsToClean = new ArrayList<>(); 
     	for (Amandman amandman : amandments) {
-			if (amandman.getPreambula().getStatus() == StatusAmandmana.PREDLOZEN)
-				amandmentsToClean.add(amandman);
+			if (amandman.getPreambula().getStatus() == StatusAmandmana.PRIHVACEN) {
+				RegulationsDAO.updateRegulation(amandman);
+			}
 		}
-		regulationToClean, amandmentsToClean
-    	*/    	
-    	
+
     	show();
     }
     
@@ -170,7 +161,5 @@ public class Session extends Controller {
 		
 		String xmlFile = Converter.marshall(MarshallType.TO_STRING, regulation, "");
 		DatabaseQuery.writeXmlToDatabase(id, xmlFile);
-		
-		show();
     }
 }
