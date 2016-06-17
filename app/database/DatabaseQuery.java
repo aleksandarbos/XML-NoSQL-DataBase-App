@@ -37,7 +37,7 @@ public class DatabaseQuery {
 	/**
 	 * Searches database entries with custom criteria, collection and specifies
 	 * result type.
-	 * 
+	 *
 	 * @param criteria
 	 *            Custom search criteria.
 	 * @param collection
@@ -94,18 +94,18 @@ public class DatabaseQuery {
 
 	/**
 	 * Searches by metadata invoking XQuery search.
-	 * 
+	 *
 	 * @return HashMap<String, Object> where k=>docId, and value is instance of
 	 *         => Amandman or Propis class.
 	 * @throws IOException
 	 * @throws JAXBException
 	 */
 	public static HashMap<String, Object> metadataSearch(String documentName, String documentStatus,
-			String documentType, String user, String authority, String collection, String nominatedDateFrom,
-			String nominatedDateTo, String adoptionDateFrom, String adoptionDateTo, String announcementDateFrom,
-			String announcementDateTo, String inuseDateFrom, String inuseDateTo, String withdrawalDateFrom,
-			String withdrawalDateTo, int votesYesFrom, int votesYesTo, int votesNoFrom, int votesNoTo, int votesOffFrom,
-			int votesOffTo) {
+														 String documentType, String user, String authority, String collection, String nominatedDateFrom,
+														 String nominatedDateTo, String adoptionDateFrom, String adoptionDateTo, String announcementDateFrom,
+														 String announcementDateTo, String inuseDateFrom, String inuseDateTo, String withdrawalDateFrom,
+														 String withdrawalDateTo, int votesYesFrom, int votesYesTo, int votesNoFrom, int votesNoTo, int votesOffFrom,
+														 int votesOffTo) {
 		StringBuilder query = new StringBuilder();
 		HashMap<String, Object> results = new HashMap<String, Object>();
 		String collectionCriteria = "";
@@ -172,7 +172,7 @@ public class DatabaseQuery {
 
 	/**
 	 * Reads xml file from database and returns it as a string.
-	 * 
+	 *
 	 * @param docId
 	 *            Resource location.
 	 * @return Converted found xml to string.
@@ -218,16 +218,16 @@ public class DatabaseQuery {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public static void removeDocumentFromDatabase(String docId) {
-		
+
 		String documentType = docId.split("/")[2];
 		if (documentType.equals("amendments")) {
 			removeXmlFromDatabase(docId);
 			return;
 		}
 		List<Amandman> amendments = searchAmandmentsByRegulationId(docId);
-		
+
 		for (Amandman amendment : amendments) {
 			String uri = amendment.getUriAmandmana();
 			removeXmlFromDatabase(uri);
@@ -242,7 +242,7 @@ public class DatabaseQuery {
 	 *            a node to be serialized
 	 * @param out
 	 *            an output stream to write the serialized DOM representation to
-	 * 
+	 *
 	 */
 	private static void transform(Node node, OutputStream out) {
 		try {
@@ -318,7 +318,7 @@ public class DatabaseQuery {
 
 		return results;
 	}
-	
+
 	public static List<Amandman> searchAmandmentsByRegulationId(String regId) {
 		StringBuilder query = new StringBuilder();
 		List<Amandman> results = new ArrayList();

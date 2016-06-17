@@ -264,10 +264,38 @@ public class RegulationsDAO {
         }
         System.out.println("\n"+query.toString()+"\n");
         XQueryInvoker.execute(query.toString());
+        resetRegulationAttributes(regulationDocUri);
     }
 
     public static void deleteRegulation(String regulationUri) {
         DatabaseQuery.removeDocumentFromDatabase(regulationUri);
+    }
+
+    /**
+     * Resets all regulation elements attribute id.
+     * @param docUri Regulation docUri.
+     * @throws IOException
+     */
+    private static void resetRegulationAttributes(String docUri) throws IOException {
+        String query = "declare namespace pp = \"http://www.parlament.gov.rs/propisi\";\n" +
+                "for $x at $i in doc(\""+docUri+"\")//pp:Clan\n" +
+                "let $newVal as attribute() := attribute Oznaka_clana {$i}\n" +
+                "return xdmp:node-replace($x/@Oznaka_clana, $newVal);\n" +
+                "\n" +
+                "declare namespace pp = \"http://www.parlament.gov.rs/propisi\";\n" +
+                "for $x at $i in doc(\""+docUri+"\")//pp:Clan\n" +
+                "for $x_1 at $i_1 in $x/pp:Stav\n" +
+                "let $new_Val_1 as attribute() := attribute Oznaka_stava {$i_1}\n" +
+                "return xdmp:node-replace($x_1/@Oznaka_stava, $new_Val_1);\n" +
+                "\n" +
+                "declare namespace pp = \"http://www.parlament.gov.rs/propisi\";\n" +
+                "for $x at $i in doc(\""+docUri+"\")//pp:Clan\n" +
+                "for $x_1 at $i_1 in $x/pp:Stav\n" +
+                "for $x_2 at $i_2 in $x_1/pp:Tacka\n" +
+                "let $new_Val_2 as attribute() := attribute Oznaka_tacke {$i_2}\n" +
+                "return xdmp:node-replace($x_2/@Oznaka_tacke, $new_Val_2);\n" +
+                "\n";
+        XQueryInvoker.execute(query);
     }
 
     /**
