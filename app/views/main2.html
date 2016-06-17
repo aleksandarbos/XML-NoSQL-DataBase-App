@@ -56,9 +56,11 @@
 					#{/if}
 				</ul>
 				<ul class="sednicaMenu" style="display:none;">
-					<li><a href="@{Session.time()}">Održavanje sednica</a></li>		
+					<li><a href="@{Session.time()}">Održavanje sednica</a></li>					
+					#{if userType == 'PREDSEDNIK'}	
 					<li><a href="@{Session.setSchedule()}">Zakazivanje sednice</a></li>
 					<li><a href="@{Session.show()}">Vođenje sednice</a></li>
+					#{/if}
 				</ul>
 			</div>
 		

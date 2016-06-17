@@ -10,166 +10,113 @@
         <Predlagac></Predlagac>
         <Datum_predaje>2016-05-06</Datum_predaje>
     </Preambula>
-    <Naziv>KRIVIČNI ZAKONIK</Naziv>
+    <Naziv>Neko mnogo fensi dugacko ime za akt</Naziv>
     <Sadrzaj>
-        <Deo Oznaka_dela="1" Naziv_dela="Opšti">
-            <Glava Oznaka_glave="1" Naziv_glave="Osnovne odredbe">
-                <Clan Oznaka_clana="1" Naziv_clana="Nema krivičnog dela niti kazne bez zakona">
-                    <Stav Oznaka_stava="1">
-                        Nikome ne može biti izrečena kazna ili druga krivična sankcija za delo
-                        koje pre nego što je učinjeno zakonom nije bilo određeno kao krivično delo, niti mu
-                        se može izreći kazna ili druga krivična sankcija koja zakonom nije bila propisana pre
-                        nego što je krivično delo učinjeno.
-                    </Stav>
-                </Clan>
-                <Clan Oznaka_clana="2" Naziv_clana="Nema kazne bez krivice">
-                    <Stav Oznaka_stava="1">
-                        Kazna i mere upozorenja mogu se izreći samo učiniocu koji je kriv za
-                        ušinjeno krivično delo.
-                    </Stav>
-                </Clan>
-                <Clan Oznaka_clana="3" Naziv_clana="Osnov i granice krivičnopravne prinude">
-                    <Stav Oznaka_stava="1">
-                        Zaštita čoveka i drugih osnovnih društvenih vrednosti predstavlja
-                        osnov i granice za određivanje krivičnih dela, propisivanje krivičnih sankcija i njihovu
-                        primenu, u meri u kojoj je to nužno za suzbijanje tih dela.
-                    </Stav>
-                </Clan>
-                <Clan Oznaka_clana="4" Naziv_clana="Krivične sankcije i njihova opšta svrha">
-                    <Stav Oznaka_stava="1">
-                        <Tacka Oznaka_tacke="1">
-                            Krivične sankcije su: kazne, mere upozorenja, mere bezbednosti i
-                            vaspitne mere.
-                        </Tacka>
-                        <Tacka Oznaka_tacke="2">
-                            Opšta svrha propisivanja i izricanja krivičnih sankcija je suzbijanje
-                            dela kojima se povređuju ili ugrožavaju vrednosti zaštićene krivičnim
-                            zakonodavstvom.
-                        </Tacka>
-                        <Tacka Oznaka_tacke="3">
-                            Krivične sankcije se ne mogu izreći licu koje u vreme kada je delo
-                            učinjeno nije navršilo šetrnaest godina. Vaspitne mere i druge krivične sankcije mogu
-                            se izreći maloletniku pod uslovima propisanim posebnim zakonom.
-                        </Tacka>
-                    </Stav>
-                </Clan>
-            </Glava>                
-            <Glava Oznaka_glave="2" Naziv_glave="VAŽENJE KRIVIČNOG ZAKONODAVSTVA REPUBLIKE SRBIJE">
-                <Clan Oznaka_clana="5" Naziv_clana="Vremensko važenje krivičnog zakonodavstva">
-                    <Stav Oznaka_stava="1">
-                        <Tacka Oznaka_tacke="1">
-                            Na učinioca krivičnog dela primenjuje se zakon koji je važio u
-                            vreme izvršenja krivičnog dela.
-                        </Tacka>
-                        <Tacka Oznaka_tacke="2">
-                            Ako je posle izvršenja krivičnog dela izmenjen zakon, jednom ili
-                            više puta, primeniće se zakon koji je najblaži za učinioca.
-                        </Tacka>
-                        <Tacka Oznaka_tacke="3">
-                            Na učinioca krivičnog dela koje je predviđeno zakonom sa
-                            određenim vremenskim trajanjem primenjuje se taj zakon, bez obzira na to kad mu
-                            se sudi, ako tim zakonom nije drukčije određeno.
-                        </Tacka>
-                    </Stav>
-                </Clan>
-                <Clan Oznaka_clana="6" Naziv_clana="Važenje krivičnog zakonodavstva na teritoriji Srbije">
-                    <Stav Oznaka_stava="1">
-                        <Tacka Oznaka_tacke="1">
-                            Krivično zakonodavstvo Republike Srbije važi za svakog ko na
-                            njenoj teritoriji učini krivično delo.
-                        </Tacka>
-                        <Tacka Oznaka_tacke="2">
-                            Krivično zakonodavstvo Srbije važi i za svakog ko učini krivčno
-                            delo na domaćem brodu, bez obzira gde se brod nalazi u vreme izvršenja dela.
-                        </Tacka>
-                        <Tacka Oznaka_tacke="3">
-                            Krivično zakonodavstvo Srbije važi i za svakog ko učini krivično
-                            delo u domaćem civilnom vazduhoplovu dok je u letu ili u domaćem vojnom
-                            vazduhoplovu, bez obzira gde se vazduhoplov nalazio u vreme izvršenja krivičnog
-                            dela.
-                        </Tacka>
-                        <Tacka Oznaka_tacke="4">
-                            Ako je u slučajevima iz st. 1. do 3. ovog člana u stranoj državi
-                            pokrenut ili dovršen krivični postupak, krivično gonjenje u Srbiji preduzeće se samo
-                            po odobrenju republičkog javnog tužioca.
-                        </Tacka>
-                        <Tacka Oznaka_tacke="5">
-                            Krivično gonjenje stranca u slčajevima iz st. 1. do 3. ovogčlana
-                            može se, pod uslovom uzajamnosti, ustupiti stranoj državi.
-                        </Tacka>
-                    </Stav>
-                </Clan>
-                <Clan Oznaka_clana="7" Naziv_clana="Uračunavanje pritvora i kazne izdržane u inostranstvu">
-                    <Stav Oznaka_stava="1">
-                        Pritvor, svako drugo lišenje slobode u vezi sa krivičnim delom, lišenje
-                        slobode u toku ekstradicionog postupka, kao i kazna koju je učinilac izdržao po
-                        presudi inostranog ili međunarodnog krivičnog suda uračunaće se u kaznu koju
-                        izrekne domaći sud za isto krivično delo, a ako kazne nisu iste vrste, uračunavanje
-                        će se izvršiti po oceni suda.
-                    </Stav>
-                </Clan>
-                <Clan Oznaka_clana="8" Naziv_clana="Uračunavanje pritvora i kazne izdržane u inostranstvu">
-                    <Stav Oznaka_stava="1">
-                        <Tacka Oznaka_tacke="1">
-                            Uiniocu krivinog dela mogu se izrei ove mere bezbednosti:
-                            <Podtacka Oznaka_podtacke="1">obavezno psihijatrijsko lečenje i đuvanje u zdravstvenoj ustanovi;</Podtacka>
-                            <Podtacka Oznaka_podtacke="2">obavezno psihijatrijsko lečenje na slobodi;</Podtacka>
-                            <Podtacka Oznaka_podtacke="3">obavezno lečenje narkomana;</Podtacka>
-                            <Podtacka Oznaka_podtacke="4">obavezno lečenje alkoholičara;</Podtacka>
-                            <Podtacka Oznaka_podtacke="5">zabrana vršenja poziva, delatnosti i dužnosti;</Podtacka>
-                            <Podtacka Oznaka_podtacke="6">zabrana upravljanja motornim vozilom;</Podtacka>
-                            <Podtacka Oznaka_podtacke="7">oduzimanje predmeta;</Podtacka>
-                        </Tacka>
-                        <Tacka Oznaka_tacke="2">
-                            Pod uslovima predvenim ovim zakonikom odreene mere
-                            bezbednosti mogu se izre i neuraunljivom licu koje je uinilo protivpravno delo u
-                            zakonu predvino kao krivino delo(član 80. stav 2).
-                        </Tacka>
-                    </Stav>
-                </Clan>
-            </Glava>
-        </Deo>
-        <Deo Oznaka_dela="2">
-            <Glava Oznaka_glave="3" Naziv_glave="KRIVIČNA DELA PROTIV ŽIVOTA I TELA">
-                <Clan Oznaka_clana="9">
-                    <Stav Oznaka_stava="1">
-                        Ko drugog liši života, kaznice se zatvorom od pet do petnaest godina.
-                    </Stav>
-                </Clan>                
-            </Glava>
-            <Glava Oznaka_glave="4">
-                <Clan Oznaka_clana="10">
-                    <Stav Oznaka_stava="1">
-                        Zatvorom najmanje deset godina ili zatvorom od od trideset do 
-                        cetrdeset godina kaznice se:
-                        <Tacka Oznaka_tacke="1">ko drugog liši života na svirep ili podmukao način;</Tacka>
-                        <Tacka Oznaka_tacke="2">ko drugog liši života pri bezobzirnom nasilničkom ponašanju;</Tacka>
-                        <Tacka Oznaka_tacke="3">ko drugog liši života i pri tom sa umišljajem dovede u opasnost život još nekog lica;</Tacka>
-                        <Tacka Oznaka_tacke="4">ko drugog liši života pri izvršenju krivičnog dela razbojništva ili razbojničke kraće;</Tacka>
-                    </Stav>
-                </Clan>
-                <Clan Oznaka_clana="11">
-                    <Stav Oznaka_stava="1">
-                        Ko drugog liši života na mah doveden bez svoje krivice u jaku
-                        razdraženost napadom, zlostavljanjem ili teškim vređanjem od strane ubijenog,
-                        kazniće se zatvorom od jedne do osam godina.
-                    </Stav>
-                    <Stav Oznaka_stava="2">
-                        Majka koja liši života svoje dete za vreme porođaja ili neposredno
-                        posle porođaja, dok kod nje traje poremećaj izazvan porođajem,
-                        kazniće se zatvorom od šest meseci do pet godina.
-                    </Stav>
-                </Clan>
-                <Clan Oznaka_clana="12">
-                    <Stav Oznaka_stava="2">
-                        Ko liši života punoletno lice iz samilosti zbog teškog zdravstvenog
-                        stanja u kojem se to lice nalazi, a na njegov ozbiljan i izričit zahtev,
-                        kazniće se zatvorom od šest meseci do pet godina.
-                    </Stav>
-                </Clan>
-            </Glava>
-        </Deo>
-        
+        <Glava Oznaka_glave="1" Naziv_glave="Osnovne odredbe">
+            <Clan Oznaka_clana="1">
+                <Stav Oznaka_stava="1">
+                    Ovim zakonom uređuje se: zaštita, upravljanje, lov, korišćenje i unapređivanje populacija divljači u 
+                    lovištu; zaštita, očuvanje i unapređivanje staništa divljači; zaštita, uređivanje i održavanje lovišta i druga pitanja 
+                    od značaja za divljač i lovstvo.
+                </Stav>
+                <Stav Oznaka_stava="2">
+                    Divljač je prirodno bogatstvo i imovina Republike Srbije koja se koristi pod uslovima i na način predviđen ovim zakonom.
+                </Stav>
+            </Clan>
+            <Clan Oznaka_clana="2">
+                <Stav Oznaka_stava="3">
+                    Divljač je prirodno bogatstvo i imovina Republike Srbije koja se koristi pod uslovima i na način predviđen ovim zakonom.
+                </Stav>
+            </Clan>
+            <Clan Oznaka_clana="3">
+                <Stav Oznaka_stava="4">
+                    Divljač je prirodno bogatstvo i imovina Republike Srbije koja se koristi pod uslovima i na način predviđen ovim zakonom.                     
+                </Stav>
+            </Clan>
+            <Clan Oznaka_clana="4">
+                <Stav Oznaka_stava="5">
+                    Cilj ovog zakona je
+                    
+                    <Referenca Uri_propisa="#">Predlog zakona</Referenca> obezbeđivanje održivog gazdovanja populacijama divljači i 
+                    njihovih staništa na način i u obimu kojim se trajno održava i unapređuje vitalnost 
+                    populacija divljači, proizvodna sposobnost staništa i biološka raznovrsnost, čime se 
+                    postiže ispunjavanje ekonomskih, ekoloških i socijalnih funkcija lovstva.
+                </Stav>
+                <Stav Oznaka_stava="6">
+                    Radi ostvarivanja i zaštite prava i interesa lovnih radnika i unapređivanja lovstva u skladu sa 
+                    održivim gazdovanjem populacijama divljači, opštim interesom i opšteprihvaćenim međunarodnim standardima 
+                    u lovstvu osniva se Lovačka komora (u daljem tekstu: Komora), 
+                    kao profesionalna organizacija, sa pravima i obavezama utvrđenim ovim zakonom i statutom Komore.
+                </Stav>
+            </Clan>
+            <Clan Oznaka_clana="5">
+                <Stav Oznaka_stava="7">
+                    Zabranjeno je:
+                    
+                    
+                    <Tacka Oznaka_tacke="1">ugrožavati opstanak divljači u prirodi i njena staništa;</Tacka>
+                    <Tacka Oznaka_tacke="2">proganjati, zlostavljati, namerno povređivati i uznemiravati divljač;</Tacka>
+                    <Tacka Oznaka_tacke="3">zarobljavati i držati divljač u zatvorenom ili ograđenom prostoru, namerno uništavati mesto za 
+                        razmnožavanje i odmor divljači, uzimati jaja od divljači, kao i sakupljati jaja zaštićenih vrsta ptica;</Tacka>
+                    <Tacka Oznaka_tacke="4">unositi u lovište divljač iz parkova divljači, zooloških vrtova i sa farmi divljači, kao i oštećenih jedinki divljači;</Tacka>
+                </Stav>
+            </Clan>
+            <Clan Oznaka_clana="6">
+                <Stav Oznaka_stava="8">
+                    Korisnik divljači dužan je da u slučajevima iz stava 1. ovog člana postupa na human način.
+                </Stav>
+                <Stav Oznaka_stava="9">
+                    Divljač se može unositi u lovište samo ako se njenim unošenjem ne ugrožava biološka 
+                    ravnoteža i biološka raznovrsnost.
+                </Stav>
+                <Stav Oznaka_stava="10">
+                    Zabrane iz člana 22. tač. ovog zakona ne odnose se na divljač ugroženu od 
+                    elementarnih nepogoda, u slučajevima sprečavanja i suzbijanja zaraznih bolesti, 
+                    organizovanog hvatanja povređene divljači, naseljavanja divljači i ispitivanja 
+                    urođenih osobina lovačkih pasa, kao i na divljač za potrebe naučnog istraživanja, 
+                    nastave, zooloških vrtova i muzeja, ako je za to data saglasnost Ministarstva.
+                </Stav>
+            </Clan>
+            <Clan Oznaka_clana="7">
+                <Stav Oznaka_stava="11">
+                    Ministar i ministar nadležan za poslove zaštite životne sredine sporazumno proglašavaju 
+                    lovostajem zaštićene vrste divljači, trajanje lovne sezone na lovostajem zaštićene vrste 
+                    divljači u otvorenim i ograđenim lovištima, ograđenim delovima lovišta i poligonima za 
+                    lov divljači, kao i mere zaštite i regulisanja brojnosti populacija trajno zaštićenih i 
+                    lovostajem zaštićenih vrsta divljači, a na osnovu procene ugroženosti pojedinih vrsta, 
+                    brojnosti populacija i obaveza iz potvrđenih međunarodnih ugovora.
+                </Stav>
+            </Clan>
+        </Glava>
+        <Glava Oznaka_glave="2">
+            <Clan Oznaka_clana="8">
+                <Stav Oznaka_stava="12">
+                    Redovnu proveru kvaliteta stručnog rada imaoca licence za izradu planskih dokumenata vrši 
+                    Ministarstvo, a na teritoriji autonomne pokrajine nadležni pokrajinski organ, i to u 
+                    postupku davanja saglasnosti na planske dokumente.
+                </Stav>
+            </Clan>
+            <Clan Oznaka_clana="9">
+                <Stav Oznaka_stava="13">
+                    Skupština Komore bira između svojih članova predsednika, kao i sastav upravnog odbora, 
+                    nadzornog odbora, organa Komore koji rešava o izdavanju i oduzimanju licence i Etičkog 
+                    komiteta, u čijim sastavima moraju biti predstavnici Ministarstva i autonomne pokrajine 
+                    koji su članovi Komore.
+                </Stav>
+            </Clan>
+            <Clan Oznaka_clana="10">
+                <Stav Oznaka_stava="14">
+                    Za osnivanje i početak rada Komore sredstva se obezbeđuju u budžetu Republike Srbije.
+                </Stav>
+            </Clan>
+            <Clan Oznaka_clana="11">
+                <Stav Oznaka_stava="15">
+                    Komora ima svojstvo pravnog lica koje stiče registracijom u Registar privrednih subjekata, 
+                    u skladu sa zakonom kojim se uređuje registracija privrednih subjekata.
+                </Stav>
+            </Clan>
+        </Glava>
     </Sadrzaj>
-    <Prilozi></Prilozi>
+    <Prilozi>
+    </Prilozi>
 </Propis>

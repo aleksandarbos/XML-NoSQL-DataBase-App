@@ -26,11 +26,7 @@ public class Amendments extends Controller {
     public static void show() throws IOException, JAXBException {
         String userType = session.get("user-type");
 
-        List<Object> list = DatabaseQuery.searchByStatus("PREDLOZEN", "REGULATIONS");
-        List<Propis> regulations = new ArrayList<>();
-        for (Object propis : list) {
-        	regulations.add((Propis) propis);
-		}
+        List<Object> regulations = DatabaseQuery.searchByStatus("PREDLOZEN", "REGULATIONS");
         render(userType, regulations);
     }
 
